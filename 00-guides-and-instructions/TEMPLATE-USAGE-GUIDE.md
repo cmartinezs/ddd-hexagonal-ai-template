@@ -1,53 +1,70 @@
 # Template Usage Guide
 
-## How to Use This Template
-
-This guide explains how to fill in each section of the DDD Hexagonal AI Template.
+You are an AI agent generating SDLC documentation using this template framework. This guide defines the required output structure for each phase: which files you must generate, what each file must contain, the format for each section, and what a completed document looks like. Use this guide as your structural reference whenever you generate documentation for any phase.
 
 ## General Rules
 
+These rules apply to every document you generate across all phases. Violating them is a defect, not a style choice.
+
 ### Phase Discipline
-- **Discovery & Requirements (Phases 1-2)**: Focus on "WHAT" and "WHY"
+
+The agnostic/specific boundary is strictly enforced. Apply it without exception:
+
+- **Discovery & Requirements (Phases 1–2)**: Focus on "WHAT" and "WHY"
   - ✅ User needs, business constraints, capabilities
   - ❌ Technology names, frameworks, implementation details
-  
+
 - **Design & Beyond (Phases 3+)**: Include "HOW"
   - ✅ Architecture, technology choices, implementation patterns
   - ❌ Unresolved business questions from earlier phases
 
-### Completable Sections
-Each template includes sections marked:
-- `[ COMPLETABLE BY HUMAN ]` — Easy to fill manually
-- `[ COMPLETABLE BY AI ]` — AI can generate drafts, human reviews
-- `[ RECOMMENDED BY AI ]` — AI agents can help explore
+### Completable Section Markers
+
+Each template includes sections marked with one of the following labels. These labels tell you the expected source of content:
+
+- `[ COMPLETABLE BY HUMAN ]` — Do not generate this; leave it blank for the human collaborator to fill
+- `[ COMPLETABLE BY AI ]` — Generate a draft; the human reviews and approves
+- `[ RECOMMENDED BY AI ]` — You may suggest content; the human decides whether to keep it
 
 ### Example Sections
-Each template includes a "EXAMPLE" subsection showing what a filled-in version looks like. Use these as templates.
+
+Each template includes an `EXAMPLE` subsection showing what a filled-in version looks like. Use these as your calibration target for quality and specificity. Your output should be at least as specific as the example.
 
 ---
 
 ## Phase 1: Discovery
 
-**Duration**: 1-2 weeks  
-**Participants**: Product, UX, business stakeholders  
-**Output**: Vision, scope, actors, needs
+Discovery documents establish the problem, the vision, the actors, and the scope of the system. Every document you generate in this phase must be technology agnostic and traceable to a real business need.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/01-discovery/`  
+**Participants who review**: Product, UX, business stakeholders  
+**Key outputs**: Vision, scope, actors, needs
 
-**`01-templates/01-discovery/README.md`**
+### Files to Generate
+
+**`01-discovery/README.md`**
+
+This file is the navigation index for the Discovery phase. It must orient anyone reading the phase for the first time.
+
 - [ ] Copy template structure
 - [ ] Add project name and brief description
-- [ ] List key files to complete
+- [ ] List all files in the phase with a one-line description of each
 
-**`01-templates/01-discovery/TEMPLATE-context-motivation.md`**
+**`01-discovery/context-motivation.md`**
+
+This document answers: why does this project exist? It establishes the problem, the market context, and the strategic rationale.
+
 - [ ] **Vision**: 1-2 sentence vision statement
 - [ ] **Mission**: Why does this project exist?
-- [ ] **Motivation**: What problem does it solve?
-- [ ] **Success Criteria**: How will we know it's successful?
-- [ ] **Constraints**: Legal, compliance, technical constraints
-- [ ] **Timeline**: Expected timeline
+- [ ] **Motivation**: What specific problem does it solve?
+- [ ] **Success Criteria**: How will we know it succeeded?
+- [ ] **Constraints**: Legal, compliance, business constraints
+- [ ] **Timeline**: Expected timeline and key milestones
 
-**`01-templates/01-discovery/actors-and-personas.md`**
+**`01-discovery/actors-and-personas.md`**
+
+This document identifies every human or system actor that interacts with the product. Each actor must include enough detail to drive design decisions.
+
 - [ ] Identify all user types and system actors
 - [ ] For each actor:
   - [ ] Name and description
@@ -55,28 +72,38 @@ Each template includes a "EXAMPLE" subsection showing what a filled-in version l
   - [ ] Key needs
   - [ ] How they interact with the system
 
-**`01-templates/01-discovery/scope-and-boundaries.md`**
-- [ ] **In Scope**: What will the system do?
-- [ ] **Out of Scope**: What it won't do (with rationale)
-- [ ] **Phase 1 Goals**: What's the MVP?
-- [ ] **Future Phases**: What comes later?
+**`01-discovery/scope-and-boundaries.md`**
+
+This document makes the system boundary explicit. In-scope items must be traceable to requirements; out-of-scope items must have a stated rationale.
+
+- [ ] **In Scope**: What will the system do in the current phase?
+- [ ] **Out of Scope**: What it will not do (with rationale for each item)
+- [ ] **Phase 1 Goals**: What defines the MVP?
+- [ ] **Future Phases**: What comes after the MVP?
 
 ---
 
 ## Phase 2: Requirements
 
-**Duration**: 1-2 weeks  
-**Participants**: Product, Engineering, UX  
-**Output**: Functional & non-functional requirements
+Requirements documents translate Discovery outputs into specific, verifiable conditions the system must meet. Every requirement must trace to a Discovery actor or need.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/02-requirements/`  
+**Participants who review**: Product, Engineering, UX  
+**Key outputs**: Functional & non-functional requirements
 
-**`01-templates/02-requirements/README.md`**
+### Files to Generate
+
+**`02-requirements/README.md`**
+
+The index for the Requirements phase. It must provide a complete overview of what is documented here and link to Discovery.
+
 - [ ] Copy template structure
-- [ ] Link to discovery documents
-- [ ] Overview of requirements organization
+- [ ] Link to all Discovery documents
+- [ ] Provide overview of how requirements are organized
 
-**`01-templates/02-requirements/functional-requirements.md`**
+**`02-requirements/functional-requirements.md`**
+
+This file contains all functional requirements using a consistent format. Every requirement must specify the actor, trigger, flow, and acceptance criteria.
 
 Format each requirement as:
 ```
@@ -98,7 +125,9 @@ Format each requirement as:
 **Dependencies**: Other requirements this depends on
 ```
 
-**`01-templates/02-requirements/non-functional-requirements.md`**
+**`02-requirements/non-functional-requirements.md`**
+
+This file contains all non-functional requirements. Each NFR must be measurable and tied to a justification from Discovery.
 
 For each NFR:
 ```
@@ -110,10 +139,12 @@ For each NFR:
 
 **Rationale**: Why this matters
 
-**Measurement**: How we'll verify it
+**Measurement**: How we will verify it
 ```
 
-**`01-templates/02-requirements/scope-boundaries.md`**
+**`02-requirements/scope-boundaries.md`**
+
+This document maps each requirement to a delivery phase, making the MVP boundary explicit.
 
 Create a matrix:
 ```
@@ -124,7 +155,9 @@ Create a matrix:
 | Feature Z   |         |         | In      | Future|
 ```
 
-**`01-templates/02-requirements/traceability-matrix.md`**
+**`02-requirements/traceability-matrix.md`**
+
+This document links every requirement to its Discovery source. It must be kept in sync with any changes to requirements or actors.
 
 Link requirements to discovery:
 ```
@@ -137,13 +170,17 @@ Link requirements to discovery:
 
 ## Phase 3: Design
 
-**Duration**: 1-2 weeks  
-**Participants**: UX/UI, Architecture, Product  
-**Output**: System flows, wireframes, design decisions
+Design documents describe how the system flows and how the domain is structured. Flows must trace to requirements; domain models must trace to bounded contexts.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/03-design/`  
+**Participants who review**: UX/UI, Architecture, Product  
+**Key outputs**: System flows, wireframes, design decisions
 
-**`01-templates/03-design/system-flows.md`**
+### Files to Generate
+
+**`03-design/system-flows.md`**
+
+This file documents the main user-facing processes as step-by-step flows with Mermaid diagrams. Every major flow must cover the happy path and at least one exception path.
 
 For each major flow (e.g., User Login, Create Order):
 ```
@@ -164,7 +201,9 @@ For each major flow (e.g., User Login, Create Order):
 2. User can retry
 ```
 
-**`01-templates/03-design/ui-ux-design.md`**
+**`03-design/ui-ux-design.md`**
+
+This file documents the UI structure for each screen. It captures what components exist and how they behave — not how they look visually.
 
 For each screen/component:
 ```
@@ -186,7 +225,9 @@ For each screen/component:
 **Accessibility**: WCAG 2.1 AA compliant
 ```
 
-**`01-templates/03-design/process-decisions.md`**
+**`03-design/process-decisions.md`**
+
+This file documents each significant design decision with its rationale and alternatives considered. Every major design choice must have an entry here.
 
 For each significant decision:
 ```
@@ -214,13 +255,17 @@ For each significant decision:
 
 ## Phase 4: Data Model
 
-**Duration**: 1 week  
-**Participants**: Architects, Backend leads  
-**Output**: ERD, data flows, validation rules
+Data model documents define the structure, relationships, and movement of data through the system. Every entity must correspond to a domain concept from the Design phase.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/04-data-model/`  
+**Participants who review**: Architects, Backend leads  
+**Key outputs**: ERD, data flows, validation rules
 
-**`01-templates/04-data-model/entities-and-relationships.md`**
+### Files to Generate
+
+**`04-data-model/entities-and-relationships.md`**
+
+This file defines each entity with its attributes, constraints, and relationships. It is the authoritative source of truth for the data structure.
 
 For each entity:
 ```
@@ -244,7 +289,9 @@ For each entity:
 **Notes**: Users soft-deleted with is_deleted flag
 ```
 
-**`01-templates/04-data-model/erd-diagram.md`**
+**`04-data-model/erd-diagram.md`**
+
+This file contains the Entity Relationship Diagram (Mermaid format) and a narrative explanation of the relationships. The diagram must match the entities file exactly.
 
 ```
 User
@@ -263,7 +310,9 @@ OrderItem
 └── product_id (FK → Product)
 ```
 
-**`01-templates/04-data-model/data-flows.md`**
+**`04-data-model/data-flows.md`**
+
+This file describes how data moves through the system at the process level. It connects system flows from Phase 3 to the entities defined in this phase.
 
 How data moves:
 - User enters data → Validation → Storage → Cache → Retrieval → Display
@@ -272,13 +321,17 @@ How data moves:
 
 ## Phase 5: Planning
 
-**Duration**: 1 week  
-**Participants**: Product, Engineering leads  
-**Output**: Roadmap, epics, sprint plan
+Planning documents organize requirements into a delivery roadmap and break them into executable epics. Every epic must trace to at least one functional requirement.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/05-planning/`  
+**Participants who review**: Product, Engineering leads  
+**Key outputs**: Roadmap, epics, sprint plan
 
-**`01-templates/05-planning/roadmap.md`**
+### Files to Generate
+
+**`05-planning/roadmap.md`**
+
+This file defines the product roadmap at the quarter or milestone level. Each milestone must list which requirements it delivers.
 
 ```
 ## Q1 2024: MVP
@@ -297,7 +350,9 @@ How data moves:
 - [ ] Multi-region support
 ```
 
-**`01-templates/05-planning/epics.md`**
+**`05-planning/epics.md`**
+
+This file groups functional requirements into epics. Each epic must have a clear scope boundary and estimated size.
 
 For each epic:
 ```
@@ -322,15 +377,19 @@ For each epic:
 
 ## Phase 6: Development
 
-**Duration**: Main development phase  
-**Participants**: All engineers  
-**Output**: Code, architecture, APIs
+Development documents are the first phase where you name specific technologies. Every architectural decision must reference prior requirements and design artifacts.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/06-development/`  
+**Participants who review**: All engineers  
+**Key outputs**: Architecture, APIs, coding standards
 
-**`01-templates/06-development/architecture.md`**
+### Files to Generate
 
-Hexagonal architecture focus:
+**`06-development/architecture.md`**
+
+This file defines the system architecture using the Hexagonal Architecture pattern. It must map each layer to bounded contexts from the Design phase.
+
+Hexagonal architecture structure to document:
 ```
 ## Hexagonal Architecture
 
@@ -352,7 +411,9 @@ Hexagonal architecture focus:
 [Draw your architecture]
 ```
 
-**`01-templates/06-development/api-design.md`**
+**`06-development/api-design.md`**
+
+This file specifies every API endpoint the system exposes. Each endpoint must include request/response examples and status codes.
 
 For each endpoint:
 ```
@@ -361,15 +422,12 @@ For each endpoint:
 **Description**: Authenticate user
 
 **Request**:
-```json
 {
   "email": "user@example.com",
   "password": "secret"
 }
-```
 
 **Response** (200):
-```json
 {
   "token": "jwt-token",
   "user": {
@@ -377,7 +435,6 @@ For each endpoint:
     "email": "user@example.com"
   }
 }
-```
 
 **Status Codes**:
 - 200: Success
@@ -386,27 +443,33 @@ For each endpoint:
 - 500: Server error
 ```
 
-**`01-templates/06-development/coding-standards.md`**
+**`06-development/coding-standards.md`**
 
-Language-specific rules:
-- Naming conventions
-- Code organization
-- Comment expectations
+This file defines language-specific conventions that all engineers must follow. It must be specific enough that a new team member can apply it without asking questions.
+
+Required sections:
+- Naming conventions (files, classes, functions, variables)
+- Code organization (folder structure, layer separation)
+- Comment standards (when and how to comment)
 - Import ordering
-- Error handling
+- Error handling patterns
 - Logging standards
 
 ---
 
 ## Phase 7: Testing
 
-**Duration**: Parallel with development  
-**Participants**: QA, Backend, Frontend  
-**Output**: Test plans, coverage goals
+Testing documents define the strategy, test cases, and security approach. Every test case must trace to at least one acceptance criterion from Phase 2.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/07-testing/`  
+**Participants who review**: QA, Backend, Frontend  
+**Key outputs**: Test plans, coverage goals
 
-**`01-templates/07-testing/test-strategy.md`**
+### Files to Generate
+
+**`07-testing/test-strategy.md`**
+
+This file defines the testing pyramid and coverage targets for the project. It is the governing document for all testing decisions.
 
 ```
 ## Test Pyramid
@@ -426,7 +489,9 @@ Language-specific rules:
 - Critical paths only
 ```
 
-**`01-templates/07-testing/test-plan.md`**
+**`07-testing/test-plan.md`**
+
+This file contains test cases for each feature. Each case must include preconditions, steps, expected results, and variation scenarios.
 
 For each feature:
 ```
@@ -452,13 +517,17 @@ For each feature:
 
 ## Phase 8: Deployment
 
-**Duration**: Parallel with development  
-**Participants**: DevOps, Backend leads  
-**Output**: CI/CD pipelines, release process
+Deployment documents define how the system is built, tested, and released automatically. The CI/CD pipeline must cover all environments and include rollback procedures.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/08-deployment/`  
+**Participants who review**: DevOps, Backend leads  
+**Key outputs**: CI/CD pipelines, release process
 
-**`01-templates/08-deployment/ci-cd-pipeline.md`**
+### Files to Generate
+
+**`08-deployment/ci-cd-pipeline.md`**
+
+This file defines every stage of the CI/CD pipeline. Each stage must specify its inputs, actions, and pass/fail conditions.
 
 ```
 ## Pipeline Stages
@@ -482,11 +551,13 @@ For each feature:
 ### Production
 - Manual approval
 - Blue-green deploy
-- Healthcheck
+- Health check
 - Rollback if needed
 ```
 
-**`01-templates/08-deployment/release-process.md`**
+**`08-deployment/release-process.md`**
+
+This file provides a step-by-step release checklist. Every item must be verifiable — no ambiguous or judgment-based criteria.
 
 ```
 ## Release Checklist
@@ -498,26 +569,30 @@ For each feature:
 - [ ] Staging verification
 - [ ] Release notes prepared
 - [ ] Rollback plan ready
-- [ ] Notify stakeholders
+- [ ] Stakeholders notified
 ```
 
 ---
 
 ## Phase 9: Operations
 
-**Duration**: Post-launch  
-**Participants**: DevOps, SRE, Ops  
-**Output**: Runbooks, SLA, incident response
+Operations documents enable the team to run, maintain, and restore the system in production. Runbooks must be executable by an on-call engineer without additional context.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/09-operations/`  
+**Participants who review**: DevOps, SRE, Ops  
+**Key outputs**: Runbooks, SLA, incident response
 
-**`01-templates/09-operations/runbooks.md`**
+### Files to Generate
+
+**`09-operations/runbooks.md`**
+
+This file contains step-by-step procedures for common operational tasks. Each runbook must be independently executable without requiring knowledge of other runbooks.
 
 For each operational task:
 ```
 ## Runbook: Restart Service
 
-**When to use**: Service is unresponsive or in bad state
+**When to use**: Service is unresponsive or in a bad state
 
 **Procedure**:
 1. Verify the issue: `systemctl status myapp`
@@ -529,7 +604,9 @@ For each operational task:
 **Rollback**: If issues persist, rollback to previous version
 ```
 
-**`01-templates/09-operations/sla.md`**
+**`09-operations/sla.md`**
+
+This file defines service level targets and response time expectations. All targets must be agreed upon by the business and engineering teams before this document is finalized.
 
 ```
 ## Service Level Agreement
@@ -549,13 +626,17 @@ For each operational task:
 
 ## Phase 10: Monitoring
 
-**Duration**: Establish early, evolve  
-**Participants**: DevOps, Backend, SRE  
-**Output**: Metrics, alerts, dashboards
+Monitoring documents define what is measured, when alerts fire, and what the dashboards display. Metrics must connect to NFRs from Phase 2.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/10-monitoring/`  
+**Participants who review**: DevOps, Backend, SRE  
+**Key outputs**: Metrics, alerts, dashboards
 
-**`01-templates/10-monitoring/metrics.md`**
+### Files to Generate
+
+**`10-monitoring/metrics.md`**
+
+This file defines the key metrics tracked across system health, application performance, and business outcomes. Each metric must have a defined target value.
 
 ```
 ## Key Metrics
@@ -576,7 +657,9 @@ For each operational task:
 - Error budget remaining
 ```
 
-**`01-templates/10-monitoring/alerts.md`**
+**`10-monitoring/alerts.md`**
+
+This file defines alert rules and their escalation paths. Every alert must have a defined severity and a linked runbook.
 
 ```
 ## Alert Rules
@@ -595,13 +678,17 @@ For each operational task:
 
 ## Phase 11: Feedback
 
-**Duration**: Continuous  
-**Participants**: All team members  
-**Output**: Lessons learned, improvements
+Feedback documents capture retrospective learnings and user input. They are primarily human-authored — your role is to provide the structure and consolidate provided inputs.
 
-### Files to Complete
+**Output location**: `01-templates/data-output/11-feedback/`  
+**Participants who review**: All team members  
+**Key outputs**: Lessons learned, improvements
 
-**`01-templates/11-feedback/retrospectives.md`**
+### Files to Generate
+
+**`11-feedback/retrospectives.md`**
+
+This file captures the outcome of each sprint or project retrospective. Generate the template structure; the human collaborator fills in the actual content.
 
 After each sprint:
 ```
@@ -625,7 +712,9 @@ After each sprint:
 - [ ] Document as we go (all)
 ```
 
-**`01-templates/11-feedback/lessons-learned.md`**
+**`11-feedback/lessons-learned.md`**
+
+This file captures significant learnings that should influence future projects. Generate the template; content comes from the team.
 
 ```
 ## Architectural Decision: DDD vs Traditional
@@ -646,40 +735,32 @@ After each sprint:
 
 ## Common Patterns
 
+These patterns apply across all phases and all document types. Apply them consistently to ensure coherent cross-phase documentation.
+
 ### Linked References
-Use markdown links to connect across phases:
+
+Connect documents across phases using markdown links with anchors:
 ```markdown
-See [FR-001](../01-templates/02-requirements/functional-requirements.md#fr-001) for details.
+See [FR-001](../02-requirements/functional-requirements.md#fr-001) for details.
 ```
 
 ### Completion Tracking
-Use checkboxes:
+
+Use checkboxes to track document completion status:
 ```markdown
 - [ ] Item not done
 - [x] Item completed
 ```
 
 ### Examples
-Always include an "EXAMPLE" section:
+
+Always include an `EXAMPLE` section in every document you generate:
 ```markdown
 ## EXAMPLE
 
 ### Example Requirement
-[Show what a filled-in version looks like]
+[Show what a filled-in version looks like for this specific project]
 ```
-
----
-
-## Tips & Best Practices
-
-1. **Start Early**: Begin documentation from day 1, update continuously
-2. **Keep it Simple**: Templates are guides, not scripts; adapt to your project
-3. **Use Examples**: Copy example sections and modify them
-4. **Review & Validate**: Get stakeholder sign-off at each phase
-5. **Version Control**: Commit docs like code, track changes
-6. **Link Across Phases**: Create traceability from discovery → code → tests
-7. **Automate**: Generate parts of documentation from code (APIs, schemas)
-8. **Keep it Live**: Update docs when reality changes, don't let them rot
 
 ---
 

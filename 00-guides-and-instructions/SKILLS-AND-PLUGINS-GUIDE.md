@@ -1,17 +1,19 @@
 # Skills & Plugins Guide
 
-## Using Claude Code Skills with This Template
-
-This guide explains how to integrate Claude Code skills and AI agents to accelerate documentation creation.
+You are an AI agent working within Claude Code. This guide defines which Claude Code skills you should invoke at each documentation phase, what each skill produces, and how to integrate skills into your documentation workflow. Use this guide to validate your output and enrich documentation quality beyond what you can generate alone.
 
 ## Available Skills
 
+This section lists all skills relevant to documentation work, organized by their primary function. For each skill, the description explains what it does and the "When to Use" field specifies the exact situation that should trigger its invocation.
+
 ### Documentation & Writing
 
-#### `dev-tools:project-docs`
-Generate project documentation automatically
+These skills generate, extend, or validate written documentation. Invoke them when generating a new phase or when reviewing output for completeness.
 
-**When to use**: Creating comprehensive project documentation across phases
+#### `dev-tools:project-docs`
+Generates project documentation automatically from existing code and configuration files.
+
+**When to use**: When transitioning from Phase 1–2 (Discovery, Requirements) to Phase 6 (Development) — use it to generate architecture and design documentation scaffolding.
 
 **Usage**:
 ```bash
@@ -19,17 +21,17 @@ Generate project documentation automatically
 ```
 
 **Example Workflow**:
-1. Have Phase 1-2 documentation ready (Discovery, Requirements)
-2. Use `project-docs` to generate architecture and design documentation
-3. Review and refine the output
-4. Use as input for development team
+1. Ensure Phase 1–2 documentation is complete and approved
+2. Invoke `project-docs` to generate architecture and design documentation scaffolding
+3. Review and refine the generated output
+4. Use it as starting input for the development team
 
 ---
 
 #### `dev-tools:app-docs`
-Generate user-facing documentation and API documentation
+Generates user-facing documentation and API documentation from specifications.
 
-**When to use**: Phase 6-7, for API specs and user guides
+**When to use**: During Phase 6–7 (Development, Testing) — invoke it when API specs are ready and you need user-facing documentation or endpoint references.
 
 **Usage**:
 ```bash
@@ -39,70 +41,78 @@ Generate user-facing documentation and API documentation
 ---
 
 #### `writing:proposal-writer`
-Write professional proposals and specifications
+Writes professional proposals, specifications, and structured documents.
 
-**When to use**: Phase 2, for requirements specifications; Phase 5 for roadmap proposals
+**When to use**: During Phase 2 (Requirements) for requirements specifications; during Phase 5 (Planning) for roadmap proposals; when a stakeholder-facing document needs polished, formal language.
 
 ---
 
 ### Code & Architecture
 
-#### `domain-driven-design`
-Deep guidance on DDD principles and implementation
+These skills validate technical correctness and architectural alignment. Invoke them when generating or reviewing development documentation.
 
-**When to use**: Phase 0-1 (planning discovery), before Phase 6 (development)
+#### `domain-driven-design`
+Provides deep guidance on DDD principles and implementation patterns.
+
+**When to use**: During Phase 0–1 (Planning, Discovery) when identifying bounded contexts and domain structure; before Phase 6 (Development) when designing the hexagonal architecture.
 
 **Usage**:
 ```bash
 /domain-driven-design
 ```
 
-**Helps with**:
-- Identifying bounded contexts
-- Defining aggregate roots
-- Understanding ubiquitous language
-- Domain modeling
+**What it helps you produce**:
+- Bounded context identification and boundaries
+- Aggregate root definitions
+- Ubiquitous language catalog
+- Domain model validation
 
 ---
 
 #### `code-craftsmanship:software-design-philosophy`
-Review software design and architecture choices
+Reviews software design and architecture choices against established design principles.
 
-**When to use**: Phase 3-6, for design validation
+**When to use**: During Phase 3–6 (Design through Development) when you need validation that architectural decisions align with SOLID, clean architecture, and DDD principles.
 
 ---
 
 ### Frontend & Design
 
-#### `frontend:design-review`
-Review visual design and UX
+These skills validate UI/UX decisions and frontend implementation. Invoke them when generating Design phase documentation.
 
-**When to use**: Phase 3 (Design), validate UI/UX mockups
+#### `frontend:design-review`
+Reviews visual design and UX patterns against best practices.
+
+**When to use**: During Phase 3 (Design) when documenting UI/UX wireframes and interaction flows — invoke it to validate design choices before finalizing mockup documentation.
 
 ---
 
 #### `frontend:react-patterns`
-Review React code patterns and performance
+Reviews React code patterns and performance considerations.
 
-**When to use**: Phase 6-7, if using React
+**When to use**: During Phase 6–7 (Development, Testing) if the project uses React — invoke it when generating coding standards or reviewing frontend architecture documentation.
 
 ---
 
 ### DevOps & Deployment
 
-#### `cloudflare:wrangler` (if using Cloudflare Workers)
-Manage deployments to Cloudflare
+These skills support infrastructure and deployment documentation. Invoke them when generating Phase 8 documentation.
 
-**When to use**: Phase 8 (Deployment)
+#### `cloudflare:wrangler` (if using Cloudflare Workers)
+Manages and validates deployments to Cloudflare Workers.
+
+**When to use**: During Phase 8 (Deployment) if the target infrastructure is Cloudflare Workers — invoke it to generate or validate deployment pipeline documentation.
 
 ---
 
 ### Utilities
 
-#### `dev-tools:git-workflow`
-Guided git workflows for managing documentation changes
+These skills support cross-cutting concerns: workflow management, automation, and ongoing documentation health.
 
-**When to use**: Keep documentation changes organized
+#### `dev-tools:git-workflow`
+Provides guided git workflows for managing documentation changes as version-controlled artifacts.
+
+**When to use**: When committing phase documentation to version control, creating pull requests for phase sign-off, or managing branch workflows for documentation changes.
 
 **Usage**:
 ```bash
@@ -112,9 +122,9 @@ Guided git workflows for managing documentation changes
 ---
 
 #### `loop`
-Run recurring documentation checks or updates
+Runs recurring checks or commands on an interval.
 
-**When to use**: Automated documentation validation
+**When to use**: For automated documentation validation on a schedule — e.g., checking documentation completeness weekly.
 
 **Usage**:
 ```bash
@@ -125,20 +135,24 @@ Run recurring documentation checks or updates
 
 ## Recommended Workflow by Phase
 
+This section maps each documentation phase to the specific skills you should invoke. Use the corresponding workflow sequence as a checklist before and after generating phase documentation.
+
 ### Phase 1: Discovery
 
-**Skills to use**:
-1. Start with context in natural language
-2. Use `domain-driven-design` to identify core domains
-3. Let AI help brainstorm actors and use cases
-4. Manual refinement with stakeholders
+During Discovery, your primary tool is the `domain-driven-design` skill to identify and validate the core domain structure before committing to any design decisions.
+
+**Skills to invoke**:
+1. Start with context from the human collaborator in natural language
+2. Invoke `domain-driven-design` to identify core domains and bounded contexts
+3. Use AI to brainstorm actors and use cases from the domain structure
+4. Deliver to human collaborator for manual refinement with stakeholders
 
 **Commands**:
 ```bash
-# Get DDD guidance
+# Identify domain structure and bounded contexts
 /domain-driven-design
 
-# For research-heavy projects
+# For research-heavy projects needing external information
 /dev-tools:deep-research
 ```
 
@@ -146,52 +160,57 @@ Run recurring documentation checks or updates
 
 ### Phase 2: Requirements
 
-**Skills to use**:
-1. Have AI expand feature descriptions into full requirements
-2. Use `functional-requirements` skill if available
-3. Generate traceability matrices
-4. Manual validation of business rules
+During Requirements, use AI to expand feature descriptions into structured requirement artifacts. Validate the output structure against the template before delivery.
+
+**Skills to invoke**:
+1. Use AI to expand feature descriptions into full requirement templates
+2. Generate traceability matrices connecting requirements to Discovery
+3. Invoke validation against template structure
 
 **Workflow**:
 ```
-1. Paste feature descriptions
+1. Paste feature descriptions from the human collaborator
 2. Use AI to generate requirement templates
-3. Refine with business logic
+3. Refine with business logic from the human collaborator
 4. Generate acceptance criteria
-5. Review and sign-off
+5. Review, validate, and deliver for sign-off
 ```
 
 ---
 
 ### Phase 3: Design
 
-**Skills to use**:
-1. `frontend:design-review` for UI validation
-2. AI to generate system flow diagrams (Mermaid format)
-3. UX patterns and best practices
+During Design, invoke `frontend:design-review` for UI validation and use AI to generate system flow diagrams in Mermaid format. Ensure all flows trace to requirements.
+
+**Skills to invoke**:
+1. `frontend:design-review` — Validate UI/UX patterns when mockups are available
+2. AI — Generate system flow diagrams (Mermaid format)
+3. AI — Document UX patterns and interaction standards
 
 **Workflow**:
 ```
-1. Have mockups ready
-2. Use design-review for feedback
-3. Have AI generate system flows
-4. Document design decisions
-5. Get stakeholder approval
+1. Receive mockups from design team
+2. Invoke design-review for feedback on documented patterns
+3. Generate system flows from requirement descriptions
+4. Document design decisions with rationale
+5. Deliver for stakeholder approval
 ```
 
 ---
 
 ### Phase 4: Data Model
 
-**Skills to use**:
-1. AI to generate ERD from entity descriptions
-2. Validation by database architect
-3. Generate schema suggestions
+During Data Model, use AI to generate the ERD from entity descriptions. The DBA or architect validates and optimizes the result.
+
+**Skills to invoke**:
+1. AI — Generate ERD from entity descriptions
+2. DBA validation — human review of performance and constraint decisions
+3. AI — Document constraints and validation rules after DBA review
 
 **Workflow**:
 ```
-1. Describe entities and relationships
-2. AI generates ERD
+1. Receive entity descriptions from architect
+2. Generate ERD (Mermaid format)
 3. DBA reviews and optimizes
 4. Document constraints and validation
 ```
@@ -200,10 +219,12 @@ Run recurring documentation checks or updates
 
 ### Phase 5: Planning
 
-**Skills to use**:
-1. `dev-tools:roadmap` — Create product roadmap
-2. AI to expand user stories
-3. Epic breakdown assistance
+During Planning, invoke `dev-tools:roadmap` to create the product roadmap structure, then use AI to expand requirements into epics.
+
+**Skills to invoke**:
+1. `dev-tools:roadmap` — Generate product roadmap structure
+2. AI — Expand requirements into user stories
+3. AI — Produce epic breakdowns from requirements
 
 **Commands**:
 ```bash
@@ -214,27 +235,33 @@ Run recurring documentation checks or updates
 
 ### Phase 6: Development
 
-**Skills to use**:
-1. `code-craftsmanship:software-design-philosophy`
-2. `domain-driven-design` for architecture validation
-3. `claude-api` for API design if using Claude API
+During Development, invoke `code-craftsmanship:software-design-philosophy` to validate the hexagonal architecture design and use `domain-driven-design` to verify that the architecture aligns with the domain model from Phase 3.
+
+**Skills to invoke**:
+1. `code-craftsmanship:software-design-philosophy` — Validate architecture decisions
+2. `domain-driven-design` — Verify architecture aligns with bounded contexts
+3. `claude-api` — For API design if using Claude API
 
 **Workflow**:
 ```
-1. Define architecture (hexagonal)
-2. Design APIs with AI assistance
-3. Create coding standards
-4. Validate with team reviews
+1. Receive architecture definition from engineering team
+2. Document architecture in hexagonal template
+3. Invoke software-design-philosophy skill for validation
+4. Design APIs with AI assistance
+5. Create coding standards
+6. Deliver for team review
 ```
 
 ---
 
 ### Phase 7: Testing
 
-**Skills to use**:
-1. `dev-tools:vitest` for testing setup
-2. AI to generate test cases
-3. Security review: `security-review` skill
+During Testing, invoke `dev-tools:vitest` for testing framework guidance and `security-review` when documenting security testing strategy.
+
+**Skills to invoke**:
+1. `dev-tools:vitest` — Generate testing setup and test scaffolding
+2. AI — Generate test case templates
+3. `security-review` — Validate security testing documentation
 
 **Commands**:
 ```bash
@@ -245,45 +272,55 @@ Run recurring documentation checks or updates
 
 ### Phase 8: Deployment
 
-**Skills to use**:
-1. `cloudflare:wrangler` (if using Cloudflare)
-2. AI to generate CI/CD pipelines
-3. `dev-tools:project-health` for readiness checks
+During Deployment, use `dev-tools:project-health` to verify documentation readiness and `cloudflare:wrangler` if the infrastructure is on Cloudflare.
+
+**Skills to invoke**:
+1. `cloudflare:wrangler` — If using Cloudflare for deployment
+2. AI — Generate CI/CD pipeline templates
+3. `dev-tools:project-health` — Verify documentation readiness before launch
 
 ---
 
 ### Phase 9: Operations
 
-**Skills to use**:
-1. AI to generate runbooks
-2. SLA templates
-3. Incident response playbooks
+During Operations, use AI to generate runbook templates and SLA structures. All content requires human review before finalization.
+
+**Skills to invoke**:
+1. AI — Generate runbook templates
+2. AI — SLA template generation
+3. AI — Incident response playbook structure
 
 ---
 
 ### Phase 10: Monitoring
 
-**Skills to use**:
-1. Alert design assistance
-2. Dashboard specifications
-3. Metric definition help
+During Monitoring, use AI to suggest metric categories and generate alert rule templates. Threshold values and business KPIs require human input.
+
+**Skills to invoke**:
+1. AI — Alert rule design and template generation
+2. AI — Dashboard specification templates
+3. AI — Metric definition guidance by domain
 
 ---
 
 ### Phase 11: Feedback
 
-**Skills to use**:
-1. `dev-tools:brains-trust` — Get second opinions
-2. Retrospective facilitation
-3. Lessons learned synthesis
+During Feedback, invoke `dev-tools:brains-trust` to get an independent review of the lessons learned and retrospective output.
+
+**Skills to invoke**:
+1. `dev-tools:brains-trust` — Get second opinion on process and architectural lessons
+2. AI — Retrospective template generation
+3. AI — Lessons learned consolidation from provided inputs
 
 ---
 
 ## Integration with Claude Code Settings
 
+This section shows how to configure Claude Code to make skill invocation more efficient for documentation work. Apply these settings to reduce manual skill invocation for common workflows.
+
 ### Configure Default Skills
 
-In `.claude/settings.json`:
+In `.claude/settings.json`, you can configure skills that are pre-loaded for documentation work:
 
 ```json
 {
@@ -299,6 +336,8 @@ In `.claude/settings.json`:
 
 ### Create Custom Commands
 
+You can create shortcut commands for common documentation workflows:
+
 ```json
 {
   "customCommands": {
@@ -310,12 +349,14 @@ In `.claude/settings.json`:
 
 ---
 
-## AI Agents for Documentation
+## Agent Roles and Prompt Patterns
+
+Each documentation task maps to a specific agent role. Use the matching role and prompt pattern when invoking AI assistance for documentation work.
 
 ### Discovery Agent
-Helps identify contexts, actors, and system boundaries
+Helps identify contexts, actors, and system boundaries from a high-level description.
 
-**When to use**: Early in Phase 1
+**When to use**: Early in Phase 1, when you have domain description but no structured documentation yet.
 
 **Prompt**:
 ```
@@ -328,9 +369,9 @@ Use domain-driven-design skill to help me:
 ---
 
 ### Requirements Agent
-Expands features into detailed requirements
+Expands feature descriptions into detailed, traceable requirement documents.
 
-**When to use**: Phase 2
+**When to use**: During Phase 2, when expanding brief feature descriptions.
 
 **Prompt**:
 ```
@@ -345,9 +386,9 @@ Include:
 ---
 
 ### Design Agent
-Generates system flows and designs
+Generates system flows and process documentation in Mermaid format.
 
-**When to use**: Phase 3
+**When to use**: During Phase 3, when documenting system flows.
 
 **Prompt**:
 ```
@@ -362,9 +403,9 @@ Include:
 ---
 
 ### Testing Agent
-Creates test plans and test cases
+Creates comprehensive test plans and test case templates.
 
-**When to use**: Phase 7
+**When to use**: During Phase 7, when generating the test strategy and test plans.
 
 **Prompt**:
 ```
@@ -379,118 +420,88 @@ Include:
 
 ---
 
-## Example: Using Skills in a Real Project
+## Example: Skill Chain for a Real Project
 
-### Scenario: Building an E-commerce Platform
+The following example shows a complete skill chain for an e-commerce platform documentation project. Use this as a reference for structuring skill invocation across phases.
 
-**Phase 1: Discovery**
+### Phase 1: Discovery
 ```bash
-# Get DDD guidance on bounded contexts
+# Identify bounded contexts for the e-commerce domain
 /domain-driven-design
 
-# Example output:
+# Expected output:
 # - Catalog Bounded Context
 # - Order Bounded Context
 # - Payment Bounded Context
 ```
 
-**Phase 2: Requirements**
+### Phase 2: Requirements
 ```bash
-# Have AI expand features:
+# Expand features into requirements:
 # Input: "Users should be able to add items to cart"
-# Output: Full functional requirement with flows
+# Output: Full functional requirement with flows, acceptance criteria, dependencies
 ```
 
-**Phase 3: Design**
+### Phase 3: Design
 ```bash
-# Get design review
+# Validate UI patterns against design review
 /frontend:design-review
 
-# Generate flows
-# AI: "Generate system flow for checkout process"
+# Generate system flows
+# AI: "Generate system flow for checkout process in Mermaid format"
 ```
 
-**Phase 6: Development**
+### Phase 6: Development
 ```bash
-# Architecture review
+# Validate architecture against design principles
 /code-craftsmanship:software-design-philosophy
 
-# API design:
+# Generate API specification:
 # Input: "Design payment API"
-# Output: OpenAPI specification with examples
+# Output: OpenAPI specification with request/response examples
 ```
 
-**Phase 8: Deployment**
+### Phase 8: Deployment
 ```bash
-# If using Cloudflare:
+# If using Cloudflare Workers
 /cloudflare:wrangler
 
-# Or generate CI/CD pipeline with AI help
-```
-
----
-
-## Tips for Effective Skill Use
-
-1. **Prepare Context**: Have discovery/requirements ready before asking for design
-2. **Iterate**: Use skills multiple times, refining each iteration
-3. **Review Output**: Never blindly accept AI-generated content
-4. **Link to Skills**: Reference which skill generated content for traceability
-5. **Combine Skills**: Use multiple skills for different perspectives
-
----
-
-## Skill Chain Examples
-
-### Complete Discovery-to-Design Chain
-```bash
-1. /domain-driven-design  # Understand domain structure
-2. AI: Generate actors and personas
-3. AI: Expand into requirements
-4. /frontend:design-review  # Validate design choices
-5. AI: Generate system flows
-```
-
-### Development-Ready Documentation
-```bash
-1. /code-craftsmanship:software-design-philosophy  # Review architecture
-2. AI: Generate API specifications
-3. AI: Create coding standards
-4. AI: Generate example implementations
-5. Manual code review and refinement
+# Or generate CI/CD pipeline with AI assistance
 ```
 
 ---
 
 ## Troubleshooting Skill Usage
 
-**Q: Skill output doesn't fit our project**
-- A: Refine the prompt with more context
-- A: Use multiple prompts to narrow down
+These are the most common issues when working with skills and their solutions. Match your problem and apply the solution before re-invoking.
 
-**Q: AI generated something wrong**
-- A: Provide feedback and iterate
-- A: Always have domain experts review
-- A: Document corrections for future runs
+**Q: Skill output doesn't fit the project's domain**
+- Refine the prompt with more domain-specific context
+- Use multiple prompts to narrow the scope before invoking the skill
+- Provide examples from the existing documentation as calibration
 
-**Q: Skill isn't available in my environment**
-- A: Check `.claude/settings.json` for plugin configuration
-- A: Some skills require authentication
-- A: Ensure Claude Code is up to date
+**Q: AI generated incorrect or outdated information**
+- Provide corrective feedback and iterate
+- Always have domain experts review technical output
+- Document corrections in the generation history for future runs
+
+**Q: Skill is not available in this environment**
+- Check `.claude/settings.json` for plugin configuration
+- Some skills require OAuth authentication — check the skill documentation
+- Ensure Claude Code is up to date
 
 ---
 
 ## Advanced: Creating Custom Skills
 
-You can create custom skills for your specific workflow:
+You can create custom skills for project-specific documentation workflows. The following example creates a documentation validation skill.
 
-**Example: Documentation Validation Skill**
 ```bash
 /update-config
 
 # Add to settings.json:
 # "customSkills": {
-#   "validate-docs": "Check phase completeness"
+#   "validate-docs": "Check phase completeness and cross-reference integrity"
 # }
 ```
 

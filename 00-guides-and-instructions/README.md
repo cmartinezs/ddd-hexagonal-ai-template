@@ -4,205 +4,195 @@
 
 # Guides and Instructions
 
-Control center for understanding and using the DDD + Hexagonal template.
+You are an AI agent working within the DDD + Hexagonal AI Template framework. This folder is your operational reference: it contains all the guides, prompts, workflows, and knowledge you need to generate, validate, and manage SDLC documentation across 12 phases. Read this index before accessing any individual guide to locate the right resource for your current task.
 
 ---
 
-## 📚 Documentation
+## Documentation
+
+This section lists every guide in this folder, organized by function. For each guide, the description specifies what it contains and when you should use it during a documentation project.
 
 ### Getting Started
 
-1. **[TEMPLATE-USAGE-GUIDE.md](./TEMPLATE-USAGE-GUIDE.md)** — Complete step-by-step
-   - Preparation (15 min)
-   - Adaptation (20 min)
-   - Generation (2-3 days)
-   - Validation
-   - Keeping documentation alive
+These three guides form the core operational set. Read them in order if you are beginning a documentation project or resuming after context loss.
 
-2. **[INSTRUCTIONS-FOR-AI.md](./INSTRUCTIONS-FOR-AI.md)** — Quick reference: principles and structure
-   - General principles
-   - Prompt structure
-   - Prompts by phase (discovery, requirements, design, etc.)
-   - Validation checklist
-   - Troubleshooting
+1. **[TEMPLATE-USAGE-GUIDE.md](./TEMPLATE-USAGE-GUIDE.md)** — Defines the required structure and content you must generate for each SDLC phase
+   - Phase-by-phase file requirements
+   - Format and section structure per document
+   - Examples of completed documentation
+   - Completion checklist per phase
 
-3. **[AI-WORKFLOW-GUIDE.md](./AI-WORKFLOW-GUIDE.md)** ⭐ **← START HERE if you work with AI**
-   - General step-by-step flow
-   - Detailed preparation (Day 1)
-   - Discovery with practical examples (Day 2-3)
-   - Requirements with ready templates (Day 4-5)
-   - Design with DDD patterns (Day 6-7)
-   - Data Model, Planning, Development (Day 8-10+)
-   - Integral validation
-   - Advanced troubleshooting
+2. **[INSTRUCTIONS-FOR-AI.md](./INSTRUCTIONS-FOR-AI.md)** — Your primary prompt reference for generating each phase
+   - Mandatory authoring directives
+   - Prompt structure and format
+   - Phase-specific generation prompts
+   - Validation checklist and troubleshooting
 
-### Examples and Reference
+3. **[AI-WORKFLOW-GUIDE.md](./AI-WORKFLOW-GUIDE.md)** ⭐ **← Start here for phase-by-phase execution**
+   - Your role and responsibilities per phase
+   - What to generate vs. what to defer to your human collaborator
+   - Recommended generation workflow per phase
+   - Best practices for AI-human collaboration
 
-4. **[EXAMPLE-IMPLEMENTATION.md](./EXAMPLE-IMPLEMENTATION.md)** — Complete day-by-day example
-   - Real case: Keygo documentation
-   - What to do each day (Day 1-10)
-   - Specific prompts and validation
+### Reference
+
+These guides provide supporting knowledge, extended context, and execution modes for specific scenarios. Use them when the core guides don't cover your current situation.
+
+4. **[EXAMPLE-IMPLEMENTATION.md](./EXAMPLE-IMPLEMENTATION.md)** — Complete worked example of a documentation project
+   - Real case: Keygo documentation project
+   - Phase-by-phase execution (Days 1–10)
+   - Specific prompts used and outputs generated
    - Cross-phase coherence checklist
 
 5. **[AI-AUTONOMOUS-WORKFLOW.md](./AI-AUTONOMOUS-WORKFLOW.md)** ⭐ **Autonomous execution mode**
-   - Phase context requirements and input data structure
-   - Autonomous execution rules
-   - Context handoff protocol
-   - For AI working without human in the loop
+   - Rules for operating without a human in the loop
+   - Context validation protocol before each phase
+   - Context handoff format between phases
+   - Completion report structure
 
-6. **[SKILLS-AND-PLUGINS-GUIDE.md](./SKILLS-AND-PLUGINS-GUIDE.md)** — Using Claude Code skills
-   - Skills by phase (Discovery, Design, Development, Testing, Deployment, Ops, Monitoring)
-   - Which skill to use when and for what
-   - How to install/activate (MCP, OAuth)
-   - Recommended workflow with skills
-   - Pre-production checklist
+6. **[SKILLS-AND-PLUGINS-GUIDE.md](./SKILLS-AND-PLUGINS-GUIDE.md)** — Claude Code skills mapped to phases
+   - Which skill to invoke at each phase and what it produces
+   - Phase-by-phase recommended skill workflow
+   - Pre-production validation checklist
 
 7. **[AI-AGENT-READINESS-RECOMMENDATIONS.md](./AI-AGENT-READINESS-RECOMMENDATIONS.md)** ⭐⭐
-   - Enterprise readiness gaps
-   - Prioritized backlog
-   - Mandatory authoring directive for AI agents
-   - Definition of Done by phase
+   - Enterprise readiness requirements for AI agents
+   - Prioritized implementation backlog
+   - Mandatory authoring directive
+   - Definition of Done per phase
 
-### To Understand the Architecture
+### Architecture Reference
 
-8. **[TEMPLATE-ARCHITECTURE.md](./TEMPLATE-ARCHITECTURE.md)** — How the template is designed
-   - Philosophy (why 12 phases)
-   - Principles (agnostic, iterable, alive)
-   - Phase relationships
-   - When to adapt/extend
+Use these guides when you need to understand the design rationale behind the framework or make structural decisions about how to adapt it.
 
-### Help
+8. **[TEMPLATE-ARCHITECTURE.md](./TEMPLATE-ARCHITECTURE.md)** — Framework design and phase rationale
+   - Why 12 phases exist and how they connect
+   - Key principles: agnostic, iterable, traceable, single source of truth
+   - Phase dependencies and relationships
+   - When and how to adapt the template
 
-9. **[FAQ.md](./FAQ.md)** — Frequently Asked Questions
-   - "How long does it take to complete everything?"
-   - "Can I skip phases?"
-   - "How do I update documents when code changes?"
-   - And more...
+### Knowledge Base
 
----
+Use this guide to handle edge cases, unexpected scenarios, and questions that arise during documentation work.
 
-## 🚀 Quick Start (30 minutes)
-
-**If you work with AI:**
-1. Read this README (5 min)
-2. Open [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) and start with "Preparation (Day 1)"
-3. Follow the day-by-day flow
-4. Check [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) for specific prompts
-
-**If you work without AI:**
-1. Read this README (5 min)
-2. Open [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) and complete "Step 1: Preparation"
-3. Complete "Step 2: Structure Adaptation"
-4. Document manually or use your own tools
+9. **[FAQ.md](./FAQ.md)** — Common scenarios and decision guidance
+   - How to handle incomplete or skipped phases
+   - How to maintain traceability when context is missing
+   - When to deviate from standard structure
+   - What to do when documentation contradicts reality
 
 ---
 
-## 📖 Document Index (by reading order)
+## Execution Paths
 
-| Order | Document | Duration | For Whom | Purpose |
-|-------|----------|----------|----------|---------|
-| 1 | [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) | 20 min | Everyone | Understand complete process |
-| 2 | [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) ⭐ | 30 min | **With AI** | Practical day-by-day flow |
-| 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) ⭐⭐ | 15 min | **Autonomous AI** | Self-execution with context handoff |
-| 4 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | 20 min | **With AI** | Real case (Keygo) Day 1-10 |
-| 5 | [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) ⭐ | 20 min | **Everyone** | Skills by phase, how to use, setup |
-| 6 | [`AI-AGENT-READINESS-RECOMMENDATIONS.md`](./AI-AGENT-READINESS-RECOMMENDATIONS.md) ⭐⭐ | 15 min | Enterprise teams | AI agent governance and rollout backlog |
-| 7 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | 20 min | Reference | Specific prompts by phase |
-| 8 | [`TEMPLATE-ARCHITECTURE.md`](./TEMPLATE-ARCHITECTURE.md) | 15 min | Curious | Internal template design |
-| 9 | [`FAQ.md`](./FAQ.md) | 10 min | Skeptical | Common problems |
+Choose the path that matches your current mode of operation. Each path specifies which guides to read and in what order before beginning work.
 
----
+### "I need to execute a full documentation project with AI co-creation"
 
-## 🎯 Learning Paths
+Follow this path when assisting a human collaborator through all phases of documentation from start to finish.
 
-### "I want to generate documentation FAST with AI" ⭐
+1. Read [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) — Understand your role per phase
+2. Read [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) — Load phase-specific prompts
+3. Execute each phase using prompts from `INSTRUCTIONS-FOR-AI.md`
+4. Validate each phase using [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md)
+5. Reference [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) for pattern matching
 
-1. Open [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) — "General Flow" section
-2. Prepare your product information (20 min)
-3. Follow "Day 1: Preparation"
-4. Then Day 2-3: Discovery, Day 4-5: Requirements, etc.
-5. Check [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) if you need specific prompts
-6. **Result**: Complete documentation in 10-15 days
+### "I am operating autonomously without a human in the loop"
 
-### "I want to validate my work with Claude Code Skills" ⭐⭐
+Follow this path when executing phases without real-time human feedback.
 
-1. Read [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) — "General: All useful skills"
-2. Identify skill by phase (Design → `/domain-driven-design`, Code → `/code-craftsmanship:clean-code`, etc.)
-3. Follow "Recommended Workflow by Day"
-4. Run "Checklist: Before Production"
-5. **Result**: Code and docs validated by experts
+1. Read [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) — Load autonomous execution rules
+2. Validate context completeness before each phase (never assume prior context)
+3. Generate the phase, then produce a structured completion report
+4. Prepare context handoff input for the next phase
 
-### "I want to see a real example step by step"
+### "I need to validate documentation using Claude Code skills"
 
-1. Read [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md)
-2. Case: Generating docs for Keygo (real product)
-3. Day 1: Prepare information
-4. Day 2-3: Generate Discovery
-5. Follow the pattern for remaining days
-6. Adapt examples to your product
+Follow this path when validating completed or in-progress documentation.
 
-### "I have disorganized documentation and want to centralize it"
+1. Read [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) — Identify the skill for your current phase
+2. Invoke the appropriate skill (e.g., `/domain-driven-design` for Design)
+3. Apply skill output to refine and correct documentation
 
-1. Read this folder to understand structure
-2. Map your existing documentation to the 12 phases
-3. Fill gaps with AI
-4. Centralize in this structure
+### "I need to generate one specific phase from scratch"
 
-### "I want to understand if the DDD + Hexagonal approach is for me"
+Follow this path when you have been given a single phase to produce.
 
-1. Read [`TEMPLATE-ARCHITECTURE.md`](./TEMPLATE-ARCHITECTURE.md)
-2. Read `../01-templates/00-documentation-planning/sdlc-framework.md`
-3. Decide whether to adapt or create your own structure
+1. Read the relevant phase section in [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md)
+2. Verify that required inputs from previous phases exist; if not, request them
+3. Use the provided prompt template populated with project-specific context
+4. Validate output against the phase checklist before delivering
 
-### "I have problems generating documentation with AI"
+### "The documentation I generated is generic or incoherent"
 
-1. Go to [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) → "Troubleshooting"
-2. Read the case that resembles yours
-3. Or check [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) → "Advanced Troubleshooting"
-4. Adjust your prompt according to the suggested solution
+Follow this path when output quality is insufficient and needs correction.
+
+1. Go to [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) → "Troubleshooting" section
+2. Match your problem to a known failure pattern and apply the solution
+3. Or review [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) → "Best Practices" section
+4. Re-generate with an improved, context-rich prompt
 
 ---
 
-## 🔑 Key Concepts
+## Document Index
 
-### 1. Agnostic vs. Specific
+Use this table to find the right guide without reading all of them. The "When to Use" column specifies the exact situation that should trigger you to access each document.
 
-- **Phases 1-5** (Discovery → Planning): **Technology agnostic**
-  - Describes "what", not "how"
-  - No framework names, languages, DB
-  - Focus on business and user
-
-- **Phases 6-12** (Development → Feedback): **Specific to your stack**
-  - Here you mention your technology
-  - Real architecture, APIs, code
-  - Technical focus
-
-### 2. Iterative, not Waterfall
-
-Each feature/domain can be in different phases simultaneously.
-
-### 3. Traceability
-
-Requirements traced from Discovery → Design → Development → Testing → Monitoring.
+| Priority | Document | When to Use |
+|----------|----------|-------------|
+| 1 | [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) | At the start of each phase; to understand your role and boundaries |
+| 2 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | When generating any phase document; your prompt reference |
+| 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) | When operating without a human in the loop |
+| 4 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | When you need a concrete pattern to match against |
+| 5 | [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) | When validating phase output with Claude Code skills |
+| 6 | [`AI-AGENT-READINESS-RECOMMENDATIONS.md`](./AI-AGENT-READINESS-RECOMMENDATIONS.md) | When operating in enterprise governance contexts |
+| 7 | [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) | When generating a phase document; format and structure reference |
+| 8 | [`TEMPLATE-ARCHITECTURE.md`](./TEMPLATE-ARCHITECTURE.md) | When making structural decisions or adapting the framework |
+| 9 | [`FAQ.md`](./FAQ.md) | When handling edge cases or unexpected scenarios |
 
 ---
 
-## ⚠️ Common Mistakes
+## Key Concepts
 
-1. **Skipping phases** — Tempting but causes incoherence
-   - Solution: Make quick versions if in a hurry, but don't skip
+These are the foundational principles that govern all decisions in this framework. Internalize them before executing any phase — they determine what you generate, how you generate it, and when to stop and request input.
 
-2. **Mixing agnostic with specific in phases 1-5**
-   - Solution: Use [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) as checklist
+### Agnostic vs. Specific Phases
 
-3. **Not validating documents with skills**
-   - Solution: Read [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md), use skill by phase
+The framework enforces a strict boundary between business-focused phases and technology-specific phases. This boundary is one of the most important rules you must enforce in your output.
 
-4. **Generating everything at once without validating**
-   - Solution: Generate phase by phase, validate with corresponding skill, adjust
+- **Phases 1–5** (Discovery → Planning): Technology agnostic
+  - Describe "what" and "why" — never "how"
+  - Do not mention framework names, languages, databases, or protocols
+  - Focus on business value, user needs, and domain logic
 
-5. **Not providing enough context to AI**
-   - Solution: See ["Provide context, don't ask it to invent"](./INSTRUCTIONS-FOR-AI.md#2-provide-context-dont-ask-it-to-invent)
+- **Phases 6–12** (Development → Feedback): Technology specific
+  - Name the actual stack, frameworks, and tools used
+  - Include real architecture, API designs, and coding standards
+  - Reference specific technologies with explicit rationale
+
+### Iterative Execution, Not Waterfall
+
+Each feature or domain area can progress through phases independently. Do not treat documentation as a strict linear sequence in which all of phase N must be complete before phase N+1 begins.
+
+### Traceability
+
+Every artifact you generate must be traceable backward to its origin and forward to its consumers. Requirements trace from Discovery; Designs trace from Requirements; Development traces from Design. You are responsible for maintaining these links in every document you produce.
+
+---
+
+## Errors to Avoid
+
+These are failure modes you must check for before and after generating any documentation. Review this list before starting each phase to prevent the most common problems.
+
+1. **Skipping phases** — Each phase's output is the required input for the next. Skipping creates undetectable incoherence downstream. When time is constrained, produce a lightweight version rather than skipping entirely.
+
+2. **Technology names in phases 1–5** — Never mention specific databases, frameworks, languages, or protocols in discovery, requirements, design, data model, or planning phases. If you detect "PostgreSQL", "React", or "REST API" in a phase 1–5 document, stop and abstract it.
+
+3. **Not validating with skills** — After generating documentation, invoke the appropriate Claude Code skill for the current phase. Raw generated output without validation is considered incomplete.
+
+4. **Batch-generating all phases without validation** — Generate one phase at a time, validate it against its checklist, then move to the next. Batch generation consistently produces generic, untraced output.
+
+5. **Insufficient context in prompts** — Generic prompts produce generic output. Always include the project's problem statement, constraints, actors, and existing decisions as context before generating any phase document.
 
 ---
 

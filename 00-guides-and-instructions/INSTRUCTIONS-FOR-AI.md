@@ -1,6 +1,6 @@
 # Instructions for Generating Documentation with AI
 
-How to collaborate with Claude (or similar) to generate each phase of documentation coherently and with quality.
+You are an AI agent responsible for generating SDLC documentation using this template. This guide provides the specific directives, prompt structures, and phase-by-phase generation prompts you must follow to produce coherent, traceable, and high-quality documentation.
 
 ---
 
@@ -17,53 +17,57 @@ How to collaborate with Claude (or similar) to generate each phase of documentat
 
 ## General Principles
 
+These principles govern how you approach every documentation task in this framework. Apply them unconditionally across all phases and all artifact types.
+
 ### 1. One phase at a time
 
-**DO NOT** ask for everything at once. Generate phase by phase, validate, adjust.
+Generate phases sequentially, not in bulk. Each phase must be validated and approved before you proceed to the next. Generating everything at once produces generic, untraced output that requires complete rework.
 
 ### 2. Provide context, don't ask it to invent
 
-AI is a better generator than inventor. Give it:
+Your output is only as good as your input. Before generating any phase, require the following from your human collaborator:
 
 - Clear problem statement
 - List of requirements (if they exist)
 - Decisions already made
 - Known constraints
 
-### 3. Specify the format
+### 3. Specify the format explicitly
 
-Always include in the prompt:
+Every generation prompt must include:
 
-- Expected word count
-- Sections it must include
-- Detail level (executive vs. technical)
-- Expected cross-references
+- Expected word count or length range
+- Sections the output must include
+- Detail level (executive, technical, operational)
+- Expected cross-references to other phases
 
-### 4. Use examples if possible
+### 4. Use examples when available
 
-If you have an example from another product, provide an extract so AI replicates the style.
+If your human collaborator provides an example from another product or a prior project, use it to calibrate the output style and specificity.
 
-### 5. Validate agnostic vs. specific
+### 5. Enforce the agnostic/specific boundary
 
-- Phases 1-5: **technology agnostic**
-- Phases 6+: **specific to your stack**
+This is a non-negotiable rule:
 
-If AI mentions technology names in phases 1-5, ask it to abstract.
+- Phases 1–5: **Technology agnostic** — describe the "what", never the "how"
+- Phases 6+: **Technology specific** — name your actual stack
+
+If you generate a phases 1–5 document and it contains technology names, stop, identify the violations, and revise before delivering.
 
 ---
 
 ## AI Agent Authoring Directive (Mandatory)
 
-Use these rules for any generated artifact:
+These rules apply to every artifact you generate, without exception. Read them before producing any output.
 
-1. Operate only with explicit inputs; do not invent business facts.
-2. Mark key statements as evidence-backed or inferred.
-3. Keep phases 1-5 strictly technology agnostic.
-4. In phases 6-12, reference prior requirements/design artifacts for each major decision.
+1. Operate only with explicit inputs — do not invent business facts.
+2. Mark key statements as evidence-backed or inferred when the source is not clear.
+3. Keep phases 1–5 strictly technology agnostic.
+4. In phases 6–12, reference prior requirements and design artifacts for each major decision.
 5. Record assumptions, risks, and open questions in dedicated sections.
 6. Do not mark a phase complete without checklist validation and stakeholder sign-off.
-7. Preserve traceability links from discovery to feedback.
-8. If context is missing or contradictory, stop and request clarification.
+7. Preserve traceability links from discovery to feedback throughout all documents.
+8. If context is missing or contradictory, stop and request clarification before proceeding.
 
 ---
 
@@ -71,41 +75,45 @@ Use these rules for any generated artifact:
 
 ### For Autonomous AI Execution
 
-When AI agents work without human-in-the-loop, use autonomous mode:
+This section defines how you operate when working without a human in the loop. Apply these rules strictly to avoid generating documentation based on incomplete or assumed context.
+
+When working autonomously, follow this protocol before generating any phase:
 
 ```
 AUTONOMOUS MODE:
 
-1. Read previous phase README to understand status
-2. Read required documents from previous phase
-3. Verify required input exists (if missing, request explicitly)
-4. Generate current phase with full context
+1. Read previous phase README to understand current status
+2. Read all required documents from the previous phase
+3. Verify required input exists — if missing, request it explicitly
+4. Generate current phase with full verified context
 5. Cross-reference all artifacts with previous phases
-6. Report completion with context for next phase
+6. Report completion with structured context for the next phase
 ```
 
 ### Key Principle: Never Assume Context
 
+Assuming context is the most common failure mode in autonomous operation. The distinction is absolute:
+
 ```
 ❌ ASSUME: "Previous phase is complete, proceed"
 ✅ VERIFY: "Read Phase N-1 index, verify documents exist"
-✅ IF MISSING: "Request explicit: Required: [document]"
+✅ IF MISSING: "Request explicitly: Required: [document]"
 ```
 
 ### Context Validation Protocol
 
-For each phase, verify before generating:
+Before generating any phase, verify each of the following. If a check fails, take the specified action — do not proceed until all checks pass.
 
 | Check | If Failed |
 |-------|-----------|
-| Required docs exist | Request them |
-| Previous phase complete | Note partial context |
-| Scope boundaries clear | Request clarification |
-| Glossary available | Request or create |
+| Required docs exist | Request them explicitly |
+| Previous phase marked complete | Note partial context; request confirmation |
+| Scope boundaries defined | Request clarification |
+| Glossary available | Request existing glossary or create one |
 
 ### Autonomous Report Format
 
-After completing any phase in autonomous mode:
+After completing any phase in autonomous mode, produce this completion report before delivering your output:
 
 ```markdown
 ## Phase N Completion Report
@@ -122,15 +130,15 @@ After completing any phase in autonomous mode:
 
 ### Validation
 - [ ] All Phase N-1 outputs addressed
-- [ ] Terminology aligned
-- [ ] Scope respected
+- [ ] Terminology aligned with glossary
+- [ ] Scope respected — no out-of-scope content introduced
 ```
 
 ---
 
 ## Prompt Structure
 
-Use this structure for all prompts:
+Every generation prompt must follow this five-part structure. Deviation from this structure produces lower-quality output. Use it for every phase, every document.
 
 ```
 [CONTEXT]
@@ -140,7 +148,9 @@ Use this structure for all prompts:
 [VALIDATION]
 ```
 
-### Example structure:
+### Example Structure
+
+The following example shows a correctly structured prompt for a Discovery phase document:
 
 ```markdown
 # Context
@@ -163,17 +173,19 @@ Generate the document "context-motivation.md" for the Discovery phase.
 After writing, validate:
 - [ ] Answers the question "What problem do we solve?"
 - [ ] Includes risk and opportunity analysis
-- [ ] Doesn't assume the reader knows the domain
-- [ ] Stakeholders are reflected
+- [ ] Does not assume the reader knows the domain
+- [ ] All stakeholders are reflected
 ```
 
 ---
 
 ## Prompts by Phase
 
+This section contains ready-to-use generation prompts for each phase. Populate the bracketed placeholders with your project's specific information before submitting. Do not submit prompts without filling in the context fields.
+
 ### PHASE 1: Discovery
 
-**Central question**: What problem do we solve and for whom?
+The central question for this phase is: **What problem do we solve and for whom?** All documents you generate here must answer this question from multiple angles — context, vision, actors, and needs — without mentioning any technology.
 
 #### Prompt 1.1: Context & Motivation
 
@@ -201,23 +213,25 @@ Generate "01-templates/01-discovery/context-motivation.md" based on the attached
   4. Stakeholders and impacted
   5. Initial risks (what could go wrong)
   6. Opportunities (what we gain if it works)
-  7. Key assumptions (what we take for true)
+  7. Key assumptions (what we take as true)
 
 # Style
 - Technology agnostic (no framework names, languages, etc.)
-- Accessible to non-technical (ex: PM, executives)
+- Accessible to non-technical readers (PM, executives)
 - Professional but narrative
-- Include examples if possible
+- Include examples where possible
 
 # Post-generation validation
 - [ ] Is the real problem clear (not the solution)?
 - [ ] Is it understood why it's important now?
 - [ ] Are all stakeholders mentioned?
 - [ ] Is there concrete risk analysis?
-- [ ] Is it agnostic? (without mentioning "database", "API", "frontend", etc.)
+- [ ] Is it agnostic? (no "database", "API", "frontend", etc.)
 ```
 
 #### Prompt 1.2: System Vision
+
+Use this prompt after Context & Motivation is approved. The vision document must feel distinct from the context document — one describes the problem, the other describes the future state.
 
 ```markdown
 # Context
@@ -238,20 +252,22 @@ Generate "01-templates/01-discovery/system-vision.md" based on the template.
   4. Guiding principles (3-5 values)
   5. Expected benefits (for users and business)
   6. Differentiation (how we differ)
-  7. Success metrics (how we'll know we won)
+  7. Success metrics (how we will know we succeeded)
 
 # Style
 - Inspirational but realistic
 - Technology agnostic
-- Tangible (not just aspiration)
+- Tangible — not just aspiration
 
 # Validation
-- [ ] Is it different from context-motivation (one is problem, other is vision)?
-- [ ] Are limits clear (what it is NOT)?
+- [ ] Is it clearly different from context-motivation (one is problem, other is vision)?
+- [ ] Are limits explicit (what it is NOT)?
 - [ ] Are success metrics measurable?
 ```
 
 #### Prompt 1.3: Actors & Needs
+
+Generate both documents together since they are tightly coupled. The actors document defines who; the needs document defines what they require.
 
 ```markdown
 # Context
@@ -265,11 +281,11 @@ Generate two documents:
 # Requirements
 Actors (1500 words):
 - List 4-7 main actors (users, stakeholders, external systems)
-- Per actor: who they are, what they do, what incentives they have, what constraints
+- Per actor: who they are, what they do, their incentives, their constraints
 - Include diagrams or tables
 
 Needs (2000 words):
-- Per actor: what they need, what they expect, pain points, alternative solutions
+- Per actor: what they need, what they expect, pain points, alternatives they currently use
 - Prioritization: must-have vs. nice-to-have
 - Need conflicts (if they exist)
 
@@ -280,7 +296,7 @@ Needs (2000 words):
 
 # Validation
 - [ ] Do they cover all identified stakeholders?
-- [ ] Are specific pain points understood?
+- [ ] Are specific pain points documented?
 - [ ] Do needs connect with future requirements?
 ```
 
@@ -288,9 +304,11 @@ Needs (2000 words):
 
 ### PHASE 2: Requirements
 
-**Central question**: What must the system do?
+The central question for this phase is: **What must the system do?** Requirements must be precise, verifiable, and technology-agnostic. Every requirement must trace back to a Discovery actor or need.
 
 #### Prompt 2.1: Glossary
+
+Generate the glossary before any requirements. It defines the shared vocabulary that all subsequent documents must use consistently.
 
 ```markdown
 # Context
@@ -313,15 +331,17 @@ Generate "01-templates/02-requirements/glossary.md"
 
 # Style
 - Clear and precise (like a dictionary)
-- Agnostic (ex: no "JWT", but yes "session token")
-- Include business AND key technical terms
+- Agnostic — e.g., no "JWT" but yes "session token"
+- Include both business AND key technical concepts
 
 # Validation
-- [ ] Is every term defined without using undefined ones?
-- [ ] Does it cover key domain concepts?
+- [ ] Is every term defined without using undefined terms?
+- [ ] Does it cover the key domain concepts?
 ```
 
 #### Prompt 2.2: Functional & Non-Functional Requirements
+
+Generate individual requirement documents using the standard template. Each document must be self-contained and fully traceable.
 
 ```markdown
 # Context
@@ -365,6 +385,8 @@ Generate individual documents:
 
 #### Prompt 2.3: Priority Matrix & Scope Boundaries
 
+Generate these two documents together. They answer the questions of what is included in the MVP and why certain items are out of scope.
+
 ```markdown
 # Context
 [All FR/NFR generated]
@@ -377,27 +399,29 @@ Generate two documents:
 # Priority Matrix
 - Use MoSCoW: Must, Should, Could, Won't
 - Table: FR/NFR | Category | Justification | Effort (low/med/high)
-- Comment: what is the MVP (what is absolutely necessary)
+- Comment: what constitutes the MVP
 
 # Scope Boundaries
-- What is WITHIN (MVP + phase 2)
-- What is EXPLICITLY OUTSIDE (future, depends on others, etc.)
+- What is WITHIN scope (MVP + phase 2)
+- What is EXPLICITLY OUTSIDE scope (future, depends on others, etc.)
 - Reasons (time, technical, business constraints)
-- Decision table (what was candidate and why it was discarded)
+- Decision table (what was a candidate and why it was discarded)
 
 # Validation
 - [ ] Is the MVP clear?
-- [ ] Are limits explicit (not just the unmentioned)?
-- [ ] Are reasons clear?
+- [ ] Are limits explicit (not just unmentioned)?
+- [ ] Are reasons clearly stated?
 ```
 
 ---
 
 ### PHASE 3: Design & Process
 
-**Central question**: How does the system flow and what is the domain model?
+The central question for this phase is: **How does the system flow and what is the domain model?** Design documents must trace every flow back to at least one requirement.
 
 #### Prompt 3.1: Strategic Design (Bounded Contexts)
+
+Generate the strategic design document before individual context models. It establishes the domain structure that all subsequent design documents follow.
 
 ```markdown
 # Context
@@ -436,6 +460,8 @@ Generate "01-templates/03-design/strategic-design.md"
 
 #### Prompt 3.2: System Flows
 
+Generate system flows after the strategic design is approved. Cover all major user-facing processes and ensure exception paths are documented for every flow.
+
 ```markdown
 # Context
 [Strategic Design + Requirements]
@@ -446,7 +472,7 @@ Generate "01-templates/03-design/system-flows.md"
 # Structure
 Document 5-10 main flows, including:
 1. User Registration / Authentication
-2. Main business process (ex: Purchase, Account Setup, etc.)
+2. Main business process (e.g., Purchase, Account Setup, etc.)
 3. Error/Exception handling
 4. Admin operations
 5. Integration points (with external systems if any)
@@ -461,16 +487,18 @@ Document 5-10 main flows, including:
 
 # Style
 - Narrative + diagram
-- Agnostic (don't mention "database query" but "obtain information from X")
+- Agnostic (don't write "database query" — write "obtain information from X")
 - Include involved domain contexts
 
 # Validation
 - [ ] Do they cover main FR?
-- [ ] Are actors clear?
-- [ ] Are diagrams readable?
+- [ ] Are actors clearly identified in each flow?
+- [ ] Are diagrams readable without explanation?
 ```
 
 #### Prompt 3.3: Bounded Context Models
+
+Generate individual context model files after the strategic design is approved. Each context file must be self-contained and reference the strategic design.
 
 ```markdown
 # Context
@@ -498,47 +526,49 @@ Ex: "01-templates/03-design/bounded-contexts/identity.md"
 - Based on specific context requirements
 
 # Validation
-- [ ] Is the context responsibility understood?
-- [ ] Are domain events business events, not technical?
-- [ ] Are invariants clear?
+- [ ] Is the context responsibility clear?
+- [ ] Are domain events business events, not technical ones?
+- [ ] Are invariants stated in the ubiquitous language?
 ```
 
 ---
 
 ### PHASE 4: UI Design (Optional in agnostic version)
 
-**Central question**: How does the user interact with the system?
+The central question for this phase is: **How does the user interact with the system?** UI documentation captures the interaction structure, not the visual design — that belongs to the design team's tools.
 
 ```markdown
 # Note
-UI Design is agnostic at structure level, but specific in details.
-It's recommended to do this phase AFTER the design team completes it.
+UI Design is agnostic at the structural level but specific in its details.
+Complete this phase AFTER the design team finalizes mockups.
 
-# Task (if you want to document conceptual UI)
+# Task (for conceptual UI documentation)
 Generate "01-templates/03-design/ui/wireframes.md"
 
 # Structure
 - Per main screen:
   1. Name
-  2. Purpose (what flow it solves)
+  2. Purpose (which flow it solves)
   3. Actors (who sees it)
-  4. Main components (not technical names, but "form", "table", etc.)
+  4. Main components (not technical names — "form", "table", "button")
   5. Interaction flow (1. User does X, 2. System responds Y)
   6. States (normal, loading, error)
   7. Diagram (ASCII or Mermaid)
 
 # Validation
-- [ ] Does each screen have a clear purpose?
-- [ ] Is the flow understood without knowing UI frameworks?
+- [ ] Does each screen have a clear, singular purpose?
+- [ ] Is the flow understandable without knowing any UI framework?
 ```
 
 ---
 
 ### PHASE 5: Data Model
 
-**Central question**: How is information structured and how does it flow?
+The central question for this phase is: **How is information structured and how does it flow?** Every entity must trace back to at least one domain concept from the Design phase.
 
 #### Prompt 5.1: Entities & Relationships
+
+Generate the entities and relationships documents together. They must be consistent with the bounded contexts defined in Phase 3.
 
 ```markdown
 # Context
@@ -556,7 +586,7 @@ Generate "01-templates/04-data-model/entities.md" and "relationships.md"
   2. Attributes (type, optional/required, constraints)
   3. Invariants (what must always hold)
   4. Origin (from which requirement or flow it comes)
-  5. Notes (ex: "soft delete", "auditable", etc.)
+  5. Notes (e.g., "soft delete", "auditable", etc.)
 - Consolidated table with all entities
 
 # Relationships Document
@@ -565,20 +595,20 @@ Generate "01-templates/04-data-model/entities.md" and "relationships.md"
 - Relationships table with justification
 
 # Style
-- DB Agnostic (don't mention "SERIAL", "VARCHAR", but "unique identifier", "text")
-- Based on domain entities (from Design)
+- DB agnostic (use "unique identifier" not "SERIAL", "text" not "VARCHAR")
+- Based on domain entities from the Design phase
 
 # Validation
 - [ ] Does each entity correspond to a domain concept?
 - [ ] Do relationships support Design flows?
-- [ ] Are there no unnecessary "generic" tables?
+- [ ] Are there no unnecessary "generic" or "utility" tables?
 ```
 
 ---
 
 ### PHASE 6: Planning
 
-**Central question**: When and how do we deliver?
+The central question for this phase is: **When and how do we deliver?** Planning documents must connect directly to the requirements and scope boundaries from Phase 2.
 
 ```markdown
 # Context
@@ -598,18 +628,16 @@ Generate "01-templates/05-planning/roadmap.md" and "epics.md"
 - Per epic: name, description, included FR, priority, estimation (story points)
 
 # Validation
-- [ ] Is the MVP clear?
-- [ ] Are dependencies explicit?
-- [ ] Are estimations reasonable?
+- [ ] Is the MVP clearly defined?
+- [ ] Are dependencies between phases explicit?
+- [ ] Are estimations internally consistent?
 ```
 
 ---
 
 ### PHASE 7: Development
 
-**Central question**: How do we build this technically?
-
-HERE is where you use your specific stack. Provide:
+The central question for this phase is: **How do we build this technically?** This is the first phase where you may mention specific technologies. Reference the actual stack provided by the engineering team.
 
 ```markdown
 # Technical stack
@@ -624,13 +652,13 @@ Generate "01-templates/06-development/architecture.md" + "api-reference.md" + "c
 # Architecture
 - Hexagonal / clean / layered architecture (according to your stack)
 - Modules to Bounded Contexts map
-- Key patterns (ex: Repository, Factory, Anti-Corruption Layer)
-- Request flow (how a request enters, how it's processed)
+- Key patterns (e.g., Repository, Factory, Anti-Corruption Layer)
+- Request flow (how a request enters and how it's processed)
 
 # API Reference
 - Per endpoint: method, route, parameters, response, errors
 - Request/response examples
-- Security notes (ex: what roles can access)
+- Security notes (e.g., what roles can access)
 
 # Coding Standards
 - Conventions (naming, formatting)
@@ -639,16 +667,16 @@ Generate "01-templates/06-development/architecture.md" + "api-reference.md" + "c
 - Testing expectations
 
 # Validation
-- [ ] Does architecture reflect domain model?
-- [ ] Are APIs RESTful (or your standard)?
+- [ ] Does architecture reflect the domain model?
+- [ ] Are APIs RESTful (or your defined standard)?
 - [ ] Are conventions clear and consistent?
 ```
 
 ---
 
-### PHASES 8-12: Testing, Deployment, Operations, Monitoring, Feedback
+### PHASES 8–12: Testing, Deployment, Operations, Monitoring, Feedback
 
-For these phases, the prompt is similar:
+For these phases, use the following base prompt structure. The specific content varies per phase — refer to the corresponding templates in `01-templates/` for the exact sections required.
 
 ```markdown
 # Context
@@ -658,11 +686,11 @@ For these phases, the prompt is similar:
 Generate "01-templates/07-testing/test-strategy.md" (or equivalent per phase)
 
 # Structure
-[Specific to the phase — see templates]
+[Specific to the phase — see templates in 01-templates/]
 
 # Validation
 - [ ] Does it connect with FR and Design?
-- [ ] Is it executable by the team?
+- [ ] Is it executable by the team without ambiguity?
 - [ ] Does it include concrete examples?
 ```
 
@@ -670,61 +698,64 @@ Generate "01-templates/07-testing/test-strategy.md" (or equivalent per phase)
 
 ## Validation Checklist
 
-After generating each document, validate:
+After generating each document, validate it against all four categories before delivering. A document that fails any category must be revised.
 
-### ✅ Content
+### Content
 
 - [ ] Answers the central question of the phase
 - [ ] Includes all required sections
 - [ ] Provides sufficient detail (neither superficial nor excessive)
-- [ ] Has concrete examples (not just theory)
+- [ ] Contains concrete examples (not just theoretical statements)
 
-### ✅ Style
+### Style
 
-- [ ] Accessible to expected audience (technical, non-technical, executives)
-- [ ] Professional but not pretentious
+- [ ] Accessible to the expected audience (technical, non-technical, executive)
+- [ ] Professional tone
 - [ ] No unexplained jargon
-- [ ] Paragraphs not too long (max 3-4 sentences)
+- [ ] Paragraphs are concise (max 3-4 sentences each)
 
-### ✅ Consistency
+### Consistency
 
-- [ ] Maintains tone of previous documents
-- [ ] Uses same terms (glossary)
-- [ ] Cross-references work
-- [ ] Data doesn't contradict
+- [ ] Maintains the tone of all previous documents
+- [ ] Uses the same terms defined in the glossary
+- [ ] Cross-references are valid and point to real documents
+- [ ] Data does not contradict prior decisions
 
-### ✅ Agnostic (phases 1-5)
+### Agnostic (phases 1–5 only)
 
-- [ ] Doesn't mention technology names
+- [ ] Does not mention technology names
 - [ ] Describes "what", not "how"
-- [ ] Doesn't assume technical solutions
-- [ ] Can be understood without knowing the stack
+- [ ] Does not assume any technical solution
+- [ ] Can be understood without knowing the implementation stack
 
-### ✅ Format
+### Format
 
 - [ ] Valid Markdown
-- [ ] Titles in correct hierarchy (H1, H2, H3...)
-- [ ] Lists and tables are well formed
+- [ ] Headers in correct hierarchy (H1 > H2 > H3)
+- [ ] Lists and tables are well-formed
 - [ ] Diagrams are readable (Mermaid or ASCII)
 
 ---
 
 ## Troubleshooting
 
-### Problem: AI generates very generic content
+These are the most common failure modes and how to resolve them. Match your problem to a pattern and apply the corresponding solution before re-generating.
 
-**Cause**: Insufficient context
+### Problem: Output is very generic and not project-specific
 
-**Solution**: Provide specific examples from your product:
+**Cause**: Insufficient context was provided in the prompt.
+
+**Solution**: Add specific examples from the project before generating:
 - Concrete use cases
-- Real constraints (ex: "must comply with GDPR")
-- Real numbers (ex: "10k simultaneous users")
+- Real constraints (e.g., "must comply with GDPR")
+- Real numbers (e.g., "10k simultaneous users")
+- Named actors and goals from Discovery
 
-### Problem: AI mentions technologies in agnostic phases
+### Problem: Technology names appear in phases 1–5 output
 
-**Cause**: Model bias
+**Cause**: Model bias toward technical vocabulary.
 
-**Solution**: Add explicit instruction:
+**Solution**: Add this explicit instruction to the prompt:
 ```
 IMPORTANT: This document is technology agnostic.
 DO NOT mention: databases, languages, frameworks, specific protocols.
@@ -732,11 +763,11 @@ Replace "PostgreSQL" with "relational database".
 Replace "REST API" with "programmatic interface".
 ```
 
-### Problem: AI forgets sections or requirements
+### Problem: Sections or requirements are missing from output
 
-**Cause**: Prompt too long or poorly structured
+**Cause**: Prompt too long or poorly structured.
 
-**Solution**: Use explicit lists:
+**Solution**: Use an explicit numbered list of required sections:
 ```
 This document MUST include:
 1. [section]
@@ -744,24 +775,24 @@ This document MUST include:
 3. [section]
 ```
 
-### Problem: Documents don't connect between phases
+### Problem: Documents from different phases do not connect
 
-**Cause**: Context isn't shared between prompts
+**Cause**: Context from previous phases was not passed in the prompt.
 
-**Solution**: For each phase, include:
+**Solution**: For each phase, include a context summary section:
 ```
 # Context from previous phases
-[Briefly summarize discovery, requirements, design]
+[Summarize discovery, requirements, design decisions]
 
 # How this document connects
-[Explain what RF/design decisions it supports]
+[Explain which FR or design decisions it supports]
 ```
 
-### Problem: Documentation is too long or short
+### Problem: Documentation is too long or too short
 
-**Cause**: Poorly defined expectation
+**Cause**: Expected length and depth were not specified.
 
-**Solution**: Specify exactly:
+**Solution**: Specify them explicitly:
 ```
 Length: 2000-2500 words
 Style: Executive (maximum 2 paragraphs per section)
@@ -772,7 +803,9 @@ Level: Overview (no implementation details)
 
 ## Complete Example: Discovery Generation
 
-### Input (what YOU provide to AI):
+The following example shows the full input-output-validation cycle for a Discovery phase document. Use this pattern for all phases.
+
+### Input (what you provide to the generation prompt)
 
 ```markdown
 # Your Product
@@ -783,16 +816,16 @@ Level: Overview (no implementation details)
 **Context**:
 - Target: Teams of 3-15 people (startups, agencies)
 - Competition: Jira (too complex), Asana (too expensive)
-- Opportunity: Simple, cheap tool with AI
+- Opportunity: Simple, cheap tool with AI assistance
 
-**Stack** (just FYI, MUST NOT be mentioned in docs):
+**Stack** (FYI only — MUST NOT be mentioned in phases 1-5 docs):
 - Backend: Node.js + Express
 - Frontend: React
 - DB: PostgreSQL
 
 ---
 
-# Task for AI
+# Task
 
 Generate the document "discovery/context-motivation.md" for TaskFlow.
 
@@ -806,40 +839,40 @@ Generate the document "discovery/context-motivation.md" for TaskFlow.
   Initial Risks, Opportunities, Key Assumptions
 - Tone: Professional, inspiring but realistic
 - Include:
-  - How much time teams spend (concrete data)
-  - Mentioned competitors (Jira, Asana) without saying how they implement
-  - Specific market segment
+  - Concrete data on how much time teams spend
+  - Competitor mentions (Jira, Asana) without prescribing solutions
+  - Specific market segment definition
 ```
 
-### Output (what AI generates):
+### Output (what you generate)
 
 ```markdown
 [Generated document: discovery/context-motivation.md]
 
-[Long, structured, agnostic, with clear sections]
+[Long, structured, agnostic content with all required sections]
 ```
 
-### Validation (what YOU review):
+### Validation (what you verify before delivery)
 
 ```
-✅ Is the problem clear?
-✅ Is market context understood?
-✅ Does it mention Jira/Asana without prescribing solutions?
+✅ Is the problem statement clear?
+✅ Is the market context documented?
+✅ Are Jira/Asana mentioned without prescribing solutions?
 ✅ 2000+ words?
-✅ No technologies mentioned?
+✅ No technology names mentioned?
 
-If all OK → Next document
-If NOT → Request specific adjustments from AI
+If all OK → Deliver to human collaborator for sign-off
+If NOT → Identify specific violations and revise
 ```
 
 ---
 
 ## Next Steps
 
-1. 📖 Read [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) to understand the end-to-end process
-2. 📋 Use the prompts above to generate each phase
-3. ✅ Apply validation checklist after each document
-4. 🔗 Ensure cross-references between phases
+1. Read [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) for document structure requirements
+2. Use the prompts above to generate each phase
+3. Apply the validation checklist after every document
+4. Maintain cross-references between phases throughout
 
 ---
 

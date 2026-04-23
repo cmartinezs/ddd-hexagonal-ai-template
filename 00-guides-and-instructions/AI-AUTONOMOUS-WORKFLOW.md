@@ -4,7 +4,7 @@
 
 # AI Autonomous Workflow
 
-This guide enables AI agents to work autonomously across SDLC phases with proper context handoff from previous phases.
+You are an AI agent operating in autonomous mode. This guide defines the rules, protocols, and formats you must follow when working across SDLC phases without a human in the loop. Autonomous operation requires stricter context validation than assisted operation — never proceed on assumed context.
 
 ## Contents
 
@@ -19,7 +19,11 @@ This guide enables AI agents to work autonomously across SDLC phases with proper
 
 ## Philosophy
 
+This section explains the fundamental difference between traditional human-dependent operation and autonomous AI-driven operation. Understanding this distinction determines how you handle every decision point in autonomous mode.
+
 ### Traditional (Human-Dependent)
+
+In traditional mode, a human drives every transition and validates each step:
 
 ```
 Human: "Generate Phase N"
@@ -30,37 +34,45 @@ Human: Approves
 
 ### Autonomous (AI-Driven)
 
+In autonomous mode, you are responsible for context validation, generation, and structured reporting:
+
 ```
 AI: Reads phase context, validates completeness
 AI: Identifies missing inputs, requests if needed
-AI: Generates Phase N with full context
-AI: Validates against previous phases
-AI: Reports completion with next steps
+AI: Generates Phase N with full verified context
+AI: Validates output against previous phases
+AI: Reports completion with structured next-phase context
 ```
 
-**Core Principle**: AI works autonomously but never assumes. When context is incomplete, AI requests it explicitly.
+**Core Principle**: You work autonomously but never assume. When context is incomplete, you stop and request it explicitly — every time, without exception.
 
 ---
 
 ## Phase Context Requirements
 
+This section defines the minimum context you must have before generating each phase. Do not begin generation without verifying these requirements. If any required input is missing, stop and request it explicitly.
+
 ### Context by Phase
+
+Each row in this table defines what context flows from the completed phase into the next. Verify the "Required Context" column before proceeding with the "To Phase".
 
 | From Phase | To Phase | Required Context |
 |-----------|---------|-------------|
-| - | 01-Discovery | Problem statement, market context |
+| — | 01-Discovery | Problem statement, market context |
 | 01-Discovery | 02-Requirements | Actors, needs, vision |
-| 02-Requirements | 03-Design | FR/NFR list, glossary, priority |
-| 03-Design | 04-Data Model | Bounded contexts, aggregates, events |
-| 04-Data Model | 05-Planning | Entities, relationships, flows |
+| 02-Requirements | 03-Design | FR/NFR list, glossary, priority matrix |
+| 03-Design | 04-Data Model | Bounded contexts, aggregates, domain events |
+| 04-Data Model | 05-Planning | Entities, relationships, data flows |
 | 05-Planning | 06-Development | Roadmap, epics |
 | 06-Development | 07-Testing | Architecture, API contracts |
 | 07-Testing | 08-Deployment | Test results, test strategy |
-| 08-Deployment | 09-Operations | Pipeline, environments |
+| 08-Deployment | 09-Operations | Pipeline definition, environment configs |
 | 09-Operations | 10-Monitoring | Runbooks, SLAs |
-| 10-Monitoring | 11-Feedback | Metrics, alerts |
+| 10-Monitoring | 11-Feedback | Metrics, alert definitions |
 
 ### Minimum Context per Phase
+
+The following lists define the minimum set of inputs required to begin each phase. These are not suggestions — they are gates. If the listed inputs do not exist, request them before proceeding.
 
 ```
 01-Discovery REQUIRED INPUT:
@@ -109,7 +121,7 @@ AI: Reports completion with next steps
 
 10-Monitoring REQUIRED INPUT:
   - Operational procedures
-  - Incident response
+  - Incident response documentation
 
 11-Feedback REQUIRED INPUT:
   - Monitoring metrics
@@ -120,9 +132,11 @@ AI: Reports completion with next steps
 
 ## Input Data Structure
 
+This section defines the exact format you must use to structure phase inputs. Use this format when receiving context from a previous phase and when preparing context to pass to the next phase. Consistency in this structure is what makes autonomous phase transitions reliable.
+
 ### Phase Input Template
 
-Each phase receives this structured input:
+When beginning a phase, structure the incoming context using this template before generating any output:
 
 ```markdown
 # Phase N Input
@@ -133,7 +147,7 @@ Each phase receives this structured input:
 |-------|--------|-----------|
 | 01-Discovery | ✅ | 5 documents |
 | 02-Requirements | ✅ | 15 FR, 5 NFR |
-| 03-Design | 🔲 In Progress | - |
+| 03-Design | 🔲 In Progress | — |
 
 ## Key Artifacts
 
@@ -156,7 +170,7 @@ Each phase receives this structured input:
 
 ### Complete Data Input Example
 
-For Phase 03-Design from Phase 02-Requirements:
+The following example shows a correctly structured input for Phase 03-Design, receiving context from Phase 02-Requirements:
 
 ```markdown
 # Phase 03 Input (from 02-Requirements)
@@ -192,30 +206,38 @@ For Phase 03-Design from Phase 02-Requirements:
 
 ## Autonomous Execution Rules
 
+These four rules govern every action you take in autonomous mode. They are not guidelines — they are mandatory operating constraints. Apply them in sequence before and during every phase generation.
+
 ### Rule 1: Validate Context First
+
+Context validation is always the first action — before any generation begins. Skipping this step is the most common cause of incoherent output.
 
 ```
 BEFORE generating ANY phase:
 1. Read all previous phase documents
 2. Verify required inputs exist
-3. If missing, STOP and request context
-4. Continue only when context complete
+3. If missing, STOP and request context explicitly
+4. Continue only when context is complete and verified
 ```
 
 ### Rule 2: Cross-Reference Validation
 
+Every artifact you generate must pass cross-reference validation before it is considered complete. Apply this check to every document you produce.
+
 ```
-FOR EACH generated artifact:
+FOR EACH generated artifact, verify:
 - [ ] Does it reference requirements by ID?
-- [ ] Is terminology consistent with glossary?
+- [ ] Is terminology consistent with the glossary?
 - [ ] Do decisions align with scope boundaries?
 - [ ] Are there no contradictions with previous phases?
 ```
 
 ### Rule 3: Explicit Completion Report
 
+After completing any phase, produce a structured completion report. This report is not optional — it is the handoff artifact that enables the next phase.
+
 ```
-AFTER completing phase:
+AFTER completing a phase, produce:
 
 ## Completion Report
 
@@ -232,15 +254,17 @@ AFTER completing phase:
 
 ### Validation
 - [ ] All FR from Phase N-1 addressed
-- [ ] Terminology consistent
-- [ ] No scope violations
+- [ ] Terminology consistent with glossary
+- [ ] No scope violations introduced
 ```
 
-### Rule 4: Request Missing Context
+### Rule 4: Request Missing Context Explicitly
+
+When required input is absent, stop immediately and produce a structured missing-context request. Do not attempt to generate with incomplete input, and do not make assumptions to fill gaps.
 
 ```
 IF required input is missing:
-STOP generation and explicitly request:
+STOP generation and produce:
 
 ## Missing Context
 
@@ -249,79 +273,98 @@ From Phase [N-1]:
 - [ ] Required: [decision/rationale]
 - [ ] Required: [constraint]
 
-Please provide before continuing.
+Please provide the above before I continue.
 ```
 
 ---
 
 ## Context Handoff Protocol
 
+This section defines the three handoff scenarios you will encounter and how to handle each. Choose the matching scenario and follow its steps exactly.
+
 ### Standard Handoff
+
+This is the normal case: Phase N-1 is complete and you are proceeding to Phase N.
 
 ```
 Phase N-1 Complete → Phase N Start
 
 1. Phase N-1 owner marks complete
-2. AI reads Phase N-1 output
-3. AI creates Phase N input structure
-4. AI validates completeness
-5. AI proceeds with generation
+2. You read all Phase N-1 output documents
+3. You create Phase N input structure using the template above
+4. You validate completeness against the required inputs list
+5. You proceed with generation
 ```
 
 ### Incomplete Handoff
 
+This scenario occurs when Phase N-1 is partially complete. Do not proceed without the missing items.
+
 ```
 Phase N-1 Incomplete → Phase N Request
 
-1. AI identifies missing context
-2. AI stops and requests specific items
+1. You identify missing context
+2. You stop and produce explicit missing-context request (Rule 4)
 3. Human provides missing context
-4. AI re-validates
-5. AI proceeds
+4. You re-validate against required inputs
+5. You proceed only when validation passes
 ```
 
 ### Parallel Phases
 
+This scenario occurs when Phase N+1 must begin before Phase N is fully complete. Proceed with explicit caveats — never silently.
+
 ```
 When Phase N+1 starts before Phase N completes:
 
-1. Identify dependencies
-2. Request explicit from-phase context
-3. Note assumptions in input
-4. Proceed with caveats
+1. Identify which Phase N outputs Phase N+1 depends on
+2. Request confirmation of which outputs are available
+3. Note all assumptions in the Phase N+1 input structure
+4. Proceed with caveats documented
+5. Flag for re-validation once Phase N completes
 ```
 
 ---
 
 ## Validation Checklist
 
+Apply this checklist in three stages: before each phase, during generation, and after completion. Do not deliver output that has not passed all three stages.
+
 ### Before Each Phase
 
+Verify all of these before writing a single line of output:
+
 - [ ] Read all previous phase documents
-- [ ] Verify required inputs exist
-- [ ] Check scope boundaries
-- [ ] Verify glossary alignment
-- [ ] Note critical decisions
+- [ ] Verified required inputs exist
+- [ ] Checked scope boundaries are defined
+- [ ] Verified glossary alignment
+- [ ] Noted all critical decisions that affect this phase
 
 ### During Generation
 
-- [ ] Each FR mapped to artifact
-- [ ] Each decision justified
-- [ ] No new scope introduced
-- [ ] Terminology from glossary
-- [ ] Cross-references valid
+Apply these checks continuously while producing output:
+
+- [ ] Each FR is mapped to at least one artifact
+- [ ] Each decision is justified with a rationale
+- [ ] No new scope has been introduced
+- [ ] All terminology comes from the glossary
+- [ ] All cross-references point to real, existing documents
 
 ### After Generation
 
-- [ ] All required sections present
-- [ ] Previous phase outputs addressed
-- [ ] Next phase context prepared
-- [ ] Open questions documented
-- [ ] Completion report generated
+Run this final check before producing the completion report:
+
+- [ ] All required sections are present
+- [ ] All previous phase outputs are addressed
+- [ ] Next-phase context has been prepared in the standard format
+- [ ] Open questions are documented
+- [ ] Completion report has been generated
 
 ---
 
 ## Example: Autonomous Phase Transition
+
+The following example shows a complete input-generation-output cycle for an autonomous transition from Phase 02 to Phase 03. Use this as a reference pattern.
 
 ### Input (Phase 02 → Phase 03)
 
@@ -333,9 +376,9 @@ When Phase N+1 starts before Phase N completes:
 - 02-Requirements: ✅ Complete (22 FR, 8 NFR)
 
 ## Required Context Verified
-✅ Glossary exists and complete
+✅ Glossary exists and is complete
 ✅ Priority matrix exists
-✅ Scope boundaries defined
+✅ Scope boundaries are defined
 ✅ All FR have acceptance criteria
 
 ## Key Outputs
@@ -343,11 +386,11 @@ When Phase N+1 starts before Phase N completes:
 - nfr-001 through nfr-008: Non-functional requirements
 - scope-boundaries.md: MVP + Phase 2 scope
 
-## Go!
-Generating 03-design with full context
+## Go
+Generating 03-design with full verified context.
 ```
 
-### Output (Phase 03 Generation)
+### Output (Phase 03 Completion Report)
 
 ```markdown
 # 03-Design Output
@@ -366,17 +409,17 @@ Generating 03-design with full context
 - Domain events: 12 events
 
 ### Validation
-✅ All 22 FR addressed in flows
-✅ Glossary terms used consistently
-✅ Scope boundaries respected
-✅ Multi-tenancy considered in each context
+✅ All 22 FR addressed in system flows
+✅ Glossary terms used consistently throughout
+✅ Scope boundaries respected — no out-of-scope content
+✅ Multi-tenancy addressed in each bounded context
 ```
 
 ---
 
-## AI Agent Mode: Autonomous
+## Add to All Autonomous AI Instructions
 
-Add this to all AI instructions:
+Include this block in every autonomous instruction set to ensure consistent behavior across all phases:
 
 ```markdown
 # Autonomous Mode
@@ -385,14 +428,14 @@ You are working in AUTONOMOUS mode.
 
 ## Rules
 1. NEVER assume context — always read previous phases first
-2. STOP and request if required input is missing
+2. STOP and request explicitly if required input is missing
 3. CROSS-REFERENCE all artifacts with previous phases
-4. REPORT completion with next-phase context
+4. REPORT completion with structured next-phase context
 
 ## Protocol
 1. Read Phase N-1 output
 2. Verify required inputs
-3. If incomplete, request explicitly
+3. If incomplete, request explicitly — do not proceed
 4. Generate Phase N
 5. Validate against Phase N-1
 6. Report completion with Phase N+1 context

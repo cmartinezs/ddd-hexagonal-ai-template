@@ -1,13 +1,14 @@
 # Template Architecture
 
-## Overview
-
-This template implements a complete SDLC (Software Development Lifecycle) framework organized into 12 phases, each with a specific focus and deliverables.
+You are an AI agent working within a 12-phase SDLC documentation framework. This document explains the architectural design of the framework: why each phase exists, what it produces, and how phases connect. Read this document when you need to make structural decisions, understand why a phase is organized the way it is, or adapt the framework for an atypical project.
 
 ## Phase Structure
 
+The framework organizes documentation into 12 phases, each with a clear focus, a set of key files, and specific deliverables. The phases are designed to flow sequentially, with each phase's output serving as input for the next. Understanding this structure allows you to generate documentation that is coherent, traceable, and complete.
+
 ### Phase 0: Planning & Framework (`01-templates/00-documentation-planning/`)
-**Purpose**: Establish the framework and conventions for documentation
+
+This phase establishes the documentation conventions and SDLC framework for a specific project. It produces no product documentation — its output is the governance structure that governs all subsequent phases.
 
 **Key Files**:
 - `sdlc-framework.md` — Detailed SDLC phases and their relationships
@@ -22,15 +23,16 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 1: Discovery (`01-templates/01-discovery/`)
-**Purpose**: Understand context, vision, scope, actors, and business needs
 
-**Discipline**: Focus on "WHAT" — never mention technologies, frameworks, or implementation
+Discovery answers the question: why does this project exist and who is it for? It must remain strictly technology agnostic — no frameworks, languages, or infrastructure may appear in these documents.
+
+**Discipline**: Focus on "WHAT" — never mention technologies, frameworks, or implementation details.
 
 **Key Files**:
 - `README.md` — Discovery overview and structure
 - `TEMPLATE-context-motivation.md` — Project context and motivation
 - `actors-and-personas.md` — Key actors and their goals
-- `scope-and-boundaries.md` — What's in/out of scope
+- `scope-and-boundaries.md` — What is in and out of scope
 
 **Deliverables**:
 - [ ] Vision and mission statement
@@ -41,13 +43,14 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 2: Requirements (`01-templates/02-requirements/`)
-**Purpose**: Define what the system must do (functional) and non-functional characteristics
 
-**Discipline**: Focus on "WHAT" — no technology-specific details
+Requirements translate Discovery findings into specific, verifiable conditions the system must meet. Every requirement must trace to a Discovery actor or need. This phase is still technology agnostic.
+
+**Discipline**: Focus on "WHAT" — no technology-specific details.
 
 **Key Files**:
 - `README.md` — Requirements overview
-- `functional-requirements.md` — RF with examples and acceptance criteria
+- `functional-requirements.md` — FR with examples and acceptance criteria
 - `non-functional-requirements.md` — NFRs (performance, security, scalability, etc.)
 - `scope-boundaries.md` — Clear in/out scope matrix
 - `traceability-matrix.md` — Link requirements to discovery
@@ -62,7 +65,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 3: Design (`01-templates/03-design/`)
-**Purpose**: Define system flows, process decisions, and UI/UX
+
+Design translates requirements into system flows, UI structures, and domain models. Every flow must trace to at least one requirement; every bounded context must trace to a business domain.
 
 **Key Files**:
 - `README.md` — Design overview
@@ -79,7 +83,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 4: Data Model (`01-templates/04-data-model/`)
-**Purpose**: Define entities, relationships, and data flows
+
+The Data Model phase defines entities, relationships, and data flows. It must align exactly with the domain concepts established in Phase 3. Every entity should correspond to a concept in the ubiquitous language.
 
 **Key Files**:
 - `README.md` — Data model overview
@@ -96,7 +101,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 5: Planning (`01-templates/05-planning/`)
-**Purpose**: Define roadmap, epics, sprints, and versioning strategy
+
+Planning organizes the approved requirements and design into a delivery roadmap and execution structure. It bridges the "what" phases with the "how" phases.
 
 **Key Files**:
 - `README.md` — Planning overview
@@ -113,7 +119,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 6: Development (`01-templates/06-development/`)
-**Purpose**: Define architecture, APIs, coding standards, and implementation guidelines
+
+Development is the first phase where you may name specific technologies. It defines the technical architecture, APIs, coding standards, and implementation guidelines. Every technical decision must reference a prior requirement or design artifact.
 
 **Key Files**:
 - `README.md` — Development overview
@@ -131,7 +138,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 7: Testing (`01-templates/07-testing/`)
-**Purpose**: Define testing strategy, test plans, and security testing
+
+Testing documents define the strategy, test plans, and security testing approach. Every test case must trace to at least one acceptance criterion from Phase 2.
 
 **Key Files**:
 - `README.md` — Testing overview
@@ -148,7 +156,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 8: Deployment (`01-templates/08-deployment/`)
-**Purpose**: Define CI/CD pipelines, environments, and release processes
+
+Deployment documents define the CI/CD pipeline, environment configurations, and release processes. Pipelines must cover all environments and include rollback procedures.
 
 **Key Files**:
 - `README.md` — Deployment overview
@@ -165,7 +174,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 9: Operations (`01-templates/09-operations/`)
-**Purpose**: Define runbooks, incident response, and SLAs
+
+Operations documents enable teams to run, monitor, and restore the system in production. Runbooks must be executable by an on-call engineer without requiring additional context.
 
 **Key Files**:
 - `README.md` — Operations overview
@@ -182,7 +192,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 10: Monitoring (`01-templates/10-monitoring/`)
-**Purpose**: Define metrics, alerts, and dashboards
+
+Monitoring documents define what is measured, when alerts trigger, and how dashboards are structured. Metrics must connect to NFRs from Phase 2.
 
 **Key Files**:
 - `README.md` — Monitoring overview
@@ -199,7 +210,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Phase 11: Feedback (`01-templates/11-feedback/`)
-**Purpose**: Collect and analyze feedback, retrospectives, and lessons learned
+
+Feedback documents capture retrospective learnings and user input. They close the loop from Phase 1 to Phase 11 by connecting measured outcomes back to original goals.
 
 **Key Files**:
 - `README.md` — Feedback overview
@@ -216,7 +228,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ### Backup & Reference (`01-templates/data-input/`)
-**Purpose**: Store historical material and reference documents
+
+This folder holds historical and reference materials that inform documentation but are not project deliverables. Store external specs, prior project decisions, and research materials here.
 
 **Usage**:
 - Previous project specifications
@@ -227,6 +240,8 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 ---
 
 ## Relationships & Dependencies
+
+The following diagram shows the dependency chain between phases. Each phase depends on the outputs of the previous phase. Do not generate a phase without verifying the required inputs from the prior phase are available and complete.
 
 ```
 01-templates/00-documentation-planning (Framework)
@@ -256,12 +271,23 @@ This template implements a complete SDLC (Software Development Lifecycle) framew
 
 ## Key Principles
 
-1. **Progression**: Each phase builds on previous deliverables
-2. **Phase Discipline**: Respect the phase focus (e.g., no code in Discovery)
-3. **Completeness**: Don't move to next phase until deliverables are done
-4. **Traceability**: Link requirements through design → development → testing
-5. **Single Source of Truth**: All docs live here; other repos link/submodule
+These principles explain the design decisions behind the framework. Apply them when adapting the template or resolving ambiguity about how to organize content.
+
+### 1. Progression
+Each phase builds on the previous phase's deliverables. A phase without complete prior context produces low-quality, generic output. Always verify prior phase completeness before generating.
+
+### 2. Phase Discipline
+Respect the phase focus at all times. Discovery and Requirements never contain technology names. Development never contains unresolved business questions. Crossing these boundaries creates confusion and rework.
+
+### 3. Completeness Before Advancement
+Do not move to the next phase until the current phase's deliverables are complete and approved. Parallel execution is possible for independent features, but the phase dependency chain must be respected.
+
+### 4. Traceability
+Every artifact must trace backward to its source. Requirements trace to Discovery; Designs trace to Requirements; Tests trace to Acceptance Criteria. Traceability is how the team verifies that nothing was lost between phases.
+
+### 5. Single Source of Truth
+All documentation lives here. Other repositories link or submodule to this documentation. No duplicate documentation exists in other locations.
 
 ---
 
-**Next**: TEMPLATE-USAGE-GUIDE.md — How to fill in each section
+**Next**: TEMPLATE-USAGE-GUIDE.md — How to generate content for each section

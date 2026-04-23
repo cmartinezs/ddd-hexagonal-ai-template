@@ -1,8 +1,10 @@
 # Data Flow Architecture
 
+You are an AI agent generating documentation for this template framework. This document defines the data flow architecture you must follow: where to store input materials, where to produce output documentation, and how to trace content from its source to its final form. Understanding this structure prevents you from mixing template guidance with production content or placing files in the wrong location.
+
 ## Overview
 
-This template uses a clear separation between input materials and output documentation:
+The framework separates documentation into two distinct areas: reference materials (data input) and production documentation (data output). All template guides remain read-only. You generate content into the data output area exclusively.
 
 ```
                     TEMPLATE GUIDES
@@ -36,25 +38,33 @@ This template uses a clear separation between input materials and output documen
 
 ## Data Input (Reference Materials)
 
+This section defines the purpose of the `data-input` folder and how you must handle materials placed there. These are source materials provided by the human collaborator — not documentation you generate.
+
 ### Purpose
-Collect all external documentation, research, and materials that inform your project documentation.
+
+The `data-input` folder holds all external documentation, research, and materials that inform the project. You read from it; you do not write to it.
 
 ### Contents
+
+The following subfolders organize source materials by type:
 - **external-specs/**: Specifications from clients or partners
 - **user-research/**: Interviews, surveys, user feedback
 - **competitor-analysis/**: Market research, competitor features
-- **previous-projects/**: Reference implementations, old specs
-- **standards/**: Industry standards, best practices
-- **raw-materials/**: Unprocessed input (emails, notes, etc.)
+- **previous-projects/**: Reference implementations, prior documentation
+- **standards/**: Industry standards and best practices
+- **raw-materials/**: Unprocessed input (emails, notes, transcripts)
 
-### Usage
-1. **Collect**: Place all external materials here
-2. **Organize**: Create subfolders by source/type
-3. **Reference**: Link from `01-templates/data-output/` when using these materials
-4. **Archive**: Keep as reference for future decisions
-5. **Don't modify**: Keep original materials intact
+### How to Use Data Input
+
+When working with source materials from `data-input/`:
+1. **Read**: Extract insights and constraints from the materials
+2. **Reference**: Link from `01-templates/data-output/` documents when using these materials
+3. **Do not modify**: Keep original materials intact — never overwrite source files
+4. **Archive**: Treat as a permanent record for future decisions
 
 ### Example
+
+When referencing a source material in a production document:
 ```
 01-templates/data-input/user-research/
 ├── README.md
@@ -72,11 +82,15 @@ Collect all external documentation, research, and materials that inform your pro
 
 ## Data Output (Production Documentation)
 
+This section defines where you write production documentation and what standards it must meet. Every file you write to `data-output/` must be real project content — never template instructions or placeholder text.
+
 ### Purpose
-Your actual project documentation, customized and complete—not template text.
+
+The `data-output` folder holds your actual project documentation: customized, complete, and approved. It mirrors the 12-phase SDLC and is what stakeholders and engineers work from.
 
 ### Structure
-Mirrors the 12-phase SDLC:
+
+`data-output/` mirrors the 12-phase SDLC structure exactly:
 ```
 01-templates/data-output/
 ├── 00-documentation-planning/ # Your SDLC framework & conventions
@@ -95,73 +109,81 @@ Mirrors the 12-phase SDLC:
 
 ### Key Principles
 
-1. **No TEMPLATE- Prefix**: Files are named after their actual content
+Apply these principles to every file you write in `data-output/`:
+
+1. **No `TEMPLATE-` Prefix**: Files you produce are named for their content, not their template
    - ❌ `TEMPLATE-context-motivation.md`
    - ✅ `context-motivation.md`
 
-2. **Real Project Content Only**: All text is specific to your project
+2. **Real Project Content Only**: Every line of text describes this specific project
    - ❌ "This is where you describe..." (template instructions)
    - ✅ "Our platform provides collaborative task management..." (real content)
 
-3. **No Template Guidance**: Helper text stays in `00-guides-and-instructions/`
+3. **No Template Guidance**: Instructional text stays in `00-guides-and-instructions/`
    - ❌ Include "complete these sections" instructions
    - ✅ Include only your actual project documentation
 
-4. **Input-Informed**: Content draws from `data-input/` materials
+4. **Input-Informed**: Content draws from `data-input/` materials with explicit links
    - Reference what informed each decision
-   - Link to external materials that support your documentation
-   - Note which user research or specs influenced requirements
+   - Link to the external materials that support your documentation
 
-5. **Production Ready**: This is what you share with team and stakeholders
-   - Every document should be complete and accurate
-   - No placeholder text or "[FILL IN X]" sections
-   - Sign-off from appropriate stakeholders
+5. **Production Ready**: Every document is what you would share with stakeholders
+   - No placeholder text, no "[FILL IN X]" sections
+   - Approved by the appropriate stakeholder before marked complete
 
 ---
 
 ## Workflow: From Input to Output
 
-### For Each Phase:
+This section defines the four-step workflow you follow for each phase. Apply this workflow sequentially — do not jump to writing output without completing the earlier steps.
 
-#### 1. Gather Materials
+### For Each Phase
+
+#### Step 1: Gather Materials
+Before generating output, verify that relevant source materials exist in `data-input/`:
 ```
 → Place relevant materials in 01-templates/data-input/
   ├── User interviews for Discovery phase
   ├── Competitor specs for Requirements
   ├── Design references for Design phase
-  └── Etc.
+  └── Technical standards for Development phase
 ```
 
-#### 2. Reference Template Guides
+#### Step 2: Reference Template Guides
+Read the relevant guide before generating:
 ```
 → Use 00-guides-and-instructions/ as reference
-  ├── Read TEMPLATE-USAGE-GUIDE.md for format
+  ├── Read TEMPLATE-USAGE-GUIDE.md for document format
   ├── Check EXAMPLE-IMPLEMENTATION.md for patterns
-  ├── Use templates as outline, not content
-  └── AI can generate initial drafts from templates
+  ├── Use the template structure as your outline
+  └── AI generates initial drafts using the template structure
 ```
 
-#### 3. Generate/Write in 01-templates/data-output/
+#### Step 3: Generate in 01-templates/data-output/
+Write production documentation:
 ```
-→ Create actual project documentation
+→ Create actual project documentation in data-output/
   ├── Use template structure as starting point
-  ├── Replace all template text with real content
-  ├── Reference 01-templates/data-input/ materials
+  ├── Replace all template text with real project content
+  ├── Reference 01-templates/data-input/ materials with links
   ├── Customize for your domain
-  └── Remove all instructions/placeholder text
+  └── Remove all instructional or placeholder text
 ```
 
-#### 4. Review & Validate
+#### Step 4: Review & Validate
+Verify the document meets production standards:
 ```
 → Ensure 01-templates/data-output/ documents are:
-  ├── Specific to your project (not generic)
+  ├── Project-specific (not generic)
   ├── Complete (no placeholder sections)
   ├── Accurate (reflect real decisions)
   ├── Linked to inputs (trace back to 01-templates/data-input/)
-  └── Approved (stakeholder sign-off)
+  └── Approved (stakeholder sign-off obtained)
 ```
 
 ### Example: Requirements Phase
+
+The following example shows the complete workflow for the Requirements phase.
 
 **Step 1: Gather Input**
 ```
@@ -209,20 +231,22 @@ In 01-templates/data-output/02-requirements/traceability-matrix.md:
 
 ## File Naming Conventions
 
-### Template Files (00-guides-and-instructions/)
-```
-TEMPLATE-[purpose].md
+This section defines the naming rules for each area of the repository. Follow these conventions to keep the structure navigable and consistent.
 
+### Template Files (00-guides-and-instructions/)
+
+Guide files follow the `TEMPLATE-[purpose].md` convention:
+```
 Examples:
 - TEMPLATE-ARCHITECTURE.md
 - TEMPLATE-USAGE-GUIDE.md
-- TEMPLATE-context-motivation.md (example in guide)
+- TEMPLATE-context-motivation.md (template inside a guide)
 ```
 
 ### Production Files (01-templates/data-output/)
-```
-[purpose].md (NO TEMPLATE- prefix)
 
+Production files are named for their content without the `TEMPLATE-` prefix:
+```
 Examples:
 - context-motivation.md
 - functional-requirements.md
@@ -231,9 +255,9 @@ Examples:
 ```
 
 ### Reference Files (01-templates/data-input/)
-```
-[source]-[type]-[date].md (or original naming)
 
+Source materials are named with a `[source]-[type]-[date]` convention or their original name:
+```
 Examples:
 - customer-interviews-2024-01.md
 - competitor-feature-matrix-jan.csv
@@ -242,94 +266,93 @@ Examples:
 
 ---
 
-## Best Practices
+## Standards Checklist
 
-### In 01-templates/data-input/:
-- ✅ Keep materials as-is (don't modify original sources)
-- ✅ Add context with README files
-- ✅ Link from 01-templates/data-output/ documents
+### Standards for 01-templates/data-input/
+- ✅ Keep materials as-is (do not modify original sources)
+- ✅ Add a README file explaining the context of each folder
+- ✅ Link from `data-output/` documents to relevant source materials
 - ✅ Date materials and note their source
-- ✅ Archive old materials instead of deleting
+- ✅ Archive old materials instead of deleting them
 
-### In 01-templates/data-output/:
+### Standards for 01-templates/data-output/
 - ✅ Use consistent IDs (FR-001, SF-001, TC-001)
-- ✅ Link back to 01-templates/data-input/ materials
-- ✅ Remove all template instructions
-- ✅ Customize every section for your project
-- ✅ Get stakeholder sign-off before completion
+- ✅ Link back to `data-input/` materials for every major decision
+- ✅ Remove all template instructions before finalizing
+- ✅ Customize every section for the specific project
+- ✅ Obtain stakeholder sign-off before marking a phase complete
 
-### Workflow:
-- ✅ Reference templates while writing (don't copy them)
-- ✅ Use AI to generate initial drafts from templates
-- ✅ Always review and customize AI output
-- ✅ Commit only production-ready content to data-output/
+### Workflow Standards
+- ✅ Reference templates while writing — do not copy template text into output
+- ✅ Use AI to generate initial drafts from template structure
+- ✅ Always review and customize AI output before delivery
+- ✅ Commit only production-ready content to `data-output/`
 - ✅ Keep template guides unchanged for future reference
 
 ---
 
-## Checklist: Ready to Use data-output/
+## Checklist: Ready to Deliver data-output/
 
-Before considering a `01-templates/data-output/` document complete:
+Before considering a `01-templates/data-output/` document complete and ready for stakeholder review, verify all of the following:
 
 ### Content Quality
 - [ ] All template instructions removed
-- [ ] All placeholder text replaced with real content
-- [ ] Domain-specific details included
-- [ ] Project context is clear
+- [ ] All placeholder text replaced with real project content
+- [ ] Domain-specific details included throughout
+- [ ] Project context is clear to a reader with no prior knowledge
 - [ ] No generic or example text remains
 
 ### Traceability
-- [ ] Links to relevant data-input/ materials
-- [ ] References to other phases created
-- [ ] IDs are consistent and unique
-- [ ] Acceptance criteria are specific
+- [ ] Links to relevant `data-input/` materials are present
+- [ ] References to other phases are present and valid
+- [ ] IDs are consistent and unique across the phase
+- [ ] Acceptance criteria are project-specific and verifiable
 
 ### Validation
-- [ ] Team members reviewed and approved
+- [ ] Team members have reviewed and approved
 - [ ] Stakeholder sign-off obtained
 - [ ] Linked to previous phase outputs
-- [ ] Ready for next phase input
+- [ ] Ready to serve as input for the next phase
 
-### Documentation
-- [ ] Format matches team standards
-- [ ] Links are valid (no broken refs)
-- [ ] Spelling and grammar correct
-- [ ] Committed to version control
+### Documentation Standards
+- [ ] Format matches project conventions
+- [ ] All links are valid (no broken references)
+- [ ] Committed to version control with a meaningful commit message
 
 ---
 
 ## FAQ
 
 **Q: Should I keep template files in 01-templates/data-output/?**
-A: No. Templates belong in `00-guides-and-instructions/`. Production docs go in `01-templates/data-output/` without TEMPLATE- prefix.
+A: No. Templates belong in `00-guides-and-instructions/`. Production docs go in `01-templates/data-output/` without the `TEMPLATE-` prefix.
 
 **Q: How do I handle materials that don't fit standard categories?**
-A: Create a custom subfolder in `01-templates/data-input/` with a README explaining its purpose.
+A: Create a custom subfolder in `01-templates/data-input/` with a README explaining its purpose and how it informs the documentation.
 
 **Q: Can I reference 01-templates/data-input/ documents in 01-templates/data-output/?**
-A: Yes, include links like: `See [Customer Research](../../data-input/user-research/interviews.md) for details.`
+A: Yes. Use relative links: `See [Customer Research](../../data-input/user-research/interviews.md) for details.`
 
-**Q: What if I want to revise something in 01-templates/data-input/?**
-A: Create a new version (don't overwrite original). Track changes in a README.
+**Q: What if I need to revise something in 01-templates/data-input/?**
+A: Create a new version — do not overwrite the original. Track changes in a README inside the folder.
 
 **Q: Should I commit 01-templates/data-input/ to Git?**
-A: Yes, for traceability. But be careful with confidential materials (add to .gitignore if needed).
+A: Yes, for traceability. Be careful with confidential materials — add them to `.gitignore` if they must remain private.
 
 ---
 
 ## Summary
 
-- **Template Guides** (00-guides-and-instructions/): How to document
-- **Data Input** (01-templates/data-input/): What you're documenting (reference materials)
-- **Data Output** (01-templates/data-output/): Your actual project documentation (production)
+The data flow architecture has three distinct zones, each with a clear role:
 
-Follow this flow for each phase:
+- **Template Guides** (`00-guides-and-instructions/`): How to document — read-only reference
+- **Data Input** (`01-templates/data-input/`): What you are documenting — source materials
+- **Data Output** (`01-templates/data-output/`): Your actual project documentation — production content
+
+Follow this sequence for every phase:
 1. Gather external materials → `01-templates/data-input/`
-2. Reference template guide → `00-guides-and-instructions/`
-3. Write production docs → `01-templates/data-output/`
+2. Reference the template guide → `00-guides-and-instructions/`
+3. Write production documentation → `01-templates/data-output/`
 4. Link inputs to outputs → Traceability
-
-The separation keeps template guidance separate from your project documentation, making everything clear and organized.
 
 ---
 
