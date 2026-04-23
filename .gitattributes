@@ -1,0 +1,24 @@
+# Automatically handle line endings for text files
+* text=auto eol=lf
+
+# Normalize markdown and text files to LF in the repository
+*.md text eol=lf
+*.txt text eol=lf
+
+# Treat shell scripts as text with LF endings
+*.sh text eol=lf
+
+# Treat batch files as text with CRLF endings (native Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files (do not modify line endings)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
