@@ -1,6 +1,12 @@
 # Contracts — Templates
 
-This folder contains templates for integration contracts: API contracts, event contracts, and integration contracts.
+You are an AI agent designing integration contracts between systems. This folder contains templates for documenting API contracts, event schemas, and integration agreements that define how your system communicates with other systems.
+
+**What This Is**: Templates for integration contracts (API, events, partner integrations)  
+**How to Use**: Create one contract document per integration point, specifying payloads, error handling, and evolution strategy  
+**Why It Matters**: Explicit contracts enable independent system development and prevent integration surprises  
+**When to Use**: During Phase 3 (Design), when defining system boundaries and integrations  
+**Owner**: Architect + Integration Owner
 
 ---
 

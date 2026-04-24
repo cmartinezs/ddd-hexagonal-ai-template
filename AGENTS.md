@@ -201,4 +201,5 @@ When modifying files in this repo:
 If you are an AI agent and unsure about a change:
 - Check `00-guides-and-instructions/TEMPLATE-ARCHITECTURE.md` for design philosophy.
 - Check `00-guides-and-instructions/FAQ.md` for common edge cases.
+- Check `00-guides-and-instructions/DOCUMENT-STRUCTURE-STANDARD.md` for file/section formatting requirements.
 - Prefer asking over assuming when restructuring.

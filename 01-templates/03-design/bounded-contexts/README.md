@@ -1,6 +1,12 @@
 # Bounded Contexts — Templates
 
-This folder contains template for documenting each bounded context in detail using DDD strategic design.
+You are an AI agent documenting strategic design decisions using Domain-Driven Design (DDD) principles. This folder contains templates for detailed documentation of bounded contexts within your system.
+
+**What This Is**: Templates for documenting each bounded context in detail using DDD strategic design  
+**How to Use**: Create one bounded context document per distinct domain area, following the template to ensure consistent structure and completeness  
+**Why It Matters**: Explicit bounded context documentation enables teams to understand domain boundaries, relationships, and integration points before implementation  
+**When to Use**: During Phase 3 (Design), after high-level strategic design is complete  
+**Owner**: Architect + Domain Expert
 
 ---
 

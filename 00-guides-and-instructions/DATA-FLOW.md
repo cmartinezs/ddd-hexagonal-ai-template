@@ -2,6 +2,12 @@
 
 You are an AI agent generating documentation for this template framework. This document defines the data flow architecture you must follow: where to store input materials, where to produce output documentation, and how to trace content from its source to its final form. Understanding this structure prevents you from mixing template guidance with production content or placing files in the wrong location.
 
+**What This Is**: Architecture for organizing input materials, template guides, and production documentation across the framework  
+**How to Use**: Reference this when setting up a new documentation project or when uncertain about file placement and workflow  
+**Why It Matters**: Clear separation of concerns prevents mixing template instructions with real project content, enabling clean handoffs and auditable traceability  
+**When to Use**: Before starting Phase 1 (Discovery); reference continuously for correct file placement  
+**Owner**: Tech Lead + Documentation Manager
+
 ## Overview
 
 The framework separates documentation into two distinct areas: reference materials (data input) and production documentation (data output). All template guides remain read-only. You generate content into the data output area exclusively.

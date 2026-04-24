@@ -405,3 +405,7 @@ The table below provides a quick reference to all files in this directory, who g
 **Total Time to Complete Discovery**: 8-13 hours  
 **Definition of Done**: All actors understood, scope agreed, decisions documented, stakeholders aligned and signed off  
 **Success Indicator**: Team can start Requirements phase with zero ambiguity about project direction and scope
+
+---
+
+[← Back to Phase Index](../00-documentation-planning/README.md) | [Next Phase >](../02-requirements/README.md)

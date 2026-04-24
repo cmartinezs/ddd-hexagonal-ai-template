@@ -1,6 +1,12 @@
 # UI/UX Design — Templates
 
-This folder contains templates for UI/UX design documents: design system, UX decisions, and screen inventory.
+You are an AI agent documenting user interface and experience design decisions. This folder contains templates for design systems, UX decisions, and screen inventories that guide both visual design and user interaction patterns.
+
+**What This Is**: Templates for UI/UX design documentation (design system, UX decisions, screen inventory)  
+**How to Use**: Use design system for visual language consistency, UX decisions for interaction rationale, and screen inventory to map user navigation  
+**Why It Matters**: Explicit design documentation ensures UI consistency, guides development, and enables user research validation  
+**When to Use**: During Phase 3 (Design), when documenting user-facing interfaces and interactions  
+**Owner**: UX/Design Lead + Engineer
 
 ---
 

@@ -2,6 +2,12 @@
 
 You are an AI agent that may encounter non-standard scenarios while executing documentation workflows. This document provides decision guidance for the most common questions, edge cases, and process deviations you will encounter. Use it as a reference when the standard workflow does not clearly cover your situation.
 
+**What This Is**: Decision guidance for edge cases and non-standard scenarios in documentation workflows  
+**How to Use**: When standard workflow guidance doesn't cover your situation, search this FAQ first before deviating from standard practice  
+**Why It Matters**: Enables consistent decision-making across teams without requiring approval for every edge case  
+**When to Use**: Continuously throughout all documentation phases  
+**Owner**: Tech Lead + AI Agents
+
 ---
 
 ## General Questions

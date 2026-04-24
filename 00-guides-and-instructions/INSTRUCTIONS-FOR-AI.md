@@ -7,6 +7,7 @@ You are an AI agent responsible for generating SDLC documentation using this tem
 ## Contents
 
 - [General principles](#general-principles)
+- [Document formatting requirements](#document-formatting-requirements)
 - [AI agent authoring directive (mandatory)](#ai-agent-authoring-directive-mandatory)
 - [Prompt structure](#prompt-structure)
 - [Prompts by phase](#prompts-by-phase)
@@ -53,6 +54,88 @@ This is a non-negotiable rule:
 - Phases 6+: **Technology specific** — name your actual stack
 
 If you generate a phases 1–5 document and it contains technology names, stop, identify the violations, and revise before delivering.
+
+---
+
+## Document Formatting Requirements
+
+Every document you generate must follow the formatting standard defined in `DOCUMENT-STRUCTURE-STANDARD.md`. This section summarizes the key requirements. For complete details, reference that file.
+
+### File-Level Structure (Required for All Files)
+
+Every document must include:
+
+1. **Navigation links** (if sequential): `[← Index] | [< Previous] | [Next >]`
+2. **Title** (H1): Clear indication of document purpose
+3. **Role context**: "You are an AI agent responsible for..."
+4. **Metadata block** (for templates and README files only):
+   - What This Is (one-line definition)
+   - How to Use (one-line instruction)
+   - Why It Matters (one-line value statement)
+   - When to Use (timing or conditions)
+   - Owner (responsible role(s))
+5. **Contents section**: All H2 sections with anchor links
+6. **Sections with intros**: Every H2 section must start with "What This Section Is" + explanatory paragraph
+7. **Completion Checklist**: With directive verbs ("Define", "Document", not "Defined")
+8. **Sign-Off**: Prepared by, Reviewed by, Approved by
+9. **Bottom navigation** (if sequential)
+
+### Section-Level Structure (Required for All H2 Sections)
+
+Every section must follow this pattern:
+
+```markdown
+## [Section Title]
+
+**What This Section Is**: [One sentence explaining purpose]
+
+[Explanatory paragraph before any template/table/example]
+
+### [Subsection]
+[Content]
+
+### Example: [Specific Name]
+
+**What This Example Demonstrates**:
+- Learning point 1
+- Learning point 2
+- Learning point 3
+
+[Filled example]
+```
+
+### Key Rules (Non-Negotiable)
+
+✅ **DO**:
+- Use imperative mood: "Define", "Document", "Create", "Verify"
+- Provide "What This Section Is" intro before any content
+- Explain templates/tables before showing them
+- Include context intro for every example ("This example demonstrates...")
+- Use directive verbs in checklists (action-oriented)
+- Maintain consistent visual markers (✅ ❌ 🎯 ⚠️ 📋)
+
+❌ **DON'T**:
+- Use passive voice: "The requirement should be defined"
+- Skip intros before examples or templates
+- Use passive checklist verbs: "Defined", "Documented"
+- Assume reader understands context without explanation
+- Mix different metadata formats across files
+
+### Validation Before Delivery
+
+Before delivering any document, verify:
+- [ ] Navigation present (if sequential)
+- [ ] Role context statement ("You are...")
+- [ ] Metadata block complete (if template/README)
+- [ ] Every H2 has "What This Section Is" intro
+- [ ] Every template/table has explanatory paragraph
+- [ ] Every example has context intro
+- [ ] Checklist uses directive verbs only
+- [ ] No technology names in phases 1–5
+- [ ] All links valid and tested
+- [ ] Sign-off section present
+
+For complete validation checklist and details, see `DOCUMENT-STRUCTURE-STANDARD.md`.
 
 ---
 
