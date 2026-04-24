@@ -16,6 +16,14 @@
 
 ## API Contract Template
 
+**What each field means**:
+- **[API-XXX]**: Unique identifier for this API contract (e.g., API-001, API-002, etc.)
+- **Endpoint**: The HTTP method and path (e.g., `POST /users`, `GET /tasks/{id}`)
+- **Related Flow**: Which system flow (SF-XXX) from Design phase this endpoint implements
+- **Request**: Data the caller must provide (headers, body structure)
+- **Response**: Data returned on success or error
+- **Authorization**: Who can call this endpoint (authenticated user, admin role, public, etc.)
+
 ```markdown
 ## [API-XXX] Endpoint: [Name]
 

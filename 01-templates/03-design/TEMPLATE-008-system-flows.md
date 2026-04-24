@@ -4,13 +4,9 @@
 
 # System Flows Template
 
-**What This Is**: A template for documenting how the system behaves for major user and system workflows. Each flow shows actors, trigger, happy path, exception paths, and data flow.
+Use this template to document how the system behaves for each major workflow. For every functional requirement identified in Phase 2, you must produce at least one system flow. Flows capture actors, trigger, happy path, exception paths, and data transformations — without referencing technology or implementation details.
 
-**How to Use**: Create one flow per major workflow. Follow the structure exactly: Actors → Trigger → Preconditions → Happy Path → Exceptions → Decision Points → Data Flow.
-
-**Why It Matters**: Without explicit flows, teams build inconsistent behavior. Flows catch edge cases early and create shared understanding of system behavior before code is written.
-
-**When to Use**: For all major requirements. Every FR should have at least one flow.
+Before filling in this template, ensure the requirements phase is complete and each functional requirement has a unique FR-XXX identifier. Your output will be consumed by the Data Model phase to identify entities, and by the Development phase to drive implementation.
 
 **Owner**: Architect + Product Manager (for review)
 
@@ -27,6 +23,8 @@
 ---
 
 ## Flow Structure
+
+Each system flow follows this exact structure. Copy the block below once per major workflow, assign it a unique SF-XXX identifier, and fill in every field. Do not leave any field empty — if a field does not apply, write "N/A" and briefly explain why.
 
 ```markdown
 ## [SF-XXX] Flow Name
@@ -70,6 +68,8 @@
 
 ## Field Definitions
 
+Use this table to understand the purpose of each field before filling it in. Ambiguous or missing fields are the most common cause of incomplete flows.
+
 | Field | Purpose | Guidance |
 |-------|---------|----------|
 | **Flow ID** | Unique identifier | Format: SF-001, SF-002, etc. |
@@ -86,7 +86,11 @@
 
 ## Writing Guidelines
 
+Apply these guidelines when writing each flow. They distinguish well-written flows from vague ones. Review your output against both criteria tables before considering a flow complete.
+
 ### ✅ Good Flow Characteristics
+
+Your flows should exhibit all of the following:
 
 | Characteristic | Example |
 |---------------|----------|
@@ -99,6 +103,8 @@
 
 ### ❌ Avoid
 
+Do not include any of the following in your flows:
+
 - Vague steps: "system processes data" (too generic)
 - Implementation details: JWT, database, API endpoints
 - Only happy path: exception paths are 50% of work
@@ -109,7 +115,15 @@
 
 ## Example Flows
 
+The following examples demonstrate what a complete flow looks like. Use them as reference when writing your own flows. Do not copy them verbatim — replace all content with real project information.
+
 ### Example: User Registration
+
+This example shows a registration flow with email verification. Observe:
+- Clear actor roles (Prospective User, System, Email Service)
+- Step-by-step happy path with system responses after each action
+- Multiple exception flows covering validation errors and delivery failures
+- Explicit data transformations (password hashing, token generation, email sending)
 
 ## [SF-001] User Registration
 
@@ -160,6 +174,13 @@ User clicks "Sign Up"
 ---
 
 ### Example: Checkout Flow
+
+This example shows a complex multi-step flow with external dependencies and state management. Observe:
+- Preconditions that must be true before the flow starts
+- Interactions with external services (Payment Processor, Inventory)
+- Multiple decision points based on validation and availability
+- Exception flows for payment failure, address validation, and inventory issues
+- Clear data flow showing what persists and what changes state
 
 ## [SF-010] Checkout and Payment
 
@@ -221,6 +242,8 @@ Customer clicks "Checkout"
 ---
 
 ## Completion Checklist
+
+Before marking this document complete, verify every item below. A missing item means the flows are not ready for the next phase.
 
 ### Deliverables
 

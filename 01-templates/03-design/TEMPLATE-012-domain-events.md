@@ -52,6 +52,10 @@
 
 ## Event Patterns
 
+**What are event patterns?** Event patterns categorize the different types of business events your system cares about. Each pattern describes a scenario when an event should be published. Recognizing patterns helps you identify which events matter and when they occur.
+
+**How to use this table**: For each event you identify, determine which pattern it fits. If an entity changes state, it's a State Transition. If a user action completes successfully, it's Action Completed. This framing ensures you capture all the events that matter.
+
 | Pattern | When to Use | Example |
 |---------|-------------|----------|
 | **State Transition** | Entity changes state | OrderCreated, UserSuspended |
@@ -60,6 +64,10 @@
 | **Relationship Change** | Link between entities changes | UserAddedToOrg, RoleAssigned |
 
 ### Event Naming Rules
+
+**Why past tense?** Events represent facts that have already happened. "UserCreated" is a fact—something occurred in the past. "CreateUser" is a command—a request to make something happen. This distinction is critical: events are immutable outcomes, commands are requests that may fail.
+
+**How to apply**: For each event, use past tense and include the entity type: `[Entity][Action]Completed`. If uncertain whether to use past tense, ask: "Has this already happened?" If yes, past tense is correct.
 
 | ✅ Good | ❌ Bad |
 |---------|-------|

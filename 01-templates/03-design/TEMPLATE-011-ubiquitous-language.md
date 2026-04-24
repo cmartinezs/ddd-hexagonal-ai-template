@@ -4,13 +4,9 @@
 
 # Ubiquitous Language Template
 
-**What This Is**: The shared vocabulary between business and engineering. Not a technical glossary or database dictionary — it's the language that business experts and engineers both use. When this language changes, the model changes.
+Use this template to document the shared vocabulary between business experts and the engineering team. This is not a technical glossary or database dictionary — it is the language that both sides use when talking about the domain. When a term in this document changes, the model changes. When a term is used inconsistently across the team, this document corrects it.
 
-**How to Use**: Define terms by context. The same term can have different meanings in different bounded contexts — that's intentional and healthy.
-
-**Why It Matters**: Without shared language, teams translate between "business speak" and "tech jargon," creating miscommunication. Ubiquitous language prevents this and creates traceability from code to concepts.
-
-**When to Use**: Using DDD approach. For complex domains with multiple teams or concepts.
+Apply this template when using DDD on complex domains with multiple teams or context boundaries. Define terms by bounded context — the same word may mean different things in different contexts, and that is intentional.
 
 **Owner**: Domain Expert + Architect
 
@@ -29,19 +25,21 @@
 
 ## How to Read This Document
 
-Each term includes:
+Before filling in any section, understand the conventions used throughout. Applying them consistently ensures that terms are unambiguous and that future readers (both human and AI agents) interpret the vocabulary correctly.
+
+Each term entry includes:
 
 - **Definition**: What it means in this context
 - **Context**: Which bounded context it applies to (if multiple, indicated)
 - **Not to be confused with**: Clarifications about similar terms or the same term in another context
 
-**Terms marked with ⚠️ are risk terms**: Words used colloquially with ambiguous meaning that have a precise, unique meaning in this system.
+**Terms marked with ⚠️ are risk terms**: Words used colloquially with ambiguous meaning that have a precise, unique meaning in this system. Pay special attention to these when reviewing or consuming this document.
 
 ---
 
 ## Cross-Context Terms
 
-Terms that apply across all contexts as design constraints, not as specific context concepts.
+Identify and define terms that apply as constraints or concepts across all bounded contexts — not specific to any one context. These are typically architectural invariants or shared identifiers.
 
 | Term | Definition |
 |------|------------|
@@ -51,6 +49,8 @@ Terms that apply across all contexts as design constraints, not as specific cont
 ---
 
 ## Terms by Context
+
+For each bounded context identified in the strategic design, list the terms that have specific meanings within that context. Begin each subsection with a one-sentence description of what the context manages, so that readers understand the frame of reference before interpreting the terms.
 
 ### Context Name: [Context 1]
 
@@ -77,7 +77,7 @@ The [Context 2] context manages [what it does].
 
 ## Ambiguities Resolved
 
-These terms appear in multiple contexts with different meanings. This establishes canonical meaning in each.
+List every term that appears in more than one context with different meanings. This table is the authoritative reference for resolving naming conflicts during design reviews, development, and code review. Every entry here corresponds to a deliberate modeling decision.
 
 | Term | In Context A | In Context B | In Context C |
 |------|-------------|-------------|-------------|
@@ -90,7 +90,11 @@ These terms appear in multiple contexts with different meanings. This establishe
 
 ## Domain Verbs
 
-Domain verbs are actions the system performs or actors execute. Naming them precisely is part of the language.
+**What are domain verbs?** Domain verbs are the specific actions and operations that matter to your business. They are not generic ("handle", "process", "manage", "update") but precise to your domain ("authenticate", "reserve inventory", "settle payment", "suspend account"). Every domain verb becomes part of your ubiquitous language—shared between domain experts and engineers.
+
+**How to identify them**: Scan your system flows (SF-XXX documents) and domain events. Every action or state transition should have a precise verb. If you find yourself writing "the system processes the order," stop—what specifically? Does it validate? Reserve? Confirm? Each of those is a different domain verb.
+
+Identify the actions that actors and the system perform within the domain. Naming them precisely is part of the ubiquitous language — vague verbs ("handle", "process", "manage") are not acceptable here. Use specific, domain-meaningful terms.
 
 | Verb | Who Performs | Description |
 |------|-------------|-------------|
@@ -106,6 +110,8 @@ Domain verbs are actions the system performs or actors execute. Naming them prec
 ---
 
 ## Completion Checklist
+
+Before closing this document, verify that all sections are complete and that no term is left undefined or ambiguous.
 
 ### Deliverables
 

@@ -18,6 +18,11 @@
 
 ### Color Palette
 
+**What to include**: Define 5–8 core colors that cover brand identity, semantic states, and neutral hierarchy.
+- **Brand colors** (2): Your distinctive primary (main actions, links) and secondary (supporting elements)
+- **Semantic colors** (3): Success (positive feedback), warning (caution states), error (user errors)
+- **Neutral colors** (2–3): Text, borders, backgrounds for contrast and hierarchy
+
 | Color | Usage | Hex |
 |-------|-------|-----|
 | Brand Primary | Main actions, links | #000000 |
@@ -29,6 +34,8 @@
 
 ### Typography
 
+**What to include**: Define 4–6 text styles for headings, body copy, and metadata. Each style includes font family, size, weight, and line-height for consistent visual hierarchy.
+
 | Element | Font | Size | Weight |
 |---------|------|------|--------|
 | H1 | [Font] | 24px | Bold |
@@ -38,11 +45,15 @@
 
 ### Spacing System
 
+**What to include**: Define a consistent base unit (commonly 4px or 8px) and document standard margin and padding values. Consistency here prevents chaotic whitespace and makes layouts more predictable.
+
 - Base unit: 4px or 8px grid
 - Margins: [standard sizes]
 - Padding: [standard sizes]
 
 ### Component Library
+
+**What to include**: Define the interactive elements users will interact with. For each component (Button, Input, Card, etc.), document its states (default, hover, active, disabled, loading, error) so developers build consistency.
 
 | Component | States | Usage |
 |-----------|--------|-------|
@@ -53,6 +64,8 @@
 | **Modal** | open, closed | Focused tasks |
 
 ### Interaction Patterns
+
+**What to include**: Document how users interact with the system across common scenarios. These patterns ensure the experience feels consistent and predictable—users know what to expect when they hover, focus, or wait for data.
 
 - Hover: Visual feedback on interactive elements
 - Focus: Visible focus indicator for accessibility

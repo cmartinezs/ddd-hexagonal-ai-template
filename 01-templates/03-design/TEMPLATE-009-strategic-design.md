@@ -4,13 +4,9 @@
 
 # Strategic Design Template
 
-**What This Is**: The DDD strategic design phase — before modeling entities or flows, defining where the real value lies and which parts of the domain deserve the deepest modeling effort.
+Use this template to define the DDD strategic design before any detailed modeling begins. Your goal is to classify the domain into subdomains, articulate where the competitive advantage lives, and identify the bounded context candidates that will guide all subsequent design decisions.
 
-**How to Use**: Use after Discovery (Phase 1) and before any detailed modeling. This defines boundaries and priorities that guide everything else.
-
-**Why It Matters**: Not all subdomains are equal. Strategic design tells you where to invest heavily (core domain) vs. where to simplify (generic subdomains). Without this, teams over-engineer commodity features and under-invest in differentiators.
-
-**When to Use**: For complex domains using DDD approach. Skip for simple MVPs.
+Apply this template after Discovery (Phase 1) and before detailed flows or domain modeling. If you are working on a simple MVP, skip this template and go directly to System Flows.
 
 **Owner**: Architect + Domain Expert
 
@@ -29,6 +25,10 @@
 
 ## Domain Vision Statement
 
+Write a concise statement that defines what the system exists to do and where its unique value lies. This statement should distinguish the system's real differentiator from its supporting capabilities. It will be used as a north-star reference throughout the rest of the design phase.
+
+Use the structure below. Replace the placeholder text with real information about the product.
+
 > [PRODUCT NAME] exists to be [core value proposition].
 >
 > [Differentiating factor] is not [common feature] — that's the means. The real value is [unique capability].
@@ -36,6 +36,8 @@
 > The system is successful when [desired outcome for users].
 
 ### Example: Authentication Platform
+
+The following example shows a filled-in Domain Vision Statement for an authentication platform. Use it to calibrate the level of specificity expected in your own statement.
 
 > Keygo exists to be the single source of truth about **who an identity is, what they can do, and under what conditions**, within any SaaS ecosystem that doesn't want to build or maintain its own identity and access infrastructure.
 >
@@ -47,9 +49,15 @@
 
 ## Subdomain Classification
 
+Identify every subdomain in the system and classify it as Core, Supporting, or Generic. This classification determines how deeply you model each area: deep investment goes to Core, sufficient modeling to Supporting, and minimal or delegated handling to Generic.
+
 In DDD, not all subdomains deserve equal investment. Classification determines where deep modeling applies.
 
 ### Core Domain — The Differentiator
+
+**How to identify**: Core subdomains are where your product's competitive advantage lives. Ask yourself: "If we couldn't build this, could we still compete?" If the answer is no, it's Core. Core domains require the deepest modeling, best names, and most careful abstractions.
+
+List the subdomains where the product's competitive advantage lives. These are the capabilities the system does that cannot be bought, replicated with a generic framework, or delegated. Apply your deepest modeling effort here.
 
 | Subdomain | Description |
 |----------|------------|
@@ -59,6 +67,10 @@ Core Domain is where you can't buy, replicate with a generic framework, or deleg
 
 ### Supporting Subdomains — Necessary, Not Differentiators
 
+**How to identify**: Supporting subdomains are needed for the system to function, but they do not create competitive advantage. Examples: user authentication (used by many systems), email delivery, logging. You should model these sufficiently to work, but avoid over-engineering.
+
+List the subdomains that the system needs to function but that do not constitute a competitive advantage. Model these sufficiently to work, but avoid over-engineering them.
+
 | Subdomain | Description |
 |----------|------------|
 | **[Subdomain A]** | [What it does] — needed to function, but not competitive advantage |
@@ -66,6 +78,10 @@ Core Domain is where you can't buy, replicate with a generic framework, or deleg
 | **[Subdomain C]** | [What it does] |
 
 ### Generic Subdomains — Buy or Delegate
+
+**How to identify**: Generic subdomains are commodities available as off-the-shelf solutions or external services. Examples: payment processing, SMS delivery, file storage. Do not build deep domain models for generic subdomains—integrate them instead.
+
+List the subdomains that are commodities. These should be fulfilled by external services or off-the-shelf solutions. Do not build deep domain models for generic subdomains.
 
 | Subdomain | Description |
 |----------|------------|
@@ -75,6 +91,8 @@ Core Domain is where you can't buy, replicate with a generic framework, or deleg
 ---
 
 ## Core Domain Justification
+
+Answer the question below to validate that the subdomains classified as Core are genuinely irreplaceable. If you cannot answer it convincingly, reconsider the classification.
 
 Ask: **What does the system do that a customer can't just buy or replicate easily?**
 
@@ -87,7 +105,9 @@ What customers buy is [core value] — and that lives in [Core Domain subdomains
 
 ## Bounded Contexts Candidates
 
-A Bounded Context is an explicit boundary within which a domain model is valid and consistent. The same concept may exist in multiple contexts with different meanings — that's correct.
+Identify the bounded context candidates based on the subdomain classification above. Each bounded context is an explicit boundary within which a domain model is valid and consistent. The same concept may exist in multiple contexts with different meanings — that is correct and intentional in DDD.
+
+Draw a diagram showing the contexts and their grouping. Use Mermaid. Then, document the terms that appear in multiple contexts to establish that different meanings are explicit and deliberate.
 
 ```mermaid
 graph TD
@@ -112,6 +132,8 @@ graph TD
 
 ### Same Term, Different Contexts
 
+List any term that appears in more than one context and document what it means in each. Acknowledging these differences explicitly prevents confusion during detailed modeling and development.
+
 | Term | In Context A | In Context B | In Context C |
 |------|-------------|-------------|-------------|
 | **User** | [Meaning here] | [Meaning here] | [Meaning here] |
@@ -124,7 +146,7 @@ This multiplicity is intentional and healthy in DDD. Each context has its own pe
 
 ## Implications for Modeling
 
-These strategic decisions have direct consequences:
+Translate each strategic decision into a concrete modeling implication. This table connects the classification choices you made above to the work that follows in detailed design and development.
 
 | Decision | Implication |
 |----------|-------------|
@@ -137,6 +159,8 @@ These strategic decisions have direct consequences:
 ---
 
 ## Completion Checklist
+
+Before moving to System Flows or detailed bounded context modeling, verify that all items below are complete. An incomplete strategic design will cause inconsistencies in every subsequent design artifact.
 
 ### Deliverables
 

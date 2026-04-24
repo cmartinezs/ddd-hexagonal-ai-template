@@ -1,18 +1,12 @@
 # Phase 3: Design
 
-**What This Is**: The phase where requirements translate into system behavior and domain structure. This phase bridges "what" (requirements) and "how" (implementation) using DDD strategic design — before diving into data model or code.
+Your role in this phase is to translate the completed requirements from Phase 2 into explicit system behavior and domain structure. This phase produces the design artifacts that make requirements concrete — before any data model or code decisions are made.
 
-**How to Use**: Follow the templates in order based on your design approach:
-- Lightweight: Start with System Flows only
-- Full DDD: Strategic Design → Ubiquitous Language → Domain Events → Context Map → Bounded Contexts → Contracts → UI
+Before you begin, verify that Requirements (Phase 2) is complete. Every design artifact you produce must trace back to a specific functional requirement (FR-XXX). Design that cannot be traced to a requirement is out of scope.
 
-**Why It Matters**: Without clear design, teams build the wrong thing or fight over meaning. Design validates that requirements are achievable and reveals gaps before code is written.
-
-**When to Complete**: After Requirements (Phase 2) is complete. Before Data Model (Phase 4).
-
-**Owner**: Designer/Architect lead + Product Manager + Engineering Lead
-
-**Diagram Convention**: Mermaid → PlantUML → ASCII (see root README.md)
+**Phase position**: After Requirements (Phase 2). Before Data Model (Phase 4).
+**Phase owner**: Designer/Architect lead + Product Manager + Engineering Lead
+**Diagram convention**: Mermaid → PlantUML → ASCII (see root README.md)
 
 ---
 
@@ -29,21 +23,22 @@
 
 ## Design Approach
 
+Choose the design path based on the system's complexity. Your choice determines which documents you must produce. If the domain has more than one team, complex business rules, or long-term product ambitions, default to Option B.
+
 ### Option A: Lightweight Design (Default for MVP)
 
-Use for simple systems, single-team products, or short timelines:
+Apply this path when the system is simple, single-team, or time-constrained. You will produce one document: a set of system flows covering all major requirements.
 
 | Document | Purpose | File |
 |----------|---------|------|
 | **System Flows** | How the system behaves for major workflows | [TEMPLATE-008](./TEMPLATE-008-system-flows.md) |
 
 **Time**: 3-4 hours
-
 **When to use**: MVP, simple domains, CRUD-heavy apps
 
 ### Option B: Domain-Driven Design (For Complex Domains)
 
-Use for complex business logic, multiple teams, long-term products:
+Apply this path when the domain is complex, multi-team, or long-lived. Produce documents in the order listed — each one provides inputs the next depends on.
 
 | Document | Purpose | File |
 |----------|---------|------|
@@ -53,20 +48,23 @@ Use for complex business logic, multiple teams, long-term products:
 | **Domain Events** | Key business events and reactions | [TEMPLATE-012](./TEMPLATE-012-domain-events.md) |
 | **Context Map** | How bounded contexts relate and integrate | [TEMPLATE-013](./TEMPLATE-013-context-map.md) |
 
-**Supplements** (in subfolders):
+**Supplements** (in subfolders — produce when conditions apply):
 - [Bounded Contexts](./bounded-contexts/) — Each major domain boundary detailed
 - [Contracts](./contracts/) — How systems communicate
 - [UI/UX](./ui/) — Screen designs and interaction patterns
 
 **Time**: 6-8 hours
-
 **When to use**: Complex domains, multiple teams, microservices
 
 ---
 
 ## Documents to Complete
 
+Track which documents you need to produce. For each document you fill in, replace all placeholder text (`[...]`) with actual project content. Do not leave instructional text in the output.
+
 ### Core Documents
+
+These are the primary design artifacts. Produce all that apply to your chosen approach.
 
 | Document | Description | Time | Owner |
 |----------|-------------|------|-------|
@@ -78,6 +76,8 @@ Use for complex business logic, multiple teams, long-term products:
 
 ### Supplementary Documents
 
+Produce these supplements when the stated condition is met. Do not skip them if the condition applies to the project.
+
 | Folder | Description | When |
 |--------|-------------|------|
 | [bounded-contexts/](./bounded-contexts/) | Each bounded context detailed | Using DDD |
@@ -88,10 +88,10 @@ Use for complex business logic, multiple teams, long-term products:
 
 ## Design → Requirements Connection
 
-**Before starting**, ensure Requirements phase is complete:
+Before producing any design artifact, confirm the traceability below. Use the requirements produced in Phase 2 as your input. If a requirement exists but has no corresponding design artifact, that is a gap you must fill.
 
-| Requirements | How It Shapes Design |
-|--------------|--------------------|
+| Requirements Source | How It Shapes Design |
+|--------------------|---------------------|
 | **Functional Requirements** | Each FR → at least one system flow |
 | **Non-Functional Requirements** | Performance/security targets guide decisions |
 | **Scope Matrix** | In-scope items determine which flows to design |
@@ -102,6 +102,8 @@ Use for complex business logic, multiple teams, long-term products:
 ---
 
 ## Phase Discipline Rules
+
+Apply these rules to every artifact you produce in this phase. They enforce the boundary between design (behavior) and development (technology). Violations will require rework in later phases.
 
 ✅ **Before moving to Data Model phase, verify**:
 
@@ -126,6 +128,8 @@ Use for complex business logic, multiple teams, long-term products:
 
 ## Completion Checklist
 
+Before signaling this phase complete, verify every item below. Mark a checkbox only when the corresponding content is real project information — not placeholder text.
+
 ### Deliverables
 
 - [ ] All major workflows documented (system flows)
@@ -143,6 +147,8 @@ Use for complex business logic, multiple teams, long-term products:
 
 ### Sign-Off
 
+Record the names and dates of those who reviewed and approved this phase's output before it is used as input to Phase 4.
+
 - [ ] **Prepared by**: [Designer/Architect], [Date]
 - [ ] **Reviewed by**: [Product Manager, Engineering Lead], [Date]
 - [ ] **Approved by**: [Product Director], [Date]
@@ -150,6 +156,8 @@ Use for complex business logic, multiple teams, long-term products:
 ---
 
 ## Summary
+
+This table summarizes what you will produce depending on the approach chosen.
 
 | Approach | Deliverables | Time |
 |----------|------------|------|

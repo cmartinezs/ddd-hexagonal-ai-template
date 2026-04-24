@@ -16,6 +16,10 @@
 
 ## Decision Template
 
+**When to document UX decisions**: Document decisions when there are multiple reasonable approaches with different trade-offs. Trivial choices ("use blue button") don't need documentation; strategic choices ("email vs SMS verification") do. If you can justify the choice in 30 seconds, it's probably not worth documenting.
+
+**How to structure**: Describe the decision clearly, list the alternatives you considered and why they didn't work, explain why you chose this one (grounded in user research, business constraints, or technical feasibility), and be honest about what you sacrificed.
+
 ```markdown
 ## UX-[XXX] Decision: [Title]
 
@@ -26,10 +30,12 @@
 - **[Option B]**: [Description]
 
 ### Justification
-[Why this decision was made]
+
+[Why you chose this one — ground this in user research, business goals, constraints, or technical feasibility. Don't say "it feels better"; say "user testing showed X" or "business requirement Y demands this"]
 
 ### Trade-offs
-[What was sacrificed for this choice]
+
+[What users lose / What costs more to build / What's harder to maintain / What's faster but less flexible]
 ```
 
 ---

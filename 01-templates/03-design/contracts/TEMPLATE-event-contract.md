@@ -76,11 +76,13 @@ User successfully registers and verifies email
 
 ## Completion Checklist
 
-- [ ] Event name and version defined
-- [ ] Payload schema defined
-- [ ] When event is emitted documented
-- [ ] Consumer list documented
-- [ ] Retry policy defined
+Before finalizing this event contract, ensure every item below is complete. Use directive language when reviewing—"Define", "Document", "Specify" rather than observing completion.
+
+- [ ] **Define** event name in past tense (e.g., "OrderCreated", not "CreateOrder") and set version (1.0.0)
+- [ ] **Document** payload schema with all required fields and their types (string, UUID, timestamp, etc.)
+- [ ] **Specify when** this event is emitted (e.g., "When order payment succeeds and inventory is reserved")
+- [ ] **List all** consumer contexts that subscribe to this event
+- [ ] **Document** retry policy if delivery fails (exponential backoff, max retries, dead-letter queue)
 
 ---
 

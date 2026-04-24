@@ -74,6 +74,15 @@ graph TD
 
 ## Relationship Patterns
 
+**Why these patterns matter**: In DDD, context relationships are not neutral. One context dictates the terms of integration (upstream), while the other must adapt (downstream). Understanding these patterns prevents one team's domain model from contaminating another's. The pattern you choose determines who has power to make changes.
+
+**How to choose**: For each relationship between contexts, ask three questions:
+1. "Who defines the contract?" (upstream)
+2. "Can the downstream team negotiate, or must they adapt?"
+3. "How critical is this relationship to the downstream context?"
+
+Your answers determine which pattern fits.
+
 | Pattern | Meaning | When to Use |
 |---------|---------|-------------|
 | **Customer/Supplier (C/S)** | Upstream defines contract; downstream consumes. Upstream has responsibility not to break downstream. | When a context needs data from another but can't change the contract. |

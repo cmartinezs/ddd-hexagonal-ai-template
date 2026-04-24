@@ -16,6 +16,13 @@
 
 ## Screen Template
 
+**How to use this template**: Each screen traces to one or more requirements (FR-XXX) from Phase 2. Document the purpose from the *user's* perspective—what they can accomplish—not technical implementation (what the system renders).
+
+**Field guidance**:
+- **Purpose**: User action, not system action. Say "Create a new task" not "Render task creation form"
+- **Related Requirement**: Links back to Phase 2 requirements (FR-XXX); one requirement can have multiple screens
+- **Portal**: User group or context (Public, Admin, Authenticated User, etc.); helps organize navigation
+
 ```markdown
 ## [SCREEN-XXX] Screen Name
 

@@ -88,6 +88,10 @@ Define terms that have *specific meanings only in this context*. (Other contexts
 
 ### Core Concepts
 
+**What are core concepts?** Core concepts are the most important domain objects in this context—the nouns that carry the most business meaning. These are typically aggregates, entities, and value objects that appear repeatedly in system flows and domain events. Core concepts define how the context thinks about its domain.
+
+**How to identify them**: Look at your system flows and ask: "What are the most important things this context manages?" The answer is usually your core concepts. Document them deeply because they become the foundation of your model.
+
 Detailed definitions of the most important concepts in this context.
 
 **[Concept 1]**: [What it is and why it matters in this context]
@@ -176,9 +180,13 @@ stateDiagram-v2
 
 ## Aggregates
 
-**Aggregates** are clusters of entities that form consistency boundaries. One aggregate = one transaction.
+**What are aggregates?** Aggregates are clusters of entities and value objects that form consistency boundaries. Each aggregate is a unit of consistency—all changes within it happen together or not at all. In code, one aggregate = one transaction. Identifying aggregates is one of the most important modeling decisions you make.
+
+**How to identify them**: Scan your domain for natural clusters of objects that must change together. If changing one entity requires changing another, they likely belong in the same aggregate. If they can change independently, they should be separate aggregates that communicate through events.
 
 ### Aggregate 1: [Aggregate Root Name]
+
+**Why this aggregate?** This aggregate clusters related entities because [reason: they must change together / they form a natural consistency unit / they have a shared lifecycle / etc.]. Explain what makes these objects a cohesive unit.
 
 **Purpose**: [What does this aggregate do? What invariants does it maintain?]
 
