@@ -4,15 +4,17 @@
 
 # Entities and Relationships Template
 
-**What This Is**: A template for defining all entities, their attributes, relationships, and constraints. This is the foundation for database schema.
+You are an AI agent or database architect responsible for defining the data model: the entities, attributes, relationships, and constraints that form the foundation for implementation. This template guides you in translating Design phase outputs (bounded contexts, domain concepts) into a complete, normalized data model.
 
-**How to Use**: Create one section per entity. Each entity traces to a bounded context from Design phase. Follow the structure exactly.
+**What This Is**: A template for defining all entities, their attributes, relationships, and constraints that will form the database schema
 
-**Why It Matters**: Every entity mistake cascades to code. Clear definitions prevent schema drift and confusion during implementation.
+**How to Use**: Create one entity section per domain concept. Each entity must trace to a bounded context from Design phase. Follow the template structure exactly to ensure completeness
 
-**When to Use**: After Design (Phase 3). First document in Data Model phase.
+**Why It Matters**: Entity modeling mistakes cascade to code and operations. Clear, normalized entities prevent schema drift, enable consistent queries, and reduce rework during implementation
 
-**Owner**: Database Architect
+**When to Use**: After Design (Phase 3) is complete and approved. This is the first document in Phase 4 (Data Model)
+
+**Owner**: Database Architect + Backend Lead
 
 ---
 
@@ -28,6 +30,10 @@
 ---
 
 ## Entity Structure
+
+**What This Section Is**: This section defines the standard template and components for every entity you document. Each entity represents a domain concept from your Design phase that requires data persistence.
+
+Before showing examples, understand that every entity in this framework must include:
 
 ```markdown
 ## Entity: [EntityName]
@@ -76,6 +82,10 @@
 
 ## Attribute Types
 
+**What This Section Is**: A reference guide for the standard data types used in entity attributes. Using consistent types across your data model prevents confusion and enables consistent query patterns.
+
+This table shows the most common attribute types and when to use each one:
+
 | Type | Usage | Example |
 |------|-------|----------|
 | **UUID** | Primary keys | `id: uuid` |
@@ -92,6 +102,10 @@
 ---
 
 ## Relationship Types
+
+**What This Section Is**: A guide to the three fundamental relationship types between entities. Understanding these patterns is essential for creating a normalized schema that correctly represents your domain.
+
+Every relationship between entities falls into one of these three categories. Document each relationship with its cardinality to ensure referential integrity:
 
 | Relationship | Symbol | Description | Example |
 |--------------|:------:|-------------|---------|
@@ -116,6 +130,10 @@ User (N) ────── (M) Role
 
 ## Constraint Types
 
+**What This Section Is**: The mechanisms for enforcing data quality and business rules at the database layer. Constraints prevent invalid data from ever being persisted, which is more reliable than checking at the application layer.
+
+Document these constraint types for each entity. Database-level constraints are the source of truth for data validity:
+
 | Constraint | Example | When to Use |
 |------------|---------|-------------|
 | **NOT NULL** | `email: varchar NOT NULL` | Required fields |
@@ -128,12 +146,22 @@ User (N) ────── (M) Role
 
 ## Example Entities
 
+**What This Section Is**: Two complete, worked examples showing how to apply this template to real-world entities. These examples demonstrate the proper structure, level of detail, and traceability to Design phase concepts.
+
+Study these examples carefully to understand the expected level of detail and the connections between each entity section:
+
 ### Example: User Entity
+
+**What This Example Demonstrates**:
+- How to trace an entity back to a bounded context from Design phase
+- Proper attribute definition with types and constraints
+- How soft delete strategy connects to business rules
+- Index selection for performance optimization
 
 ## Entity: User
 
-**Purpose**: Represents a user who can authenticate and access the system
-**Related Context**: Identity
+**Purpose**: Represents an actor who can authenticate and access the system
+**Related Context**: Identity (from Design phase bounded context)
 
 ### Primary Key
 - `id`: UUID (primary key)
@@ -178,10 +206,16 @@ User (N) ────── (M) Role
 
 ### Example: Organization Entity
 
+**What This Example Demonstrates**:
+- Multi-tenant isolation patterns in the data model
+- How enumeration fields enforce state machine transitions
+- Defining unique constraints for business identifiers
+- Archival policy for compliance and data retention
+
 ## Entity: Organization
 
-**Purpose**: Represents a tenant/organization in the system
-**Related Context**: Organization
+**Purpose**: Represents a tenant/organization with isolated data
+**Related Context**: Organization (from Design phase bounded context)
 
 ### Primary Key
 - `id`: UUID (primary key)
@@ -214,17 +248,21 @@ User (N) ────── (M) Role
 
 ## Completion Checklist
 
+**Before marking this document complete, ensure every item below is satisfied. These checklist items verify that your data model is production-ready and traceable to your Design phase:**
+
 ### Deliverables
 
-- [ ] Every bounded context from Design has entities
-- [ ] Every entity has primary key defined
-- [ ] Every entity has timestamps (created_at, updated_at)
-- [ ] Attributes have appropriate types
-- [ ] Relationships documented (1:1, 1:N, N:M)
-- [ ] Constraints defined (not null, unique, check)
-- [ ] Soft delete strategy defined
-- [ ] Indexes identified
-- [ ] Archival policy defined
+- [ ] **Define** all entities that correspond to bounded contexts from Design phase (verify each context has at least one entity)
+- [ ] **Document** every entity with purpose and related context (ensures traceability to Design)
+- [ ] **Add** primary keys to every entity (UUID recommended for distributed systems)
+- [ ] **Include** created_at and updated_at timestamps on every entity (required for audit trails and temporal queries)
+- [ ] **Specify** appropriate data types for all attributes (prevents type confusion and enables query optimization)
+- [ ] **Establish** relationships between entities with clear cardinality (1:1, 1:N, N:M)
+- [ ] **Define** constraints (NOT NULL, UNIQUE, CHECK) that reflect business rules from Design phase
+- [ ] **Decide** soft delete strategy for each entity (logical deletion vs. hard delete)
+- [ ] **Identify** indexes for performance optimization (foreign key fields and frequently-queried columns)
+- [ ] **Document** archival and retention policies (compliance + storage management)
+- [ ] **Verify** no database technology names are mentioned (PostgreSQL, MySQL, etc. — save for Development phase)
 
 ### Sign-Off
 
