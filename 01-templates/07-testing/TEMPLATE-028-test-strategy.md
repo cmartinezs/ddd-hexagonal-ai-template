@@ -4,7 +4,17 @@
 
 # Test Strategy
 
-Define the overall testing approach, test pyramid, coverage targets, and quality gates.
+You are a QA lead or tech lead responsible for defining how testing will be approached across the system. This template helps you establish quality targets, test distribution, tooling, and quality gates that ensure consistent code quality.
+
+**What This Is**: A document that defines the overall testing philosophy, test pyramid structure, coverage targets, and quality gates for the entire system
+
+**How to Use**: Establish your test pyramid distribution (unit, integration, E2E %), set coverage targets by layer, define tools/frameworks, integrate with CI/CD. Reference this in all testing conversations
+
+**Why It Matters**: Without a clear testing strategy, teams under-test, write flaky tests, and ship bugs. Clear strategy prevents quality from degrading over time
+
+**When to Use**: Before writing any tests in Phase 7. Should align with Development phase specs
+
+**Owner**: QA Lead / Tech Lead
 
 ## Contents
 
@@ -18,6 +28,10 @@ Define the overall testing approach, test pyramid, coverage targets, and quality
 ---
 
 ## Test Pyramid
+
+**What This Section Is**: The fundamental structure for how to distribute testing effort across different test types. The pyramid shows that more tests should be at the unit level (fast, cheap) and fewer at the E2E level (slow, expensive).
+
+The test pyramid is a proven pattern for balancing testing efficiency and comprehensiveness:
 
 ### Pyramid Structure
 
@@ -46,6 +60,10 @@ Define the overall testing approach, test pyramid, coverage targets, and quality
 
 ## Test Types
 
+**What This Section Is**: The different categories of tests your team should write, with examples and tools for each. Understanding these distinctions helps you choose the right test for each situation.
+
+Use this section to guide test writing decisions:
+
 ### Functional Testing
 | Type | Description | Tools |
 |------|-------------|-------|
@@ -68,6 +86,10 @@ Define the overall testing approach, test pyramid, coverage targets, and quality
 ---
 
 ## Coverage Targets
+
+**What This Section Is**: The code coverage percentages your team must achieve in different parts of the system. Coverage targets vary by layer because some code is more critical than others.
+
+Define and enforce these coverage minimums:
 
 ### Code Coverage
 

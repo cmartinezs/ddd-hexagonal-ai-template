@@ -4,7 +4,17 @@
 
 # CI/CD Pipeline
 
-Automated build, test, and deployment pipeline for continuous delivery.
+You are a DevOps engineer or tech lead responsible for designing and maintaining the automated pipeline that builds, tests, and deploys code. This template defines each pipeline stage, quality gates, and automation decisions.
+
+**What This Is**: A document defining the automated stages for building, testing, and deploying code from commits through production
+
+**How to Use**: Define each pipeline stage (commit, integration, staging, production). Specify tools, duration, quality gates, and failure actions for each step. Integrate with your CI/CD platform
+
+**Why It Matters**: Automated pipelines catch errors before they reach production, enable rapid feedback to developers, and provide confidence that deployments are safe
+
+**When to Use**: Before development starts, so developers know what gates their code must pass
+
+**Owner**: DevOps Lead / Platform Engineer
 
 ## Contents
 
@@ -16,6 +26,8 @@ Automated build, test, and deployment pipeline for continuous delivery.
 ---
 
 ## Pipeline Stages
+
+**What This Section Is**: The automated stages that code passes through from commit to production. Each stage has specific checks and gates.
 
 ### Stage 1: Commit Stage
 **Trigger**: Every push to any branch

@@ -1,10 +1,20 @@
-[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-041-retrospectives.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-041-retrospectives.md)
 
 ---
 
 # User Feedback
 
-Collect, analyze, and act on user feedback to improve the product.
+You are a product manager responsible for collecting, analyzing, and acting on user feedback. This template helps you establish channels, organize feedback, and convert insights into product improvements.
+
+**What This Is**: A system for collecting, categorizing, analyzing, and responding to user feedback from multiple channels
+
+**How to Use**: Establish feedback channels (in-app, support tickets, surveys, interviews). Create a feedback log and review process. Track feedback trends and convert high-impact feedback into requirements
+
+**Why It Matters**: User feedback is the signal for what's working and what's broken. Without structured feedback, you build features users don't want and miss problems they're experiencing
+
+**When to Use**: Throughout product lifecycle. Phase 11 (Feedback) is where you formalize and act on feedback
+
+**Owner**: Product Manager
 
 ## Contents
 
@@ -16,6 +26,8 @@ Collect, analyze, and act on user feedback to improve the product.
 ---
 
 ## Feedback Channels
+
+**What This Section Is**: The different ways users can share feedback with you. Multiple channels ensure you hear from different user segments and capture different feedback types.
 
 | Channel | Description | Frequency |
 |---------|-------------|-----------|
@@ -30,6 +42,8 @@ Collect, analyze, and act on user feedback to improve the product.
 
 ## Feedback Collection
 
+**What This Section Is**: How to organize and categorize the feedback you receive. Consistent categorization enables trend analysis and prioritization.
+
 ### Feedback Categories
 
 | Category | Description | Priority |
@@ -41,6 +55,8 @@ Collect, analyze, and act on user feedback to improve the product.
 | **Suggestions** | Ideas for improvement | Low |
 
 ### Feedback Template
+
+Use this template for documenting each piece of feedback:
 
 ```markdown
 ## Feedback: [Brief Title]

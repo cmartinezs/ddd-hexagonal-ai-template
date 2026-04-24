@@ -1,8 +1,18 @@
 # Phase 7: Testing
 
+You are a QA lead or engineer responsible for establishing how the system will be tested. This phase defines the testing strategy, creates test plans, and sets quality gates that ensure code reliability before deployment.
+
 ## Purpose
 
-This phase defines testing strategy, test plans, and quality verification.
+**What This Is**: The phase where you define how testing will be performed across the system—what to test, how much coverage to target, what tools to use, and when code is ready to ship
+
+**How to Use**: Start with test strategy (pyramid, coverage targets, tools). Then create test plans and test cases. Integrate testing into CI/CD. Use this to guide all test writing in Phase 7+
+
+**Why It Matters**: Without clear testing strategy, teams under-test, write flaky tests, and ship bugs. Clear strategy prevents quality from degrading and ensures consistent coverage
+
+**When to Complete**: Parallel with or immediately after Development specs (Phase 6). Before Phase 8 (Deployment)
+
+**Owner**: QA Lead / QA Engineer
 
 > **Note**: This is a template. Adapt to your project scope, languages, and frameworks.
 
@@ -22,6 +32,8 @@ This phase defines testing strategy, test plans, and quality verification.
 - [ ] Set coverage targets and metrics
 
 ## Testing Pyramid
+
+**What This Section Is**: The proven structure for distributing testing effort. The pyramid shows that more tests should be at the unit level (fast, cheap) and fewer at the E2E level (slow, expensive).
 
 ```
          ┌───────┐

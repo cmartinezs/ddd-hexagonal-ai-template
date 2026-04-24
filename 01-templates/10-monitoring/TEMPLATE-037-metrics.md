@@ -1,10 +1,20 @@
-[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-038-alerts.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-038-alerts.md)
 
 ---
 
 # Metrics
 
-Key metrics and KPIs to track system health and business performance.
+You are a platform or devops engineer responsible for identifying and tracking the metrics that matter most for system health and business success. This template defines which metrics to track, targets, and when to alert.
+
+**What This Is**: A document defining the key metrics (system, application, and business) that are tracked, their targets, and alerting thresholds
+
+**How to Use**: Define metrics by category (system infrastructure, application performance, business KPIs). Establish targets and alert thresholds. Wire up to monitoring system. Review quarterly
+
+**Why It Matters**: Metrics provide visibility into system health and enable data-driven decisions. Without clear metrics, you can't tell when to scale, where to optimize, or if deployments improved things
+
+**When to Use**: Before Phase 10 (Monitoring) completes. Reference during all operational decisions
+
+**Owner**: Platform/DevOps Lead, Product Manager
 
 ## Contents
 
@@ -18,6 +28,8 @@ Key metrics and KPIs to track system health and business performance.
 
 ## Metric Categories
 
+**What This Section Is**: The different types of metrics to track. Each category serves a different purpose and audience.
+
 | Category | Description | Examples |
 |----------|-------------|----------|
 | **System** | Infrastructure health | CPU, memory, disk |
@@ -28,6 +40,8 @@ Key metrics and KPIs to track system health and business performance.
 ---
 
 ## System Metrics
+
+**What This Section Is**: Infrastructure-level metrics that indicate whether your hardware and containers are healthy and have enough capacity.
 
 ### Infrastructure
 
@@ -51,6 +65,8 @@ Key metrics and KPIs to track system health and business performance.
 ---
 
 ## Application Metrics
+
+**What This Section Is**: Application-level metrics that indicate whether your code is performing well and handling requests correctly.
 
 ### Performance
 

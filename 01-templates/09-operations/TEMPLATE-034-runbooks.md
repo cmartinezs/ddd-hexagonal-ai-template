@@ -1,10 +1,20 @@
-[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-035-incident-response.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-035-incident-response.md)
 
 ---
 
 # Runbooks
 
-Step-by-step procedures for common operational tasks.
+You are an operations engineer responsible for writing step-by-step procedures for common operational tasks. This template ensures that any team member can execute critical operations safely and repeatably.
+
+**What This Is**: A collection of step-by-step procedures for common operational tasks (restarts, deployments, failovers, backups, etc.)
+
+**How to Use**: Create one runbook for each common operational task. Include prerequisites, steps, verification, rollback, and escalation paths. Make runbooks executable without expert knowledge
+
+**Why It Matters**: Runbooks prevent mistakes during critical operations, enable junior engineers to handle production issues, and reduce response time during incidents
+
+**When to Use**: Before Phase 8 (Deployment) completes. Reference in Phase 9 (Operations) docs
+
+**Owner**: DevOps Lead / SRE
 
 ## Contents
 
@@ -15,6 +25,10 @@ Step-by-step procedures for common operational tasks.
 ---
 
 ## Runbook Format
+
+**What This Section Is**: The standard structure for every runbook. Consistent format ensures any team member can follow the steps safely.
+
+Use this template for every operational task:
 
 ```markdown
 ## Runbook: [Title]

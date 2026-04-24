@@ -1,8 +1,18 @@
 # Phase 9: Operations
 
+You are an operations engineer or SRE responsible for keeping the system running reliably 24/7. This phase defines runbooks, incident response procedures, SLAs, and support workflows that enable rapid problem resolution.
+
 ## Overview
 
-Operations defines how to run and maintain the system reliably: runbooks, incident response, SLA, and support.
+**What This Is**: The phase where you define procedures for reliably running and maintaining the system in production—runbooks, incident response, SLAs, and support
+
+**How to Use**: Create runbooks for every common operational task. Define SLA targets and incident severity levels. Establish on-call rotation. Use this to operate the system day-to-day
+
+**Why It Matters**: Clear operational procedures enable faster incident response, reduce human error, and enable junior engineers to handle production issues. This directly impacts uptime and customer satisfaction
+
+**When to Complete**: After Deployment (Phase 8) is complete. Before going live (Phase 8+)
+
+**Owner**: DevOps Lead / SRE
 
 ## Key Objectives
 

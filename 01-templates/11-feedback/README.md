@@ -1,8 +1,18 @@
 # Phase 11: Feedback
 
+You are a product manager, tech lead, or process owner responsible for capturing learnings from each cycle and continuously improving both the product and development process. This phase closes the loop by collecting feedback and converting it into improvements.
+
 ## Overview
 
-Feedback captures learnings, retrospectives, user feedback loops, and process improvements for continuous iteration.
+**What This Is**: The phase where you gather learnings—user feedback, retrospectives, lessons learned—and convert them into actionable improvements for the next cycle
+
+**How to Use**: Collect user feedback from multiple channels. Run retrospectives with the team. Document lessons learned. Use these insights to shape the roadmap and improve processes
+
+**Why It Matters**: Product and process improvement only happens if you systematically collect, analyze, and act on feedback. This feedback loop determines how quickly your product improves and your team becomes more effective
+
+**When to Complete**: After each release cycle (Phase 11 repeats every cycle). Informs next Planning phase (Phase 5)
+
+**Owner**: Product Manager / Engineering Lead
 
 ## Key Objectives
 

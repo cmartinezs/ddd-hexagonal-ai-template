@@ -1,8 +1,18 @@
 # Phase 8: Deployment
 
+You are a DevOps engineer or release manager responsible for defining and executing how code gets to production safely and reliably. This phase defines CI/CD pipelines, environments, and release procedures.
+
 ## Overview
 
-Deployment defines how the system is released to production: CI/CD pipelines, environments, and release procedures.
+**What This Is**: The phase where you define automated pipelines, environment configurations, and release procedures that move code from development through production
+
+**How to Use**: Design your CI/CD pipeline stages, define each environment (dev, staging, prod), document release procedures and rollback plans. Integrate with your deployment platform
+
+**Why It Matters**: Deployment procedures determine how quickly you can release, how safe releases are, and how quickly you can roll back if problems occur. Clear procedures enable fast, safe deployments
+
+**When to Complete**: After Testing (Phase 7) is defined. Before operations team takes over (Phase 9)
+
+**Owner**: DevOps Lead / Platform Engineer
 
 ## Key Objectives
 

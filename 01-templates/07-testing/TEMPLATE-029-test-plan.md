@@ -1,10 +1,20 @@
-[← Index](./README.md] | [< Previous](./TEMPLATE-028-test-strategy.md) | [Next >](./TEMPLATE-030-security-testing.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-028-test-strategy.md) | [Next >](./TEMPLATE-030-security-testing.md)
 
 ---
 
 # Test Plan
 
-Detailed test cases and scenarios for validating system functionality.
+You are a QA engineer responsible for writing detailed test cases that validate system functionality. This template helps you create comprehensive test cases that are repeatable, traceable, and easy for any team member to execute.
+
+**What This Is**: A document containing detailed test cases and scenarios that validate each feature and requirement. Test cases are the tactical execution of the test strategy
+
+**How to Use**: Create test cases for each requirement and major feature. Organize by feature area. Number sequentially (TC-001, TC-002, etc.). Link each test case back to requirements
+
+**Why It Matters**: Test cases make testing repeatable and measurable. Without clear test cases, testing is ad-hoc and incomplete. Test cases also provide documentation of what the system should do
+
+**When to Use**: After Test Strategy is approved. Before development finishes
+
+**Owner**: QA Lead / QA Engineer
 
 ## Contents
 
@@ -16,6 +26,10 @@ Detailed test cases and scenarios for validating system functionality.
 ---
 
 ## Test Case Structure
+
+**What This Section Is**: The standard format for writing every test case. Consistent structure ensures test cases are easy to read, execute, and update.
+
+Use this template for every test case you write:
 
 ### Template
 
@@ -47,6 +61,10 @@ Expected outcome
 
 ## Test Categories
 
+**What This Section Is**: The different types of features that require testing, with examples of test cases for each. Use this to identify what test cases your system needs.
+
+Organize your test cases by these categories:
+
 ### Authentication Tests
 | Category | Examples |
 |----------|----------|
@@ -71,6 +89,8 @@ Expected outcome
 ---
 
 ## Test Case Examples
+
+**What This Section Is**: Complete worked examples of test cases. Study these to understand the level of detail and clarity expected.
 
 ### Example: User Registration
 
