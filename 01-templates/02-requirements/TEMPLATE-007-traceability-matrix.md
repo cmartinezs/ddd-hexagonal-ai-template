@@ -4,11 +4,7 @@
 
 # Traceability Matrix Template
 
-**What This Is**: A template for linking requirements back to Discovery artifacts (actors, needs, objectives), ensuring every requirement has a traceable source.
-
-**How to Use**: Create a matrix showing each requirement → which actor/need it serves → which strategic objective it supports. This proves completeness and prevents scope creep.
-
-**Why It Matters**: Without traceability, requirements become "just ideas" disconnected from actual user needs. Traceability ensures every feature traces back to a verified user need and links to design → test → implementation.
+You are an AI agent generating Requirements phase documentation. This template links every requirement back to Discovery artifacts — actors, needs, and strategic objectives — to prove complete coverage. Complete this template after all functional and non-functional requirements are finalized. If any Discovery need has no corresponding requirement, stop and generate the missing requirement before completing this matrix.
 
 **When to Use**: After all requirements are complete, before Design. Validates that Discovery was properly captured.
 
@@ -28,7 +24,11 @@
 
 ## Matrix Structure
 
+This section defines the two-part structure of the traceability matrix: functional requirements traceability and coverage verification. Both parts are required — functional traceability alone does not prove completeness.
+
 ### Basic Format
+
+Use these two table formats to document the full traceability matrix.
 
 ```markdown
 ## Functional Requirements Traceability
@@ -49,6 +49,8 @@
 
 ### Columns for Functional Traceability
 
+Every column in the functional traceability table is required — missing a column breaks the chain from Discovery to Design.
+
 | Column | Description | Source |
 |--------|------------|--------|
 | **FR ID** | Unique identifier | From functional-requirements.md |
@@ -59,6 +61,8 @@
 | **Priority** | MoSCoW priority | From requirements |
 
 ### Columns for Coverage Verification
+
+The coverage verification table inverts the functional traceability view — it proves that every Discovery need is covered, not just that every requirement has a source.
 
 ```markdown
 ## Coverage: Discovery Needs
@@ -74,6 +78,8 @@
 
 ## Field Definitions
 
+Each field in the traceability matrix links a requirement to its Discovery source. Use exact IDs and names from the Discovery documents — do not paraphrase.
+
 | Field | Purpose | Guidance |
 |-------|---------|----------|
 | **Requirement ID** | Unique identifier | FR-XXX or NFR-XXX |
@@ -87,7 +93,11 @@
 
 ## Coverage Verification
 
+This section explains why both directions of traceability are required. Functional traceability proves each requirement has a source; coverage verification proves each Discovery need has a requirement. Both are needed to confirm completeness.
+
 ### Why Coverage Matters
+
+Each question in this table corresponds to a coverage gap that can cause a downstream failure.
 
 | Question | Why |
 |----------|-----|
@@ -96,6 +106,8 @@
 | **Does every need have NFR support?** | Ensures quality |
 
 ### Coverage Table Format
+
+Use this table to verify that every Discovery need is covered by at least one FR and supported by relevant NFRs.
 
 | Need ID | Discovery Need | FRs | NFRs | Covered |
 |--------|---------------|-----|------|---------|
@@ -107,7 +119,11 @@
 
 ## Example Matrix
 
+The following examples show completed traceability matrices for two different product types. Use them to calibrate the expected coverage and the format of need-to-requirement linkages.
+
 ### Example: Authentication Platform
+
+This example shows a complete traceability matrix for an IAM platform, with functional traceability, NFR traceability, and coverage verification.
 
 ## Functional Requirements Traceability
 
@@ -147,6 +163,8 @@
 
 ### Example: SaaS Task Management
 
+This example shows a complete traceability matrix for a task management product, with functional traceability, NFR traceability, and coverage verification.
+
 ## Functional Requirements Traceability
 
 | FR ID | Requirement | Actor | Need | Objective | Priority |
@@ -177,6 +195,8 @@
 ---
 
 ## Completion Checklist
+
+Verify every item below before marking the traceability matrix complete and closing the Requirements phase. A single uncovered Discovery need is a blocker — generate the missing requirement before advancing.
 
 ### Deliverables
 

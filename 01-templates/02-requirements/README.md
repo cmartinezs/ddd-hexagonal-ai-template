@@ -1,10 +1,6 @@
 # Phase 2: Requirements
 
-**What This Is**: The phase where business needs from Discovery translate into specific, measurable capabilities the system must provide. Each requirement is traceable back to Discovery actors, needs, and scope.
-
-**How to Use**: Complete each template in order: functional requirements → non-functional requirements → scope matrix → traceability matrix. Follow the structure exactly.
-
-**Why It Matters**: Without clear requirements, teams build the wrong thing. Without traceability to Discovery, features become "just ideas" disconnected from user needs. Without scope boundaries, MVPs grow unchecked.
+You are an AI agent generating Requirements phase documentation. This phase translates business needs from Discovery into specific, measurable capabilities the system must provide. Every requirement you generate must trace back to a Discovery actor, need, or objective — a requirement with no Discovery source is likely scope creep and must be questioned before inclusion.
 
 **When to Complete**: After Discovery (Phase 1) is complete. Before Design (Phase 3).
 
@@ -20,7 +16,7 @@
 - [Files to Complete](#files-to-complete)
 - [Key Principles](#key-principles)
 - [Discovery → Requirements Connection](#discovery--requirements-connection)
-- [Common Mistakes](#common-mistakes)
+- [Errors to Avoid](#errors-to-avoid)
 - [Completion Checklist](#completion-checklist)
 - [Sign-Off](#sign-off)
 
@@ -28,9 +24,13 @@
 
 ## Phase Overview
 
+This phase produces four interdependent deliverables that together define what the system must do, how well it must perform, what is in scope for each release, and how every requirement connects back to a verified user need.
+
 Requirements translate business needs from Discovery into specific, measurable capabilities the system must provide.
 
 ### What This Phase Produces
+
+Use this table to track the status of each deliverable and understand how they relate to each other.
 
 | Deliverable | Purpose | Links To |
 |-------------|---------|----------|
@@ -43,7 +43,11 @@ Requirements translate business needs from Discovery into specific, measurable c
 
 ## Key Principles
 
+These principles govern every requirement you generate. Verify compliance against both lists before marking any requirement complete — violations are defects that must be corrected before advancing to Design.
+
 ### ✅ INCLUDE
+
+These elements must appear in every complete requirement.
 
 - Functional requirements with clear acceptance criteria
 - Non-functional requirements with measurable targets
@@ -52,6 +56,8 @@ Requirements translate business needs from Discovery into specific, measurable c
 - Phase-by-phase scoping (MVP vs. future phases)
 
 ### ❌ EXCLUDE
+
+These elements must never appear in any requirement document during this phase.
 
 - Technology choices (REST, GraphQL, databases)
 - Implementation patterns or architectural details
@@ -62,7 +68,7 @@ Requirements translate business needs from Discovery into specific, measurable c
 
 ## Discovery → Requirements Connection
 
-Before starting Requirements, ensure Discovery is complete:
+Before generating any requirement, verify that the corresponding Discovery artifacts exist and are complete. Every requirement must trace to a Discovery source — stop and request missing Discovery artifacts if they do not exist.
 
 | Discovery Output | How It Shapes Requirements |
 |-----------------|----------------------------|
@@ -78,6 +84,8 @@ Before starting Requirements, ensure Discovery is complete:
 
 ## Files to Complete
 
+Generate these templates in the order shown below. Each template depends on the previous one being complete — do not begin the Scope Matrix before all FRs and NFRs exist.
+
 | File | Description | Time | Owner |
 |------|-------------|------|-------|
 | `TEMPLATE-004-functional-requirements.md` | WHAT the system must do | 4-6 hours | PM + Domain Expert |
@@ -86,6 +94,8 @@ Before starting Requirements, ensure Discovery is complete:
 | `TEMPLATE-007-traceability-matrix.md` | Complete coverage check | 1 hour | PM + Domain Expert |
 
 ### Template Order
+
+Follow this sequence exactly. Generating the Traceability Matrix before Requirements are complete produces an incomplete validation.
 
 ```
 Discovery (Phase 1)
@@ -103,7 +113,9 @@ Design (Phase 3)
 
 ---
 
-## Common Mistakes to Avoid
+## Errors to Avoid
+
+These are the most common Requirements phase failures. Each one causes problems in Design, Development, or Testing if not corrected before sign-off.
 
 | Mistake | Why It's a Problem |
 |--------|--------------------|
@@ -113,11 +125,13 @@ Design (Phase 3)
 | "User is happy" (as acceptance criteria) | Not testable — what's "happy"? |
 | Requirements without traceability | No link to Discovery = scope creep |
 | No scope boundaries | MVP grows unchecked → missed dates |
-| Skipping NFRs | Performance/security issues late |
+| Skipping NFRs | Performance/security issues discovered late |
 
 ---
 
 ## Completion Checklist
+
+Verify every item below before marking this phase complete. Do not advance to Design until all deliverables are present and stakeholders have signed off.
 
 ### Requirements Phase Deliverables
 
@@ -134,6 +148,8 @@ Design (Phase 3)
 
 ### Phase Discipline Check
 
+Verify these rules before sign-off — each violation is a defect that must be corrected before advancing to Design.
+
 - [ ] No technology names (REST, GraphQL, JWT, databases)
 - [ ] No frameworks or libraries (React, Spring, Django)
 - [ ] No implementation patterns (repository, singleton)
@@ -145,6 +161,8 @@ Design (Phase 3)
 
 ## Sign-Off
 
+Record approval from all required stakeholders. Do not advance to Phase 3 (Design) without this sign-off.
+
 - [ ] **Prepared by**: [Name, Date]
 - [ ] **Reviewed by**: [Domain Expert, Stakeholders, Date]
 - [ ] **Approved by**: [Product Manager, Date]
@@ -152,6 +170,8 @@ Design (Phase 3)
 ---
 
 ## Summary
+
+This table summarizes the four deliverables and the key question each one answers.
 
 | Deliverable | Key Question |
 |-------------|--------------|

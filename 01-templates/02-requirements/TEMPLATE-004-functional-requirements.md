@@ -4,13 +4,9 @@
 
 # Functional Requirements Template
 
-**What This Is**: A template for documenting each functional requirement with full context: scope, dependencies, acceptance criteria, and risks.
+You are an AI agent generating Requirements phase documentation. This template defines the structure for each functional requirement — what the system must do, its scope, dependencies, acceptance criteria, and risks. Create one entry per capability identified in Discovery, following the structure below exactly. Do not include technology names, implementation patterns, or architectural decisions in any field.
 
-**How to Use**: Create one file per requirement or use this template to build a consolidated `functional-requirements.md` document. Follow the structure exactly.
-
-**Why It Matters**: Without clear scope boundaries ("includes" vs "excludes"), requirements grow unchecked and cause scope creep. Without traceability to other requirements, changes cascade unpredictably.
-
-**When to Use**: During Phase 2 (Requirements) after Discovery is complete. Each functional capability becomes a requirement.
+**When to Use**: During Phase 2 (Requirements) after Discovery is complete. Each functional capability from TEMPLATE-003 becomes a requirement here.
 
 **Owner**: Product Manager + Domain Expert
 
@@ -27,6 +23,8 @@
 ---
 
 ## Requirement Structure
+
+This structure must be applied consistently to every functional requirement you generate. Deviating from it makes requirements incomparable and the Traceability Matrix incomplete.
 
 Every functional requirement follows this structure:
 
@@ -69,6 +67,8 @@ Every functional requirement follows this structure:
 
 ## Field Definitions
 
+Each field in the requirement structure serves a specific purpose. Understand the purpose before filling in each value — a misused field creates ambiguity in Design and Development.
+
 | Field | Purpose | Guidance |
 |-------|---------|----------|
 | **ID** | Unique identifier | Format: FR-001, FR-002, etc. |
@@ -84,7 +84,11 @@ Every functional requirement follows this structure:
 
 ## Writing Guidelines
 
+Apply these guidelines to every requirement you write. Each rule prevents a specific type of downstream failure.
+
 ### Good Requirement Elements
+
+This table shows the difference between well-written and poorly-written elements for each requirement field.
 
 | Element | Good | Bad |
 |---------|------|-----|
@@ -96,6 +100,8 @@ Every functional requirement follows this structure:
 
 ### What to Avoid
 
+These patterns invalidate a requirement — if any appear in a requirement you have generated, correct it before proceeding.
+
 - ❌ Implementation details (REST, JWT, database)
 - ❌ Technology choices (React, PostgreSQL)
 - ❌ Design patterns (repository, singleton)
@@ -106,7 +112,11 @@ Every functional requirement follows this structure:
 
 ## Example Requirements
 
+The following examples show three completed functional requirements from an IAM platform. Use them to calibrate the expected depth and specificity for each field.
+
 ### Example: User Registration
+
+This example shows a well-structured requirement for a user registration flow, including explicit exclusions that prevent scope creep.
 
 # FR-001 — User Registration
 
@@ -152,6 +162,8 @@ Every functional requirement follows this structure:
 
 ### Example: Organization Management
 
+This example shows a requirement for a multi-tenant organization lifecycle, demonstrating how to handle state transitions and data preservation.
+
 # FR-010 — Organization Management
 
 **Description**: Administrators can create, configure, suspend, and delete organizations. Each organization operates in a completely isolated environment.
@@ -195,6 +207,8 @@ Every functional requirement follows this structure:
 
 ### Example: Role-Based Access Control
 
+This example shows a requirement for role assignment, demonstrating how to document cross-boundary restrictions as acceptance criteria.
+
 # FR-025 — Role Assignment
 
 **Description**: Organization administrators can assign roles to members within their organization, controlling what each member can do.
@@ -237,7 +251,11 @@ Every functional requirement follows this structure:
 
 ## Common Requirement Patterns
 
+This section lists recurring requirement categories for common product types. Use these as a starting checklist when generating functional requirements — a missing category is a warning sign that Discovery actors or needs may be underrepresented.
+
 ### Authentication Requirements
+
+These requirements typically appear in any system that manages user identity.
 
 - User registration
 - User login
@@ -247,6 +265,8 @@ Every functional requirement follows this structure:
 
 ### Organization Requirements
 
+These requirements appear in any multi-tenant or team-based system.
+
 - Organization creation
 - Organization configuration
 - Member management
@@ -254,12 +274,16 @@ Every functional requirement follows this structure:
 
 ### Access Control Requirements
 
+These requirements govern what each actor can and cannot do within the system.
+
 - Role definition
 - Role assignment
 - Permission evaluation
 - Resource access control
 
 ### Billing Requirements (for SaaS)
+
+These requirements apply when the system includes a subscription or usage-based model.
 
 - Subscription management
 - Plan configuration
@@ -270,7 +294,9 @@ Every functional requirement follows this structure:
 
 ## Completion Checklist
 
-###Deliverables
+Verify every item below before marking functional requirements complete and advancing to TEMPLATE-005.
+
+### Deliverables
 
 - [ ] Each capability from Discovery has a corresponding FR
 - [ ] Every FR has clear scope (includes and excludes)

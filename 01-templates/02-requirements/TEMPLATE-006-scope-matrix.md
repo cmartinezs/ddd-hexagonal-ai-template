@@ -4,11 +4,7 @@
 
 # Scope Matrix Template
 
-**What This Is**: A template for mapping requirements to delivery phases, defining what's in MVP vs. future phases.
-
-**How to Use**: Create a matrix table showing each requirement and which phase it belongs to. This defines scope boundaries for incremental delivery.
-
-**Why It Matters**: Without clear scope boundaries, the MVP grows unchecked and teams miss delivery dates. The scope matrix enforces discipline: "must-have" vs. "should-have" vs. "could-have".
+You are an AI agent generating Requirements phase documentation. This template maps every requirement to a delivery phase, defining what is in MVP versus future phases. Complete this template after all functional and non-functional requirements are finalized — the scope matrix is the boundary enforcement mechanism that prevents MVP scope from growing unchecked.
 
 **When to Use**: After all functional and non-functional requirements are complete. Before moving to Design.
 
@@ -28,19 +24,25 @@
 
 ## Matrix Structure
 
+This section defines the format for the scope matrix. Apply this format consistently — every requirement must appear in the matrix with a clear phase assignment.
+
 ### Basic Format
+
+Use this table format to document the phase assignment for each requirement.
 
 ```markdown
 | Requirement ID | Requirement Title | MVP | Phase 2 | Future | Notes |
 |---------------|------------------|:---:|:-------:|:------:|-------|
 | FR-001 | User Registration | In | | | Core feature |
-| FR-002 | User Login | In | | Core feature |
-| FR-010 | Social Login | | In | Phase 2 |
-| FR-020 | SAML SSO | | In | Enterprise |
-| NFR-001 | API Response <200ms | In | | All phases |
+| FR-002 | User Login | In | | | Core feature |
+| FR-010 | Social Login | | In | | Phase 2 |
+| FR-020 | SAML SSO | | In | | Enterprise |
+| NFR-001 | API Response <200ms | In | | | All phases |
 ```
 
 ### Status Values
+
+Use these values in the MVP, Phase 2, and Future columns — do not use other values.
 
 | Value | Meaning | When to Use |
 |-------|--------|-------------|
@@ -49,6 +51,8 @@
 | **—** | Not applicable | Doesn't apply |
 
 ### Required Columns
+
+Every scope matrix must include all columns listed below — removing a column makes phase assignments ambiguous.
 
 | Column | Description |
 |--------|-------------|
@@ -63,7 +67,11 @@
 
 ## Phase Definitions
 
+This section defines what each phase means. Apply these definitions consistently when deciding which phase a requirement belongs to — the distinction between MVP and Phase 2 must be based on the criteria below, not intuition.
+
 ### Phase 1: MVP (Minimum Viable Product)
+
+The MVP contains only the features required to deliver core value and validate the product with first customers. When in doubt, defer to Phase 2.
 
 **Definition**: Minimum feature set to deliver core value and validate the product with first customers.
 
@@ -77,11 +85,13 @@
 **Criteria for inclusion**:
 
 - Required for core value proposition
-- blocker if missing
+- Blocker if missing
 - High impact on user experience
 - Feasible with available resources
 
 ### Phase 2: Enhanced (Next Iteration)
+
+Phase 2 contains features that improve and expand the product based on what was learned from MVP users.
 
 **Definition**: Features that improve and expand the product.
 
@@ -99,6 +109,8 @@
 - Enables enterprise sales
 
 ### Phase 3: Mature (Future)
+
+Future phase features have strategic value but are not tied to a specific timeline and depend on market conditions or customer growth.
 
 **Definition**: Advanced features for scale and enterprise.
 
@@ -119,7 +131,11 @@
 
 ## Decision Criteria
 
+Use these questions to make consistent, defensible phase assignment decisions. Every "In" assignment for MVP must pass the MVP questions; every Phase 2 assignment must pass the Phase 2 questions.
+
 ### Questions for MVP Inclusion
+
+Apply these questions to each requirement being considered for MVP.
 
 1. **Is this feature required for the first customer to succeed?**
    - Yes → MVP
@@ -139,6 +155,8 @@
 
 ### Questions for Phase 2
 
+Apply these questions to each requirement being considered for Phase 2.
+
 1. **Is this requested by early customers or prospects?**
    - Yes → Consider Phase 2
 
@@ -152,7 +170,11 @@
 
 ## Example Matrix
 
+The following examples show completed scope matrices for two different product types. Use them to calibrate the expected breadth of requirements and the ratio of MVP to future-phase items.
+
 ### Example: Authentication Platform
+
+This example shows a scope matrix for an IAM platform, demonstrating how enterprise features (SSO, custom branding) are deferred while core auth is in MVP.
 
 | ID | Requirement | MVP | Phase 2 | Future | Notes |
 |----|-------------|:---:|:-------:|:------:|-------|
@@ -174,10 +196,12 @@
 | FR-032 | Real-time Alerts | | | In | Future |
 | NFR-001 | API <200ms p95 | In | | | All |
 | NFR-002 | 99.9% Uptime | In | | | All |
-| NFR-003 | SOC 2 Compliance | | In | | | Phase 2 |
+| NFR-003 | SOC 2 Compliance | | In | | Phase 2 |
 | NFR-004 | 99.99% Uptime | | | In | Future |
 
 ### Example: SaaS Task Management
+
+This example shows a scope matrix for a task management product, demonstrating how advanced features (search, dependencies) are deferred while core task operations are in MVP.
 
 | ID | Requirement | MVP | Phase 2 | Future | Notes |
 |----|-------------|:---:|:-------:|:------:|-------|
@@ -185,7 +209,7 @@
 | FR-002 | View Tasks | In | | | MVP |
 | FR-003 | Update Task | In | | | MVP |
 | FR-004 | Delete Task | In | | | MVP |
-| FR-005 | Task Assignment | In | | | | MVP |
+| FR-005 | Task Assignment | In | | | MVP |
 | FR-006 | Task Status | In | | | MVP |
 | FR-010 | Task Search | | In | | Phase 2 |
 | FR-011 | Task Filters | | In | | Phase 2 |
@@ -201,6 +225,8 @@
 ---
 
 ## Completion Checklist
+
+Verify every item below before marking the scope matrix complete and advancing to TEMPLATE-007.
 
 ### Deliverables
 

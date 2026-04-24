@@ -4,13 +4,9 @@
 
 # Non-Functional Requirements Template
 
-**What This Is**: A template for documenting system characteristics: performance, security, scalability, availability, usability, and maintainability. These define HOW WELL the system must perform, not WHAT it does.
+You are an AI agent generating Requirements phase documentation. This template defines system characteristics — performance, security, scalability, availability, usability, and maintainability. These requirements define HOW WELL the system must perform, not WHAT it does. Each NFR must have a measurable target, a verification method, and a rationale that connects it to a business need.
 
-**How to Use**: Create one file per NFR category or use this template to build a consolidated `non-functional-requirements.md` document. Each category gets its own section with measurable targets.
-
-**Why It Matters**: NFRs are often overlooked until things go wrong. Clear NFRs prevent late-stage surprises and ensure the system meets user expectations for responsiveness, security, and reliability.
-
-**When to Use**: During Phase 2 (Requirements), typically in parallel with or after functional requirements. NFRs apply to multiple features.
+**When to Use**: During Phase 2 (Requirements), typically in parallel with or after functional requirements. NFRs apply across multiple features.
 
 **Owner**: Tech Lead + Security Expert + Operations
 
@@ -20,13 +16,17 @@
 
 - [NFR Categories](#nfr-categories)
 - [NFR Structure](#nfr-structure)
+- [Field Definitions](#field-definitions)
 - [Writing Guidelines](#writing-guidelines)
 - [Example NFRs](#example-nfrs)
+- [Common NFR Patterns by Product Type](#common-nfr-patterns-by-product-type)
 - [Completion Checklist](#completion-checklist)
 
 ---
 
 ## NFR Categories
+
+This table lists the standard NFR categories. Every project should have at least one NFR per applicable category — a missing category is a sign that important system characteristics have not been considered.
 
 | Category | What It Measures | Examples |
 |----------|-----------------|----------|
@@ -42,6 +42,8 @@
 ---
 
 ## NFR Structure
+
+This structure must be applied consistently to every non-functional requirement you generate. The three-tier Target SLA (primary, degraded, minimum) is required — it defines both the goal and the failure condition.
 
 Every NFR follows this structure:
 
@@ -83,6 +85,8 @@ Every NFR follows this structure:
 
 ## Field Definitions
 
+Each field in the NFR structure serves a specific purpose. Pay particular attention to Target SLA — vague targets make NFRs unverifiable and unenforceable.
+
 | Field | Purpose | Guidance |
 |-------|---------|----------|
 | **ID** | Unique identifier | Format: NFR-001, NFR-002, etc. |
@@ -98,7 +102,11 @@ Every NFR follows this structure:
 
 ## Writing Guidelines
 
+Apply these guidelines to every NFR you write. Vague NFRs are unverifiable — they create false confidence during Requirements and surface as disputes during Testing.
+
 ### Good NFR Elements
+
+This table shows the difference between well-written and poorly-written elements for each NFR field.
 
 | Element | Good | Bad |
 |---------|------|-----|
@@ -109,6 +117,8 @@ Every NFR follows this structure:
 
 ### What to Avoid
 
+These patterns invalidate an NFR — correct them before proceeding.
+
 - ❌ Vague targets ("fast", "secure")
 - ❌ No numbers ("many users")
 - ❌ Technology-specific goals (until design phase)
@@ -118,7 +128,11 @@ Every NFR follows this structure:
 
 ## Example NFRs
 
+The following examples show four completed non-functional requirements from an IAM platform. Use them to calibrate the expected specificity for targets and measurement methods.
+
 ### Example: Performance — API Response Time
+
+This example shows how to specify a performance requirement with a three-tier SLA and concrete measurement approach.
 
 # NFR-001 — Performance: API Response Time
 
@@ -158,6 +172,8 @@ Every NFR follows this structure:
 ---
 
 ### Example: Security — Data Protection
+
+This example shows how to specify a security requirement with zero-tolerance targets and explicit compliance scope.
 
 # NFR-010 — Security: Data Protection
 
@@ -199,6 +215,8 @@ Every NFR follows this structure:
 
 ### Example: Scalability — Concurrent Users
 
+This example shows how to specify a scalability requirement with per-organization limits and horizontal scaling expectations.
+
 # NFR-020 — Scalability: Concurrent Users
 
 **Description**: System must support minimum concurrent users per organization with ability to scale horizontally.
@@ -237,6 +255,8 @@ Every NFR follows this structure:
 
 ### Example: Availability — Uptime SLA
 
+This example shows how to specify an availability requirement with explicit exclusions for planned maintenance and external failures.
+
 # NFR-030 — Availability: Uptime SLA
 
 **Description**: System must maintain defined uptime percentage to ensure reliability for enterprise customers.
@@ -274,6 +294,8 @@ Every NFR follows this structure:
 ---
 
 ### Example: Organization Isolation
+
+This example shows how to specify a security requirement with zero-tolerance targets that apply to architectural constraints, not configuration.
 
 # NFR-040 — Security: Organization Isolation
 
@@ -314,7 +336,11 @@ Every NFR follows this structure:
 
 ## Common NFR Patterns by Product Type
 
+This section lists typical NFR sets for common product types. Use these as a starting checklist when generating NFRs — a missing pattern area is a warning sign.
+
 ### Authentication Platform
+
+These NFRs typically apply to any system that manages identity and access.
 
 - NFR-001: API Response Time (< 200ms p95)
 - NFR-010: Password Security (hashed, not stored)
@@ -324,6 +350,8 @@ Every NFR follows this structure:
 
 ### Task Management SaaS
 
+These NFRs typically apply to collaborative productivity applications.
+
 - NFR-001: Task List Load (< 1s with 500+ tasks)
 - NFR-010: File Storage Security (encrypted)
 - NFR-020: Storage Capacity (unlimited growth)
@@ -331,6 +359,8 @@ Every NFR follows this structure:
 - NFR-040: Mobile Support (iOS, Android)
 
 ### E-commerce Platform
+
+These NFRs typically apply to transaction-based platforms with payment processing.
 
 - NFR-001: Checkout Flow (< 30 seconds)
 - NFR-010: Payment Data (PCI compliance)
@@ -341,6 +371,8 @@ Every NFR follows this structure:
 ---
 
 ## Completion Checklist
+
+Verify every item below before marking non-functional requirements complete and advancing to TEMPLATE-006.
 
 ### Deliverables
 
