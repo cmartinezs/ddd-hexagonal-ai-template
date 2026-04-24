@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./architecture-dimensions/README.md) | [Siguiente >](./observability/README.md)
+[← Index](../README.md) | [< Previous](./architecture-dimensions/README.md) | [Next >](./observability/README.md)
 
 ---
 
@@ -48,4 +48,4 @@ Has protected resources?
 
 ---
 
-[← Index](../README.md) | [< Anterior](./architecture-dimensions/README.md) | [Siguiente >](./observability/README.md)
+[← Index](../README.md) | [< Previous](./architecture-dimensions/README.md) | [Next >](./observability/README.md)

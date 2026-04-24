@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-004-functional-requirements.md) | [Next >](./TEMPLATE-006-scope-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-004-functional-requirements.md) | [Next >](./TEMPLATE-006-scope-matrix.md)
 
 ---
 
@@ -361,4 +361,4 @@ Every NFR follows this structure:
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-004-functional-requirements.md) | [Next >](./TEMPLATE-006-scope-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-004-functional-requirements.md) | [Next >](./TEMPLATE-006-scope-matrix.md)

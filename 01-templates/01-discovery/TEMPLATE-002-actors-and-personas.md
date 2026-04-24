@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-001-context-motivation.md) | [Siguiente >](./TEMPLATE-003-scope-and-boundaries.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-001-context-motivation.md) | [Next >](./TEMPLATE-003-scope-and-boundaries.md)
 
 ---
 
@@ -498,4 +498,4 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-001-context-motivation.md) | [Siguiente >](./TEMPLATE-003-scope-and-boundaries.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-001-context-motivation.md) | [Next >](./TEMPLATE-003-scope-and-boundaries.md)

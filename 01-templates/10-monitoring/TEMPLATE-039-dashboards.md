@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-038-alerts.md) | [Siguiente >](../11-feedback/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-038-alerts.md) | [Next >](../11-feedback/README.md)
 
 ---
 
@@ -183,4 +183,4 @@ Monitoring and observability dashboards for different audiences.
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-038-alerts.md) | [Siguiente >](../11-feedback/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-038-alerts.md) | [Next >](../11-feedback/README.md)

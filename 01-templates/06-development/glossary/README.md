@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../data-storage-patterns/README.md) | [Siguiente >](./glossary/README.md)
+[← Index](../README.md) | [< Previous](../data-storage-patterns/README.md) | [Next >](./glossary/README.md)
 
 ---
 
@@ -59,4 +59,4 @@ This section provides a **reference of technical terms** for maintaining consist
 
 ---
 
-[← Index](../README.md) | [< Anterior](../data-storage-patterns/README.md) | [Siguiente > ./languages/README.md)
+[← Index](../README.md) | [< Previous](../data-storage-patterns/README.md) | [Next > ./languages/README.md)

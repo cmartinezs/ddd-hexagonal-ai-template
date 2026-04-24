@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../principles/README.md) | [Siguiente >](../patterns/README.md)
+[← Index](../README.md) | [< Previous](../principles/README.md) | [Next >](../patterns/README.md)
 
 ---
 
@@ -64,4 +64,4 @@ Good: class Service { db DB interface{} }
 
 ---
 
-[← Index](../README.md) | [< Anterior](../principles/README.md) | [Siguiente >](../patterns/README.md)
+[← Index](../README.md) | [< Previous](../principles/README.md) | [Next >](../patterns/README.md)

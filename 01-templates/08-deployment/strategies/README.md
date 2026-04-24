@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./README.md) | [Siguiente >](./TEMPLATE-all-strategies-fillable.md)
+[← Index](../README.md) | [< Previous](./README.md) | [Next >](./TEMPLATE-all-strategies-fillable.md)
 
 ---
 
@@ -90,4 +90,4 @@ Use the matrix above to select the best strategy for your context.
 
 ---
 
-[← Index](../README.md) | [< Anterior](./README.md) | [Siguiente >](./TEMPLATE-all-strategies-fillable.md)
+[← Index](../README.md) | [< Previous](./README.md) | [Next >](./TEMPLATE-all-strategies-fillable.md)

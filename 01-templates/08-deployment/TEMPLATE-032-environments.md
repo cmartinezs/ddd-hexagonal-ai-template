@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-031-ci-cd-pipeline.md) | [Siguiente >](./TEMPLATE-033-release-process.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-031-ci-cd-pipeline.md) | [Next >](./TEMPLATE-033-release-process.md)
 
 ---
 
@@ -190,4 +190,4 @@ DATABASE_URL=postgres://prod-db:5432/keygo
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-031-ci-cd-pipeline.md) | [Siguiente >](./TEMPLATE-033-release-process.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-031-ci-cd-pipeline.md) | [Next >](./TEMPLATE-033-release-process.md)

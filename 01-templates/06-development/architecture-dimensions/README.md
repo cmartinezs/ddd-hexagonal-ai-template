@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./TEMPLATE-016-versioning-strategy.md) | [Siguiente >](./TEMPLATE-018-api-design.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-016-versioning-strategy.md) | [Next >](./TEMPLATE-018-api-design.md)
 
 ---
 
@@ -49,4 +49,4 @@ Start here:
 
 ---
 
-[← Index](../README.md) | [< Anterior](./TEMPLATE-016-versioning-strategy.md) | [Siguiente >](./TEMPLATE-018-api-design.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-016-versioning-strategy.md) | [Next >](./TEMPLATE-018-api-design.md)

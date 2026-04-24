@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./rest/README.md)
+[← Index](./README.md) | [< Previous](./rest/README.md)
 
 ---
 
@@ -116,4 +116,4 @@ Content-Type: application/json
 
 ---
 
-[← Index](./README.md) | [< Anterior](./rest/README.md)
+[← Index](./README.md) | [< Previous](./rest/README.md)

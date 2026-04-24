@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./TEMPLATE-017-architecture.md) | [Siguiente >](./TEMPLATE-019-coding-standards.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-019-coding-standards.md)
 
 ---
 
@@ -70,4 +70,4 @@ Each API style has its own folder with templates:
 
 ---
 
-[← Index](../README.md) | [< Anterior](./TEMPLATE-017-architecture.md) | [Siguiente >](./TEMPLATE-019-coding-standards.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-019-coding-standards.md)

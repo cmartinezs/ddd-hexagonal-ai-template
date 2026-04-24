@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../authorization/README.md)
+[← Index](../README.md) | [< Previous](../authorization/README.md)
 
 ---
 
@@ -35,4 +35,4 @@ Input validation across layers: HTTP, domain, use case.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../authorization/README.md)
+[← Index](../README.md) | [< Previous](../authorization/README.md)

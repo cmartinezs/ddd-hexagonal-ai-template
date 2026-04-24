@@ -1,4 +1,4 @@
-[← Index ../README.md) | [< Anterior ../search/README.md)
+[← Index ../README.md) | [< Previous ../search/README.md)
 
 ---
 
@@ -37,4 +37,4 @@ Large-scale data storage and analytics: BigQuery, Snowflake, Redshift, Data Lake
 
 ---
 
-[← Index ../README.md) | [< Anterior ../search/README.md)
+[← Index ../README.md) | [< Previous ../search/README.md)

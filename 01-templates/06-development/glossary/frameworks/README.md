@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior ../languages/README.md) | [Siguiente > ../patterns/README.md)
+[← Index../README.md) | [< Previous ../languages/README.md) | [Next > ../patterns/README.md)
 
 ---
 
@@ -32,4 +32,4 @@ Frameworks and libraries used in the project.
 
 ---
 
-[← Index../README.md) | [< Anterior ../languages/README.md) | [Siguiente > ../patterns/README.md)
+[← Index../README.md) | [< Previous ../languages/README.md) | [Next > ../patterns/README.md)

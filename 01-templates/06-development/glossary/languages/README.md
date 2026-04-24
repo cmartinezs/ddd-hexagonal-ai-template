@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior../README.md) | [Siguiente >../frameworks/README.md)
+[← Index../README.md) | [< Previous../README.md) | [Next >../frameworks/README.md)
 
 ---
 
@@ -30,4 +30,4 @@ Programming languages used in the project.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../frameworks/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../frameworks/README.md)

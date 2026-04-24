@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior ../relational/README.md) | [Siguiente > ../cache/README.md)
+[← Index](../README.md) | [< Previous ../relational/README.md) | [Next > ../cache/README.md)
 
 ---
 
@@ -51,4 +51,4 @@ Non-relational databases: Document (MongoDB), Key-Value (DynamoDB), Wide-Column 
 
 ---
 
-[← Index](../README.md) | [< Anterior](../relational/README.md) | [Siguiente >](../cache/README.md)
+[← Index](../README.md) | [< Previous](../relational/README.md) | [Next >](../cache/README.md)

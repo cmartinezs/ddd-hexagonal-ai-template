@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-003-scope-and-boundaries.md) | [Siguiente >](./TEMPLATE-005-discovery-closure-and-validation.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-003-scope-and-boundaries.md) | [Next >](./TEMPLATE-005-discovery-closure-and-validation.md)
 
 ---
 
@@ -345,4 +345,4 @@ Requirements & Prioritization (must complete first)
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-003-scope-and-boundaries.md) | [Siguiente >](./TEMPLATE-005-discovery-closure-and-validation.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-003-scope-and-boundaries.md) | [Next >](./TEMPLATE-005-discovery-closure-and-validation.md)

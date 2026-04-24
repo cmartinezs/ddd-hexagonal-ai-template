@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-004-transition-and-phases.md) | [Siguiente >](./TEMPLATE-006-decision-rationale.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-004-transition-and-phases.md) | [Next >](./TEMPLATE-006-decision-rationale.md)
 
 ---
 
@@ -74,8 +74,8 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 |---|---|---|---|
 | Product Manager | MVP scope is minimal but sufficient | ✅ Agree | Clear MVP + future roadmap accepted |
 | Tech Lead | Isolation must be design constraint, not config | ✅ Agree | Enforced in architecture phase |
-| Security Lead | Aislamiento multi-tenant critical for compliance | ✅ Agree | P0 requirement with verification tests |
-| CFO | Facturación básica required in MVP | ✅ Agree | Basic plan/subscription model in scope |
+| Security Lead | Multitenant isolation critical for compliance | ✅ Agree | P0 requirement with verification tests |
+| CFO | Basic billing required in MVP | ✅ Agree | Basic plan/subscription model in scope |
 | CEO | Timeline realistic? | ⚠️ Clarify | 3 months MVP (not 6); validated with team |
 | Steering Committee | Moving forward with this plan? | ✅ Approve | Green light to Requirements phase |
 
@@ -298,4 +298,4 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-004-transition-and-phases.md) | [Siguiente >](./TEMPLATE-006-decision-rationale.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-004-transition-and-phases.md) | [Next >](./TEMPLATE-006-decision-rationale.md)

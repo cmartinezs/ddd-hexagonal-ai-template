@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior ../frameworks/README.md) | [Siguiente > ../tools/README.md)
+[← Index../README.md) | [< Previous ../frameworks/README.md) | [Next > ../tools/README.md)
 
 ---
 
@@ -39,4 +39,4 @@ Architecture and design patterns used in the project.
 
 ---
 
-[← Index../README.md) | [< Anterior ../frameworks/README.md) | [Siguiente > ../tools/README.md)
+[← Index../README.md) | [< Previous ../frameworks/README.md) | [Next > ../tools/README.md)

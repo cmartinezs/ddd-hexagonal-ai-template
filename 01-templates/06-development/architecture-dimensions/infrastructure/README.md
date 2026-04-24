@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../communication/README.md)
+[← Index](../README.md) | [< Previous](../communication/README.md)
 
 ---
 
@@ -35,4 +35,4 @@ Where and how the application runs: compute, storage, networking.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../communication/README.md)
+[← Index](../README.md) | [< Previous](../communication/README.md)

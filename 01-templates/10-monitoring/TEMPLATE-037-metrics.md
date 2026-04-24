@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-038-alerts.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-038-alerts.md)
 
 ---
 
@@ -175,4 +175,4 @@ Monthly Error Budget = (1 - SLO) * Minutes in Month
 
 ---
 
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-038-alerts.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-038-alerts.md)

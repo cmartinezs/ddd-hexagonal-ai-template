@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-037-metrics.md) | [Siguiente >](./TEMPLATE-039-dashboards.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-037-metrics.md) | [Next >](./TEMPLATE-039-dashboards.md)
 
 ---
 
@@ -166,4 +166,4 @@ groups:
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-037-metrics.md) | [Siguiente >](./TEMPLATE-039-dashboards.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-037-metrics.md) | [Next >](./TEMPLATE-039-dashboards.md)

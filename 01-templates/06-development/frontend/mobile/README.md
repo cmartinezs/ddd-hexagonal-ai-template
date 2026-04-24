@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../web/README.md) | [Next >](../desktop/README.md)
+[← Index](./README.md) | [< Previous](../web/README.md) | [Next >](../desktop/README.md)
 
 ---
 
@@ -47,4 +47,4 @@ Native or cross-platform mobile applications for iOS and Android.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../web/README.md) | [Next >](../desktop/README.md)
+[← Index](./README.md) | [< Previous](../web/README.md) | [Next >](../desktop/README.md)

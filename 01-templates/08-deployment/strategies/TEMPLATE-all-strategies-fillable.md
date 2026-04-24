@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./README.md) | [Siguiente >]
+[← Index](./README.md) | [< Previous](./README.md) | [Next >]
 
 ---
 
@@ -265,4 +265,4 @@ Based on assessment above, recommended strategy:
 
 ---
 
-[← Index](./README.md) | [< Anterior](./README.md)
+[← Index](./README.md) | [< Previous](./README.md)

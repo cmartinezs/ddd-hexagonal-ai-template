@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior../logs/README.md) | [Siguiente >../traces/README.md)
+[← Index../README.md) | [< Previous../logs/README.md) | [Next >../traces/README.md)
 
 ---
 
@@ -36,4 +36,4 @@ Metrics collection: counters, gauges, histograms.
 
 ---
 
-[← Index../README.md) | [< Anterior../logs/README.md) | [Siguiente >../traces/README.md)
+[← Index../README.md) | [< Previous../logs/README.md) | [Next >../traces/README.md)

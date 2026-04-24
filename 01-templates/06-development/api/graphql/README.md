@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./rest/README.md) | [Siguiente >](./grpc/README.md)
+[← Index](../README.md) | [< Previous](./rest/README.md) | [Next >](./grpc/README.md)
 
 ---
 
@@ -40,4 +40,4 @@ Query language for APIs. Single endpoint, client-specified queries.
 
 ---
 
-[← Index](../README.md) | [< Anterior](./rest/README.md) | [Siguiente >](./grpc/README.md)
+[← Index](../README.md) | [< Previous](./rest/README.md) | [Next >](./grpc/README.md)

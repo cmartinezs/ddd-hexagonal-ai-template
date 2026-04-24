@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-006-scope-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-006-scope-matrix.md)
 
 ---
 
@@ -197,4 +197,4 @@
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-006-scope-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-006-scope-matrix.md)

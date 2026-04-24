@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior](../patterns/README.md)
+[← Index../README.md) | [< Previous](../patterns/README.md)
 
 ---
 
@@ -51,4 +51,4 @@ Consistent naming across the codebase.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../patterns/README.md)
+[← Index](../README.md) | [< Previous](../patterns/README.md)

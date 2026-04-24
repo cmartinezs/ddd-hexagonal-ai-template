@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-041-retrospectives.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-041-retrospectives.md)
 
 ---
 
@@ -173,4 +173,4 @@ Collect → Categorize → Prioritize → Plan → Implement → Communicate
 
 ---
 
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-041-retrospectives.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-041-retrospectives.md)

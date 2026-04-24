@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-035-incident-response.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-035-incident-response.md)
 
 ---
 
@@ -233,4 +233,4 @@ kubectl exec -it keygo-api-xxx -- nc -zv prod-db 5432
 
 ---
 
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-035-incident-response.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-035-incident-response.md)

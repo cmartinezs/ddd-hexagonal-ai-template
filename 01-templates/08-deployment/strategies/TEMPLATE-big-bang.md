@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-rolling.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-rolling.md)
 
 ---
 
@@ -117,4 +117,4 @@ Simultaneous deployment to entire infrastructure with potential downtime during 
 
 ---
 
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-rolling.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-rolling.md)

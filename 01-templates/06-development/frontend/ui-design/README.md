@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../desktop/README.md) | [Next >](../state/README.md)
+[← Index](./README.md) | [< Previous](../desktop/README.md) | [Next >](../state/README.md)
 
 ---
 
@@ -48,4 +48,4 @@ User interface design principles and patterns.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../desktop/README.md) | [Next >](../state/README.md)
+[← Index](./README.md) | [< Previous](../desktop/README.md) | [Next >](../state/README.md)

@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./auth/README.md) | [Siguiente >](./database/README.md)
+[← Index](../README.md) | [< Previous](./auth/README.md) | [Next >](./database/README.md)
 
 ---
 
@@ -50,4 +50,4 @@ Production deployment?
 
 ---
 
-[← Index](../README.md) | [< Anterior](./auth/README.md) | [Siguiente >](./database/README.md)
+[← Index](../README.md) | [< Previous](./auth/README.md) | [Next >](./database/README.md)

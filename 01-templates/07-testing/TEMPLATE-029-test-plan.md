@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-028-test-strategy.md) | [Siguiente >](./TEMPLATE-030-security-testing.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-028-test-strategy.md) | [Next >](./TEMPLATE-030-security-testing.md)
 
 ---
 
@@ -246,4 +246,4 @@ Expected outcome
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-028-test-strategy.md) | [Siguiente >](./TEMPLATE-030-security-testing.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-028-test-strategy.md) | [Next >](./TEMPLATE-030-security-testing.md)

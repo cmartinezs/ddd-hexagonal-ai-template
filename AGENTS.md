@@ -122,7 +122,7 @@ Every `TEMPLATE-*.md` must follow this structure:
 
 ---
 
-[← Índice](./README.md) | [< Anterior] | [Siguiente >]
+[← Index](./README.md) | [< Previous] | [Next >]
 ```
 
 ---

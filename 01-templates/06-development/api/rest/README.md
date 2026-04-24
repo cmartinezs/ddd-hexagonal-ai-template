@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Next >](./graphql/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](./graphql/README.md)
 
 ---
 
@@ -109,4 +109,4 @@ Representational State Transfer. Resource-based API using HTTP methods semantica
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Next >](./graphql/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](./graphql/README.md)

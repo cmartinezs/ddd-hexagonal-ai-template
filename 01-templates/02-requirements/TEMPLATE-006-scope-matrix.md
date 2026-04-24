@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-005-non-functional-requirements.md) | [Next >](./TEMPLATE-007-traceability-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-005-non-functional-requirements.md) | [Next >](./TEMPLATE-007-traceability-matrix.md)
 
 ---
 
@@ -220,4 +220,4 @@
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-005-non-functional-requirements.md) | [Next >](./TEMPLATE-007-traceability-matrix.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-005-non-functional-requirements.md) | [Next >](./TEMPLATE-007-traceability-matrix.md)

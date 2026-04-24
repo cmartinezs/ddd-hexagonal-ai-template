@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-029-test-plan.md) | [Siguiente >](../08-deployment/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-029-test-plan.md) | [Next >](../08-deployment/README.md)
 
 ---
 
@@ -223,4 +223,4 @@ Discovery → Triage → Assign → Fix → Verify → Close
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-029-test-plan.md) | [Siguiente >](../08-deployment/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-029-test-plan.md) | [Next >](../08-deployment/README.md)

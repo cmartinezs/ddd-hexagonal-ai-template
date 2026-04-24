@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-recreate.md) | [Siguiente >](./README.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-recreate.md) | [Next >](./README.md)
 
 ---
 
@@ -174,4 +174,4 @@ spec:
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-recreate.md) | [Siguiente >](./README.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-recreate.md) | [Next >](./README.md)

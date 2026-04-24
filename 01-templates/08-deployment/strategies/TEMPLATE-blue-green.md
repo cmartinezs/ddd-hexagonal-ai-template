@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-canary.md) | [Siguiente >](./TEMPLATE-recreate.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-canary.md) | [Next >](./TEMPLATE-recreate.md)
 
 ---
 
@@ -166,4 +166,4 @@ resource "aws_lb_listener_rule" "blue_green" {
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-canary.md) | [Siguiente >](./TEMPLATE-recreate.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-canary.md) | [Next >](./TEMPLATE-recreate.md)
