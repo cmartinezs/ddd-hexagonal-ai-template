@@ -4,17 +4,19 @@
 
 # Roadmap
 
+You are a product manager or technical lead responsible for sequencing delivery of capabilities over time. This template helps you define which features ship in which release phases, what dependencies exist, and what success looks like for each phase.
+
 ## Purpose
 
-The roadmap defines **when** capabilities are delivered and **in what order**. It connects the product vision to execution by breaking the project into phases with clear milestones.
+**What This Is**: A document that defines when capabilities are delivered and in what order. The roadmap connects product vision to execution by breaking the project into phases with clear milestones and success criteria
 
 ## What This Document Describes
 
-1. The philosophy behind delivery order
-2. Phase definitions with timelines
-3. Capabilities delivered per phase
-4. Milestones and success criteria
-5. Assumptions and risks
+1. The philosophy behind delivery order (why this sequence makes sense)
+2. Phase definitions with timelines (when each phase ships)
+3. Capabilities delivered per phase (what users get)
+4. Milestones and success criteria (how we know it worked)
+5. Assumptions and risks (what could go wrong)
 
 ## Diagram Convention
 
@@ -36,23 +38,25 @@ gantt
 
 ## Philosophy
 
-### Why Phases, Not a Big Bang
+**What This Section Is**: Why phased delivery is better than "big bang" releases, and the core principles that should guide your phase sequencing decisions.
 
-A phased approach:
-- **Manages risk**: Each phase produces something usable
-- **Enables feedback**: Stakeholders see progress early
-- **Creates clear checkpoints**: Decision points for go/no-go
-- **Enables learning**: Team velocity improves with each phase
+A phased approach to delivery:
+- **Manages risk**: Each phase produces something usable and testable
+- **Enables feedback**: Stakeholders see progress early and can adjust course
+- **Creates clear checkpoints**: Decision points to assess go/no-go
+- **Enables learning**: Team velocity and quality improve with each phase
 
 ### Delivery Principles
 
 1. **First, what enables everything else**: Core capabilities delivered first
 2. **Each phase is self-sufficient**: A phase should work without requiring the next
-3. **Dependencies are explicit**: Know what blocks what
+3. **Dependencies are explicit**: Know what blocks what, and plan accordingly
 
 ---
 
 ## Phase Definition Template
+
+**What This Section Is**: The standard structure for documenting each release phase. Use this template consistently for every phase in your roadmap.
 
 ```markdown
 ## Phase: [Version/Name]

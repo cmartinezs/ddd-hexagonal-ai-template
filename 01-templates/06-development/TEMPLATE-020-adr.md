@@ -4,7 +4,17 @@
 
 # Architecture Decision Records (ADR)
 
-Document significant architectural decisions with context, decision, and consequences. Capture the "why" behind choices.
+You are a developer or architect documenting significant architectural decisions your team makes. This template helps you capture the context, decision, consequences, and alternatives so future developers understand the "why" behind important choices.
+
+**What This Is**: A template for documenting significant architectural decisions with their context, decision rationale, consequences, and rejected alternatives
+
+**How to Use**: Create one ADR per major decision (technology choice, pattern adoption, refactor decision, etc.). Number ADRs sequentially. Link ADRs in code comments and relevant documentation
+
+**Why It Matters**: Code reflects decisions but rarely explains why. ADRs preserve the reasoning so future developers make informed changes, not "improvements" that create worse problems
+
+**When to Use**: When your team makes a decision that affects multiple components or will shape code patterns for months ahead
+
+**Owner**: Tech Lead / Architect
 
 ## Contents
 
@@ -17,7 +27,11 @@ Document significant architectural decisions with context, decision, and consequ
 
 ## ADR Format
 
+**What This Section Is**: The standard structure for every ADR. Using consistent format makes ADRs easy to parse, compare, and reference.
+
 ### Standard ADR Structure
+
+Every ADR must follow this structure exactly:
 
 ```markdown
 # ADR-[NNN]: [Title]
@@ -78,6 +92,8 @@ Document significant architectural decisions with context, decision, and consequ
 ---
 
 ## ADR Lifecycle
+
+**What This Section Is**: The process for creating, reviewing, and maintaining ADRs. Understanding the lifecycle helps you know when to create an ADR and how long the review process should take.
 
 ### Creating an ADR
 

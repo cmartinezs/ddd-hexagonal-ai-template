@@ -46,6 +46,8 @@ See: navigation-conventions.md in 00-documentation-planning/
 
 ## Planning Philosophy
 
+**What This Section Is**: Why planning is critical to successful product delivery, and the core principles that should guide your planning decisions.
+
 ### Why It Matters
 
 Planning is the bridge between "what we want" (Requirements) and "what we build" (Development). Without planning:
@@ -74,6 +76,8 @@ Requirements (Phase 2)
 ---
 
 ## Completion Checklist
+
+**What This Section Is**: A working checklist for the product manager or planning owner to verify all Phase 5 deliverables are complete before moving to Development.
 
 ### Before Planning
 - [ ] Scope matrix completed (from Requirements Phase)

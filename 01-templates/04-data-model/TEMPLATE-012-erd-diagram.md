@@ -4,13 +4,15 @@
 
 # ERD Diagram Template
 
-**What This Is**: A visual representation of entities and their relationships using diagrams. The ERD makes abstract relationships concrete.
+You are an AI agent or database architect responsible for creating the visual data model diagram. This template guides you in translating entity definitions from TEMPLATE-011 into a comprehensive Entity-Relationship Diagram (ERD) that shows structure, relationships, and dependencies at a glance.
 
-**How to Use**: Use Mermaid syntax for database ERD. Document relationships by entity group (bounded context).
+**What This Is**: A template for creating visual Entity-Relationship Diagrams (ERDs) that represent database structure using Mermaid syntax
 
-**Why It Matters**: A picture is worth a thousand words. ERD catches relationship issues that entity definitions hide.
+**How to Use**: Create one ERD per logical grouping of entities (typically per bounded context). Use Mermaid syntax for consistency and version control compatibility
 
-**When to Use**: After Entities and Relationships template. Visual validation.
+**Why It Matters**: Visual models catch relationship errors that text definitions miss. ERDs enable quick validation of referential integrity and help teams understand the schema structure
+
+**When to Use**: After Entities and Relationships (TEMPLATE-011). Second document in Phase 4 (Data Model)
 
 **Owner**: Database Architect
 
@@ -30,7 +32,9 @@
 
 ## ERD Format
 
-### Mermaid Database ERD
+**What This Section Is**: The technical format and syntax for creating ERDs in Mermaid. Mermaid is the preferred format because it integrates with documentation and version control.
+
+Use Mermaid database ERD syntax for all diagrams. This format is machine-readable, easily versioned in Git, and renders in most documentation platforms:
 
 ```mermaid
 erDiagram
@@ -77,6 +81,10 @@ erDiagram
 
 ## Relationship Notation
 
+**What This Section Is**: The standard symbols used in Mermaid ERDs to represent different types of entity relationships. Understanding these notations enables you to read and create accurate ERDs.
+
+The following notations show the cardinality and dependency direction in your diagram:
+
 | Notation | Meaning | Example |
 |----------|---------|---------|
 | `||--o{` | One-to-Many | One User → Many Tasks |
@@ -98,7 +106,16 @@ N:M    Many-to-Many         A ──┼── B
 
 ## ERD Examples
 
+**What This Section Is**: Complete, worked examples showing how to structure ERDs in Mermaid. These examples demonstrate proper syntax, relationship representation, and organization by bounded context.
+
+Study the syntax and structure of these examples carefully. Each example shows a different pattern from simple relationships to multi-entity scenarios:
+
 ### Example: Basic User-Organization Relationship
+
+**What This Example Demonstrates**:
+- How to structure an organization-member relationship (One-to-Many)
+- Proper primary key notation (PK) and foreign key notation (FK)
+- Clear relationship labeling with descriptive text
 
 ```mermaid
 erDiagram
@@ -119,6 +136,11 @@ erDiagram
 ```
 
 ### Example: Task Management
+
+**What This Example Demonstrates**:
+- Multiple relationships from a single entity (User, Project, Task interactions)
+- Complex cardinality patterns (1:N and N:M relationships)
+- How foreign keys connect related entities
 
 ```mermaid
 erDiagram

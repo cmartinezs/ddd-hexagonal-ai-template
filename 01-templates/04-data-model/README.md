@@ -50,7 +50,9 @@ Development (Phase 6)
 
 ## Design → Data Model Connection
 
-**Before starting**, ensure Design phase is complete:
+**What This Section Is**: How to translate design artifacts (bounded contexts, domain language, events, flows) into data model. This section explains the traceability requirements that connect your data model to the Design phase.
+
+Before starting, ensure Design phase is complete. Your data model must trace directly back to design decisions:
 
 | Design Output | How It Shapes Data Model |
 |---------------|--------------------------|
@@ -64,6 +66,10 @@ Development (Phase 6)
 ---
 
 ## Phase Discipline Rules
+
+**What This Section Is**: Non-negotiable requirements that every data model must meet before development begins. This section separates what belongs in the data model phase (agnostic design) from what belongs in development (implementation choices).
+
+Every data model must pass these discipline checks before proceeding to Phase 6:
 
 ✅ **Before moving to Development, verify**:
 
@@ -90,20 +96,24 @@ Development (Phase 6)
 
 ## Completion Checklist
 
+**What This Section Is**: A working checklist for the phase owner (Database Architect) and reviewer (Backend Lead/Tech Lead) to verify all Phase 4 deliverables are complete before moving to Development.
+
+Use this checklist to ensure nothing is missed:
+
 ### Deliverables
 
-- [ ] All entities defined with attributes
-- [ ] Each entity traces to bounded context
-- [ ] Relationships clearly documented (1:1, 1:N, N:M)
-- [ ] ERD diagram created (Mermaid or external tool)
-- [ ] Validation rules and constraints defined
-- [ ] Primary keys defined (UUID recommended)
-- [ ] Timestamps on every entity
-- [ ] Soft delete strategy for each entity
-- [ ] Archival and retention policies defined
-- [ ] Query indexes identified
-- [ ] Data flows documented
-- [ ] No database technology names
+- [ ] Define all entities with their attributes
+- [ ] Document which bounded context each entity belongs to
+- [ ] Specify relationship types (1:1, 1:N, N:M) for all connections
+- [ ] Create an ERD diagram in Mermaid format
+- [ ] Document validation rules and constraints for each entity
+- [ ] Define primary keys for every entity (use UUID)
+- [ ] Add created_at and updated_at timestamps to every entity
+- [ ] Specify soft delete strategy for each entity type
+- [ ] Define data retention and archival policies
+- [ ] Identify indexes needed for query performance
+- [ ] Document data flows for major operations
+- [ ] Verify no database technology names are mentioned
 
 ### Sign-Off
 

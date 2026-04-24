@@ -4,21 +4,23 @@
 
 # Epics
 
+You are a product manager or team lead responsible for breaking down roadmap phases into epic-sized units of work. This template helps you group related features, define user stories, track dependencies, and communicate progress to stakeholders.
+
 ## Purpose
 
-An **epic** is a **deliverable unit of work** that groups related features. It bridges high-level requirements and sprint-ready user stories.
+**What This Is**: A template for documenting epics—major deliverable units that group related features from Requirements into sprint-sized work units
 
 ## What This Document Describes
 
-1. The epic structure and attributes
-2. User story format and acceptance criteria
-3. Estimation approach
-4. Dependencies and risks
-5. Example epics
+1. The epic structure and how to define one
+2. User story format and acceptance criteria requirements
+3. How to estimate epics
+4. Dependencies between epics and risks
+5. Worked examples showing epic structure
 
 ## Diagram Convention
 
-Use a flowchart to visualize epic dependencies:
+Use a flowchart to visualize epic dependencies and sequencing:
 
 ```mermaid
 flowchart LR
@@ -31,7 +33,7 @@ flowchart LR
 
 ## Philosophy
 
-### Why Epics
+**What This Section Is**: Why epics are the right level of granularity for planning, and how they connect requirements to sprints.
 
 Epics provide:
 - **Grouping**: Related features delivered together
@@ -50,6 +52,8 @@ Epics provide:
 ---
 
 ## Epic Structure Template
+
+**What This Section Is**: The standard format for documenting each epic. Use this template consistently for every epic you define.
 
 ```markdown
 ## Epic: [Epic Name]

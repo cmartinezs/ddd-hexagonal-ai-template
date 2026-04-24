@@ -4,13 +4,15 @@
 
 # Data Flows Template
 
-**What This Is**: A template for documenting how data moves through the system — from entry to storage to retrieval. Shows the data journey for key operations.
+You are a database architect or backend engineer responsible for documenting how data moves through the system during key operations. This template helps you trace data from entry point (user action, API call, or scheduled job) through processing, validation, transformation, and storage.
 
-**How to Use**: Document data flow for each major operation identified in Design phase (system flows). Show what data enters, what transforms, and what persists.
+**What This Is**: A template for documenting and visualizing data movement through the system for each major operation. Shows where data originates, how it's transformed, and where it's persisted
 
-**Why It Matters**: Data flows reveal hidden entities and relationships. They validate that the data model supports actual usage patterns.
+**How to Use**: Create one data flow document per major operation identified in the Design phase (system flows). Trace data from input through all processing steps to final output
 
-**When to Use**: After ERD Diagram. Validates the complete data model.
+**Why It Matters**: Data flows reveal hidden entities, missing fields, and data model gaps that entity definitions alone don't show. They validate that your data model supports actual usage patterns
+
+**When to Use**: After ERD Diagram (TEMPLATE-012). Final document in Phase 4 (Data Model)
 
 **Owner**: Database Architect + Backend Lead
 
@@ -27,6 +29,10 @@
 ---
 
 ## Data Flow Structure
+
+**What This Section Is**: The standard template structure for documenting a single data flow. Each data flow should follow this format consistently so patterns are clear and easy to verify.
+
+Use the following structure for every data flow. Include all sections—even if some steps are simple, the structure ensures nothing is overlooked:
 
 ```markdown
 ## [DF-XXX] Data Flow: [Operation Name]
@@ -70,6 +76,8 @@
 ---
 
 ## Flow Example: User Registration
+
+**What This Section Is**: A complete data flow example showing user registration from signup form through email verification to account creation. Study this example to understand the level of detail required.
 
 ## [DF-001] Data Flow: User Registration
 
