@@ -23,6 +23,7 @@ This template provides a structured SDLC (Software Development Lifecycle) docume
 | **AI-WORKFLOW-GUIDE.md** | 30 min | Day-by-day workflow with AI (10-15 days) |
 | **EXAMPLE-IMPLEMENTATION.md** | 20 min | Real case study: Keygo (complete walkthrough) |
 | **INSTRUCTIONS-FOR-AI.md** | 20 min | Ready-to-use prompts by phase |
+| **AI-AGENT-READINESS-RECOMMENDATIONS.md** | 15 min | Enterprise recommendations and AI-agent governance |
 | **SKILLS-AND-PLUGINS-GUIDE.md** | 20 min | Claude Code skills per phase |
 | **TEMPLATE-ARCHITECTURE.md** | 15 min | How the template is designed |
 | **FAQ.md** | 10 min | Common questions & troubleshooting |

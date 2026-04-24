@@ -57,9 +57,15 @@ Control center for understanding and using the DDD + Hexagonal template.
    - Recommended workflow with skills
    - Pre-production checklist
 
+7. **[AI-AGENT-READINESS-RECOMMENDATIONS.md](./AI-AGENT-READINESS-RECOMMENDATIONS.md)** ⭐⭐
+   - Enterprise readiness gaps
+   - Prioritized backlog
+   - Mandatory authoring directive for AI agents
+   - Definition of Done by phase
+
 ### To Understand the Architecture
 
-6. **[TEMPLATE-ARCHITECTURE.md](./TEMPLATE-ARCHITECTURE.md)** — How the template is designed
+8. **[TEMPLATE-ARCHITECTURE.md](./TEMPLATE-ARCHITECTURE.md)** — How the template is designed
    - Philosophy (why 12 phases)
    - Principles (agnostic, iterable, alive)
    - Phase relationships
@@ -67,7 +73,7 @@ Control center for understanding and using the DDD + Hexagonal template.
 
 ### Help
 
-7. **[FAQ.md](./FAQ.md)** — Frequently Asked Questions
+9. **[FAQ.md](./FAQ.md)** — Frequently Asked Questions
    - "How long does it take to complete everything?"
    - "Can I skip phases?"
    - "How do I update documents when code changes?"
@@ -100,9 +106,10 @@ Control center for understanding and using the DDD + Hexagonal template.
 | 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) ⭐⭐ | 15 min | **Autonomous AI** | Self-execution with context handoff |
 | 4 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | 20 min | **With AI** | Real case (Keygo) Day 1-10 |
 | 5 | [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) ⭐ | 20 min | **Everyone** | Skills by phase, how to use, setup |
-| 6 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | 20 min | Reference | Specific prompts by phase |
-| 7 | [`TEMPLATE-ARCHITECTURE.md`](./TEMPLATE-ARCHITECTURE.md) | 15 min | Curious | Internal template design |
-| 8 | [`FAQ.md`](./FAQ.md) | 10 min | Skeptical | Common problems |
+| 6 | [`AI-AGENT-READINESS-RECOMMENDATIONS.md`](./AI-AGENT-READINESS-RECOMMENDATIONS.md) ⭐⭐ | 15 min | Enterprise teams | AI agent governance and rollout backlog |
+| 7 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | 20 min | Reference | Specific prompts by phase |
+| 8 | [`TEMPLATE-ARCHITECTURE.md`](./TEMPLATE-ARCHITECTURE.md) | 15 min | Curious | Internal template design |
+| 9 | [`FAQ.md`](./FAQ.md) | 10 min | Skeptical | Common problems |
 
 ---
 
