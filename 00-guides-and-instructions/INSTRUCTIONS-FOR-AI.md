@@ -7,6 +7,7 @@ How to collaborate with Claude (or similar) to generate each phase of documentat
 ## Contents
 
 - [General principles](#general-principles)
+- [AI agent authoring directive (mandatory)](#ai-agent-authoring-directive-mandatory)
 - [Prompt structure](#prompt-structure)
 - [Prompts by phase](#prompts-by-phase)
 - [Validation checklist](#validation-checklist)
@@ -48,6 +49,21 @@ If you have an example from another product, provide an extract so AI replicates
 - Phases 6+: **specific to your stack**
 
 If AI mentions technology names in phases 1-5, ask it to abstract.
+
+---
+
+## AI Agent Authoring Directive (Mandatory)
+
+Use these rules for any generated artifact:
+
+1. Operate only with explicit inputs; do not invent business facts.
+2. Mark key statements as evidence-backed or inferred.
+3. Keep phases 1-5 strictly technology agnostic.
+4. In phases 6-12, reference prior requirements/design artifacts for each major decision.
+5. Record assumptions, risks, and open questions in dedicated sections.
+6. Do not mark a phase complete without checklist validation and stakeholder sign-off.
+7. Preserve traceability links from discovery to feedback.
+8. If context is missing or contradictory, stop and request clarification.
 
 ---
 
