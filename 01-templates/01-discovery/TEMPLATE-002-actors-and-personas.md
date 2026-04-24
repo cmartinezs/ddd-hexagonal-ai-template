@@ -4,7 +4,7 @@
 
 # Actors and Personas
 
-Identify who will use the system, their goals, pain points, and needs. This creates the foundation for all user-facing decisions.
+You are an AI agent generating Discovery phase documentation. This template identifies who will use the system, their goals, pain points, and needs, and defines the access boundaries between actor types. Complete this template after TEMPLATE-001 — the vision and objectives established there provide the context for actor identification.
 
 ## Contents
 
@@ -20,9 +20,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Actor Identification
 
+This section enumerates everyone who interacts with the system or is affected by it. Identify actors early and exhaustively — missing an actor type in Discovery means their needs are not represented in Requirements.
+
 **An actor** is anyone who interacts with the system or is affected by it. Identify all actors early—users, administrators, external systems, and stakeholders.
 
 ### Actor Categories
+
+Use this table to organize actors into categories before writing detailed personas.
 
 | Category | Description | Examples |
 |----------|-------------|----------|
@@ -34,6 +38,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ### Prompts for AI
 
+Use these questions to ensure all actor types are identified, including those that are easy to overlook.
+
 - Who will log into this system?
 - Who benefits from the system but doesn't use it directly?
 - Who manages or administers the system?
@@ -41,6 +47,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 - Who approves or finances this project?
 
 ### Example Actor List
+
+The following example shows a complete actor identification for an IAM platform.
 
 > **Primary Actors**:
 > - End User: Authenticates to access applications
@@ -60,9 +68,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Explicitly Excluded Actors
 
+This section documents actor types that are out of scope for this phase. Explicit exclusions prevent scope creep and set clear expectations with stakeholders — "not now" is a decision that must be recorded.
+
 **Actors that are NOT in scope for this phase**. Document exclusions to prevent scope creep and set clear expectations. Revisit these in future phases as capabilities expand.
 
 ### Excluded Actors Template
+
+Use this table to document each excluded actor with the reason and future revisit plan.
 
 | Actor | Reason for Exclusion | Future Consideration |
 |-------|---------------------|--------------------|
@@ -70,11 +82,15 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ### Prompts for AI
 
+Use these questions to identify actor types that should be explicitly excluded.
+
 - What actors would be logical to support but aren't in MVP?
 - Which integration points are deferred (e.g., LDAP, third-party identity providers)?
 - What external systems are explicitly out of scope?
 
 ### Example Excluded Actors
+
+The following example shows well-documented exclusions with rationale and future phase.
 
 > **External Directory Systems** (LDAP, Active Directory)
 > - Reason: MVP assumes manual user management by organization admin
@@ -100,9 +116,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Actor Hierarchy
 
+This section shows how actors relate to each other and the system boundaries. A clear hierarchy makes authority chains and data isolation requirements explicit before the design phase begins.
+
 **Tree structure** showing how actors relate to each other and the system boundaries. This makes clear who has authority over whom and how data flows.
 
 ### Hierarchy Template
+
+Use this diagram structure to represent the actor hierarchy for the project.
 
 ```
 ┌─────────────────────────────────┐
@@ -130,12 +150,16 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ### Prompts for AI
 
+Use these questions to validate the hierarchy is complete and correct.
+
 - Who manages whom in this system?
 - What's the delegation/authority chain?
 - Are there peer actors or only hierarchical relationships?
 - Where are the hard boundaries (tenants, security contexts)?
 
 ### Example Hierarchy
+
+The following example shows a three-tier actor hierarchy with clear isolation boundaries.
 
 > **Platform Tier** (Global):
 > - Platform Administrator: Registers/deregisters organizations, manages global settings
@@ -152,9 +176,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Access Boundaries
 
+This section defines explicitly what each actor can and cannot do. This is the most critical security input for the design phase — missing a boundary here means a potential authorization gap in the system.
+
 **Explicit definition of what each actor CAN and CANNOT do**. Critical for multi-tenant systems and security. Prevents misunderstandings about scope and creates the basis for permission modeling.
 
 ### Access Boundaries Template
+
+Use this table to document each actor's permissions and restrictions.
 
 | Actor | CAN Access/Do | CANNOT Access/Do | Notes |
 |-------|---|---|---|
@@ -162,12 +190,16 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ### Prompts for AI
 
+Use these questions to ensure access boundaries are complete and enforceable.
+
 - For each actor, what data can they see?
 - What operations can each actor perform?
 - What are hard boundaries they cannot cross?
 - How are boundaries enforced (technical, process)?
 
 ### Example Access Boundaries
+
+The following example shows access boundaries defined for each actor type with enforcement mechanisms.
 
 > **Organization Administrator**:
 > - ✅ CAN: Manage all users in their org, define roles, register apps, manage billing, view audit logs
@@ -198,9 +230,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Persona Template
 
+This section defines the structure for each user persona. A persona is more than a role — it represents a fictional character whose goals, pain points, and needs drive requirements. Complete one section per distinct user type.
+
 **Complete one section per distinct user type**. A persona is more than a role—it's a fictional character representing a user type.
 
 ### Persona Structure
+
+Use this template for each persona you generate.
 
 ```markdown
 ## [Persona Name]
@@ -228,6 +264,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 ```
 
 ### Example Persona
+
+The following examples show three completed personas at different seniority and technical levels.
 
 ---
 
@@ -326,9 +364,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Actor Map
 
+This section provides a visual representation of how actors relate to each other and to the system. Use it to verify that the actor identification and hierarchy are internally consistent.
+
 **Visual representation** of how actors relate to each other and the system.
 
 ### Actor Map Template
+
+Use this diagram structure to map actor relationships.
 
 ```
                     ┌─────────────────┐
@@ -358,6 +400,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ### Actor Relationships
 
+Use this table to document the relationship type between each actor and the system.
+
 | Actor | Relationship | Interaction Type |
 |-------|--------------|------------------|
 | End User | Uses system directly | Authentication, profile management |
@@ -370,9 +414,13 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Needs Prioritization
 
+This section ranks actor needs by priority to guide the Requirements phase. Not all needs are equally important — the P0-P3 matrix ensures the MVP contains what is truly essential.
+
 **Not all needs are equal**. Prioritize based on frequency, impact, and feasibility.
 
 ### Prioritization Matrix
+
+Use this matrix to assign a priority level to each actor need.
 
 | Priority | Definition | Criteria |
 |----------|------------|----------|
@@ -382,6 +430,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 | **P3 - Future** | Not in scope | Good ideas to revisit later |
 
 ### Example Needs Prioritization
+
+The following example shows needs prioritized across multiple personas.
 
 | Persona | Need | Priority | Rationale |
 |---------|------|----------|------------|
@@ -398,6 +448,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Paso a Paso
 
+Follow these steps in order to complete this template. Validate each step with a human collaborator before proceeding to the next.
+
 1. **List all actors**: Brainstorm all user types, including edge cases
 2. **Group by category**: Primary, secondary, admin, external, stakeholder
 3. **Create personas**: Write detailed persona for each distinct type
@@ -409,6 +461,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 ---
 
 ## Ejemplo
+
+The following examples show completed actor and persona sets from two different project types.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -448,6 +502,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and advancing to TEMPLATE-003.
+
 ### Deliverables
 
 - [ ] All actors identified (primary, secondary, admin, external, systems, stakeholders)
@@ -471,6 +527,8 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ## Phase Discipline Rules
 
+Before advancing to TEMPLATE-003 (Scope and Boundaries), verify all rules below. Violations here propagate directly into incorrect scope and access control design.
+
 **Before moving to Requirements, verify**:
 
 1. ✅ All actor types covered (primary, secondary, admin, external, systems, stakeholders)
@@ -486,7 +544,9 @@ Identify who will use the system, their goals, pain points, and needs. This crea
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when generating content for this template. They prevent the most common failures in actor and persona documentation.
 
 1. **Interview real users**: Don't guess—talk to actual users when possible
 2. **Start with goals, not features**: Focus on what users want to achieve

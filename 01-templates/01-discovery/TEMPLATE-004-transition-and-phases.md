@@ -4,7 +4,7 @@
 
 # Transition Plan: From Discovery to Next Phases
 
-Define the roadmap and handoff from Discovery to the following phases (Requirements, Design, Development, etc.). This ensures clear transitions, prevents scope creep, and establishes success criteria for each phase.
+You are an AI agent generating Discovery phase documentation. This template defines the roadmap and handoff from Discovery to the following phases (Requirements, Design, Development, etc.). Complete this template after TEMPLATE-003 — the scope and acceptance criteria established there determine what each subsequent phase must deliver.
 
 ## Contents
 
@@ -19,9 +19,13 @@ Define the roadmap and handoff from Discovery to the following phases (Requireme
 
 ## Phase Overview
 
+This section provides a high-level description of each phase after Discovery. Focus on *what will be done*, not *how* — technology and implementation details belong in Phase 3 and beyond.
+
 **High-level description** of each phase after Discovery. Focus on *what will be done*, not *how*.
 
 ### Phase Template
+
+Use this table to document each post-Discovery phase with its purpose and key outputs.
 
 | Phase | Purpose | Stakeholders | Duration | Key Outputs |
 |-------|---------|--------------|----------|------------|
@@ -29,11 +33,15 @@ Define the roadmap and handoff from Discovery to the following phases (Requireme
 
 ### Prompts for AI
 
+Use these questions to identify and describe the phases needed after Discovery.
+
 - What are the 4-6 major phases needed after Discovery?
 - What's the dependency chain between phases?
 - What must be complete in one phase before the next starts?
 
 ### Example Phases
+
+The following example shows five post-Discovery phases with clear purposes and key outputs.
 
 > **Phase 1: Requirements & Prioritization**
 > - Convert Discovery needs into prioritized, testable requirements
@@ -69,9 +77,13 @@ Define the roadmap and handoff from Discovery to the following phases (Requireme
 
 ## Phase Sequencing
 
+This section shows the dependency and critical path between phases. Identify which phases are sequential (must complete before the next starts) and which can run in parallel.
+
 **Visual representation** of phase dependencies and critical path.
 
 ### Sequencing Template
+
+Use this diagram to document the phase dependency structure.
 
 ```
 Phase 1: Requirements
@@ -87,11 +99,15 @@ Phase 5: Deployment
 
 ### Prompts for AI
 
+Use these questions to determine the correct sequencing for this project.
+
 - Are any phases sequential (blocking) or parallel (independent)?
 - What's the critical path—the longest chain of dependencies?
 - Where can the team work in parallel to save time?
 
 ### Example Sequencing (from Keygo)
+
+The following example shows a sequencing diagram with parallel tracks to accelerate delivery.
 
 ```
 Discovery (Complete)
@@ -110,9 +126,13 @@ Requirements & Prioritization (must complete first)
 
 ## Deliverables by Phase
 
+This section specifies the concrete outputs expected at the end of each phase. Deliverables must be specific and measurable — "documentation" is not sufficient; "API specifications with example requests and responses" is.
+
 **Specific outputs** expected at the end of each phase. Make them concrete and measurable.
 
 ### Deliverables Template
+
+Use this table to document each phase's deliverables with format, owner, and success criteria.
 
 | Phase | Deliverable | Format | Owner | Success Criteria |
 |-------|-------------|--------|-------|-----------------|
@@ -120,11 +140,15 @@ Requirements & Prioritization (must complete first)
 
 ### Prompts for AI
 
+Use these questions to define deliverables at the right level of specificity.
+
 - What artifacts must each phase produce?
 - Who owns each deliverable?
 - How will you know a deliverable is "done"?
 
 ### Example Deliverables (from Keygo)
+
+The following example shows deliverables with concrete success criteria for each phase.
 
 | Phase | Deliverable | Format | Owner | Success |
 |---|---|---|---|---|
@@ -143,9 +167,13 @@ Requirements & Prioritization (must complete first)
 
 ## Success Criteria
 
+This section defines what "successful" means for each phase — not just "completed" but "done well." Each criterion must be verifiable and have a clear decision maker.
+
 **How to know each phase was successful**. Not just "done", but "done well".
 
 ### Criteria Template
+
+Use this table to document success criteria with verification method and decision owner.
 
 | Phase | Criterion | Verification Method | Owner |
 |-------|-----------|-------------------|-------|
@@ -153,11 +181,15 @@ Requirements & Prioritization (must complete first)
 
 ### Prompts for AI
 
+Use these questions to define success criteria that are objective and verifiable.
+
 - For each phase, what's the minimum definition of success?
 - What would constitute phase failure?
 - Who makes the call whether to move to the next phase?
 
 ### Example Criteria
+
+The following example shows success criteria with explicit verification methods and owners.
 
 | Phase | Criterion | Verification | Owner |
 |---|---|---|---|
@@ -173,9 +205,13 @@ Requirements & Prioritization (must complete first)
 
 ## Dependencies Between Phases
 
+This section documents what each phase needs from prior phases before it can start. Explicit dependency tracking prevents false starts where a phase begins before its inputs are ready.
+
 **What each phase needs from prior phases to start**. Prevents false starts.
 
 ### Dependency Template
+
+Use this table to document inter-phase dependencies with impact if delayed.
 
 | Phase | Depends On | Needs From | Impact if Delayed |
 |-------|-----------|-----------|------------------|
@@ -183,11 +219,15 @@ Requirements & Prioritization (must complete first)
 
 ### Prompts for AI
 
+Use these questions to identify all dependencies, including non-obvious ones.
+
 - What inputs must come from the prior phase?
 - Are there any surprising dependencies?
 - What could be started in parallel to save time?
 
 ### Example Dependencies (from Keygo)
+
+The following example shows inter-phase dependencies with concrete impact assessments.
 
 | Phase | Depends On | Needs From | Impact if Delayed |
 |---|---|---|---|
@@ -200,9 +240,13 @@ Requirements & Prioritization (must complete first)
 
 ## Handoff Criteria
 
+This section defines explicit go/no-go gates between phases. Each gate is a checklist — all items must be checked before the team moves forward. These gates prevent premature phase transitions.
+
 **Explicit go/no-go gates** between phases. When is a phase truly complete?
 
 ### Handoff Checklist Template
+
+Use this table to document the handoff checklist for each phase transition.
 
 | Phase | Handoff Checklist | Pass Criteria |
 |-------|------------------|---------------|
@@ -210,11 +254,15 @@ Requirements & Prioritization (must complete first)
 
 ### Prompts for AI
 
+Use these questions to define handoff gates that are enforceable and complete.
+
 - What must be done before moving to the next phase?
 - Who signs off on the handoff?
 - What would cause a phase to be "reworked"?
 
 ### Example Handoff Criteria (from Keygo)
+
+The following example shows complete handoff checklists for each phase transition.
 
 **Discovery → Requirements**
 - [ ] Context, vision, and problem clearly documented
@@ -259,6 +307,8 @@ Requirements & Prioritization (must complete first)
 
 ## Paso a Paso
 
+Follow these steps in order to complete this template. Each step builds on the previous.
+
 1. **Define phases**: What major work streams happen after Discovery?
 2. **Sequence them**: Which are sequential (blocking) vs. parallel?
 3. **List deliverables**: What artifact does each phase produce?
@@ -271,6 +321,8 @@ Requirements & Prioritization (must complete first)
 ---
 
 ## Ejemplo
+
+The following examples show transition plans from two different project types.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -300,6 +352,8 @@ Requirements & Prioritization (must complete first)
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and advancing to TEMPLATE-005.
+
 ### Deliverables
 
 - [ ] Phases identified and named (4-6 phases)
@@ -321,6 +375,8 @@ Requirements & Prioritization (must complete first)
 
 ## Phase Discipline Rules
 
+Before advancing to TEMPLATE-005 (Discovery Closure and Validation), verify all rules below. Incomplete transition planning means the team starts Requirements without knowing what success looks like.
+
 **Before starting Requirements phase, verify**:
 
 1. ✅ Phases are sequential or parallel (clear dependency model)
@@ -333,7 +389,9 @@ Requirements & Prioritization (must complete first)
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when generating content for this template. They prevent the most common planning failures during phase transitions.
 
 1. **Be explicit about gates**: Handoff criteria prevent false starts
 2. **Plan for parallel work**: Where can teams work independently?

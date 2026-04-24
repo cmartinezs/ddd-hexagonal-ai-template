@@ -4,7 +4,7 @@
 
 # Scope and Boundaries
 
-Define what's in scope, what's out of scope, and the rationale. Clear boundaries prevent scope creep and focus team effort.
+You are an AI agent generating Discovery phase documentation. This template defines what the system will and will not do, maps capabilities to strategic objectives, documents operational limits and assumptions, and identifies key risks. Complete this template after TEMPLATE-002 — the actor needs identified there drive the scope decisions made here.
 
 ## Contents
 
@@ -22,15 +22,21 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## In Scope (MVP)
 
+This section defines exactly what will be delivered in the initial release. Be specific — vague scope leads to scope creep. Every item in this list must map to at least one actor need from TEMPLATE-002.
+
 **Features and capabilities** that will be delivered in the initial release. Be specific—what exactly will work?
 
 ### Scope Definition Template
+
+Use this table to document each in-scope feature with its associated actors and priority.
 
 | Feature | Description | Actor(s) | Priority |
 |---------|-------------|----------|----------|
 | Feature name | What it does | Who uses it | P0/P1 |
 
 ### Example In Scope
+
+The following example shows a well-scoped MVP with specific, actor-linked capabilities.
 
 > **Core Authentication**:
 > - User registration with email verification
@@ -61,15 +67,21 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Out of Scope
 
+This section explicitly states what the system will not do in the initial release. Every exclusion must have a reason and a future phase assignment — "not now" is a decision, not an omission.
+
 **Explicitly state what the system will NOT do** in the initial release. This prevents feature creep and sets expectations.
 
 ### Out of Scope Template
+
+Use this table to document each excluded feature with rationale and future phase.
 
 | Feature | Reason | Future Consideration |
 |---------|--------|---------------------|
 | Feature name | Why not in scope | When to revisit |
 
 ### Example Out of Scope
+
+The following example shows exclusions documented with clear rationale and future phases.
 
 > **Future Phases (Not in MVP)**:
 > - **Social login (Google, GitHub, etc.)**: Add after MVP validation
@@ -90,9 +102,13 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Functional Capabilities Traceability
 
+This section maps each capability to the strategic objectives it serves. Use it to verify that every feature has strategic value and that all objectives are covered by at least one primary capability — features without strategic value should be questioned.
+
 **Maps each capability to its contribution toward strategic objectives**. Ensures every feature has clear strategic value and prevents feature creep.
 
 ### Traceability Matrix Template
+
+Use this matrix to document capability-to-objective alignment.
 
 | # | Capability | Objective 1<br>[Name] | Objective 2<br>[Name] | Objective 3<br>[Name] | Objective 4<br>[Name] |
 |---|------------|:--:|:--:|:--:|:--:|
@@ -106,11 +122,15 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ### Prompts for AI
 
+Use these questions to complete and validate the traceability matrix.
+
 - How does each capability advance the strategic objectives?
 - Are there any capabilities with zero strategic value? (Consider removing)
 - Are all objectives covered by at least one 🟢-level capability?
 
 ### Example Traceability
+
+The following example shows a completed traceability matrix across six strategic objectives.
 
 | Capability | Centralize<br>IAM | Tenant<br>Isolation | Standard<br>Protocols | Granular<br>AuthZ | Auditability | Ecosystem<br>Integration |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -123,15 +143,21 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Operational Limits
 
+This section defines quantified constraints for the system. These limits inform capacity planning, SLA commitments, and infrastructure design. Document them with concrete numbers where possible — "TBD" limits should have a review trigger.
+
 **Quantified constraints for the system** (if applicable). Helps with capacity planning and sets realistic expectations.
 
 ### Operational Limits Template
+
+Use this table to document each operational limit with its rationale and review trigger.
 
 | Concept | Limit | Notes | Review Trigger |
 |---------|-------|-------|-----------------|
 | [Metric] | [Value] | [Rationale or TBD status] | [When to reassess] |
 
 ### Categories
+
+Consider limits across these categories to ensure completeness.
 
 - **Scale limits**: Users per org, apps per org, concurrent sessions
 - **Data retention**: How long audit logs/history are kept
@@ -140,6 +166,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 - **Costs**: Per-tenant or per-user pricing bands
 
 ### Example Operational Limits
+
+The following example shows quantified limits across multiple operational dimensions.
 
 | Metric | MVP Limit | Notes | Review at |
 |--------|-----------|-------|-----------|
@@ -153,11 +181,13 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Assumptions
 
-**Things believed to be true** without proof. Document assumptions to identify risks early.
+This section documents things believed to be true without proof. Assumptions that turn out to be wrong become risks — the earlier they are identified, the earlier they can be validated or mitigated.
 
 **Things believed to be true** without proof. Document assumptions to identify risks early.
 
 ### Categories of Assumptions
+
+Use these categories to ensure all assumption types are captured.
 
 | Category | Example | Risk if Wrong |
 |----------|---------|---------------|
@@ -168,6 +198,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 | **Resource** | Team can deliver in timeline | Scope needs adjustment |
 
 ### Example Assumptions
+
+The following example shows assumptions documented across all categories.
 
 > **User Assumptions**:
 > - Users have corporate email addresses
@@ -193,9 +225,13 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Dependencies
 
+This section identifies external factors required for success. Dependencies must be tracked with owners and statuses — an unmonitored dependency is a hidden blocker.
+
 **External factors** required for success. Identify what you need from others.
 
 ### Dependency Categories
+
+Use this table to document all dependencies with their owners, status, and risk level.
 
 | Category | Dependency | Owner | Status | Risk |
 |----------|------------|-------|--------|------|
@@ -205,6 +241,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 | **Resource** | Additional engineering hire | HR | In progress | Medium |
 
 ### Example Dependencies
+
+The following example shows critical and important dependencies documented with risk assessment.
 
 > **Critical Dependencies**:
 > - **Email Service Provider**: Need reliable email delivery for auth flows (verification, password reset)
@@ -228,9 +266,13 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Acceptance Criteria
 
+This section defines high-level criteria that demonstrate each major requirement is satisfied in production. These are not detailed test cases — they are observable outcomes that a stakeholder can verify, bridging Requirements and Testing.
+
 **High-level criteria** showing how you'll know each major requirement is satisfied in production. Not detailed test cases, but acceptance signals that bridge Requirements and Testing.
 
 ### Acceptance Criteria Template
+
+Use this table to document acceptance criteria for each major requirement.
 
 | Requirement | How You'll Know It's Met | Verification Method | Success Metric |
 |------------|---------------------------|---------------------|----|
@@ -238,11 +280,15 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ### Prompts for AI
 
+Use these questions to define clear, verifiable acceptance criteria.
+
 - For each major capability, how will you demonstrate it's working?
 - What would a stakeholder need to see to agree it's "done"?
 - What metrics indicate success vs. failure?
 
 ### Example Acceptance Criteria
+
+The following example shows acceptance criteria that are observable and measurable, not just technical.
 
 | Requirement | How You'll Know It's Met | Verification Method | Success Metric |
 |---|---|---|---|
@@ -256,15 +302,21 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Risks & Mitigations
 
+This section identifies key risks that could prevent success and documents the mitigation strategy for each. Known and mitigated risks are manageable — unknown risks are the project killers.
+
 **Key risks that could prevent success**, along with mitigation strategies. Moves risks from unknown unknowns to managed knowns.
 
 ### Risks & Mitigations Template
+
+Use this table to document, rank, and assign ownership of each risk.
 
 | # | Risk | Affected Goals | Prob. | Impact | Mitigation Strategy | Owner | Monitor |
 |---|------|---|---|---|---|---|---|
 | R1 | [Risk description] | [Which objectives/requirements] | Med | High | [How to reduce probability or impact] | [Responsible person] | [KPI to track] |
 
 ### Risk Categories
+
+Consider risks across these categories to ensure coverage.
 
 - **Adoption**: Users won't use the system
 - **Security**: Unauthorized access, data breaches
@@ -274,6 +326,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 - **Organizational**: Team capacity, resource conflicts
 
 ### Example Risks & Mitigations
+
+The following example shows risks ranked by probability and impact with concrete mitigations.
 
 | # | Risk | Affected Goals | Prob. | Impact | Mitigation | Owner | Monitor |
 |---|---|---|---|---|---|---|---|
@@ -287,9 +341,13 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Phase Roadmap
 
+This section maps MVP scope to future phases. Every out-of-scope item should appear in a future phase — this confirms that exclusions are deliberate deferrals, not permanent removals.
+
 **What will be delivered when**. Separate MVP from future phases.
 
 ### Roadmap Template
+
+Use this table to document the delivery roadmap across phases.
 
 | Phase | Timeline | Scope | Key Features |
 |-------|----------|-------|--------------|
@@ -298,6 +356,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 | Phase 3 | Months 6-8 | Enterprise | White-label, Advanced RBAC |
 
 ### Example Roadmap
+
+The following example shows a three-phase roadmap with clear feature progression.
 
 > **Phase 1: MVP (Months 1-3)**
 > - User authentication (email/password, MFA)
@@ -324,6 +384,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Paso a Paso
 
+Follow these steps in order to complete this template. Each step builds on the previous — do not skip ahead.
+
 1. **Review Discovery artifacts**: Use context-motivation and actors-personas
 2. **Map capabilities to objectives**: Build traceability matrix to ensure strategic alignment
 3. **Define MVP scope**: What is the minimum viable product?
@@ -340,6 +402,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 ---
 
 ## Ejemplo
+
+The following examples show completed scope documents from two different project types.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -397,6 +461,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and advancing to TEMPLATE-006.
+
 ### Deliverables
 
 - [ ] MVP scope clearly defined (features, not implementations)
@@ -420,6 +486,8 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ## Phase Discipline Rules
 
+Before advancing to TEMPLATE-006 (Decision Rationale), verify all rules below. Scope violations here propagate directly into Requirements and are expensive to fix later.
+
 **Before moving to Requirements, verify**:
 
 1. ✅ MVP scope is specific and achievable
@@ -436,7 +504,9 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when generating content for this template. They prevent the most common failures in scope definition.
 
 1. **Be ruthless with MVP**: Include only what's essential for value delivery
 2. **Document "not now" features**: Clear out-of-scope prevents scope creep

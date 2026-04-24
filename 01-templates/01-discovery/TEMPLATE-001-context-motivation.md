@@ -4,7 +4,7 @@
 
 # Context and Motivation
 
-Establish shared understanding of why the project exists, the vision it pursues, and the context in which it will operate.
+You are an AI agent generating Discovery phase documentation. This template establishes shared understanding of why the project exists, the vision it pursues, and the context in which it will operate. Complete this template first — all subsequent Discovery templates build on the context defined here.
 
 ## Contents
 
@@ -22,9 +22,13 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Vision
 
+This section captures the long-term aspirational goal of the project in a single paragraph. Write from the perspective of where the project will be when fully realized — not how it will get there.
+
 **One-paragraph statement** describing the long-term aspirational goal of the project.
 
 ### Prompts for AI
+
+Use these questions to guide your vision statement generation.
 
 - What problem does this project solve in the world?
 - Who benefits from this solution?
@@ -32,15 +36,21 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Example Vision
 
+The following example shows what a completed vision statement looks like.
+
 > *To become the leading identity and access management platform for SaaS applications, enabling organizations to securely manage user authentication, authorization, and access across all their applications from a single unified control plane.*
 
 ---
 
 ## Mission
 
+This section defines the concrete purpose of the project and explains how it will achieve the vision. Where the vision is aspirational, the mission is operational — it describes the specific value delivered and who receives it.
+
 **Concrete statement** of the project's purpose and how it will achieve the vision.
 
 ### Prompts for AI
+
+Use these questions to guide your mission statement generation.
 
 - What specific value does this project deliver?
 - Who are the primary beneficiaries?
@@ -48,11 +58,15 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Example Mission
 
+The following example shows what a completed mission statement looks like.
+
 > *Provide a multi-tenant authentication and authorization platform that simplifies user management, enforces security policies, and integrates seamlessly with any application through standardized protocols.*
 
 ---
 
 ## Problem Statement
+
+This section documents the specific problem being solved, including the current state, impact on users and business, and root causes if understood. A strong problem statement is quantified — it shows the scale and cost of the problem, not just that the problem exists.
 
 **Clear articulation** of the specific problem being solved, including:
 
@@ -62,12 +76,16 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Questions to Answer
 
+Use these questions to ensure your problem statement is specific and quantified.
+
 - What specific pain points do users experience today?
 - How are they currently solving the problem (if at all)?
 - What are the consequences of not solving this problem?
 - How large is the affected market or user base?
 
 ### Example Problem Statement
+
+The following example shows a problem statement with quantified impact.
 
 > **Current State**: Organizations manage user access across multiple SaaS applications using separate identity systems, leading to:
 > - User password fatigue (average 25+ passwords per employee)
@@ -81,9 +99,13 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Strategic Objectives
 
+This section translates the vision into 5-7 concrete, measurable outcomes. Each objective must have a KPI so success can be verified — avoid objectives that cannot be measured or observed.
+
 **7+ strategic objectives** that translate the vision into concrete, measurable outcomes. Each objective is accompanied by KPIs showing how success will be measured.
 
 ### Objective Template
+
+Use this structure for each strategic objective you generate.
 
 ```markdown
 ### N. [Objective Name]
@@ -95,11 +117,15 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Prompts for AI
 
+Use these questions to identify and validate each strategic objective.
+
 - What are the 5-7 most important results this project needs to achieve?
 - If the project succeeds, what changes in the world/business?
 - What would a competitor need to do to invalidate this objective?
 
 ### Example Objectives
+
+The following examples show well-structured strategic objectives with KPIs.
 
 > **1. Centralize identity and access management**
 > - What we seek: Keygo is the single source of truth for authentication and authorization
@@ -120,9 +146,13 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Key Capabilities
 
+This section describes what the system will be able to do at a high level — the bridge between the vision and detailed requirements. Focus on capabilities (business outcomes), not implementations (how they are built). Technology names do not belong here.
+
 **High-level description** of what the system will be able to do—the bridge between vision and detailed requirements. Focus on *capabilities*, not implementations.
 
 ### Capability Template
+
+Use this table structure for each capability you generate.
 
 | Capability | Description | Strategic Value |
 |------------|-------------|-----------------|
@@ -130,11 +160,15 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Prompts for AI
 
+Use these questions to generate the capabilities list.
+
 - What are the 6-8 core things this system must be capable of?
 - What business outcomes does each capability enable?
 - Which capabilities are truly foundational vs. nice-to-have?
 
 ### Example Capabilities
+
+The following examples show capabilities described at the right level of abstraction — business outcomes, not implementation details.
 
 > **User Authentication Lifecycle Management**: System manages the complete cycle of login, credential renewal, logout, and access revocation. Apps delegate auth validation to the platform rather than implementing it themselves.
 >
@@ -152,15 +186,21 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Critical Principles
 
+This section documents non-negotiable design principles that must be established now, before Requirements or Design begin. These are the "why" behind major architecture choices and serve as constraints on all subsequent decisions. Violating these principles in later phases is a defect.
+
 **Foundational design principles** that are non-negotiable from the start and guide all subsequent decisions. These are the "why" behind major architecture choices.
 
 ### Prompts for AI
+
+Use these questions to identify the critical principles for this project.
 
 - What design decisions are so important they must be made NOW, not deferred?
 - What would break the core value proposition if violated?
 - What trade-offs are we willing to accept to uphold these principles?
 
 ### Example Critical Principles
+
+The following examples show well-stated principles with clear rationale explaining why each is non-negotiable.
 
 > **Centralization as Strategic Foundation**
 > The core proposal of Keygo is to replace fragmented identity management with a unified system. Every design decision must reinforce this consolidation. Any feature that allows apps to bypass Keygo undermines the entire platform.
@@ -181,6 +221,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Success Criteria
 
+This section defines measurable outcomes that will confirm the project has achieved its objectives. Use SMART criteria (Specific, Measurable, Achievable, Relevant, Time-bound) — avoid criteria that cannot be objectively verified.
+
 **Measurable outcomes** that indicate the project has achieved its objectives. Use SMART criteria:
 
 | Criterion | Metric | Target | Timeline |
@@ -193,6 +235,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ### Prompts for AI
 
+Use these questions to define and validate success criteria.
+
 - What would success look like at 3 months, 6 months, 12 months?
 - What metrics would indicate the project is failing?
 - What is the minimum viable success?
@@ -201,9 +245,13 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Timeline
 
+This section maps the project to a phased roadmap with milestones and decision points. Include go/no-go decision gates between phases — dates alone are not sufficient.
+
 **Phased approach** with key milestones and decision points.
 
 ### Timeline Template
+
+Use this table structure to document the project timeline.
 
 | Phase | Duration | Key Milestones | Decision Points |
 |-------|----------|----------------|-----------------|
@@ -215,6 +263,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 | Deployment | 2 weeks | Live in production | Launch public |
 
 ### Example Timeline
+
+The following example shows a phased timeline with clear scoping per phase.
 
 > **Phase 1 (MVP)**: 3 months
 > - Core authentication (login, logout, password reset)
@@ -238,9 +288,13 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Constraints
 
+This section documents all known boundaries within which the project must operate. Identify every constraint now — undocumented constraints discovered later cause scope changes and delays.
+
 **Boundaries** within which the project must operate. Document all constraints upfront.
 
 ### Categories
+
+Use this table to document constraints across all relevant categories.
 
 | Category | Constraint | Rationale |
 |----------|------------|-----------|
@@ -252,6 +306,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 | **Technical** | Must support 10,000+ concurrent users | Projected load |
 
 ### Example Constraints
+
+The following example shows constraints documented across all categories.
 
 > **Regulatory Constraints**:
 > - Must comply with GDPR (EU user data)
@@ -272,7 +328,9 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Paso a Paso
 
-1. **Gather context**: Interview stakeholders, review existing documentation, understand market position
+Follow these steps in order to complete this template. Each step depends on the previous one.
+
+1. **Gather context**: Review existing documentation, interview stakeholders, understand market position
 2. **Draft vision**: Write 1-2 sentence vision statement; refine with stakeholders
 3. **Articulate problem**: Document current state, pain points, and impact in business terms
 4. **Define success**: Establish measurable criteria with specific targets
@@ -283,6 +341,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 ---
 
 ## Ejemplo
+
+The following examples show completed versions of this template from two different project types. Use them to calibrate the expected depth and specificity.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -329,6 +389,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and advancing to TEMPLATE-002.
+
 ### Deliverables
 
 - [ ] Vision statement (1-2 sentences, aspirational)
@@ -351,6 +413,8 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ## Phase Discipline Rules
 
+Before advancing to TEMPLATE-002 (Actors and Personas), verify all rules below. These rules enforce the phase boundary between Discovery and Design.
+
 **Before moving to Requirements, verify**:
 
 1. ✅ Vision is aspirational but grounded in real problem
@@ -367,7 +431,9 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when generating content for this template. They prevent the most common documentation failures in the Context and Motivation section.
 
 1. **Start with WHY**: Before features, understand the business need and market context
 2. **Quantify impact**: Use numbers to justify the project (market size, current costs, projected savings)

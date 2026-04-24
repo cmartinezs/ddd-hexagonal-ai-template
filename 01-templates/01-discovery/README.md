@@ -1,5 +1,7 @@
 # Phase 1: Discovery
 
+You are an AI agent generating Discovery phase documentation. This directory contains six templates that together define the business context, actors, scope, decisions, and transition plan for a project before development begins. Complete these templates in the order shown below before advancing to Phase 2 (Requirements).
+
 ## Overview
 
 Discovery is about understanding the **WHAT** and **WHY** — the business context, problems, actors, needs, and critical decisions that drive the project. **No implementation details yet**. This phase establishes the foundation for all subsequent work: Requirements, Design, and Development are built on the clarity defined here.
@@ -9,6 +11,8 @@ Discovery is about understanding the **WHAT** and **WHY** — the business conte
 ---
 
 ## 🎯 Key Principle: Focus on "WHAT", NOT "HOW"
+
+This principle governs every document you generate in this phase. Verify compliance against the include/exclude lists below before marking any Discovery template complete.
 
 ✅ **INCLUDE**: 
 - Business needs and problems being solved
@@ -29,6 +33,8 @@ Discovery is about understanding the **WHAT** and **WHY** — the business conte
 
 ## 📋 Discovery in One Page
 
+This table shows each template, who generates it, the estimated time, and the expected output. Use it to plan your Discovery session and track completion before proceeding to Phase 2.
+
 | What | Where | Completable By | Time | Output |
 |------|-------|---|---|---|
 | **Why does this project exist?** Vision, mission, strategic objectives, KPIs | TEMPLATE-001 | Human & AI | 1-2h | 1-page vision statement + 5-7 strategic objectives |
@@ -45,7 +51,11 @@ Discovery is about understanding the **WHAT** and **WHY** — the business conte
 
 ## 📂 Complete Template Suite (6 Templates)
 
+Each template below describes its purpose, the sections it contains, and a usage flexibility range. Read each description before generating content for that template.
+
 ### Context Phase (Foundation)
+
+These three templates establish the foundational context: why the project exists, who it serves, and what it will deliver.
 
 #### **1️⃣ TEMPLATE-001-context-motivation.md** `[Completable by: Human & AI]`
 
@@ -146,6 +156,8 @@ Risk: Low adoption by team leads [Medium probability, High impact]
 ---
 
 ### Transition & Validation Phase (Closure)
+
+These three templates close the Discovery phase: planning what comes next, validating completeness, and documenting the reasoning behind critical decisions.
 
 #### **4️⃣ TEMPLATE-004-transition-and-phases.md** `[Completable by: Human]`
 
@@ -248,6 +260,8 @@ Revisit Trigger: Never weaken isolation. Reconsider flexibility at app layer in 
 
 ## 🔄 How the 6 Templates Connect
 
+The diagram below shows the data flow between templates. Generate them in this order to preserve traceability from vision through validation.
+
 ```
 TEMPLATE-001 (Context & Vision)
     ↓ (establishes strategic objectives & capabilities)
@@ -268,6 +282,8 @@ TEMPLATE-005 (Discovery Closure)
 
 ## ✅ Completion Checklist
 
+Verify every item below before marking Discovery complete. Do not advance to Requirements until all deliverables are present and all sign-offs are collected.
+
 ### Discovery Phase Deliverables
 - [ ] Vision, mission, and strategic objectives (5-7) documented
 - [ ] Key actors identified; personas created; boundaries defined
@@ -281,6 +297,9 @@ TEMPLATE-005 (Discovery Closure)
 - [ ] No unresolved blockers
 
 ### Sign-Off
+
+Record approval from all required stakeholders before advancing to Phase 2.
+
 - [ ] **Prepared by**: [Name, Date]
 - [ ] **Reviewed by**: [Product Manager, Tech Lead, Stakeholders, Date]
 - [ ] **Approved by**: [Executive Sponsor/Steering Committee, Date]
@@ -288,6 +307,8 @@ TEMPLATE-005 (Discovery Closure)
 ---
 
 ## 🏛️ Phase Discipline Rules
+
+Before advancing to Phase 2 (Requirements), verify all rules below. Each rule prevents a specific category of documentation failure in downstream phases.
 
 **Before moving to Requirements, verify**:
 
@@ -306,14 +327,16 @@ TEMPLATE-005 (Discovery Closure)
 
 ## 🤖 AI Assistance Recommendations
 
-### What AI Can Do Well
+This section defines what you generate autonomously and what requires human input. Do not advance past Discovery without the items listed under "Defer to Human Collaborator."
+
+### Your Responsibilities in This Phase
 - **Brainstorm**: Generate additional actors, use cases, risks not yet considered
 - **Draft**: Create persona templates, capability descriptions, risk matrices
 - **Structure**: Organize rough notes into template sections
 - **Validate**: Cross-reference between documents (e.g., "Is this actor mentioned in scope?")
 - **Refine**: Polish language, improve clarity, add missing details
 
-### What Needs Human Input
+### Defer to Human Collaborator
 - **Business reality**: Actual constraints, timelines, budget, competitive landscape
 - **Strategic decisions**: Go/no-go choices; direction of the product
 - **Stakeholder perspective**: What matters to executives, customers, users
@@ -321,6 +344,9 @@ TEMPLATE-005 (Discovery Closure)
 - **Validation**: Review AI suggestions and refine with real context
 
 ### Suggested Workflow
+
+Follow this sequence when collaborating with a human on Discovery. Each step alternates between what you generate and what the human validates.
+
 ```
 1. Human: "Describe the project in 2-3 paragraphs" (business context + problem)
 2. AI: Generate initial actor list + suggested personas
@@ -333,7 +359,9 @@ TEMPLATE-005 (Discovery Closure)
 
 ---
 
-## 💡 Best Practices
+## 💡 Operating Guidelines
+
+Apply these practices to every Discovery document you generate. Deviating from them produces documentation that is generic, untraceable, or misaligned with downstream phases.
 
 1. **Start with WHY** — Before any features, understand the business problem and market
 2. **Interview real stakeholders** — Don't guess actor goals; ask actual users
@@ -350,7 +378,7 @@ TEMPLATE-005 (Discovery Closure)
 
 ## 🚀 Next Steps
 
-Once Discovery is complete and signed off:
+Execute these steps once all sign-offs from TEMPLATE-005 are collected. Do not proceed to Requirements without completing this transition.
 
 1. **Share context** with full team (Requirements, Design, Development)
 2. **Use findings** to drive Requirements phase (every requirement traces back to actors + objectives)
@@ -360,6 +388,8 @@ Once Discovery is complete and signed off:
 ---
 
 ## 📚 Files in This Directory
+
+The table below provides a quick reference to all files in this directory, who generates each one, and the time estimate.
 
 | File | Purpose | Completable By | Time |
 |------|---------|---|---|

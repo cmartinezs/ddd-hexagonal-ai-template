@@ -4,7 +4,7 @@
 
 # Decision Rationale: Why Key Choices Were Made
 
-Document the reasoning behind each critical decision made during Discovery. This prevents future teams from second-guessing choices, provides context for why the system is designed a certain way, and creates institutional memory.
+You are an AI agent generating Discovery phase documentation. This template documents the reasoning behind each critical decision made during Discovery. Capturing this context prevents future teams from second-guessing choices, provides institutional memory, and creates a traceable record of why the system is designed the way it is. Complete this template after TEMPLATE-003 and before TEMPLATE-005.
 
 ## Contents
 
@@ -17,9 +17,13 @@ Document the reasoning behind each critical decision made during Discovery. This
 
 ## Decision Format
 
+This section defines the standard structure for documenting each critical decision. Apply this structure consistently to every decision you record — the structured format makes decisions searchable and comparable across phases.
+
 **Standard structure** for documenting each critical decision: context, question, options, choice, and consequences.
 
 ### Template
+
+Use this template for each critical decision you document.
 
 ```markdown
 ## Decision: [Title]
@@ -62,6 +66,8 @@ Document the reasoning behind each critical decision made during Discovery. This
 
 ### Prompts for AI
 
+Use these questions to identify the decisions worth documenting in this template.
+
 - What were the main debates during Discovery?
 - What decisions almost went a different direction?
 - Where is there consensus vs. residual doubt?
@@ -71,9 +77,13 @@ Document the reasoning behind each critical decision made during Discovery. This
 
 ## Critical Decisions
 
+This section contains the 5-10 major choices that shaped the system. Document every decision that, if reversed later, would require significant redesign — these are the decisions that must be understood by every team member.
+
 **Major choices** that shaped the system. Document 5-10 of the most important ones.
 
 ### Example: Decision 1
+
+The following example shows a fully documented critical decision from an IAM platform project.
 
 ## Decision: Centralization as Core Principle
 
@@ -129,6 +139,8 @@ Product Owner + Steering Committee
 
 ### Example: Decision 2
 
+The following example shows a security-critical decision with a strong "never revisit" constraint.
+
 ## Decision: Multi-Tenant Isolation as Design Constraint (Not Configuration)
 
 ### Context
@@ -182,9 +194,13 @@ Security Lead + Tech Lead
 
 ## Trade-Offs Considered
 
+This section documents difficult choices where no option was clearly "best." Record what was gained and what was given up — future teams need to understand the trade-off to avoid reversing a decision without understanding its cost.
+
 **Difficult choices where no option was clearly "best"**. Document what we gave up.
 
 ### Trade-Off Template
+
+Use this table to document each trade-off with explicit gains and losses.
 
 | Choice | We Gained | We Gave Up | Reasoning |
 |--------|-----------|-----------|-----------|
@@ -192,11 +208,15 @@ Security Lead + Tech Lead
 
 ### Prompts for AI
 
+Use these questions to identify trade-offs worth documenting.
+
 - Where did the team have to choose between equally good options?
 - What features were we tempted to include but didn't?
 - Where did cost/timeline force a sacrifice?
 
 ### Example Trade-Offs (from Keygo)
+
+The following example shows trade-offs documented with clear reasoning for each sacrifice.
 
 | Choice | We Gained | We Gave Up | Reasoning |
 |---|---|---|---|
@@ -209,9 +229,13 @@ Security Lead + Tech Lead
 
 ## Open Questions & Deferred Decisions
 
+This section documents what was explicitly NOT decided during Discovery and explains when each open question will be resolved. Every deferred decision must have an owner and a target resolution phase — unowned deferrals become permanent gaps.
+
 **What we *didn't* decide** (and when we'll revisit).
 
 ### Deferred Template
+
+Use this table to document each deferred decision with its owner and resolution timeline.
 
 | Question | Why Deferred | When We'll Decide | Who Decides | Impact if Wrong |
 |----------|---|---|---|---|
@@ -219,11 +243,15 @@ Security Lead + Tech Lead
 
 ### Prompts for AI
 
+Use these questions to identify open questions worth documenting.
+
 - What seemed important but wasn't urgent enough for Discovery?
 - What requires market validation before deciding?
 - What depends on technical proof-of-concept?
 
 ### Example Deferred Decisions (from Keygo)
+
+The following example shows deferred decisions with specific owners and impact assessments.
 
 | Question | Why Deferred | When We'll Decide | Who | Impact |
 |---|---|---|---|---|
@@ -237,6 +265,8 @@ Security Lead + Tech Lead
 
 ## Paso a Paso
 
+Follow these steps in order to complete this template. Start with the most consequential decisions — decisions that are hard to reverse or that affect multiple phases.
+
 1. **Identify critical decisions**: What were the 5-10 biggest choices?
 2. **Capture context**: What problem/situation required the decision?
 3. **List options**: What were the realistic alternatives?
@@ -249,6 +279,8 @@ Security Lead + Tech Lead
 ---
 
 ## Ejemplo
+
+The following examples show completed decision rationale documents from two different project types.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -280,6 +312,8 @@ Security Lead + Tech Lead
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and advancing to TEMPLATE-005.
+
 ### Deliverables
 
 - [ ] 5-10 critical decisions identified and documented
@@ -300,6 +334,8 @@ Security Lead + Tech Lead
 
 ## Phase Discipline Rules
 
+Before advancing to TEMPLATE-005 (Discovery Closure and Validation), verify all rules below. Undocumented decisions create silent constraints that surface as surprises in Design and Development.
+
 **Before leaving Discovery, verify**:
 
 1. ✅ All major decisions are documented (not buried in emails/notes)
@@ -312,12 +348,14 @@ Security Lead + Tech Lead
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when generating content for this template. They prevent the most common failures in decision documentation.
 
 1. **Document the debates**: What were people arguing about? That context helps future teams
 2. **Be honest about uncertainty**: "We're not 100% sure but X seems reasonable" is valid
 3. **Identify reversible vs. locking-in decisions**: Some decisions are expensive to reverse (database schema); others are cheap to change (UI)
-4. **Revisit periodic**: Flag decisions for re-evaluation at Phase 2, Phase 3, or annually
+4. **Revisit periodically**: Flag decisions for re-evaluation at Phase 2, Phase 3, or annually
 5. **Use data when possible**: "Market feedback showed X", not just "we think X"
 6. **Document dissent**: If stakeholders disagreed, note that (don't pretend there was consensus)
 

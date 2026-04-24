@@ -4,7 +4,7 @@
 
 # Discovery Closure & Validation
 
-Formal closure of the Discovery phase. Validates that all bases are solid, ambiguities are resolved, and the team is ready to move forward with full alignment.
+You are an AI agent generating Discovery phase documentation. This template performs the formal closure of the Discovery phase — validating that all bases are solid, ambiguities are resolved, and the team is ready to move forward with full alignment. Complete this template last in the Discovery sequence. If any section cannot be completed, do not mark Discovery as done — stop and resolve the blocker first.
 
 ## Contents
 
@@ -19,9 +19,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Discovery Validation Checklist
 
+This section verifies that all required Discovery artifacts exist, are complete, and are internally consistent. A checklist item marked ⚠️ or ❌ is a blocker — do not advance to Requirements until it is resolved.
+
 **Verify that Discovery is complete** and all required elements are present, validated, and coherent.
 
 ### Validation Checklist Template
+
+Use this table to document the status of each Discovery artifact.
 
 | Element | Status | Reviewer | Date | Notes |
 |---------|--------|----------|------|-------|
@@ -29,12 +33,16 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to identify gaps before completing the checklist.
+
 - Is everything documented or still in discussions?
 - Are there contradictions between documents?
 - Are all critical decisions made?
 - Is there consensus or unresolved debate?
 
 ### Example Checklist (from Keygo)
+
+The following example shows a completed validation checklist with reviewer assignments and dates.
 
 | Element | Status | Reviewer | Date | Notes |
 |---------|--------|----------|------|-------|
@@ -53,9 +61,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Stakeholder Alignment Verification
 
+This section confirms that all key stakeholders agree on the Discovery output. Unresolved disagreements surfaced here are blockers — a stakeholder who disagrees now will derail the Requirements phase later.
+
 **Confirm that all key stakeholders agree** on the Discovery output. Unresolved disagreements must be surfaced and resolved before moving forward.
 
 ### Alignment Template
+
+Use this table to document each stakeholder's position on the Discovery output.
 
 | Stakeholder | Element | Position | Resolution |
 |-------------|---------|----------|-----------|
@@ -63,12 +75,16 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to identify any remaining misalignments before sign-off.
+
 - Who are the key decision makers?
 - Is there any disagreement on direction?
 - Are there concerns about scope, timeline, or risk?
 - Do all stakeholders understand the MVP vs. future phases?
 
 ### Example Alignment (from Keygo)
+
+The following example shows stakeholder alignment documented with conditional approvals and resolutions.
 
 | Stakeholder | Element | Position | Resolution |
 |---|---|---|---|
@@ -83,9 +99,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Risk Assessment Review
 
+This section reassesses the key risks identified in TEMPLATE-003. New information gathered during Discovery may have changed the probability or impact of risks, or introduced new ones.
+
 **Reassess key risks** identified in Discovery. Are mitigations adequate? Are any new risks surfaced?
 
 ### Risk Review Template
+
+Use this table to document the reassessment status of each risk.
 
 | Risk | Original Mitigation | Still Valid? | Update Needed? | Owner |
 |------|-------------------|---|---|---|
@@ -93,12 +113,16 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to validate that risk mitigations are still adequate.
+
 - Have any risks been resolved during Discovery?
 - Are any new risks surfaced that need mitigation?
 - Is the mitigation strategy sufficient?
 - Who owns monitoring each risk?
 
 ### Example Risk Review (from Keygo)
+
+The following example shows a risk reassessment with updated mitigations where needed.
 
 | Risk | Original Mitigation | Still Valid? | Update | Owner |
 |---|---|---|---|---|
@@ -112,9 +136,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Readiness for Next Phase
 
+This section verifies that the team has everything it needs to start Requirements. "Almost ready" is not ready — document what is still missing and assign a target date for resolution.
+
 **Verify that the team is ready to move from Discovery to Requirements/Design**. What's still missing?
 
 ### Readiness Template
+
+Use this table to document readiness status for each area.
 
 | Readiness Area | Ready? | What's Needed | Target Date |
 |---|---|---|---|
@@ -122,12 +150,16 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to identify any remaining readiness gaps.
+
 - Do we have the right people for the next phase?
 - Are there tools or systems needed?
 - Is the team aligned on approach?
 - Do we need external input (legal, compliance)?
 
 ### Example Readiness (from Keygo)
+
+The following example shows a readiness check with specific blockers and target resolution dates.
 
 | Area | Ready? | What's Needed | Target |
 |---|---|---|---|
@@ -143,9 +175,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Key Assumptions Re-Validation
 
+This section double-checks the critical assumptions from TEMPLATE-003. Assumptions that have become invalid must be addressed — if not, they become undocumented risks in Requirements.
+
 **Double-check critical assumptions** identified in Discovery. If any are now invalid, adjust scope.
 
 ### Assumption Review Template
+
+Use this table to document the current validity status of each assumption.
 
 | Assumption | Original Risk Level | Still Valid? | Adjusted? | Action |
 |-----------|---|---|---|---|
@@ -153,11 +189,15 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to identify assumptions that may have changed.
+
 - Which assumptions are most critical?
 - Has anything happened since Discovery that invalidates an assumption?
 - Should we do quick validation (survey, interview) on any assumption?
 
 ### Example Assumption Review (from Keygo)
+
+The following example shows assumption re-validation with actions for uncertain items.
 
 | Assumption | Risk | Still Valid? | Adjusted | Action |
 |---|---|---|---|---|
@@ -172,9 +212,13 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Sign-Off and Approval
 
+This section collects formal closure approval from all required stakeholders. Do not mark Discovery complete until all mandatory sign-offs are recorded — conditional approvals must have explicit resolution dates.
+
 **Formal closure of Discovery phase**. All stakeholders confirm readiness.
 
 ### Sign-Off Template
+
+Use this table to record sign-off from each required stakeholder.
 
 | Role | Name | Approval | Date | Notes |
 |------|------|----------|------|-------|
@@ -182,11 +226,15 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ### Prompts for AI
 
+Use these questions to identify all required sign-off parties and conditions.
+
 - Who must sign off (not just participate)?
 - Are there conditional approvals (yes, if X is done)?
 - What happens if someone doesn't approve?
 
 ### Example Sign-Off (from Keygo)
+
+The following example shows a completed sign-off table with conditional approvals and next steps.
 
 | Role | Name | Approval | Date | Notes |
 |---|---|---|---|---|
@@ -206,6 +254,8 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Paso a Paso
 
+Follow these steps in order to complete this template. Each step is a gate — do not proceed past a step with unresolved items.
+
 1. **Run validation checklist**: Ensure all Discovery artifacts present
 2. **Verify stakeholder alignment**: Get explicit approval from key decision makers
 3. **Reassess risks**: Are mitigations still valid?
@@ -218,6 +268,8 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 ---
 
 ## Ejemplo
+
+The following examples show completed Discovery closures from two different project types.
 
 ### Ejemplo Proyecto Alpha (SaaS de tareas)
 
@@ -252,6 +304,8 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Completion Checklist
 
+Verify every item below before marking this template complete and closing the Discovery phase.
+
 ### Deliverables
 
 - [ ] All Discovery artifacts validated (completeness, no contradictions)
@@ -273,6 +327,8 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ## Phase Discipline Rules
 
+Before marking Discovery complete and transitioning to Requirements, verify all rules below. These are the final gates before the team moves into Requirements.
+
 **Before leaving Discovery, verify**:
 
 1. ✅ All Discovery documents complete and coherent
@@ -287,7 +343,9 @@ Formal closure of the Discovery phase. Validates that all bases are solid, ambig
 
 ---
 
-## Tips
+## Operating Guidelines
+
+Apply these guidelines when completing the Discovery closure. They prevent the most common failure modes at the Discovery-to-Requirements transition.
 
 1. **Document disagreements**: If stakeholders don't agree, make it explicit (don't hide it)
 2. **Be realistic about readiness**: "Almost ready" is not ready—flag what's blocking
