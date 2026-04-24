@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-032-environments.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-032-environments.md)
 
 ---
 
@@ -224,4 +224,4 @@ jobs:
 
 ---
 
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-032-environments.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-032-environments.md)

@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-005-discovery-closure-and-validation.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-005-discovery-closure-and-validation.md)
 
 ---
 
@@ -200,7 +200,7 @@ Security Lead + Tech Lead
 
 | Choice | We Gained | We Gave Up | Reasoning |
 |---|---|---|---|
-| MVP includes basic facturación | Sustainable business model | Complex billing features (multi-currency, subscriptions, usage-based tiers) | Validate business model with simple plan; add complexity in Phase 2 |
+| MVP includes basic billing | Sustainable business model | Complex billing features (multi-currency, subscriptions, usage-based tiers) | Validate business model with simple plan; add complexity in Phase 2 |
 | Autonomous org management in MVP | Self-service, no ops bottleneck | Advanced features (auto-provisioning, SSO federation) | MVP focused on core value; federation adds risk and complexity |
 | Standardized protocols only (OAuth, OIDC) | Interoperability, faster integrations | Custom integrations that might fit niche use cases | Market standard is "good enough"; custom integrations dilute focus |
 | Manual user management in MVP | Simple design, fast to build | Automated provisioning from HR systems | Phase 1 assumes manual ops are acceptable; automation in Phase 2 |
@@ -227,7 +227,7 @@ Security Lead + Tech Lead
 
 | Question | Why Deferred | When We'll Decide | Who | Impact |
 |---|---|---|---|---|
-| Which payment provider (Stripe, Adyen, etc)? | Requires vendor evaluation + contract negotiation | Week 2 Requirements | Product Owner + Finance | Blocks facturación implementation |
+| Which payment provider (Stripe, Adyen, etc)? | Requires vendor evaluation + contract negotiation | Week 2 Requirements | Product Owner + Finance | Blocks billing implementation |
 | How to handle multi-tenancy in database (shared vs. isolated schemas)? | Architectural choice; needs design phase | Week 1 Design | Tech Lead + Data Architect | Impacts schema design + deployment strategy |
 | What's the maximum # of users per org in MVP? | Depends on infrastructure capacity; test in Phase 4 | Week 2 Testing | Tech Lead + Infra | Sets SLA commitments to customers |
 | Should we support custom roles or predefined roles only? | MVP uses predefined; custom requires more design | Phase 2 planning | Product Manager | Flexibility vs. simplicity |
@@ -323,4 +323,4 @@ Security Lead + Tech Lead
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-005-discovery-closure-and-validation.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-005-discovery-closure-and-validation.md)

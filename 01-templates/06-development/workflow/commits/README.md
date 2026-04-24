@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Anterior../branches/README.md) | [Siguiente >../pull-requests/README.md)
+[← Index../README.md) | [< Previous../branches/README.md) | [Next >../pull-requests/README.md)
 
 ---
 
@@ -49,4 +49,4 @@ docs: update README
 
 ---
 
-[← Index../README.md) | [< Anterior../branches/README.md) | [Siguiente >../pull-requests/README.md)
+[← Index../README.md) | [< Previous../branches/README.md) | [Next >../pull-requests/README.md)

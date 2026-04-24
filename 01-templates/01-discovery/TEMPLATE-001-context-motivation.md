@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-002-actors-and-personas.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-002-actors-and-personas.md)
 
 ---
 
@@ -378,4 +378,4 @@ Establish shared understanding of why the project exists, the vision it pursues,
 
 ---
 
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-002-actors-and-personas.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-002-actors-and-personas.md)

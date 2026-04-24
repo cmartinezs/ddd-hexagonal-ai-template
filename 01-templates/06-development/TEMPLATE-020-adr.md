@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-019-coding-standards.md) | [Siguiente >](../07-testing/README.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-019-coding-standards.md) | [Next >](../07-testing/README.md)
 
 ---
 
@@ -365,4 +365,4 @@ We will use **REST with JSON**.
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-019-coding-standards.md) | [Siguiente >](../07-testing/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-019-coding-standards.md) | [Next >](../07-testing/README.md)

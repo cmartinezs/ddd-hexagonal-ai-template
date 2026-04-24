@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./grpc/README.md)
+[← Index](../README.md) | [< Previous](./grpc/README.md)
 
 ---
 
@@ -40,4 +40,4 @@ Persistent bi-directional connections for real-time communication.
 
 ---
 
-[← Index](../README.md) | [< Anterior](./grpc/README.md)
+[← Index](../README.md) | [< Previous](./grpc/README.md)

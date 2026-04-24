@@ -103,7 +103,7 @@ This template provides a structured SDLC (Software Development Lifecycle) docume
 
 ## Key Principles
 
-- **Single Source of Truth**: All documentation lives here; submódules link to this repo
+- **Single Source of Truth**: All documentation lives here; submodules link to this repo
 - **Phase-Oriented**: Each phase has a clear purpose and deliverables
 - **AI-Assisted**: Templates include placeholders and sections designed for AI co-creation
 - **Human-Completable**: All templates can be completed manually with clear instructions

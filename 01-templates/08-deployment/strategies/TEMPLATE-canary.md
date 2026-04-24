@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-rolling.md) | [Siguiente >](./TEMPLATE-blue-green.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-rolling.md) | [Next >](./TEMPLATE-blue-green.md)
 
 ---
 
@@ -170,4 +170,4 @@ spec:
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-rolling.md) | [Siguiente >](./TEMPLATE-blue-green.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-rolling.md) | [Next >](./TEMPLATE-blue-green.md)

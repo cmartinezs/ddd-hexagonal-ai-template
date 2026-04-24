@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-034-runbooks.md) | [Siguiente >](./TEMPLATE-036-sla.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-034-runbooks.md) | [Next >](./TEMPLATE-036-sla.md)
 
 ---
 
@@ -191,4 +191,4 @@ Discovery → Triage → Response → Resolution → Post-Mortem
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-034-runbooks.md) | [Siguiente >](./TEMPLATE-036-sla.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-034-runbooks.md) | [Next >](./TEMPLATE-036-sla.md)

@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Next >](../nosql/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../nosql/README.md)
 
 ---
 
@@ -42,4 +42,4 @@ SQL databases: PostgreSQL, MySQL, etc.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Next >](../nosql/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../nosql/README.md)

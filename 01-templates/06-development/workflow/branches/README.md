@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../commits/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../commits/README.md)
 
 ---
 
@@ -44,4 +44,4 @@ Branch naming and organization for development.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../commits/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../commits/README.md)

@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../ui-design/README.md) | [Next >](../integration/README.md)
+[← Index](./README.md) | [< Previous](../ui-design/README.md) | [Next >](../integration/README.md)
 
 ---
 
@@ -36,4 +36,4 @@ Client-side state handling and data flow.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../ui-design/README.md) | [Next >](../integration/README.md)
+[← Index](./README.md) | [< Previous](../ui-design/README.md) | [Next >](../integration/README.md)

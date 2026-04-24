@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../relational/README.md) | [Siguiente >](../files/README.md)
+[← Index](../README.md) | [< Previous](../relational/README.md) | [Next >](../files/README.md)
 
 ---
 
@@ -38,4 +38,4 @@ Binary object storage: S3, GCS, Blob storage.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../relational/README.md) | [Siguiente >](../files/README.md)
+[← Index](../README.md) | [< Previous](../relational/README.md) | [Next >](../files/README.md)

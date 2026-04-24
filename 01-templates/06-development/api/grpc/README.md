@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./graphql/README.md) | [Siguiente >](./websocket/README.md)
+[← Index](../README.md) | [< Previous](./graphql/README.md) | [Next >](./websocket/README.md)
 
 ---
 
@@ -40,4 +40,4 @@ High-performance Remote Procedure Call using Protocol Buffers for serialization.
 
 ---
 
-[← Index](../README.md) | [< Anterior](./graphql/README.md) | [Siguiente >](./websocket/README.md)
+[← Index](../README.md) | [< Previous](./graphql/README.md) | [Next >](./websocket/README.md)

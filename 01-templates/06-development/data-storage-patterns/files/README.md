@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../object/README.md) | [Siguiente >](../search/README.md)
+[← Index](../README.md) | [< Previous](../object/README.md) | [Next >](../search/README.md)
 
 ---
 
@@ -25,4 +25,4 @@ Local/network file storage for development or shared drives.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../object/README.md) | [Siguiente >](../search/README.md)
+[← Index](../README.md) | [< Previous](../object/README.md) | [Next >](../search/README.md)

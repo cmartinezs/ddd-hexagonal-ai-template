@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../state/README.md)
+[← Index](./README.md) | [< Previous](../state/README.md)
 
 ---
 
@@ -58,4 +58,4 @@ Communication between frontend and backend.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../state/README.md)
+[← Index](./README.md) | [< Previous](../state/README.md)

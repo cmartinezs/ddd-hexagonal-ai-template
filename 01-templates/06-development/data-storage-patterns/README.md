@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./observability/README.md) | [Siguiente >](./workflow/README.md)
+[← Index](../README.md) | [< Previous](./observability/README.md) | [Next >](./workflow/README.md)
 
 ---
 
@@ -54,4 +54,4 @@ Need high read performance?
 
 ---
 
-[← Index](../README.md) | [< Anterior](./observability/README.md) | [Siguiente >](./workflow/README.md)
+[← Index](../README.md) | [< Previous](./observability/README.md) | [Next >](./workflow/README.md)

@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-020-adr.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-020-adr.md)
 
 ---
 
@@ -35,4 +35,4 @@ This section covers coding standards: principles, SOLID, design patterns, and na
 
 ---
 
-[← Index](../README.md) | [< Anterior](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-020-adr.md)
+[← Index](../README.md) | [< Previous](./TEMPLATE-017-architecture.md) | [Next >](./TEMPLATE-020-adr.md)

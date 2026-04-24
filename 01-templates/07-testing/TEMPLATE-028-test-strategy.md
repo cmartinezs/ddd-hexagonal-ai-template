@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior] | [Siguiente >](./TEMPLATE-029-test-plan.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-029-test-plan.md)
 
 ---
 
@@ -221,4 +221,4 @@ Define the overall testing approach, test pyramid, coverage targets, and quality
 
 ---
 
-[← Index](./README.md] | [< Anterior] | [Siguiente >](./TEMPLATE-029-test-plan.md)
+[← Index](./README.md] | [< Previous] | [Next >](./TEMPLATE-029-test-plan.md)

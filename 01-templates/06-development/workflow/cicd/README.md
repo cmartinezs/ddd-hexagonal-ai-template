@@ -1,4 +1,4 @@
-[← Index ../README.md) | [< Anterior ../pull-requests/README.md)
+[← Index ../README.md) | [< Previous ../pull-requests/README.md)
 
 ---
 
@@ -42,4 +42,4 @@ Automated testing and deployment pipelines.
 
 ---
 
-[← Index ../README.md) | [< Anterior ../pull-requests/README.md)
+[← Index ../README.md) | [< Previous ../pull-requests/README.md)

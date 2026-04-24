@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-041-retrospectives.md) | [Siguiente >](./README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-041-retrospectives.md) | [Next >](./README.md)
 
 ---
 
@@ -177,4 +177,4 @@ When new team members joined, onboarding was slow due to missing documentation.
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-041-retrospectives.md) | [Siguiente >](./README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-041-retrospectives.md) | [Next >](./README.md)

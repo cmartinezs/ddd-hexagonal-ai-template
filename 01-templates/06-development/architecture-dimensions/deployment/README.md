@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../internal/README.md) | [Siguiente >](../communication/README.md)
+[← Index](../README.md) | [< Previous](../internal/README.md) | [Next >](../communication/README.md)
 
 ---
 
@@ -36,4 +36,4 @@ How the application is packaged and deployed.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../internal/README.md) | [Siguiente >](../communication/README.md)
+[← Index](../README.md) | [< Previous](../internal/README.md) | [Next >](../communication/README.md)

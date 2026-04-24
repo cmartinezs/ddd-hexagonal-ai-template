@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../mobile/README.md) | [Next >](../ui-design/README.md)
+[← Index](./README.md) | [< Previous](../mobile/README.md) | [Next >](../ui-design/README.md)
 
 ---
 
@@ -46,4 +46,4 @@ Native desktop applications for Windows, macOS, and Linux.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../mobile/README.md) | [Next >](../ui-design/README.md)
+[← Index](./README.md) | [< Previous](../mobile/README.md) | [Next >](../ui-design/README.md)

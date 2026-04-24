@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../flows/README.md) | [Siguiente >](../validation/README.md)
+[← Index](../README.md) | [< Previous](../flows/README.md) | [Next >](../validation/README.md)
 
 ---
 
@@ -37,4 +37,4 @@ Access control patterns: RBAC, permissions, scope validation.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../flows/README.md) | [Siguiente >](../validation/README.md)
+[← Index](../README.md) | [< Previous](../flows/README.md) | [Next >](../validation/README.md)

@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../metrics/README.md) | [Siguiente >](../health/README.md)
+[← Index](../README.md) | [< Previous](../metrics/README.md) | [Next >](../health/README.md)
 
 ---
 
@@ -38,4 +38,4 @@ Trace: [trace-id]
 
 ---
 
-[← Index](../README.md) | [< Anterior](../metrics/README.md) | [Siguiente >](../health/README.md)
+[← Index](../README.md) | [< Previous](../metrics/README.md) | [Next >](../health/README.md)

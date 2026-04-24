@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-040-user-feedback.md) | [Siguiente >](./TEMPLATE-042-lessons-learned.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-040-user-feedback.md) | [Next >](./TEMPLATE-042-lessons-learned.md)
 
 ---
 
@@ -169,4 +169,4 @@ Team reflection on what went well and what to improve.
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-040-user-feedback.md) | [Siguiente >](./TEMPLATE-042-lessons-learned.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-040-user-feedback.md) | [Next >](./TEMPLATE-042-lessons-learned.md)

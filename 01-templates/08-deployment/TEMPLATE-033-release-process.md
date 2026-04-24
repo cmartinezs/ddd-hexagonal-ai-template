@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-032-environments.md) | [Siguiente >](../09-operations/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-032-environments.md) | [Next >](../09-operations/README.md)
 
 ---
 
@@ -207,4 +207,4 @@ Step-by-step procedure for releasing to production with rollback procedures.
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-032-environments.md) | [Siguiente >](../09-operations/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-032-environments.md) | [Next >](../09-operations/README.md)

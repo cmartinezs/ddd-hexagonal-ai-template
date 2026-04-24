@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../deployment/README.md) | [Siguiente >](../infrastructure/README.md)
+[← Index](../README.md) | [< Previous](../deployment/README.md) | [Next >](../infrastructure/README.md)
 
 ---
 
@@ -36,4 +36,4 @@ How components communicate: sync/async, protocols, patterns.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../deployment/README.md) | [Siguiente >](../infrastructure/README.md)
+[← Index](../README.md) | [< Previous](../deployment/README.md) | [Next >](../infrastructure/README.md)

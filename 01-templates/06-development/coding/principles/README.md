@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../solid/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../solid/README.md)
 
 ---
 
@@ -33,4 +33,4 @@ Core development principles: KISS, YAGNI, DRY, Clarity, Consistency.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../solid/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../solid/README.md)

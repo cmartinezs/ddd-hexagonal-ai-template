@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../validation/README.md)
+[← Index](../README.md) | [< Previous](../validation/README.md)
 
 ---
 
@@ -26,4 +26,4 @@ Prevention of abuse through request rate limits.
 
 ---
 
-[← Index../README.md) | [< Anterior ../validation/README.md)
+[← Index../README.md) | [< Previous ../validation/README.md)

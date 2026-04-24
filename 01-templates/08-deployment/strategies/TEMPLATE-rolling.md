@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-big-bang.md) | [Siguiente >](./TEMPLATE-canary.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-big-bang.md) | [Next >](./TEMPLATE-canary.md)
 
 ---
 
@@ -138,4 +138,4 @@ spec:
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-big-bang.md) | [Siguiente >](./TEMPLATE-canary.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-big-bang.md) | [Next >](./TEMPLATE-canary.md)

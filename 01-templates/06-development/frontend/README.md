@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior ../glossary/README.md)
+[← Index](../README.md) | [< Previous ../glossary/README.md)
 
 ---
 
@@ -62,4 +62,4 @@ This section covers frontend development across platforms: web, mobile, desktop,
 
 ---
 
-[← Index](../README.md) | [< Anterior ../glossary/README.md)
+[← Index](../README.md) | [< Previous ../glossary/README.md)

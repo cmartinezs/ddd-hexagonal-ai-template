@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior ../traces/README.md)
+[← Index](../README.md) | [< Previous ../traces/README.md)
 
 ---
 
@@ -36,4 +36,4 @@ Health checks for orchestrators: liveness, readiness.
 
 ---
 
-[← Index ../README.md) | [< Anterior ../traces/README.md)
+[← Index ../README.md) | [< Previous ../traces/README.md)

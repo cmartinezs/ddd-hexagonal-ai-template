@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../authorization/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../authorization/README.md)
 
 ---
 
@@ -40,4 +40,4 @@ Authentication flows for different client types and security requirements.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../authorization/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../authorization/README.md)

@@ -1,4 +1,4 @@
-[← Index ../README.md) | [< Anterior ../nosql/README.md)
+[← Index ../README.md) | [< Previous ../nosql/README.md)
 
 ---
 
@@ -38,4 +38,4 @@ In-memory caching: Redis, Memcached, etc.
 
 ---
 
-[← Index ../README.md) | [< Anterior ../nosql/README.md)
+[← Index ../README.md) | [< Previous ../nosql/README.md)

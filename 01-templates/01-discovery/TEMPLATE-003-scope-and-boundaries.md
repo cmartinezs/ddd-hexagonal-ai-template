@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](./TEMPLATE-002-actors-and-personas.md) | [Siguiente >](../02-requirements/README.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-002-actors-and-personas.md) | [Next >](../02-requirements/README.md)
 
 ---
 
@@ -448,4 +448,4 @@ Define what's in scope, what's out of scope, and the rationale. Clear boundaries
 
 ---
 
-[← Index](./README.md) | [< Anterior](./TEMPLATE-002-actors-and-personas.md) | [Siguiente >](../02-requirements/README.md)
+[← Index](./README.md) | [< Previous](./TEMPLATE-002-actors-and-personas.md) | [Next >](../02-requirements/README.md)

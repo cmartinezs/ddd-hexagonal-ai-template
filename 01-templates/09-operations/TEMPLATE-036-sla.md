@@ -1,4 +1,4 @@
-[← Index](./README.md] | [< Anterior](./TEMPLATE-035-incident-response.md) | [Siguiente >](../10-monitoring/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-035-incident-response.md) | [Next >](../10-monitoring/README.md)
 
 ---
 
@@ -167,4 +167,4 @@ Uptime % = ((Total Minutes - Downtime) / Total Minutes) * 100
 
 ---
 
-[← Index](./README.md] | [< Anterior](./TEMPLATE-035-incident-response.md) | [Siguiente >](../10-monitoring/README.md)
+[← Index](./README.md] | [< Previous](./TEMPLATE-035-incident-response.md) | [Next >](../10-monitoring/README.md)

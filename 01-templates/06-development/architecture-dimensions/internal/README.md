@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../deployment/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../deployment/README.md)
 
 ---
 
@@ -35,4 +35,4 @@ How the codebase is organized: layers, packages, DDD constructs.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../deployment/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../deployment/README.md)

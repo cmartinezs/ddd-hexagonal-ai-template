@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior](../README.md) | [Next >](../mobile/README.md)
+[← Index](./README.md) | [< Previous](../README.md) | [Next >](../mobile/README.md)
 
 ---
 
@@ -43,4 +43,4 @@ Browser-based applications running in web browsers.
 
 ---
 
-[← Index](./README.md) | [< Anterior](../README.md) | [Next >](../mobile/README.md)
+[← Index](./README.md) | [< Previous](../README.md) | [Next >](../mobile/README.md)

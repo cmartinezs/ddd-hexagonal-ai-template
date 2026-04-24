@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../solid/README.md) | [Siguiente >](../naming/README.md)
+[← Index](../README.md) | [< Previous](../solid/README.md) | [Next >](../naming/README.md)
 
 ---
 
@@ -60,4 +60,4 @@ Common reusable solutions for recurring problems.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../solid/README.md) | [Next >](../naming/README.md)
+[← Index](../README.md) | [< Previous](../solid/README.md) | [Next >](../naming/README.md)

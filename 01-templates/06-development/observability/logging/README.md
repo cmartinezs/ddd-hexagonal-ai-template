@@ -1,4 +1,4 @@
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../metrics/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../metrics/README.md)
 
 ---
 
@@ -37,4 +37,4 @@ Log management: levels, structured logging, correlation.
 
 ---
 
-[← Index](../README.md) | [< Anterior](../README.md) | [Siguiente >](../metrics/README.md)
+[← Index](../README.md) | [< Previous](../README.md) | [Next >](../metrics/README.md)

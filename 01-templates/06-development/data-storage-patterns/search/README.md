@@ -1,4 +1,4 @@
-[← Index ../README.md) | [< Anterior ../files/README.md) | [Siguiente > ../datalake/README.md)
+[← Index ../README.md) | [< Previous ../files/README.md) | [Next > ../datalake/README.md)
 
 ---
 
@@ -37,4 +37,4 @@ Search engines and indexing: Elasticsearch, Algolia, Meilisearch.
 
 ---
 
-[← Index ../README.md) | [< Anterior ../files/README.md) | [Siguiente > ../datalake/README.md)
+[← Index ../README.md) | [< Previous ../files/README.md) | [Next > ../datalake/README.md)

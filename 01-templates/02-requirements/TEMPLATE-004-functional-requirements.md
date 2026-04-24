@@ -1,4 +1,4 @@
-[← Index](./README.md) | [< Anterior] | [Next >](./TEMPLATE-005-non-functional-requirements.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-005-non-functional-requirements.md)
 
 ---
 
@@ -288,4 +288,4 @@ Every functional requirement follows this structure:
 
 ---
 
-[← Index](./README.md) | [< Anterior] | [Next >](./TEMPLATE-005-non-functional-requirements.md)
+[← Index](./README.md) | [< Previous] | [Next >](./TEMPLATE-005-non-functional-requirements.md)
