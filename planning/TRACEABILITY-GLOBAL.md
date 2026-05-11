@@ -67,7 +67,15 @@ Cell values:
 | ERD | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
 | Invariant | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
 | Epic | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
-| Milestone | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
+| Hexagonal Architecture | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Port (inbound/outbound) | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Adapter | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| ADR | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Use Case | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Test Pyramid | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| CI/CD Pipeline | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | ✅ | N/A |
+| GitHub Flow | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
+| Release Tag | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
 
 ---
 
@@ -90,6 +98,7 @@ Cell values:
 | 2026-05-11 | 003-tutorial-full-cycle (scope-01) | Added 5 new terms: ShortURL, Short Code, Redirect (domain service), URL Management (bounded context), Full Cycle Tutorial |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-02) | Added 5 new terms: Creator, Visitor, Analytics Consumer, Success Criterion, Scope Boundary |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-03) | Added 7 new terms: ShortCodeGenerator, Domain Event, Context Map, ERD, Invariant, Epic, Milestone |
+| 2026-05-11 | 003-tutorial-full-cycle (scope-04) | Added 9 new terms: Hexagonal Architecture, Port, Adapter, ADR, Use Case, Test Pyramid, CI/CD Pipeline, GitHub Flow, Release Tag |
 
 ---
 

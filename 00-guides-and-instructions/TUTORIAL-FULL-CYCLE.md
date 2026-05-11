@@ -268,54 +268,61 @@ Each phase links to its output files in `01-templates/data-output/url-shortener/
 
 ### Phase 6 — Development
 
-> *Output folder:* [`data-output/url-shortener/06-development/`](../01-templates/data-output/url-shortener/06-development/)
+> *Output folder:* [`data-output/url-shortener/06-development/`](../01-templates/data-output/url-shortener/06-development/README.md)
 
-**Purpose:** Define the technical architecture, coding standards, API design, and hexagonal structure.
+**Purpose:** Define the technical architecture, coding standards, API design, and hexagonal structure. Technology-specific — this is where language, database, and framework choices are made explicit.
 
 **What this phase decided:**
-- Runtime: Node.js (TypeScript)
-- Hexagonal structure: `domain/`, `application/`, `adapters/http/`, `adapters/persistence/`
-- API: REST — `POST /urls`, `GET /:code` (redirect), `GET /urls/:code/stats`
-- Persistence: PostgreSQL for ShortURL entities; optional Redis cache for redirect resolution
-- Short code generation: base62 encoding of auto-incremented ID (collision-free)
-- ADR-001: PostgreSQL chosen over document store for ACID guarantees on unique short codes
+- Runtime: **TypeScript 5 on Node.js 20 LTS** (ADR-001)
+- Persistence: **PostgreSQL 15** — ACID uniqueness for `short_code` and `alias` (ADR-002)
+- Branch strategy: **GitHub Flow** — `main` always deployable; `feature/*` and `fix/*` PRs (ADR-003)
+- Hexagonal structure: `domain/` → `application/` → `adapter/inbound/http/`, `adapter/outbound/persistence/`
+- 3 inbound ports (use cases): `ICreateShortUrlUseCase`, `IRedirectUseCase`, `IGetClickCountUseCase`
+- 3 outbound ports: `IShortUrlRepository`, `IClickRepository`, `IShortCodeGeneratorPort`
+- REST API: `POST /urls`, `GET /{code}` (302 redirect), `GET /urls/{code}/stats`
+- Short code: 6-char base62 via `crypto.randomBytes`; uniqueness enforced by DB UNIQUE constraint (not by pre-check)
+- PR merge strategy: **squash and merge** (linear `main` history)
 
-**Key inputs for next phase (Phase 7 — Testing):** API contracts, domain invariants, hexagonal port interfaces.
+**Key inputs for next phase (Phase 7 — Testing):** API contract (request/response schemas), port interfaces, domain invariants list.
 
 ---
 
 ### Phase 7 — Testing
 
-> *Output folder:* [`data-output/url-shortener/07-testing/`](../01-templates/data-output/url-shortener/07-testing/)
+> *Output folder:* [`data-output/url-shortener/07-testing/`](../01-templates/data-output/url-shortener/07-testing/README.md)
 
-**Purpose:** Define the test strategy, test types, and acceptance criteria mapping.
+**Purpose:** Define the test strategy, test pyramid, and concrete test cases for every FR, NFR, and invariant.
 
 **What this phase decided:**
-- Unit tests: domain model (ShortURL creation, expiry logic, alias validation)
-- Integration tests: persistence adapters (ShortURL repo, Click repo)
-- API tests: HTTP adapter (all three endpoints, error cases)
-- Performance test: redirect endpoint under 1,000 concurrent requests (NFR-001)
-- Coverage target: 80% line coverage for domain and application layers
-- Tool choices: Vitest (unit/integration), k6 (performance)
+- Test runner: **Vitest 1.x**; HTTP testing: **Supertest**; Performance: **k6**
+- 25 unit tests (UT-001..025): domain aggregate, value objects, domain services — use in-memory fakes only
+- 10 integration tests (IT-001..010): adapter correctness against a real PostgreSQL test DB
+- 13 E2E tests (E2E-001..013): full API flow via HTTP against a running server
+- Performance threshold: `p(95) < 100 ms` at 100 RPS sustained 60 s (NFR-001 / NFR-002)
+- Privacy test: IT-009 explicitly verifies no `visitor_ip` column exists in the schema (NFR-004)
+- Coverage targets: ≥95% domain layer, ≥90% use cases, 100% FR happy paths in E2E
 
-**Key inputs for next phase (Phase 8 — Deployment):** Test types, environments needed, performance test thresholds.
+**Key inputs for next phase (Phase 8 — Deployment):** CI stage names (`test:unit`, `test:integration`), environment needs (Postgres Docker service), performance threshold values.
 
 ---
 
 ### Phase 8 — Deployment
 
-> *Output folder:* [`data-output/url-shortener/08-deployment/`](../01-templates/data-output/url-shortener/08-deployment/)
+> *Output folder:* [`data-output/url-shortener/08-deployment/`](../01-templates/data-output/url-shortener/08-deployment/README.md)
 
-**Purpose:** Define CI/CD pipelines, environment strategy, and release process.
+**Purpose:** Define CI/CD pipelines, environment strategy, and release process consistent with the dev workflow (Phase 6) and versioning strategy (Phase 5).
 
 **What this phase decided:**
-- Environments: local → staging → production
-- CI: GitHub Actions — lint → unit test → integration test → build → deploy (staging)
-- CD: manual promotion from staging to production (v1.0); automated in v2.0
-- Container: Docker image; deployed to a single VM in v1.0
-- Release versioning: semantic versioning aligned with epics from Phase 5
+- 3 environments: `ci` (PR/ephemeral), `staging` (auto on push to `main`), `production` (tag `v*.*.*` + manual gate)
+- GitHub Actions workflows: `ci.yml` (lint → type-check → test:unit → test:integration), `deploy-staging.yml`, `deploy-prod.yml`
+- Container image: Docker; registry: GitHub Container Registry (GHCR)
+- DB migrations run as a dedicated step before each deploy (both staging and prod)
+- Manual approval gate in GitHub Environments for production
+- Rollback: re-deploy last known-good image tag for most cases; DB snapshot restore for non-reversible migrations
+- Release tag format: `v{MAJOR}.{MINOR}.{PATCH}` — v1.0.0 on first production release
+- `[CHECK-VERSIONING-ALIGNMENT]`: Phase 5 versions (v1.0, v1.1, v2.0) map to `v1.0.0`, `v1.1.0`, `v2.0.0` — **PASS**
 
-**Key inputs for next phase (Phase 9 — Operations):** Environment list, deployment method, rollback strategy.
+**Key inputs for next phase (Phase 9 — Operations):** Environment names, rollback procedure, DB snapshot retention strategy.
 
 ---
 

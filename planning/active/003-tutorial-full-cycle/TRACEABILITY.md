@@ -43,6 +43,15 @@
 | Invariant | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A | Constraint that must always hold within an aggregate |
 | Epic | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Large unit of work spanning multiple stories; traces to requirements |
 | Milestone | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | Checkpoint in the delivery plan; aggregates epics for a release target |
+| Hexagonal Architecture | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Ports & Adapters pattern; core structure of phase 6 |
+| Port (inbound/outbound) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Interface boundaries in hexagonal architecture |
+| Adapter | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Concrete implementation of a port |
+| ADR | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Architectural Decision Record; required for every major tech choice |
+| Use Case | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A | Application layer orchestration unit; maps to FR |
+| Test Pyramid | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A | Unit → Integration → E2E layered test strategy |
+| CI/CD Pipeline | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | ✅ | N/A | Automated build, test, deploy stages |
+| GitHub Flow | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | Branch strategy; main always deployable; feature/* PRs |
+| Release Tag | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | vMAJOR.MINOR.PATCH tag triggers production deployment |
 
 ---
 

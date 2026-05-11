@@ -35,9 +35,9 @@
 | 3 — Design | [`03-design/`](./03-design/README.md) | 🟩 Complete | Bounded context map, domain model, system flows |
 | 4 — Data Model | [`04-data-model/`](./04-data-model/README.md) | 🟩 Complete | Entity model, relationships, invariants |
 | 5 — Planning | [`05-planning/`](./05-planning/README.md) | 🟩 Complete | Roadmap, epics, versioning |
-| 6 — Development | [`06-development/`](./06-development/) | ⬜ Planned | Architecture, API design, ADRs |
-| 7 — Testing | [`07-testing/`](./07-testing/) | ⬜ Planned | Test strategy, test types, coverage |
-| 8 — Deployment | [`08-deployment/`](./08-deployment/) | ⬜ Planned | CI/CD, environments, release process |
+| 6 — Development | [`06-development/`](./06-development/README.md) | 🟩 Complete | Hexagonal architecture, ADRs, API contract, dev workflow |
+| 7 — Testing | [`07-testing/`](./07-testing/README.md) | 🟩 Complete | Test pyramid, 48 test cases, coverage targets |
+| 8 — Deployment | [`08-deployment/`](./08-deployment/README.md) | 🟩 Complete | GitHub Actions CI/CD, environment matrix, release process |
 | 9 — Operations | [`09-operations/`](./09-operations/) | ⬜ Planned | Runbooks, SLAs, incident response |
 | 10 — Monitoring | [`10-monitoring/`](./10-monitoring/) | ⬜ Planned | Metrics, dashboards, alerts |
 | 11 — Feedback | [`11-feedback/`](./11-feedback/) | ⬜ Planned | Retrospective, lessons learned |

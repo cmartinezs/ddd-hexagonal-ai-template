@@ -1,7 +1,6 @@
 # 🔍 DEEPENING: Scope 05 — Phases 9–11 Outputs (Operations, Monitoring, Feedback)
 
-> **Status:** PENDING
-> [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
+> **Status:** IN PROGRESS
 
 ---
 
