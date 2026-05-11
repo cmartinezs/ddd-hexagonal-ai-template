@@ -46,6 +46,12 @@ Cell values:
 | PDR | [001](finished/001-planning-system-bootstrap/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
 | Fundamental Rule | [001](finished/001-planning-system-bootstrap/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ |
 | Agnostic Boundary | [001](finished/001-planning-system-bootstrap/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ |
+| SDLC Phase Guidance | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | N/A | N/A | N/A | ✅ |
+| Meta-planning vs. Project Planning | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ |
+| CHECK-PHASE5-CHAIN | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
+| CHECK-DEVWORKFLOW-CONSISTENCY | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
+| CHECK-VERSIONING-ALIGNMENT | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | ✅ |
+| WORKFLOWS/ Sub-folder Structure | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
 
 ---
 
@@ -64,6 +70,7 @@ Cell values:
 | Date | Planning | Change |
 |------|----------|--------|
 | — | 001-planning-system-bootstrap | Initial matrix created |
+| 2026-05-11 | 002-workflow-integration | Added 6 new terms: SDLC Phase Guidance, Meta-planning vs. Project Planning, CHECK-PHASE5-CHAIN, CHECK-DEVWORKFLOW-CONSISTENCY, CHECK-VERSIONING-ALIGNMENT, WORKFLOWS/ Sub-folder Structure |
 
 ---
 

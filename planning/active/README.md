@@ -8,7 +8,8 @@ Plannings currently in **EXPANSION** or **DEEPENING** phase. These are actively 
 
 | ID | Name | Phase | Current Scope | Updated |
 |----|------|-------|--------------|---------|
-| [002](002-workflow-integration/README.md) | Workflow Integration | DEEPENING | scope-01 (completing) | 2026-05-12 |
+
+*No active plannings.*
 
 ---
 

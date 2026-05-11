@@ -39,15 +39,14 @@ When a prompt contains one of these parameters (at the start or end):
 
 ### 🚧 In Progress → see [`active/README.md`](active/README.md)
 
-| ID | Name | Phase |
-|----|------|-------|
-| [002](active/002-workflow-integration/README.md) | Workflow Integration | DEEPENING |
+*No active plannings.*
 
 ### ✅ Completed → see [`finished/README.md`](finished/README.md)
 
 | ID | Name |
 |----|------|
 | [001](finished/001-planning-system-bootstrap/README.md) | Planning System Bootstrap |
+| [002](finished/002-workflow-integration/README.md) | Workflow Integration |
 
 ---
 
