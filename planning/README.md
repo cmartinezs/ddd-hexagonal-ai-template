@@ -41,8 +41,6 @@ When a prompt contains one of these parameters (at the start or end):
 
 | ID | Name | Phase |
 |----|------|-------|
-| [003](active/003-tutorial-full-cycle/README.md) | Tutorial: Full Cycle (URL Shortener) | DEEPENING |
-| [004](active/004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion | DEEPENING |
 | [005](active/005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | DEEPENING |
 
 ### ✅ Completed → see [`finished/README.md`](finished/README.md)
@@ -51,6 +49,8 @@ When a prompt contains one of these parameters (at the start or end):
 |----|------|
 | [001](finished/001-planning-system-bootstrap/README.md) | Planning System Bootstrap |
 | [002](finished/002-workflow-integration/README.md) | Workflow Integration |
+| [003](finished/003-tutorial-full-cycle/README.md) | Tutorial: Full Cycle (URL Shortener) |
+| [004](finished/004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion |
 
 ---
 
