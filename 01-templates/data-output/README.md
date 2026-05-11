@@ -114,6 +114,14 @@ For each phase:
 
 ---
 
+## Worked Example: URL Shortener
+
+A complete, filled-out example is available in [`url-shortener/`](./url-shortener/README.md). It covers all 12 SDLC phases for the **LinkSnap** URL Shortener service — a simple domain that demonstrates every DDD and documentation pattern in the framework.
+
+Use it as a reference when generating your own project's documentation. The corresponding tutorial guide is at [`00-guides-and-instructions/TUTORIAL-FULL-CYCLE.md`](../00-guides-and-instructions/TUTORIAL-FULL-CYCLE.md).
+
+---
+
 ## Tips
 
 1. **Start with inputs**: Review materials in `../01-templates/data-input/` before writing each phase

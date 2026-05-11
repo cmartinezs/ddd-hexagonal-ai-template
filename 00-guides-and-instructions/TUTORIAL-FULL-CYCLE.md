@@ -1,0 +1,362 @@
+[← Index](./README.md)
+
+---
+
+# Tutorial: Full Cycle Documentation — URL Shortener
+
+> **What This Is:** A step-by-step tutorial demonstrating how to produce complete SDLC documentation for a real project using the DDD + Hexagonal Architecture framework, covering all 12 phases from Documentation Planning to Feedback.
+> **How to Use:** Read the introduction and case overview first, then navigate to each phase section in order. Each section explains what was decided, what was generated, and why — with links to the actual output files in `01-templates/data-output/url-shortener/`.
+> **Why It Matters:** Provides a concrete, fully worked example of the documentation lifecycle for a simple domain, giving teams a reference they can compare against their own work and adapt for their project.
+> **When to Use:** When starting a new documentation project and wanting a complete reference to follow; or when learning how the 12 phases connect, depend on each other, and produce traceable artifacts.
+> **Owner:** DDD + Hexagonal AI Template contributors.
+
+---
+
+## Contents
+
+1. [Introduction](#introduction)
+2. [The URL Shortener Case](#the-url-shortener-case)
+3. [Domain Vocabulary](#domain-vocabulary)
+4. [Bounded Context](#bounded-context)
+5. [How to Use This Tutorial](#how-to-use-this-tutorial)
+6. [Phase Navigation](#phase-navigation)
+
+---
+
+## Introduction
+
+This tutorial walks you through the **complete documentation lifecycle** of a software project using the DDD + Hexagonal Architecture template. It uses the **URL Shortener** as the working case: a simple, universally understood service that is complex enough to illustrate all DDD and documentation patterns, but small enough to document without becoming a reference manual.
+
+Each phase section below:
+- Explains what decisions were made and why
+- Links to the actual output files produced for that phase
+- Highlights what would change for a more complex project
+- Flags the key inputs the next phase will rely on
+
+By following this tutorial, you will see the full chain from a blank page (Phase 0) to a complete, stakeholder-ready documentation set (Phase 11).
+
+**Prerequisites:** Read [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) before Phase 1. Read [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) when generating your own phases.
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+## The URL Shortener Case
+
+### Project Summary
+
+**Name:** LinkSnap (working title)
+**Type:** Web service
+**Core Value:** Allow users to convert long, unwieldy URLs into short, shareable links that can be tracked and managed.
+
+### Vision Statement
+
+> *Enable anyone to share long URLs as short, memorable links, with basic analytics on usage, without requiring authentication for casual use.*
+
+### Problem Statement
+
+Long URLs are hard to share in messages, social media, and printed materials. Users need a way to create short, stable aliases that redirect to the original resource, with the ability to see basic usage statistics.
+
+### Why URL Shortener for This Tutorial
+
+| Property | Value |
+|----------|-------|
+| Domain complexity | Low — one aggregate, one bounded context |
+| DDD fit | Clear entity (`ShortURL`), value objects (`Click`, `ShortCode`), one domain service (`Redirect`) |
+| Hexagonal fit | HTTP adapter (in) → domain → storage port (out) — textbook example |
+| Documentation depth | Each phase has real, non-trivial content without being overwhelming |
+| Phase agnosticism | Easy to describe in business terms (phases 1–5) before naming technologies (phases 6–11) |
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+## Domain Vocabulary
+
+These terms constitute the **ubiquitous language** of the URL Shortener. They are used consistently across all 12 phases. Technology-agnostic terms apply to phases 1–5; implementation terms are introduced only in phases 6–11.
+
+| Term | Definition | Type | First Used |
+|------|-----------|------|-----------|
+| **ShortURL** | The core aggregate: a mapping from a short code to an original URL. Has identity, creation date, optional expiry, and optional alias. | Aggregate Root | Phase 1 |
+| **Short Code** | A unique alphanumeric string (e.g., `abc123`) that forms the path of the shortened URL. System-generated unless an alias is provided. | Value Object | Phase 1 |
+| **Original URL** | The long, complete URL that a ShortURL maps to. Must be a valid, absolute URL. | Value Object | Phase 1 |
+| **Redirect** | The domain operation that resolves a short code to its original URL. Produces a `Click` event on success. Returns "not found" if the code is unknown or expired. | Domain Service | Phase 1 |
+| **Click** | A value object representing one access of a ShortURL. Carries: timestamp, referrer (optional), user agent (optional). | Value Object | Phase 1 |
+| **Click Count** | The total number of `Click` events recorded for a given `ShortURL`. The primary analytics metric. | Derived value | Phase 2 |
+| **Expiry** | An optional point in time after which a ShortURL stops redirecting. If absent, the ShortURL never expires. | Value Object | Phase 2 |
+| **Alias** | A user-supplied, human-readable short code used instead of the system-generated one. Subject to uniqueness and format constraints. | Value Object | Phase 2 |
+| **URL Management** | The single bounded context that owns all ShortURL operations: creation, redirect, analytics, and lifecycle management. | Bounded Context | Phase 3 |
+| **Creator** | The actor who creates a ShortURL. May be anonymous or authenticated depending on the feature set. | Actor | Phase 1 |
+| **Visitor** | The actor who follows a short URL and is redirected to the original URL. Does not interact with the system beyond the redirect. | Actor | Phase 1 |
+| **Analytics Consumer** | The actor who reads click statistics for one or more ShortURLs they created. | Actor | Phase 2 |
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+## Bounded Context
+
+The URL Shortener has a single bounded context: **URL Management**. This is intentional — the domain is small enough that splitting into multiple bounded contexts would add accidental complexity.
+
+```mermaid
+graph TD
+    subgraph "URL Management BC"
+        SU[ShortURL<br/>Aggregate]
+        R[Redirect<br/>Domain Service]
+        C[Click<br/>Value Object]
+        SU --> R
+        R --> C
+    end
+
+    Creator -->|create / alias| SU
+    Visitor -->|follow short link| R
+    AnalyticsConsumer -->|read clicks| SU
+```
+
+**Key Architectural Point (Phase 6):** The HTTP layer (adapter in) calls the `Redirect` domain service directly. Persistence (adapter out) stores `ShortURL` state and `Click` events. The domain knows nothing about HTTP, databases, or messaging.
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+## How to Use This Tutorial
+
+### If you are learning the framework
+
+Read each phase section in order. For each section:
+1. Read the **What this phase decided** summary
+2. Open the linked output file(s) and read them
+3. Note the **Key inputs for next phase** — these are the traceability links
+4. Then move to the next phase
+
+### If you are building your own project
+
+Use this tutorial as a reference, not a template. Your project will have different actors, a different domain vocabulary, and different architectural choices. Use the URL Shortener outputs to understand what "done" looks like at each phase, then generate your own equivalents.
+
+### If you are validating your existing documentation
+
+Use the done criteria listed in each phase section as a checklist. Compare your documents against what was produced for the URL Shortener.
+
+### Agnostic / specific boundary reminder
+
+- **Phases 0–5:** No technology names. Not "REST", not "PostgreSQL", not "React". Business terms only.
+- **Phases 6–11:** Technology names are expected and required. Name the stack, the patterns, the tools.
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+## Phase Navigation
+
+Each phase links to its output files in `01-templates/data-output/url-shortener/`. Content is added as this tutorial progresses through its scopes.
+
+---
+
+### Phase 0 — Documentation Planning
+
+> *Output folder:* [`data-output/url-shortener/00-documentation-planning/`](../01-templates/data-output/url-shortener/00-documentation-planning/)
+
+**Purpose:** Establish the documentation framework for the project: naming conventions, phase ownership, and the macro plan.
+
+**What this phase decided:**
+- Project name: LinkSnap
+- Documentation owner: single-person team (tutorial context)
+- Phase conventions: follows the standard 12-phase SDLC structure
+- Outputs locked in this phase: macro plan, naming conventions
+
+**Key inputs for next phase (Phase 1 — Discovery):** Project name, owner, and a blank macro plan with all phases listed.
+
+---
+
+### Phase 1 — Discovery
+
+> *Output folder:* [`data-output/url-shortener/01-discovery/`](../01-templates/data-output/url-shortener/01-discovery/)
+
+**Purpose:** Define the problem, the vision, and the actors. Establish the business context before any requirements are written.
+
+**What this phase decided:**
+- Vision: enable anyone to shorten and share URLs with basic analytics
+- Three actors: Creator, Visitor, Analytics Consumer
+- Core problem: long URLs are unshareable; no tracking without a tool
+- Scope boundary: no team collaboration in v1; single-user creation only
+
+**Key inputs for next phase (Phase 2 — Requirements):** Actor list, vision statement, and scope boundaries.
+
+---
+
+### Phase 2 — Requirements
+
+> *Output folder:* [`data-output/url-shortener/02-requirements/`](../01-templates/data-output/url-shortener/02-requirements/)
+
+**Purpose:** Specify what the system must do (functional) and how it must perform (non-functional). Define the glossary used across all phases.
+
+**What this phase decided:**
+- FR-001: Creator can shorten a URL → receives a short link
+- FR-002: Creator can provide a custom alias
+- FR-003: Visitor follows a short link → is redirected to the original URL
+- FR-004: Creator can view click count for each of their ShortURLs
+- FR-005: ShortURLs can have an optional expiry date
+- NFR-001: Redirect latency < 100 ms (p95)
+- NFR-002: System must handle 1,000 concurrent redirect requests
+- Out of scope (v1): authentication, teams, bulk creation, QR codes
+
+**Key inputs for next phase (Phase 3 — Design):** FR list, NFR list, glossary, scope boundary.
+
+---
+
+### Phase 3 — Design
+
+> *Output folder:* [`data-output/url-shortener/03-design/`](../01-templates/data-output/url-shortener/03-design/)
+
+**Purpose:** Design the system flows, the bounded context map, and the domain model. No technology names.
+
+**What this phase decided:**
+- Single bounded context: **URL Management**
+- Aggregate: `ShortURL` (root), with embedded `Click` events
+- Domain services: `Redirect` (resolves and records), `ShortCodeGenerator` (creates unique codes)
+- Main system flows: create short URL, redirect, view analytics
+- No integration with external bounded contexts in v1
+
+**Key inputs for next phase (Phase 4 — Data Model):** Bounded context map, aggregate structure, domain events.
+
+---
+
+### Phase 4 — Data Model
+
+> *Output folder:* [`data-output/url-shortener/04-data-model/`](../01-templates/data-output/url-shortener/04-data-model/)
+
+**Purpose:** Define the data entities, their attributes, and their relationships. Still technology-agnostic — no SQL, no collection names.
+
+**What this phase decided:**
+- Entity: `ShortURL` — id, short_code, original_url, created_at, expires_at (nullable), alias (nullable)
+- Entity: `Click` — id, short_url_id (FK), occurred_at, referrer (nullable), user_agent (nullable)
+- Relationship: one ShortURL → many Clicks (1:N)
+- Invariant: short_code is globally unique; alias (if set) is also globally unique
+
+**Key inputs for next phase (Phase 5 — Planning):** Entity list, relationships, invariants, derived metrics (Click Count).
+
+---
+
+### Phase 5 — Planning
+
+> *Output folder:* [`data-output/url-shortener/05-planning/`](../01-templates/data-output/url-shortener/05-planning/)
+
+**Purpose:** Define the roadmap, epics, and versioning strategy. Translate requirements into a delivery plan.
+
+**What this phase decided:**
+- v1.0: anonymous URL creation + redirect + click count
+- v1.1: custom aliases + expiry
+- v2.0: authenticated creators + personal analytics dashboard
+- Epic structure: E-01 Core Redirect, E-02 Analytics, E-03 Identity
+- Prioritization: redirect performance is the primary constraint
+
+**Key inputs for next phase (Phase 6 — Development):** Epic list, v1.0 scope, prioritization rationale.
+
+---
+
+### Phase 6 — Development
+
+> *Output folder:* [`data-output/url-shortener/06-development/`](../01-templates/data-output/url-shortener/06-development/)
+
+**Purpose:** Define the technical architecture, coding standards, API design, and hexagonal structure.
+
+**What this phase decided:**
+- Runtime: Node.js (TypeScript)
+- Hexagonal structure: `domain/`, `application/`, `adapters/http/`, `adapters/persistence/`
+- API: REST — `POST /urls`, `GET /:code` (redirect), `GET /urls/:code/stats`
+- Persistence: PostgreSQL for ShortURL entities; optional Redis cache for redirect resolution
+- Short code generation: base62 encoding of auto-incremented ID (collision-free)
+- ADR-001: PostgreSQL chosen over document store for ACID guarantees on unique short codes
+
+**Key inputs for next phase (Phase 7 — Testing):** API contracts, domain invariants, hexagonal port interfaces.
+
+---
+
+### Phase 7 — Testing
+
+> *Output folder:* [`data-output/url-shortener/07-testing/`](../01-templates/data-output/url-shortener/07-testing/)
+
+**Purpose:** Define the test strategy, test types, and acceptance criteria mapping.
+
+**What this phase decided:**
+- Unit tests: domain model (ShortURL creation, expiry logic, alias validation)
+- Integration tests: persistence adapters (ShortURL repo, Click repo)
+- API tests: HTTP adapter (all three endpoints, error cases)
+- Performance test: redirect endpoint under 1,000 concurrent requests (NFR-001)
+- Coverage target: 80% line coverage for domain and application layers
+- Tool choices: Vitest (unit/integration), k6 (performance)
+
+**Key inputs for next phase (Phase 8 — Deployment):** Test types, environments needed, performance test thresholds.
+
+---
+
+### Phase 8 — Deployment
+
+> *Output folder:* [`data-output/url-shortener/08-deployment/`](../01-templates/data-output/url-shortener/08-deployment/)
+
+**Purpose:** Define CI/CD pipelines, environment strategy, and release process.
+
+**What this phase decided:**
+- Environments: local → staging → production
+- CI: GitHub Actions — lint → unit test → integration test → build → deploy (staging)
+- CD: manual promotion from staging to production (v1.0); automated in v2.0
+- Container: Docker image; deployed to a single VM in v1.0
+- Release versioning: semantic versioning aligned with epics from Phase 5
+
+**Key inputs for next phase (Phase 9 — Operations):** Environment list, deployment method, rollback strategy.
+
+---
+
+### Phase 9 — Operations
+
+> *Output folder:* [`data-output/url-shortener/09-operations/`](../01-templates/data-output/url-shortener/09-operations/)
+
+**Purpose:** Define runbooks, SLAs, incident response procedures, and operational responsibilities.
+
+**What this phase decided:**
+- SLA: 99.5% uptime for redirect endpoint
+- On-call: single owner in v1.0
+- Runbook: restart procedure, DB connection failure, cache miss escalation
+- Incident severity: P1 = redirect is down; P2 = analytics unavailable; P3 = slow response
+- Backup: daily DB snapshot, 7-day retention
+
+**Key inputs for next phase (Phase 10 — Monitoring):** SLA thresholds, incident severity matrix, critical paths.
+
+---
+
+### Phase 10 — Monitoring
+
+> *Output folder:* [`data-output/url-shortener/10-monitoring/`](../01-templates/data-output/url-shortener/10-monitoring/)
+
+**Purpose:** Define metrics, dashboards, alerts, and observability strategy.
+
+**What this phase decided:**
+- Key metrics: redirect latency (p50, p95, p99), redirect error rate, new ShortURLs per hour, active ShortURLs
+- Alerting: p95 redirect latency > 100 ms → page; error rate > 1% → page
+- Dashboard: one dashboard per environment with all key metrics
+- Logging: structured JSON logs; request ID propagated through all layers
+- Tracing: optional in v1.0; required before v2.0
+
+**Key inputs for next phase (Phase 11 — Feedback):** Metrics baseline, alerting thresholds, known gaps.
+
+---
+
+### Phase 11 — Feedback
+
+> *Output folder:* [`data-output/url-shortener/11-feedback/`](../01-templates/data-output/url-shortener/11-feedback/)
+
+**Purpose:** Capture retrospectives, user feedback, and lessons learned. Feed improvements back into the next planning cycle.
+
+**What this phase decided (v1.0 retrospective):**
+- What worked: simple domain made all phases fast to complete
+- What to improve: alias uniqueness check needs caching (discovered during load test)
+- User feedback (simulated): users want QR code export (→ backlog item for v2.0)
+- Next cycle: begin planning for authenticated creators (Epic E-03 from Phase 5)
+
+---
+
+[↑ Back to top](#tutorial-full-cycle-documentation--url-shortener)
+
+---
+
+[← Index](./README.md)

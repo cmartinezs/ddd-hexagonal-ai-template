@@ -1,6 +1,6 @@
 # 003 — Tutorial: Full Cycle (New Case)
 
-> **Status:** EXPANSION
+> **Status:** DEEPENING — scope-02 IN PROGRESS
 > [← active/README.md](../README.md) | [← planning/README.md](../../README.md)
 
 ---

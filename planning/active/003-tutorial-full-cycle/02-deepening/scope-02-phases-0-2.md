@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 02 — Phases 0–2 Outputs (Planning, Discovery, Requirements)
 
-> **Status:** PENDING
+> **Status:** IN PROGRESS
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---

@@ -52,6 +52,11 @@ Cell values:
 | CHECK-DEVWORKFLOW-CONSISTENCY | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
 | CHECK-VERSIONING-ALIGNMENT | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | ✅ |
 | WORKFLOWS/ Sub-folder Structure | [002](finished/002-workflow-integration/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ |
+| ShortURL | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Short Code | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Redirect (domain service) | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | ✅ | N/A |
+| URL Management (bounded context) | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Full Cycle Tutorial | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ |
 
 ---
 
@@ -71,6 +76,7 @@ Cell values:
 |------|----------|--------|
 | — | 001-planning-system-bootstrap | Initial matrix created |
 | 2026-05-11 | 002-workflow-integration | Added 6 new terms: SDLC Phase Guidance, Meta-planning vs. Project Planning, CHECK-PHASE5-CHAIN, CHECK-DEVWORKFLOW-CONSISTENCY, CHECK-VERSIONING-ALIGNMENT, WORKFLOWS/ Sub-folder Structure |
+| 2026-05-11 | 003-tutorial-full-cycle (scope-01) | Added 5 new terms: ShortURL, Short Code, Redirect (domain service), URL Management (bounded context), Full Cycle Tutorial |
 
 ---
 
