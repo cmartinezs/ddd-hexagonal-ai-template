@@ -1,4 +1,4 @@
-[← Index../README.md) | [< Previous../commits/README.md) | [Next >../cicd/README.md)
+[← Index](../README.md) | [< Previous](../commits/README.md) | [Next >](../cicd/README.md)
 
 ---
 
@@ -57,4 +57,4 @@ Brief description of changes
 
 ---
 
-[← Index../README.md) | [< Previous../commits/README.md) | [Next >../cicd/README.md)
+[← Index](../README.md) | [< Previous](../commits/README.md) | [Next >](../cicd/README.md)

@@ -8,6 +8,25 @@ This is a **documentation-only template framework** — not an executable applic
 
 There are no build, test, or lint commands. All work is editing markdown files.
 
+## Planning System (Fundamental Rule)
+
+> **Nothing is executed without being inside a planning.**
+
+Before performing any action in this repository, there must be a task in an active planning scope that covers it. The planning system is at [`planning/`](planning/README.md).
+
+### Bypass Parameters
+
+| Parameter | Behavior |
+|-----------|----------|
+| `--no-plan` | Ask for confirmation before proceeding without a planning entry. |
+| `--no-plan-force` | Execute directly without asking or planning. |
+
+If a request is not covered by any planning and no bypass parameter is given: stop, identify whether it belongs to an existing planning or needs a new one, create/update the planning, then execute.
+
+See [`planning/GUIDE.md`](planning/GUIDE.md) for lifecycle details and [`planning/WORKFLOWS/README.md`](planning/WORKFLOWS/README.md) for the workflow catalog.
+
+---
+
 ## Directory Structure
 
 ```
@@ -18,6 +37,17 @@ There are no build, test, or lint commands. All work is editing markdown files.
 │   ├── 00-documentation-planning/
 │   ├── 01-discovery/ through 11-feedback/
 └── 00–11 phase folders/       # Template source files (TEMPLATE-*.md)
+planning/                      # Meta-planning system (NOT the same as 01-templates/05-planning/)
+├── README.md                  # Fundamental Rule + planning index
+├── GUIDE.md                   # Lifecycle, structure, naming conventions
+├── GLOSSARY.md                # Operational vocabulary
+├── PROMPTING.md               # AI prompting guidelines
+├── TRACEABILITY-GLOBAL.md     # Global consolidated term matrix
+├── WORKFLOWS/                 # Workflow + sub-workflow catalog
+├── _template/                 # Template for new plannings
+├── active/                    # Plannings in EXPANSION or DEEPENING
+└── finished/                  # Archived completed plannings
+research/                      # Research and investigation documents
 AGENTS.md                      # AI agent conventions (canonical — check before editing)
 SETUP-CHECKLIST.md             # Steps to customize this template for a new project
 ```

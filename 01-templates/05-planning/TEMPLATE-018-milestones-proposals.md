@@ -22,9 +22,9 @@ Use a flowchart to show milestone dependencies:
 
 ```mermaid
 flowchart TD
-    M1[HITO 1: Foundation] --> M2[HITO 2: Monetization]
-    M2 --> M3[HITO 3: Gateway]
-    M3 --> M4[HITO 4: Scale]
+    M1[MILESTONE 1: Foundation] --> M2[MILESTONE 2: Monetization]
+    M2 --> M3[MILESTONE 3: Gateway]
+    M3 --> M4[MILESTONE 4: Scale]
     M1 -.-> M4
 ```
 
@@ -53,7 +53,7 @@ Epics define "what" (features), but proposals define "how much work" and "who do
 ## Milestone Template
 
 ```markdown
-## HITO N: [Milestone Name]
+## MILESTONE N: [Milestone Name]
 
 **Period**: [Start Date] - [End Date]  
 **Objective**: What this milestone achieves  
@@ -133,7 +133,7 @@ Epics define "what" (features), but proposals define "how much work" and "who do
 
 ## Example: Short Horizon
 
-### HITO 1: Foundation & Security (P0 — 4 weeks)
+### MILESTONE 1: Foundation & Security (P0 — 4 weeks)
 
 **Period**: 2026-04-05 to 2026-05-03  
 **Objective**: MVP with secure foundation and documentation  
@@ -174,10 +174,10 @@ Epics define "what" (features), but proposals define "how much work" and "who do
 
 | Milestone | Priority | Period | Effort | Proposals |
 |-----------|----------|--------|--------|-----------|
-| HITO 1 | P0 | Q2 2024 | 51h | 9 |
-| HITO 2 | P1 | Q2-Q3 2024 | 81h | 12 |
-| HITO 3 | P1 | Q3 2024 | 94h | 10 |
-| HITO 4 | P1 | Q4 2024 | 96h | 8 |
+| MILESTONE 1 | P0 | Q2 2024 | 51h | 9 |
+| MILESTONE 2 | P1 | Q2-Q3 2024 | 81h | 12 |
+| MILESTONE 3 | P1 | Q3 2024 | 94h | 10 |
+| MILESTONE 4 | P1 | Q4 2024 | 96h | 8 |
 | **Total** | | | **322h** | **37** |
 
 ---

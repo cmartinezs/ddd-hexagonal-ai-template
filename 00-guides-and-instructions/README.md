@@ -87,6 +87,15 @@ Use this guide to handle edge cases, unexpected scenarios, and questions that ar
 
 Choose the path that matches your current mode of operation. Each path specifies which guides to read and in what order before beginning work.
 
+### "I need to track work and manage plannings"
+
+Follow this path when managing active work, creating new plannings, or auditing completed ones.
+
+1. Read [`planning/README.md`](../planning/README.md) — Check the Fundamental Rule and active plannings index
+2. Read [`planning/GUIDE.md`](../planning/GUIDE.md) — Understand lifecycle (INITIAL → EXPANSION → DEEPENING → COMPLETED)
+3. Read [`planning/WORKFLOWS/README.md`](../planning/WORKFLOWS/README.md) — Select the right workflow for your task
+4. Create or update a planning entry before executing any documentation work
+
 ### "I need to execute a full documentation project with AI co-creation"
 
 Follow this path when assisting a human collaborator through all phases of documentation from start to finish.
@@ -140,6 +149,7 @@ Use this table to find the right guide without reading all of them. The "When to
 
 | Priority | Document | When to Use |
 |----------|----------|-------------|
+| 0 | [`planning/README.md`](../planning/README.md) | Before any task — check the Fundamental Rule and active plannings |
 | 1 | [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) | At the start of each phase; to understand your role and boundaries |
 | 2 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | When generating any phase document; your prompt reference |
 | 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) | When operating without a human in the loop |
