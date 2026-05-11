@@ -99,6 +99,7 @@ Cell values:
 | 2026-05-11 | 003-tutorial-full-cycle (scope-02) | Added 5 new terms: Creator, Visitor, Analytics Consumer, Success Criterion, Scope Boundary |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-03) | Added 7 new terms: ShortCodeGenerator, Domain Event, Context Map, ERD, Invariant, Epic, Milestone |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-04) | Added 9 new terms: Hexagonal Architecture, Port, Adapter, ADR, Use Case, Test Pyramid, CI/CD Pipeline, GitHub Flow, Release Tag |
+| 2026-05-11 | 003-tutorial-full-cycle (scope-05) | Added 7 new terms: Runbook, SLA, Incident Severity, Metric (observability), Alert Rule, Retrospective, Backlog Item |
 
 ---
 

@@ -52,6 +52,13 @@
 | CI/CD Pipeline | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | ✅ | N/A | Automated build, test, deploy stages |
 | GitHub Flow | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | Branch strategy; main always deployable; feature/* PRs |
 | Release Tag | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | vMAJOR.MINOR.PATCH tag triggers production deployment |
+| Runbook | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | Step-by-step operational procedure for a known incident type |
+| SLA | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | Service Level Agreement; defines availability and latency targets |
+| Incident Severity | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | P1..P4 classification of operational incidents |
+| Metric (observability) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ✅ | N/A | Measured signal used for alerting and dashboards |
+| Alert Rule | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | Condition that triggers notification or paging |
+| Retrospective | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | Post-release reflection on what worked, what didn't |
+| Backlog Item | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | Work item surfaced from feedback; feeds next planning cycle |
 
 ---
 

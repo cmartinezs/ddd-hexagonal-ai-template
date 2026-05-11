@@ -38,9 +38,9 @@
 | 6 — Development | [`06-development/`](./06-development/README.md) | 🟩 Complete | Hexagonal architecture, ADRs, API contract, dev workflow |
 | 7 — Testing | [`07-testing/`](./07-testing/README.md) | 🟩 Complete | Test pyramid, 48 test cases, coverage targets |
 | 8 — Deployment | [`08-deployment/`](./08-deployment/README.md) | 🟩 Complete | GitHub Actions CI/CD, environment matrix, release process |
-| 9 — Operations | [`09-operations/`](./09-operations/) | ⬜ Planned | Runbooks, SLAs, incident response |
-| 10 — Monitoring | [`10-monitoring/`](./10-monitoring/) | ⬜ Planned | Metrics, dashboards, alerts |
-| 11 — Feedback | [`11-feedback/`](./11-feedback/) | ⬜ Planned | Retrospective, lessons learned |
+| 9 — Operations | [`09-operations/`](./09-operations/README.md) | 🟩 Complete | Runbooks (RB-001..004), SLA, incident matrix, backup |
+| 10 — Monitoring | [`10-monitoring/`](./10-monitoring/README.md) | 🟩 Complete | 7 metrics, 6 alerts, dashboard layout, logging |
+| 11 — Feedback | [`11-feedback/`](./11-feedback/README.md) | 🟩 Complete | Retrospective, 11 backlog items, feedback cycle |
 
 **Status legend:** ⬜ Planned · 🟨 In Progress · 🟩 Complete
 

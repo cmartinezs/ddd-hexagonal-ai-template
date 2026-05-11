@@ -328,49 +328,54 @@ Each phase links to its output files in `01-templates/data-output/url-shortener/
 
 ### Phase 9 — Operations
 
-> *Output folder:* [`data-output/url-shortener/09-operations/`](../01-templates/data-output/url-shortener/09-operations/)
+> *Output folder:* [`data-output/url-shortener/09-operations/`](../01-templates/data-output/url-shortener/09-operations/README.md)
 
-**Purpose:** Define runbooks, SLAs, incident response procedures, and operational responsibilities.
+**Purpose:** Define runbooks, SLA commitments, incident severity matrix, on-call responsibilities, and backup strategy.
 
 **What this phase decided:**
-- SLA: 99.5% uptime for redirect endpoint
-- On-call: single owner in v1.0
-- Runbook: restart procedure, DB connection failure, cache miss escalation
-- Incident severity: P1 = redirect is down; P2 = analytics unavailable; P3 = slow response
-- Backup: daily DB snapshot, 7-day retention
+- Redirect endpoint SLA: **99.5% availability** rolling 30 days; latency p95 < 100 ms
+- 4 runbooks: RB-001 (redirect down), RB-002 (DB connection failure), RB-003 (rollback), RB-004 (high latency)
+- Incident severity: P1 = redirect or DB down (< 15 min response); P2 = create/stats unavailable; P3 = latency degraded
+- RTO < 30 min; RPO < 24 h for DB recovery
+- Daily PostgreSQL backup, 7-day retention, S3-compatible storage
+- v1.0: single on-call engineer; escalation to project lead after 30 min unreachable
 
-**Key inputs for next phase (Phase 10 — Monitoring):** SLA thresholds, incident severity matrix, critical paths.
+**Key inputs for next phase (Phase 10 — Monitoring):** SLA thresholds (100 ms p95, 99.5% availability), incident severity matrix, alert response times.
 
 ---
 
 ### Phase 10 — Monitoring
 
-> *Output folder:* [`data-output/url-shortener/10-monitoring/`](../01-templates/data-output/url-shortener/10-monitoring/)
+> *Output folder:* [`data-output/url-shortener/10-monitoring/`](../01-templates/data-output/url-shortener/10-monitoring/README.md)
 
-**Purpose:** Define metrics, dashboards, alerts, and observability strategy.
+**Purpose:** Define key metrics, alert rules, dashboard layout, logging strategy, and known observability gaps.
 
 **What this phase decided:**
-- Key metrics: redirect latency (p50, p95, p99), redirect error rate, new ShortURLs per hour, active ShortURLs
-- Alerting: p95 redirect latency > 100 ms → page; error rate > 1% → page
-- Dashboard: one dashboard per environment with all key metrics
-- Logging: structured JSON logs; request ID propagated through all layers
-- Tracing: optional in v1.0; required before v2.0
+- 7 service metrics tracked: redirect latency (p50/p95/p99), error rates, requests/min, active URLs, new URLs/hour
+- 6 alert rules: `RedirectEndpointDown` (P1), `DatabaseConnectionFailing` (P1), `RedirectLatencyHigh` (P3), `HighErrorRateOnCreate` (P2), `DiskUsageHigh` (P3), `MemoryUsageHigh` (P2)
+- Dashboard: 5 rows — Availability, Latency, Error Rates, Traffic, Infrastructure
+- Logging: structured JSON; `requestId` propagated through all layers; **no Visitor IP ever logged** (NFR-004)
+- v1.0 observability gaps documented: no tracing, click count not cached, no external uptime check
+- Gap table feeds directly into v1.1 backlog (Phase 11)
 
-**Key inputs for next phase (Phase 11 — Feedback):** Metrics baseline, alerting thresholds, known gaps.
+**Key inputs for next phase (Phase 11 — Feedback):** Observability gaps, operational findings, metric baselines.
 
 ---
 
 ### Phase 11 — Feedback
 
-> *Output folder:* [`data-output/url-shortener/11-feedback/`](../01-templates/data-output/url-shortener/11-feedback/)
+> *Output folder:* [`data-output/url-shortener/11-feedback/`](../01-templates/data-output/url-shortener/11-feedback/README.md)
 
-**Purpose:** Capture retrospectives, user feedback, and lessons learned. Feed improvements back into the next planning cycle.
+**Purpose:** Capture user feedback channels, conduct the v1.0 retrospective, and produce the backlog for the next planning cycle.
 
-**What this phase decided (v1.0 retrospective):**
-- What worked: simple domain made all phases fast to complete
-- What to improve: alias uniqueness check needs caching (discovered during load test)
-- User feedback (simulated): users want QR code export (→ backlog item for v2.0)
-- Next cycle: begin planning for authenticated creators (Epic E-03 from Phase 5)
+**What this phase decided:**
+- 4 feedback channels: in-app button → GitHub Discussions, GitHub Issues, monitoring alerts, Slack `#linksnap-feedback`
+- v1.0 retrospective findings: agnostic boundary and traceability from Phase 2 were the highest-value practices
+- 3 pain points: click count under load, no tracing, stats latency 3× redirect — all traceable to deferral decisions in Phases 7–10
+- 5 lessons learned for future documentation cycles (e.g., "define observability requirements in Phase 2 NFRs")
+- Backlog: BL-001..005 for v1.1 (performance + observability); BL-006..011 for v2.0 (authenticated creators)
+- Feedback-to-backlog cycle: weekly triage → monthly synthesis → next planning cycle input
+- All backlog items trace to Phase 5 epics or new epics to be defined in v2.0 planning
 
 ---
 
