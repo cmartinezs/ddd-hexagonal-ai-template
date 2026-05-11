@@ -1,7 +1,6 @@
 # 🔍 DEEPENING: Scope 03 — Phases 3–5 Outputs (Design, Data Model, Planning)
 
-> **Status:** PENDING
-> [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
+> **Status:** IN PROGRESS
 
 ---
 

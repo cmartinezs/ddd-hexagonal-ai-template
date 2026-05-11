@@ -29,9 +29,9 @@
 
 | Phase | Folder | Status | Key Output |
 |-------|--------|--------|-----------|
-| 0 — Documentation Planning | [`00-documentation-planning/`](./00-documentation-planning/) | ⬜ Planned | Macro plan, naming conventions |
-| 1 — Discovery | [`01-discovery/`](./01-discovery/) | ⬜ Planned | Vision, actors, problem context |
-| 2 — Requirements | [`02-requirements/`](./02-requirements/) | ⬜ Planned | Functional + non-functional reqs, glossary |
+| 0 — Documentation Planning | [`00-documentation-planning/`](./00-documentation-planning/README.md) | 🟩 Complete | Macro plan, naming conventions |
+| 1 — Discovery | [`01-discovery/`](./01-discovery/README.md) | 🟩 Complete | Vision, actors, problem context |
+| 2 — Requirements | [`02-requirements/`](./02-requirements/README.md) | 🟩 Complete | Functional + non-functional reqs, glossary |
 | 3 — Design | [`03-design/`](./03-design/) | ⬜ Planned | Bounded context map, system flows |
 | 4 — Data Model | [`04-data-model/`](./04-data-model/) | ⬜ Planned | Entity model, relationships, invariants |
 | 5 — Planning | [`05-planning/`](./05-planning/) | ⬜ Planned | Roadmap, epics, versioning |

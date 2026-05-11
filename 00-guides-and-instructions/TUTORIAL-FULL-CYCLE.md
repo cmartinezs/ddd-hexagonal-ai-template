@@ -154,7 +154,7 @@ Each phase links to its output files in `01-templates/data-output/url-shortener/
 
 ### Phase 0 — Documentation Planning
 
-> *Output folder:* [`data-output/url-shortener/00-documentation-planning/`](../01-templates/data-output/url-shortener/00-documentation-planning/)
+> *Output folder:* [`data-output/url-shortener/00-documentation-planning/`](../01-templates/data-output/url-shortener/00-documentation-planning/README.md)
 
 **Purpose:** Establish the documentation framework for the project: naming conventions, phase ownership, and the macro plan.
 
@@ -162,43 +162,50 @@ Each phase links to its output files in `01-templates/data-output/url-shortener/
 - Project name: LinkSnap
 - Documentation owner: single-person team (tutorial context)
 - Phase conventions: follows the standard 12-phase SDLC structure
-- Outputs locked in this phase: macro plan, naming conventions
+- All 12 phases selected (tutorial context — show every phase)
+- Naming convention: `FR-NNN`, `NFR-NNN`, `TC-NNN`, `ADR-NNN` for IDs
+- Diagram preference: Mermaid > PlantUML > ASCII
 
-**Key inputs for next phase (Phase 1 — Discovery):** Project name, owner, and a blank macro plan with all phases listed.
+**Key inputs for next phase (Phase 1 — Discovery):** Project name, owner, blank macro plan with all phases listed.
 
 ---
 
 ### Phase 1 — Discovery
 
-> *Output folder:* [`data-output/url-shortener/01-discovery/`](../01-templates/data-output/url-shortener/01-discovery/)
+> *Output folder:* [`data-output/url-shortener/01-discovery/`](../01-templates/data-output/url-shortener/01-discovery/README.md)
 
 **Purpose:** Define the problem, the vision, and the actors. Establish the business context before any requirements are written.
 
 **What this phase decided:**
 - Vision: enable anyone to shorten and share URLs with basic analytics
-- Three actors: Creator, Visitor, Analytics Consumer
+- Three actors: Creator (anonymous), Visitor (always anonymous), Analytics Consumer
 - Core problem: long URLs are unshareable; no tracking without a tool
-- Scope boundary: no team collaboration in v1; single-user creation only
+- Scope boundary: no team collaboration in v1.0; single-user creation only
+- Redirect uses HTTP 302 (not 301) — preserves ability to change target
+- Visitor IP must NOT be stored (privacy constraint)
 
-**Key inputs for next phase (Phase 2 — Requirements):** Actor list, vision statement, and scope boundaries.
+**Key inputs for next phase (Phase 2 — Requirements):** Actor list, vision statement, success criteria (SC-001 to SC-006), scope boundaries.
 
 ---
 
 ### Phase 2 — Requirements
 
-> *Output folder:* [`data-output/url-shortener/02-requirements/`](../01-templates/data-output/url-shortener/02-requirements/)
+> *Output folder:* [`data-output/url-shortener/02-requirements/`](../01-templates/data-output/url-shortener/02-requirements/README.md)
 
 **Purpose:** Specify what the system must do (functional) and how it must perform (non-functional). Define the glossary used across all phases.
 
 **What this phase decided:**
 - FR-001: Creator can shorten a URL → receives a short link
-- FR-002: Creator can provide a custom alias
-- FR-003: Visitor follows a short link → is redirected to the original URL
-- FR-004: Creator can view click count for each of their ShortURLs
-- FR-005: ShortURLs can have an optional expiry date
+- FR-002: Visitor follows a short link → is redirected (302) to the original URL + click recorded
+- FR-003: Creator can view click count for each of their ShortURLs
+- FR-004: Creator can provide a custom alias (format: alphanumeric + hyphens, 3–30 chars)
+- FR-005: ShortURLs can have an optional expiry date (expired → HTTP 410)
 - NFR-001: Redirect latency < 100 ms (p95)
-- NFR-002: System must handle 1,000 concurrent redirect requests
-- Out of scope (v1): authentication, teams, bulk creation, QR codes
+- NFR-002: System handles 1,000 concurrent redirect requests within NFR-001 threshold
+- NFR-003: Redirect endpoint 99.5% uptime monthly
+- NFR-004: Visitor IP must not be stored (PII constraint)
+- NFR-005: Short code uniqueness is a hard system invariant
+- Out of scope (v1.0): authentication, teams, QR codes, bulk creation, link editing
 
 **Key inputs for next phase (Phase 3 — Design):** FR list, NFR list, glossary, scope boundary.
 
