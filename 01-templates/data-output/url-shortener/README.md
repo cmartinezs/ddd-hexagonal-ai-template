@@ -32,9 +32,9 @@
 | 0 — Documentation Planning | [`00-documentation-planning/`](./00-documentation-planning/README.md) | 🟩 Complete | Macro plan, naming conventions |
 | 1 — Discovery | [`01-discovery/`](./01-discovery/README.md) | 🟩 Complete | Vision, actors, problem context |
 | 2 — Requirements | [`02-requirements/`](./02-requirements/README.md) | 🟩 Complete | Functional + non-functional reqs, glossary |
-| 3 — Design | [`03-design/`](./03-design/) | ⬜ Planned | Bounded context map, system flows |
-| 4 — Data Model | [`04-data-model/`](./04-data-model/) | ⬜ Planned | Entity model, relationships, invariants |
-| 5 — Planning | [`05-planning/`](./05-planning/) | ⬜ Planned | Roadmap, epics, versioning |
+| 3 — Design | [`03-design/`](./03-design/README.md) | 🟩 Complete | Bounded context map, domain model, system flows |
+| 4 — Data Model | [`04-data-model/`](./04-data-model/README.md) | 🟩 Complete | Entity model, relationships, invariants |
+| 5 — Planning | [`05-planning/`](./05-planning/README.md) | 🟩 Complete | Roadmap, epics, versioning |
 | 6 — Development | [`06-development/`](./06-development/) | ⬜ Planned | Architecture, API design, ADRs |
 | 7 — Testing | [`07-testing/`](./07-testing/) | ⬜ Planned | Test strategy, test types, coverage |
 | 8 — Deployment | [`08-deployment/`](./08-deployment/) | ⬜ Planned | CI/CD, environments, release process |

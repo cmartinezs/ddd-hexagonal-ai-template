@@ -34,6 +34,15 @@
 | Visitor | ✅ | ✅ | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Actor who follows a short link |
 | Analytics Consumer | N/A | ✅ | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Actor who reads click statistics |
 | Full Cycle Tutorial | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | Concept: complete worked documentation example across all 12 phases |
+| Success Criterion | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Measurable outcome that defines project success; 6 defined in discovery |
+| Scope Boundary | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Explicit in-scope / out-of-scope table; defined in discovery |
+| ShortCodeGenerator | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Domain service; generates unique short codes; algorithm deferred to Phase 6 |
+| Domain Event | N/A | N/A | ✅ | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A | Signals significant state change in the domain model |
+| Context Map | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Visual representation of bounded context relationships |
+| ERD | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Entity-Relationship Diagram; used in data model phase |
+| Invariant | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A | Constraint that must always hold within an aggregate |
+| Epic | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Large unit of work spanning multiple stories; traces to requirements |
+| Milestone | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A | Checkpoint in the delivery plan; aggregates epics for a release target |
 
 ---
 

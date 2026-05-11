@@ -56,7 +56,18 @@ Cell values:
 | Short Code | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
 | Redirect (domain service) | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | ✅ | N/A |
 | URL Management (bounded context) | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
-| Full Cycle Tutorial | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ |
+| Creator | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Visitor | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Analytics Consumer | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | ✅ | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Success Criterion | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Scope Boundary | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| ShortCodeGenerator | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Domain Event | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | ✅ | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Context Map | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| ERD | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | ✅ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Invariant | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | ✅ | ✅ | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Epic | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Milestone | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
 
 ---
 
@@ -77,6 +88,8 @@ Cell values:
 | — | 001-planning-system-bootstrap | Initial matrix created |
 | 2026-05-11 | 002-workflow-integration | Added 6 new terms: SDLC Phase Guidance, Meta-planning vs. Project Planning, CHECK-PHASE5-CHAIN, CHECK-DEVWORKFLOW-CONSISTENCY, CHECK-VERSIONING-ALIGNMENT, WORKFLOWS/ Sub-folder Structure |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-01) | Added 5 new terms: ShortURL, Short Code, Redirect (domain service), URL Management (bounded context), Full Cycle Tutorial |
+| 2026-05-11 | 003-tutorial-full-cycle (scope-02) | Added 5 new terms: Creator, Visitor, Analytics Consumer, Success Criterion, Scope Boundary |
+| 2026-05-11 | 003-tutorial-full-cycle (scope-03) | Added 7 new terms: ShortCodeGenerator, Domain Event, Context Map, ERD, Invariant, Epic, Milestone |
 
 ---
 

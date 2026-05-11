@@ -1,7 +1,6 @@
 # 🔍 DEEPENING: Scope 04 — Phases 6–8 Outputs (Development, Testing, Deployment)
 
-> **Status:** PENDING
-> [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
+> **Status:** IN PROGRESS
 
 ---
 

@@ -213,51 +213,56 @@ Each phase links to its output files in `01-templates/data-output/url-shortener/
 
 ### Phase 3 — Design
 
-> *Output folder:* [`data-output/url-shortener/03-design/`](../01-templates/data-output/url-shortener/03-design/)
+> *Output folder:* [`data-output/url-shortener/03-design/`](../01-templates/data-output/url-shortener/03-design/README.md)
 
 **Purpose:** Design the system flows, the bounded context map, and the domain model. No technology names.
 
 **What this phase decided:**
-- Single bounded context: **URL Management**
-- Aggregate: `ShortURL` (root), with embedded `Click` events
-- Domain services: `Redirect` (resolves and records), `ShortCodeGenerator` (creates unique codes)
-- Main system flows: create short URL, redirect, view analytics
-- No integration with external bounded contexts in v1
+- Single bounded context: **URL Management** (Core) — no supporting BCs in v1.0
+- Aggregate root: `ShortURL` with embedded value objects (`ShortCode`, `OriginalURL`, `Alias`, `Expiry`, `Click[]`)
+- Two domain services: `Redirect` (resolves code, records click, enforces expiry), `ShortCodeGenerator` (generates unique codes)
+- Three system flows modeled: create short URL, redirect, view click count
+- Domain events raised (in-process only in v1.0): `ShortUrlCreated`, `VisitorRedirected`, `ShortUrlExpired`
+- Redirect uses 302 (not 301) to preserve ability to retarget — decided in Phase 1 (OQ-003)
 
-**Key inputs for next phase (Phase 4 — Data Model):** Bounded context map, aggregate structure, domain events.
+**Key inputs for next phase (Phase 4 — Data Model):** Aggregate structure, value object list, invariants from bounded context model.
 
 ---
 
 ### Phase 4 — Data Model
 
-> *Output folder:* [`data-output/url-shortener/04-data-model/`](../01-templates/data-output/url-shortener/04-data-model/)
+> *Output folder:* [`data-output/url-shortener/04-data-model/`](../01-templates/data-output/url-shortener/04-data-model/README.md)
 
 **Purpose:** Define the data entities, their attributes, and their relationships. Still technology-agnostic — no SQL, no collection names.
 
 **What this phase decided:**
-- Entity: `ShortURL` — id, short_code, original_url, created_at, expires_at (nullable), alias (nullable)
+- Entity: `ShortURL` — id, short_code (UK), original_url, alias (nullable, UK), expires_at (nullable), created_at
 - Entity: `Click` — id, short_url_id (FK), occurred_at, referrer (nullable), user_agent (nullable)
 - Relationship: one ShortURL → many Clicks (1:N)
-- Invariant: short_code is globally unique; alias (if set) is also globally unique
+- 6 invariants defined (INV-001..006): uniqueness, valid URL, future expiry, immutable Click
+- Derived values (not persisted in v1.0): `click_count`, `is_expired`
+- Privacy: Visitor IP is NOT an attribute — enforces NFR-004
 
-**Key inputs for next phase (Phase 5 — Planning):** Entity list, relationships, invariants, derived metrics (Click Count).
+**Key inputs for next phase (Phase 5 — Planning):** Entity list, relationships, invariants, derived metrics.
 
 ---
 
 ### Phase 5 — Planning
 
-> *Output folder:* [`data-output/url-shortener/05-planning/`](../01-templates/data-output/url-shortener/05-planning/)
+> *Output folder:* [`data-output/url-shortener/05-planning/`](../01-templates/data-output/url-shortener/05-planning/README.md)
 
 **Purpose:** Define the roadmap, epics, and versioning strategy. Translate requirements into a delivery plan.
 
 **What this phase decided:**
-- v1.0: anonymous URL creation + redirect + click count
-- v1.1: custom aliases + expiry
-- v2.0: authenticated creators + personal analytics dashboard
-- Epic structure: E-01 Core Redirect, E-02 Analytics, E-03 Identity
-- Prioritization: redirect performance is the primary constraint
+- v1.0: anonymous creation + redirect + alias + expiry + click count (all 5 FRs)
+- v1.1: operations improvements based on monitoring feedback
+- v2.0: authenticated creators + analytics dashboard + link management (Epic E-04)
+- v3.0: teams, custom domains, advanced analytics
+- 4 epics: E-01 (Core Redirect), E-02 (Creator Enhancements), E-03 (Analytics), E-04 (Auth — v2.0)
+- 4 milestones for v1.0: M-001 Redirect MVP → M-002 Creator Control → M-003 Analytics → M-004 Release
+- `[CHECK-PHASE5-CHAIN]` verified: every FR/NFR traces to an epic; every epic to a milestone; every milestone to a version
 
-**Key inputs for next phase (Phase 6 — Development):** Epic list, v1.0 scope, prioritization rationale.
+**Key inputs for next phase (Phase 6 — Development):** Epic list, v1.0 scope (all 5 FRs), milestone dependency chain.
 
 ---
 
