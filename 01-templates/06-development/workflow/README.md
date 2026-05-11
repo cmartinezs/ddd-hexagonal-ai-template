@@ -1,6 +1,4 @@
-[← Index](../README.md) | [< Previous](../observability/README.md) | [Next >](../commits/README.md)
-
----
+[← Index](../README.md) | [< Previous](../observability/README.md) | [Next >](branches/README.md)
 
 # Workflow
 
@@ -41,4 +39,4 @@ This section covers development workflow: branches, commits, PRs, and CI/CD.
 
 ---
 
-[← Index](../README.md) | [< Previous](../observability/README.md) | [Next >](../commits/README.md)
+[← Index](../README.md) | [< Previous](../observability/README.md) | [Next >](branches/README.md)

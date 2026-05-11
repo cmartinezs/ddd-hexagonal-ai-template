@@ -15,13 +15,13 @@ Integrate `planning/WORKFLOWS/` organically with `01-templates/05-planning/` (Ph
 
 | Output | Type |
 |--------|------|
-| `planning/WORKFLOWS/05-sdlc-phase-guidance.md` | New file |
+| `planning/WORKFLOWS/05-SDLC-PHASE-GUIDANCE/` (12 files) | New sub-folder |
 | `planning/WORKFLOWS/README.md` | Modified |
-| `planning/WORKFLOWS/02-execution-workflows.md` | Modified |
-| `planning/WORKFLOWS/04-sub-workflows.md` | Modified |
+| `planning/WORKFLOWS/02-EXECUTION-WORKFLOWS/GENERATE-DOCUMENT.md` | Modified |
+| `planning/WORKFLOWS/04-SUB-WORKFLOWS/` — 3 new sub-workflows | Extended |
 | `planning/GUIDE.md` | Modified |
 | `planning/PROMPTING.md` | Modified |
-| `01-templates/06-development/workflow/` — 4 broken link fixes | Fixed |
+| `01-templates/06-development/workflow/` — 4 broken link fixes + nav fix | Fixed |
 | `01-templates/05-planning/TEMPLATE-018-milestones-proposals.md` — HITO→MILESTONE | Fixed |
 
 ---
