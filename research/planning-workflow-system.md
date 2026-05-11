@@ -85,11 +85,11 @@ planning/
 │
 ├── WORKFLOWS/                       # Catálogo completo de workflows
 │   ├── README.md                    # Índice + tabla de "cuándo usar cada workflow"
-│   ├── 01-planning-workflows.md     # AVANZAR-PLANIFICACIÓN · CREAR-PLANIFICACIÓN
-│   ├── 02-transversal-workflows.md  # CREACIÓN · REVISIÓN-COHERENCIA · EXPANSIÓN-ELEMENTO · INTEGRACIÓN-HITO
-│   ├── 03-creative-workflows.md     # Workflows específicos del dominio
-│   ├── 04-maintenance-workflows.md  # ACTUALIZACIÓN-TRAZABILIDAD · VERIFICACIÓN-RESIDUAL · REGISTRO-INCONSISTENCIAS · AUDITORÍA-PLANIFICACIÓN · CAMBIO-EN-CASCADA · RETROALIMENTACIÓN-HITO
-│   └── 05-sub-workflows.md          # Sub-workflows atómicos reutilizables
+│   ├── 01-PLANNING-WORKFLOWS/       # ADVANCE-PLANNING · CREATE-PLANNING
+│   ├── 02-EXECUTION-WORKFLOWS/      # GENERATE-DOCUMENT · REVIEW-COHERENCE · EXPAND-ELEMENT · INTEGRATE-MILESTONE
+│   ├── 03-MAINTENANCE-WORKFLOWS/    # UPDATE-TRACEABILITY · RESIDUAL-VERIFICATION · RECORD-INCONSISTENCY · CASCADE-CHANGE · MILESTONE-FEEDBACK · AUDIT-PLANNING
+│   ├── 04-SUB-WORKFLOWS/            # Sub-workflows atómicos reutilizables (12 archivos)
+│   └── 05-SDLC-PHASE-GUIDANCE/      # Guía GENERATE-DOCUMENT por fase SDLC (PHASE-00 a PHASE-11)
 │
 ├── _template/                       # Plantilla para nuevas planificaciones
 │   ├── README.md                    # Template del README por planificación

@@ -24,7 +24,7 @@ A defined sequence of steps for executing a specific type of task. Every task in
 ---
 
 ### Sub-workflow
-A reusable step sequence used inside multiple workflows. Called by embedding `[SUB-WORKFLOW-NAME]` within a workflow step. See [`WORKFLOWS/04-sub-workflows.md`](WORKFLOWS/04-sub-workflows.md).
+A reusable step sequence used inside multiple workflows. Called by embedding `[SUB-WORKFLOW-NAME]` within a workflow step. See [`WORKFLOWS/04-SUB-WORKFLOWS/`](WORKFLOWS/04-SUB-WORKFLOWS/README.md) for the full catalog.
 
 ---
 
