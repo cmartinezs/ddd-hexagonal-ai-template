@@ -39,7 +39,11 @@ When a prompt contains one of these parameters (at the start or end):
 
 ### 🚧 In Progress → see [`active/README.md`](active/README.md)
 
-*No active plannings.*
+| ID | Name | Phase |
+|----|------|-------|
+| [003](active/003-tutorial-full-cycle/README.md) | Tutorial: Full Cycle (URL Shortener) | DEEPENING |
+| [004](active/004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion | DEEPENING |
+| [005](active/005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | DEEPENING |
 
 ### ✅ Completed → see [`finished/README.md`](finished/README.md)
 
