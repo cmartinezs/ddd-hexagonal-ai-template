@@ -1,6 +1,6 @@
 # 004 — Tutorial: TaskFlow Completion
 
-> **Status:** EXPANSION
+> **Status:** COMPLETED — 2026-05-11
 > [← active/README.md](../README.md) | [← planning/README.md](../../README.md)
 
 ---

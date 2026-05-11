@@ -9,11 +9,11 @@
 
 | # | Scope | SDLC Phase(s) | Depends On | Status |
 |---|-------|--------------|------------|--------|
-| 01 | Audit existing content + decide output structure | G | — | PENDING |
-| 02 | Complete phases 3–5 (Design, Data Model, Planning) | S, M, P | 01 | PENDING |
-| 03 | Complete phases 6–8 (Development, Testing, Deployment) | V, T, B | 02 | PENDING |
-| 04 | Complete phases 9–11 (Operations, Monitoring, Feedback) | O, N, F | 03 | PENDING |
-| 05 | Unify EXAMPLE-IMPLEMENTATION.md index and navigation | G | 04 | PENDING |
+| 01 | Audit existing content + decide output structure | G | — | DONE |
+| 02 | Complete phases 3–5 (Design, Data Model, Planning) | S, M, P | 01 | DONE |
+| 03 | Complete phases 6–8 (Development, Testing, Deployment) | V, T, B | 02 | DONE |
+| 04 | Complete phases 9–11 (Operations, Monitoring, Feedback) | O, N, F | 03 | DONE |
+| 05 | Unify EXAMPLE-IMPLEMENTATION.md index and navigation | G | 04 | DONE |
 
 ---
 

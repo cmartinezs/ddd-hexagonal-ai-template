@@ -8,7 +8,6 @@ Plannings currently in **EXPANSION** or **DEEPENING** phase. These are actively 
 
 | ID | Name | Phase | Current Scope | Updated |
 |----|------|-------|--------------|---------|
-| [004](004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion | DEEPENING | scope-01 (audit) | 2026-05-11 |
 | [005](005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | DEEPENING | scope-01 (scaffold) | 2026-05-11 |
 
 ---

@@ -100,6 +100,11 @@ Cell values:
 | 2026-05-11 | 003-tutorial-full-cycle (scope-03) | Added 7 new terms: ShortCodeGenerator, Domain Event, Context Map, ERD, Invariant, Epic, Milestone |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-04) | Added 9 new terms: Hexagonal Architecture, Port, Adapter, ADR, Use Case, Test Pyramid, CI/CD Pipeline, GitHub Flow, Release Tag |
 | 2026-05-11 | 003-tutorial-full-cycle (scope-05) | Added 7 new terms: Runbook, SLA, Incident Severity, Metric (observability), Alert Rule, Retrospective, Backlog Item |
+| 2026-05-11 | 004-tutorial-taskflow-completion (scope-01) | Audit + PDR-007: Vision Statement, Actor, Glossary |
+| 2026-05-11 | 004-tutorial-taskflow-completion (scope-02) | Phases 3-5 rewrite: Functional Requirement, Non-Functional Requirement, Bounded Context, Context Map, Aggregate, Invariant, Value Object, Domain Event |
+| 2026-05-11 | 004-tutorial-taskflow-completion (scope-03) | Phases 6-8 rewrite: Epic, Milestone, Hexagonal Architecture, Port, Adapter, ADR, Test Pyramid, CI/CD Pipeline |
+| 2026-05-11 | 004-tutorial-taskflow-completion (scope-04) | Phases 9-11 rewrite: SLA, Runbook, Incident Severity, Metric, Retrospective, Backlog Item |
+| 2026-05-11 | 004-tutorial-taskflow-completion (scope-05) | Unified EXAMPLE-IMPLEMENTATION.md: Phase 0 added, TOC, navigation, template cross-references |
 
 ---
 

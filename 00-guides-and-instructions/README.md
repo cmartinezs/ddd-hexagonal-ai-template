@@ -160,7 +160,7 @@ Use this table to find the right guide without reading all of them. The "When to
 | 2 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | When generating any phase document; your prompt reference |
 | 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) | When operating without a human in the loop |
 | 4 | [`TUTORIAL-FULL-CYCLE.md`](./TUTORIAL-FULL-CYCLE.md) | When you need a complete, filled-out reference for all 12 phases |
-| 5 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | When you need a pattern for phases 1–2 (TaskFlow case) |
+| 5 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | When you need a compact cross-phase reference (TaskFlow — all 12 phases) |
 | 6 | [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) | When validating phase output with Claude Code skills |
 | 7 | [`AI-AGENT-READINESS-RECOMMENDATIONS.md`](./AI-AGENT-READINESS-RECOMMENDATIONS.md) | When operating in enterprise governance contexts |
 | 8 | [`TEMPLATE-USAGE-GUIDE.md`](./TEMPLATE-USAGE-GUIDE.md) | When generating a phase document; format and structure reference |
