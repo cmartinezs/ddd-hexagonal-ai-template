@@ -42,6 +42,8 @@
 | Guide System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Phase help, pitfalls, prerequisites, next actions |
 | Tutorial System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Step-by-step navigation, progress tracking, project/template modes |
 | Doctor Health Checks | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Template integrity, phase chain, glossary, navigation, --fix auto-repair |
+| Migration Manager | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Version detection, backup/restore, migration log |
+| Semantic Versioning | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | PATCH (auto), MINOR (confirm), MAJOR (manual guide) |
 
 ---
 
@@ -73,6 +75,10 @@
 | PDR-032 | Guide command: phase help with pitfalls, prerequisites, next action | Guided learning, self-service help | G (archon/) | 2026-05-12 |
 | PDR-033 | Tutorial: step-by-step navigation with project/template modes | Progressive onboarding | G (archon/) | 2026-05-12 |
 | PDR-034 | Doctor: health checks for template integrity, glossary, links, --fix | Proactive validation | G (archon/) | 2026-05-12 |
+| PDR-035 | Upgrade: semantic versioning (PATCH/MINOR/MAJOR) | Structured, safe upgrades | G (archon/) | 2026-05-12 |
+| PDR-036 | Upgrade: backup before every upgrade, restore from backup | Safe rollback capability | G (archon/) | 2026-05-12 |
+| PDR-037 | Upgrade: migration-log.md tracks all upgrades and rollbacks | Full audit trail | G (archon/) | 2026-05-12 |
+| PDR-038 | Upgrade: PATCH auto-applied, MINOR requires confirm, MAJOR needs manual guide | Risk-appropriate UX | G (archon/) | 2026-05-12 |
 
 ---
 

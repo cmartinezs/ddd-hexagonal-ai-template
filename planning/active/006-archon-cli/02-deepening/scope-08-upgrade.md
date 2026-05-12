@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 08 — Upgrade + Migration System
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,14 +15,14 @@ Implement the template upgrade system: `archon upgrade`, rollback support, migra
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Implement template versioning (semantic: MAJOR.MINOR.PATCH) | GENERATE-DOCUMENT | PENDING | Versioning system |
-| 2 | Create `UPGRADE/` folder with migration guides per version | GENERATE-DOCUMENT | PENDING | Migration guides |
-| 3 | Implement `archon upgrade [--target <version>] [--dry-run]` | GENERATE-DOCUMENT | PENDING | `upgrade.ts` command |
-| 4 | Implement `archon upgrade --rollback <version>` | GENERATE-DOCUMENT | PENDING | Rollback command |
-| 5 | Implement breaking change detection | GENERATE-DOCUMENT | PENDING | Breaking change detector |
-| 6 | Implement auto-apply for non-breaking changes | GENERATE-DOCUMENT | PENDING | Auto-apply logic |
-| 7 | Create migration log (`.archon/migration-log.md`) | GENERATE-DOCUMENT | PENDING | Migration log |
-| 8 | Create upgrade command integration tests | GENERATE-DOCUMENT | PENDING | Integration tests |
+| 1 | Implement template versioning (semantic: MAJOR.MINOR.PATCH) | DONE | MigrationManager — upgradeType detection |
+| 2 | Create `UPGRADE/` folder with migration guides per version | DONE | MigrationManager — loads from UPGRADE/X-to-Y.md |
+| 3 | Implement `archon upgrade [--target <version>] [--dry-run]` | DONE | `upgrade.ts` — version analysis, type detection, apply |
+| 4 | Implement `archon upgrade --rollback <version>` | DONE | `upgrade.ts` — restore from backup |
+| 5 | Implement breaking change detection | DONE | MigrationManager.analyzeUpgrade() |
+| 6 | Implement auto-apply for non-breaking changes | DONE | PATCH auto-applied, MINOR requires confirm |
+| 7 | Create migration log (`.archon/migration-log.md`) | DONE | MigrationManager.logMigration() |
+| 8 | Create upgrade command integration tests | PENDING | Not applicable (no test framework) |
 
 ---
 

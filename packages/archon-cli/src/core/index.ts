@@ -26,3 +26,9 @@ export {
   type Question,
   type CollectedAnswers,
 } from './interactive-engine.js';
+export {
+  MigrationManager,
+  type VersionInfo,
+  type MigrationRecord,
+  type UpgradeType,
+} from './migration-manager.js';
