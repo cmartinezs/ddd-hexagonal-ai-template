@@ -6,7 +6,9 @@ Plannings currently in **EXPANSION** or **DEEPENING** phase. These are actively 
 
 ---
 
-*No active plannings — all are either complete or in INITIAL state.*
+| ID | Name | Phase | Current Scope | Updated |
+|----|------|-------|--------------|---------|
+| [006](006-archon-cli/README.md) | Archon CLI | EXPANSION | scope-01 (scaffold) | 2026-05-12 |
 
 ---
 
