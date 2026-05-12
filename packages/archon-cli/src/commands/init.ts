@@ -101,8 +101,25 @@ export class InitCommand {
 
     mkdirSync(projectPath, { recursive: true });
 
-    const docsDir = join(projectPath, 'docs');
-    mkdirSync(join(docsDir, '00-documentation-planning'), { recursive: true });
+    const templateDocs = join(templatePath, '01-templates');
+    const projectDocs = join(projectPath, 'docs');
+    mkdirSync(projectDocs, { recursive: true });
+
+    if (existsSync(templateDocs)) {
+      const phaseDirs = readdirSync(templateDocs, { withFileTypes: true })
+        .filter((e) => e.isDirectory())
+        .map((e) => e.name)
+        .sort();
+
+      for (const dir of phaseDirs) {
+        mkdirSync(join(projectDocs, dir), { recursive: true });
+      }
+
+      console.log(chalk.dim('  Copied ' + phaseDirs.length + ' phase directories from template.\n'));
+    } else {
+      mkdirSync(join(projectDocs, '00-documentation-planning'), { recursive: true });
+    }
+
     mkdirSync(join(projectPath, '.archon', 'context'), { recursive: true });
     mkdirSync(join(projectPath, '.archon', 'prompts', 'metadata'), { recursive: true });
     mkdirSync(join(projectPath, '.archon', 'runs'), { recursive: true });
