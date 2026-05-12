@@ -22,6 +22,9 @@
 | Term / Concept | D | R | S | M | P | V | T | B | O | N | F | G | W | Notes |
 |---------------|---|---|---|---|---|---|---|---|---|---|---|---|---|-------|
 | Archon (CLI) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | New CLI tool in G |
+| Phase Engine | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | 12 phase definitions + transitions |
+| Validator | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ERROR/WARN/INFO severity levels |
+| Template Copier | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Copies template to sibling project |
 | state.json | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Project state file |
 | First-Interactive | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Missing params trigger prompt |
 | Template Upgrade | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Template version migration |
@@ -37,7 +40,14 @@
 
 | ID | Decision | Rationale | Affects | Date |
 |----|----------|-----------|---------|------|
-| PDR-010 | Name: Archon | Greek ἄρχων — "the one who rules" | G (archon/) | 2026-05-12 |
+| PDR-022 | CLI moved to `packages/archon-cli/` | Monorepo with npm workspaces for global installability | G (archon/) | 2026-05-12 |
+| PDR-023 | Template resolution: global cache at `~/.archon/templates/` | No template copies per project; resolved at runtime | G (archon/) | 2026-05-12 |
+| PDR-024 | Project output: `docs/` per phase | Clean separation from template source | G (archon/) | 2026-05-12 |
+| PDR-025 | Mode detection: user/project/dev/template-cache | 4-mode system instead of template/project | G (archon/) | 2026-05-12 |
+| PDR-026 | `archon templates` command | Template cache management (ls/pull/update/remove) | G (archon/) | 2026-05-12 |
+| PDR-027 | `archon dev link-template` command | Dev mode linking local template | G (archon/) | 2026-05-12 |
+| PDR-028 | `template.lock.json` per project | Pins exact template version + source + commit | G (archon/) | 2026-05-12 |
+| PDR-029 | Init: child folder from cwd | `./mi-proyecto/` instead of `../mi-proyecto/` | G (archon/) | 2026-05-12 |
 | PDR-011 | Project init: sibling folder + switch prompt | Template remains clean; project is sibling | G (archon/) | 2026-05-12 |
 | PDR-012 | State: `.archon/state.json` + `.archon/state.checksum` (SHA-256) | Human + AI readable, integrity checked | G (archon/) | 2026-05-12 |
 | PDR-013 | Agent config: per project in `.archon/config.json` | Each project has own agent preference | G (archon/) | 2026-05-12 |

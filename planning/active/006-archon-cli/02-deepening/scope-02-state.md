@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 02 — State Management + Mode Detection
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,12 +15,12 @@ Implement state management (`state.json` + checksum) and mode detection (templat
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Create `src/core/mode-detector.ts` — detect template vs. project mode | GENERATE-DOCUMENT | PENDING | `mode-detector.ts` |
-| 2 | Create `src/core/state-manager.ts` — read/write state.json + checksum | GENERATE-DOCUMENT | PENDING | `state-manager.ts` |
-| 3 | Create `src/core/types.ts` — TypeScript interfaces for state, config, phase | GENERATE-DOCUMENT | PENDING | `types.ts` |
-| 4 | Create `src/core/config-manager.ts` — read/write config.json | GENERATE-DOCUMENT | PENDING | `config-manager.ts` |
-| 5 | Implement checksum (SHA-256) for state.json integrity | GENERATE-DOCUMENT | PENDING | Checksum implementation |
-| 6 | Implement first-interactive param handling in state manager | GENERATE-DOCUMENT | PENDING | First-interactive logic |
+| 1 | Create `src/core/mode-detector.ts` — detect template vs. project mode | GENERATE-DOCUMENT | DONE | `mode-detector.ts` |
+| 2 | Create `src/core/state-manager.ts` — read/write state.json + checksum | GENERATE-DOCUMENT | DONE | `state-manager.ts` |
+| 3 | Create `src/core/types.ts` — TypeScript interfaces for state, config, phase | GENERATE-DOCUMENT | DONE | `types.ts` |
+| 4 | Create `src/core/config-manager.ts` — read/write config.json | GENERATE-DOCUMENT | DONE | `config-manager.ts` |
+| 5 | Implement checksum (SHA-256) for state.json integrity | GENERATE-DOCUMENT | DONE | Checksum implementation |
+| 6 | Implement first-interactive param handling in state manager | GENERATE-DOCUMENT | DONE | First-interactive logic |
 | 7 | Write unit tests for mode detector and state manager | GENERATE-DOCUMENT | PENDING | Tests |
 
 ---
@@ -69,15 +69,15 @@ interface ArchonConfig {
 
 ## Done Criteria
 
-- [ ] `mode-detector.ts` correctly identifies template vs. project mode in all 4 scenarios
-- [ ] `state-manager.ts` creates `state.json` with all required fields on `init`
-- [ ] Checksum (SHA-256) is computed on write and verified on read
-- [ ] Mismatch triggers warning: "State was modified externally. Run `archon doctor` to validate."
-- [ ] `config-manager.ts` reads/writes `.archon/config.json` with agent and defaults
-- [ ] First-interactive: missing required params trigger interactive prompt (not error)
-- [ ] All interfaces are documented with JSDoc
+- [x] `mode-detector.ts` correctly identifies template vs. project mode in all 4 scenarios
+- [x] `state-manager.ts` creates `state.json` with all required fields on `init`
+- [x] Checksum (SHA-256) is computed on write and verified on read
+- [x] Mismatch triggers warning: "State was modified externally. Run `archon doctor` to validate."
+- [x] `config-manager.ts` reads/writes `.archon/config.json` with agent and defaults
+- [x] First-interactive: missing required params trigger interactive prompt (not error)
+- [x] All interfaces are documented with JSDoc
 - [ ] Unit tests cover: mode detection, checksum write/read, config read/write
-- [ ] TRACEABILITY.md updated
+- [x] TRACEABILITY.md updated
 
 ---
 

@@ -1,0 +1,50 @@
+{
+  "name": "archon",
+  "version": "0.1.0",
+  "description": "Archon — DDD Template CLI. Systematizes the DDD + Hexagonal AI Template through structured commands, phase enforcement, and AI agent integration.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "archon": "./bin/archon.js"
+  },
+  "scripts": {
+    "dev": "tsx bin/archon.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "files": [
+    "bin/",
+    "dist/"
+  ],
+  "keywords": [
+    "ddd",
+    "hexagonal",
+    "template",
+    "cli",
+    "documentation",
+    "sdlc",
+    "opencode",
+    "ai-agent"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "inquirer": "^13.4.3",
+    "semver": "^7.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.7.0",
+    "@types/semver": "^7.7.1",
+    "diff": "^9.0.0",
+    "node-fetch": "^3.3.2",
+    "ora": "^9.4.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

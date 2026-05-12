@@ -1,0 +1,15 @@
+{
+  "name": "ddd-hexagonal-ai-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DDD + Hexagonal Architecture AI-Native Template",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:archon": "npm run dev -w packages/archon-cli",
+    "build:archon": "npm run build -w packages/archon-cli",
+    "typecheck:archon": "npm run typecheck -w packages/archon-cli",
+    "test:archon": "npm test -w packages/archon-cli"
+  }
+}

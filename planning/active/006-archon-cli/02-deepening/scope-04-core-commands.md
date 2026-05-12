@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 04 — Core Commands (init, status, check, next)
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,12 +15,12 @@ Implement the four core commands that form the operational backbone: `archon ini
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Implement `archon init [--name <proj>] [--agent <agent>]` | GENERATE-DOCUMENT | PENDING | Full init command |
-| 2 | Implement template copier (copy template to sibling project) | GENERATE-DOCUMENT | PENDING | Template copier |
-| 3 | Implement `archon status` with progress bar + phase map | GENERATE-DOCUMENT | PENDING | Full status command |
-| 4 | Implement `archon check [--json] [--phase <N>]` | GENERATE-DOCUMENT | PENDING | Full check command |
-| 5 | Implement `archon next [--phase <N>] [--confirm]` | GENERATE-DOCUMENT | PENDING | Full next command |
-| 6 | Implement switch prompt after init ("Switch to project directory?") | GENERATE-DOCUMENT | PENDING | Switch prompt |
+| 1 | Implement `archon init [--name <proj>] [--agent <agent>]` | GENERATE-DOCUMENT | DONE | Full init command |
+| 2 | Implement template copier (copy template to sibling project) | GENERATE-DOCUMENT | DONE | Template copier |
+| 3 | Implement `archon status` with progress bar + phase map | GENERATE-DOCUMENT | DONE | Full status command |
+| 4 | Implement `archon check [--json] [--phase <N>]` | GENERATE-DOCUMENT | DONE | Full check command |
+| 5 | Implement `archon next [--phase <N>] [--confirm]` | GENERATE-DOCUMENT | DONE | Full next command |
+| 6 | Implement switch prompt after init ("Switch to project directory?") | GENERATE-DOCUMENT | DONE | Switch prompt |
 | 7 | Write integration tests for init + status | GENERATE-DOCUMENT | PENDING | Integration tests |
 
 ---
@@ -102,16 +102,16 @@ Run `archon check` to validate current phase
 
 ## Done Criteria
 
-- [ ] `archon init --name my-tcg` creates `../my-tcg/` with full template structure
-- [ ] Init validates project name, handles errors gracefully
-- [ ] Init shows switch prompt with correct path
-- [ ] `archon status` shows correct progress bar, phase map, agent, last activity
-- [ ] `archon check` outputs ERROR/WARN/INFO with line references and fix suggestions
-- [ ] `archon check --json` outputs valid JSON with structured results
-- [ ] `archon next` shows phase summary, prerequisites check, confirmation prompt
-- [ ] `archon next --confirm` skips confirmation (for scripting)
+- [x] `archon init --name my-tcg` creates `../my-tcg/` with full template structure
+- [x] Init validates project name, handles errors gracefully
+- [x] Init shows switch prompt with correct path
+- [x] `archon status` shows correct progress bar, phase map, agent, last activity
+- [x] `archon check` outputs ERROR/WARN/INFO with line references and fix suggestions
+- [x] `archon check --json` outputs valid JSON with structured results
+- [x] `archon next` shows phase summary, prerequisites check, confirmation prompt
+- [x] `archon next --confirm` skips confirmation (for scripting)
 - [ ] Integration tests verify init creates valid state.json, status shows correct data
-- [ ] TRACEABILITY.md updated
+- [x] TRACEABILITY.md updated
 
 ---
 

@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 03 — Phase Engine + Validator
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,13 +15,13 @@ Implement the phase engine: 12 phase definitions with metadata, dependency graph
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Create `src/core/phase-engine.ts` — 12 phase definitions | GENERATE-DOCUMENT | PENDING | `phase-engine.ts` |
-| 2 | Create `src/core/validator.ts` — constraint checker | GENERATE-DOCUMENT | PENDING | `validator.ts` |
-| 3 | Define phase metadata: name, description, requiredInputs, outputFiles, isAgnostic | GENERATE-DOCUMENT | PENDING | Phase metadata definitions |
-| 4 | Implement transition rules (advance, back, future-phase warning) | GENERATE-DOCUMENT | PENDING | Transition logic |
-| 5 | Implement constraint severity levels (ERROR/WARN/INFO) | GENERATE-DOCUMENT | PENDING | Severity levels |
-| 6 | Create `src/ui/render-status.ts` — status display | GENERATE-DOCUMENT | PENDING | Status renderer |
-| 7 | Create `src/ui/render-warnings.ts` — warning display | GENERATE-DOCUMENT | PENDING | Warnings renderer |
+| 1 | Create `src/core/phase-engine.ts` — 12 phase definitions | GENERATE-DOCUMENT | DONE | `phase-engine.ts` |
+| 2 | Create `src/core/validator.ts` — constraint checker | GENERATE-DOCUMENT | DONE | `validator.ts` |
+| 3 | Define phase metadata: name, description, requiredInputs, outputFiles, isAgnostic | GENERATE-DOCUMENT | DONE | Phase metadata definitions |
+| 4 | Implement transition rules (advance, back, future-phase warning) | GENERATE-DOCUMENT | DONE | Transition logic |
+| 5 | Implement constraint severity levels (ERROR/WARN/INFO) | GENERATE-DOCUMENT | DONE | Severity levels |
+| 6 | Create `src/ui/render-status.ts` — status display | GENERATE-DOCUMENT | DONE | Status renderer |
+| 7 | Create `src/ui/render-warnings.ts` — warning display | GENERATE-DOCUMENT | DONE | Warnings renderer |
 | 8 | Write unit tests for phase engine and validator | GENERATE-DOCUMENT | PENDING | Tests |
 
 ---
@@ -68,18 +68,18 @@ Implement the phase engine: 12 phase definitions with metadata, dependency graph
 
 ## Done Criteria
 
-- [ ] `phase-engine.ts` defines all 12 phases with correct metadata
-- [ ] Phase dependency graph is correct (Phase N requires Phase N-1 complete)
-- [ ] Transition rules enforce: advance requires completion or warning confirmation
-- [ ] `validator.ts` runs all checks for current phase on `archon check`
-- [ ] `ERROR` blocks advancement; `WARN` shows confirmation prompt; `INFO` logs suggestion
-- [ ] Validator detects agnostic boundary violations (no tech names in phases 0–5)
-- [ ] Validator detects traceability gaps (FR not traced to Discovery, etc.)
-- [ ] `render-status.ts` outputs ASCII progress bar with phase map
-- [ ] `render-warnings.ts` outputs color-coded warnings (red/yellow/blue)
-- [ ] `archon check --json` outputs machine-parseable results
+- [x] `phase-engine.ts` defines all 12 phases with correct metadata
+- [x] Phase dependency graph is correct (Phase N requires Phase N-1 complete)
+- [x] Transition rules enforce: advance requires completion or warning confirmation
+- [x] `validator.ts` runs all checks for current phase on `archon check`
+- [x] `ERROR` blocks advancement; `WARN` shows confirmation prompt; `INFO` logs suggestion
+- [x] Validator detects agnostic boundary violations (no tech names in phases 0–5)
+- [x] Validator detects traceability gaps (FR not traced to Discovery, etc.)
+- [x] `render-status.ts` outputs ASCII progress bar with phase map
+- [x] `render-warnings.ts` outputs color-coded warnings (red/yellow/blue)
+- [x] `archon check --json` outputs machine-parseable results
 - [ ] Unit tests cover: all transition rules, all constraint types, output formats
-- [ ] TRACEABILITY.md updated
+- [x] TRACEABILITY.md updated
 
 ---
 

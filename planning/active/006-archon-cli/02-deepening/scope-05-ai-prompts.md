@@ -1,6 +1,7 @@
 # 🔍 DEEPENING: Scope 05 — AI Integration (Prompt Generation + Agent Execution)
 
-> **Status:** PENDING
+> **Status:** PENDING (arch pivot: new architecture)
+> **Note:** With global cache architecture, AI integration uses `template.lock.json` for template source, `docs/` for project outputs.
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
