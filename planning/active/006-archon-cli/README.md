@@ -28,7 +28,7 @@ Build `Archon` — a CLI tool that systematizes the use of the DDD + Hexagonal A
 2. **State Management** — state.json, checksum, mode detection
 3. **Phase Engine** — 12 phase definitions, dependency graph, validators
 4. **Core Commands** — init, status, check, next
-5. **AI Prompt Generation** — prompt builder + prompts management (ls/compress/rank/merge/expand)
+5. **AI Integration** — prompt generation + context scanner + agent execution (adapters) + prompts management (ls/compress/rank/merge/expand)
 6. **Interactive Mode** — first-interactive, config defaults
 7. **Guide + Tutorial + Doctor** — help system, tutorial integration, health check
 8. **Upgrade + Migration** — upgrade command, rollback, migration guides

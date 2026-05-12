@@ -39,6 +39,7 @@ The template has documented workflows and AI prompts, but they are not systemati
 - **Requested by:** human
 - **Date:** 2026-05-12
 - **Related planning:** 005 (tutorial step files integrated into Archon guide)
+- **Research:** [`research/respuesta-opencode-archon-cli.md`](../../research/respuesta-opencode-archon-cli.md) — opencode integration strategy (agent-agnostic, adapter pattern, Model A as foundation)
 
 ---
 
@@ -52,12 +53,14 @@ The template has documented workflows and AI prompts, but they are not systemati
 | PDR-013 | Agent config: per project in `.archon/config.json` | Each project can have its own agent preference. |
 | PDR-014 | Phase enforcement: warning + confirmation (not strict blocking) | Any action outside current phase scope triggers warning. |
 | PDR-015 | Prompt output: file-based in `.archon/prompts/` | `archon prompt` writes to `.archon/prompts/phase-N-<timestamp>.md` |
-| PDR-016 | Prompts accumulated: `archon prompts ls|compress|rank|merge|expand <id>` | Users accumulate a prompt library; tools to manage it. |
-| PDR-017 | First-interactive: required params missing → interactive mode | Configurable defaults via `archon config set`. |
+| PDR-016 | Prompts accumulated: `archon prompts ls|compress|rank|merge|expand <id>` + `.archon/runs/` for execution tracking | Users accumulate a prompt library; full execution traceability |
+| PDR-017 | First-interactive: required params missing → interactive mode + adapter pattern for agent execution | Configurable defaults + `archon agent doctor` to detect capabilities |
 | PDR-018 | Template versioning: semantic (MAJOR.MINOR.PATCH) | Major upgrades require migration guide + confirmation. |
 | PDR-019 | Upgrade behavior: auto-apply safe changes, warn on breaking | Breaking changes show guide + require explicit confirmation. |
 | PDR-020 | Migration files: `CHANGELOG.md` + `UPGRADE/` subfolder in template root | Both changelog + per-version upgrade guides. |
 | PDR-021 | Rollback support: `archon upgrade --rollback <version>` | Full rollback of template files + state to previous version. |
+| PDR-022 | Model A as architectural foundation: `archon prompt` + `archon context scan` always generate files | Works with any agent, auditable, reproducible. Model B (adapter) is optional `--run`. |
+| PDR-023 | Agent adapter pattern: `AgentAdapter` interface with `detect()`, `doctor()`, `execute()` | opencode first, extensible to claude/codex/cursor/gemini. Transport: file-attachment (default), attach (server mode), stdin (experimental). |
 
 ---
 

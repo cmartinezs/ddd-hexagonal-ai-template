@@ -13,7 +13,7 @@
 | 02 | State management + mode detection | G | 01 | PENDING |
 | 03 | Phase engine + validator | G | 02 | PENDING |
 | 04 | Core commands (init, status, check, next) | G | 02 | PENDING |
-| 05 | AI prompt generation + prompts management | G | 04 | PENDING |
+| 05 | AI Integration (prompt generation + context scanner + agent execution + adapters) | G | 04 | PENDING |
 | 06 | Interactive mode + config defaults | G | 04 | PENDING |
 | 07 | Guide + tutorial + doctor commands | G | 04 | PENDING |
 | 08 | Upgrade + migration system | G | 03 | PENDING |
@@ -29,9 +29,8 @@ flowchart LR
     S02 --> S03[03: Phase Engine]
     S02 --> S04[04: Core Commands]
     S03 --> S08[08: Upgrade]
-    S04 --> S05[05: AI Prompts]
+S04 --> S05[05: AI Integration]
     S04 --> S06[06: Interactive]
-    S04 --> S07[07: Guide/Tutorial]
     S05 --> S06
     S08 --> S09[09: Polish]
 ```

@@ -1,4 +1,4 @@
-# 🔍 DEEPENING: Scope 05 — AI Prompt Generation + Prompts Management
+# 🔍 DEEPENING: Scope 05 — AI Integration (Prompt Generation + Agent Execution)
 
 > **Status:** PENDING
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
@@ -7,7 +7,7 @@
 
 ## Objective
 
-Implement `archon prompt` (AI prompt generation) and `archon prompts` (prompt library management). Prompt generation is the core AI integration: it produces a fully context-rich prompt file per phase for opencode (primary) and other agents. Prompts management provides tools to organize, compress, rank, merge, and expand accumulated prompts.
+Implement the full AI integration layer: prompt generation (scope 05-a), context scanning (scope 05-b), and agent execution with adapters (scope 05-c). The core principle: **Archon is an architectural orchestrator, not a wrapper. Model A is the foundation; Model B is an optional adapter.**
 
 ---
 
@@ -16,133 +16,335 @@ Implement `archon prompt` (AI prompt generation) and `archon prompts` (prompt li
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
 | 1 | Create `src/core/ai-prompt-builder.ts` — prompt generator per phase | GENERATE-DOCUMENT | PENDING | `ai-prompt-builder.ts` |
-| 2 | Create prompt templates for all 12 phases | GENERATE-DOCUMENT | PENDING | `prompts/` base templates |
-| 3 | Implement `archon prompt --phase <N> [--context full|summary|none]` | GENERATE-DOCUMENT | PENDING | `prompt.ts` command |
-| 4 | Implement `archon prompts ls` — list all accumulated prompts | GENERATE-DOCUMENT | PENDING | `prompts ls` |
-| 5 | Implement `archon prompts rank [--by usage|last-accessed]` | GENERATE-DOCUMENT | PENDING | `prompts rank` |
-| 6 | Implement `archon prompts compress <id>` — remove intermediate steps | GENERATE-DOCUMENT | PENDING | `prompts compress` |
-| 7 | Implement `archon prompts merge <id1> <id2>` — combine prompts | GENERATE-DOCUMENT | PENDING | `prompts merge` |
-| 8 | Implement `archon prompts expand <id>` — re-expand compressed prompt | GENERATE-DOCUMENT | PENDING | `prompts expand` |
-| 9 | Implement `archon prompts export <id> [--to <file>]` | GENERATE-DOCUMENT | PENDING | `prompts export` |
-| 10 | Implement `archon prompts clean [--older-than <days>]` | GENERATE-DOCUMENT | PENDING | `prompts clean` |
-| 11 | Create `prompts/` folder with base templates per phase | GENERATE-DOCUMENT | PENDING | Base prompt templates |
+| 2 | Create `src/core/context-scanner.ts` — project analysis + context files | GENERATE-DOCUMENT | PENDING | `context-scanner.ts` |
+| 3 | Create `src/core/agent-adapter.ts` — AgentAdapter interface + factory | GENERATE-DOCUMENT | PENDING | `agent-adapter.ts` |
+| 4 | Create `src/core/opencode-adapter.ts` — opencode-specific adapter | GENERATE-DOCUMENT | PENDING | `opencode-adapter.ts` |
+| 5 | Create `src/core/run-tracker.ts` — execution metadata + logs | GENERATE-DOCUMENT | PENDING | `run-tracker.ts` |
+| 6 | Implement `archon prompt --phase <N> [--context full|summary|none] [--copy]` | GENERATE-DOCUMENT | PENDING | `prompt.ts` command |
+| 7 | Implement `archon context scan [--output <dir>]` | GENERATE-DOCUMENT | PENDING | `context.ts` command |
+| 8 | Implement `archon run --agent <agent> --phase <N> [--dry-run]` | GENERATE-DOCUMENT | PENDING | `run.ts` command |
+| 9 | Implement `archon agent doctor [--agent <agent>]` | GENERATE-DOCUMENT | PENDING | `doctor.ts` command |
+| 10 | Create `prompts/` folder with base templates per phase | GENERATE-DOCUMENT | PENDING | `prompts/` base templates |
+| 11 | Implement `archon prompts ls|compress|rank|merge|expand|export|clean` | GENERATE-DOCUMENT | PENDING | `prompts.ts` command |
 
 ---
 
-## Prompt File Structure (output)
+## Architectural Principles
 
-```markdown
-# archon prompt — Phase 3: Design
-Generated: 2026-05-12T10:30:00Z
-Project: tcg-trading-cards
+### Model A — Foundation (always)
+
+```
+archon prompt --phase 3 --context full
+→ Writes .archon/prompts/phase-3-2026-05-12.md
+→ Writes .archon/context/project-context.md
+→ Auditable, reproducible, works with any agent
+```
+
+### Model B — Optional Adapter (on --run)
+
+```
+archon run --agent opencode --phase 3
+→ Generates context
+→ Generates prompt
+→ Executes opencode via adapter
+→ Stores run metadata
+→ Stores logs
+```
+
+### Transport Priority
+
+1. **`file-attachment`** — default, stable, documented
+2. **`attach`** — server persistent mode (`--attach http://localhost:4096`)
+3. **`stdin`** — experimental, only if `archon agent doctor` confirms it works
+
+---
+
+## AgentAdapter Interface
+
+```typescript
+interface AgentAdapter {
+  id: string;
+  displayName: string;
+  detect(): Promise<AgentDetectionResult>;
+  doctor(): Promise<AgentDoctorResult>;
+  execute(request: AgentExecutionRequest): Promise<AgentExecutionResult>;
+}
+
+interface AgentDetectionResult {
+  available: boolean;
+  version?: string;
+  error?: string;
+}
+
+interface AgentDoctorResult {
+  status: 'available' | 'unavailable' | 'partial';
+  version?: string;
+  capabilities: {
+    supportsRun: boolean;
+    supportsFileAttachment: boolean;
+    supportsAttach: boolean;
+    supportsStdinPrompt: boolean;
+  };
+  recommendedTransport: 'file-attachment' | 'attach' | 'stdin' | 'none';
+  diagnostics: string[];
+}
+
+interface AgentExecutionRequest {
+  cwd: string;
+  promptFile: string;
+  contextFiles: string[];
+  title?: string;
+  model?: string;
+  remoteAgent?: string;
+  session?: string;
+  continueSession?: boolean;
+  attachUrl?: string;
+  dryRun?: boolean;
+  outputFormat?: 'default' | 'json';
+  transport?: 'file-attachment' | 'attach' | 'stdin';
+  confirm?: boolean;
+}
+
+interface AgentExecutionResult {
+  success: boolean;
+  exitCode?: number;
+  duration?: number;
+  runId: string;
+  outputFiles?: string[];
+  error?: string;
+}
+```
+
+---
+
+## File Structure
+
+```
+.archon/
+├── config.json
+├── state.json
+├── state.checksum
+
+├── context/
+│   ├── project-context.md      # Generated by archon context scan
+│   ├── project-map.json        # Project structure snapshot
+│   └── snapshots/              # Historical snapshots
+│       └── 2026-05-12T15-30-00Z.json
+
+├── prompts/
+│   ├── phase-3-2026-05-12.md   # Generated prompts
+│   ├── create-module-*.md
+│   └── metadata/              # Sidecar JSON per prompt
+│       └── phase-3-2026-05-12.json
+
+└── runs/
+    └── 2026-05-12T15-40-00Z-opencode/
+        ├── run.json            # Execution metadata
+        ├── command.txt         # Exact command executed
+        ├── stdout.log
+        ├── stderr.log
+        ├── prompt.md          # Snapshot of prompt used
+        ├── context.md          # Snapshot of context used
+        └── validation-report.md
+```
+
+---
+
+## Command Details
+
+### `archon context scan [--output .archon/context]`
+
+Scans project structure and generates context files.
+
+**Output:**
+```
+🔍 Scanning project...
+✅ Detected: TypeScript, Node.js, DDD structure
+✅ Found: 3 phases completed (0-2)
+✅ Stack: unspecified (no technology in phases 0-2)
+✅ Glossary: 42 terms
+
+Context written to:
+  .archon/context/project-context.md
+  .archon/context/project-map.json
+
+Run `archon prompt --phase 3` to generate your AI prompt.
+```
+
+### `archon prompt --phase <N> [--context full|summary|none] [--copy]`
+
+Generates prompt file. With `--copy`, copies to clipboard.
+
+```
+$ archon prompt --phase 3 --context full
+✅ Prompt written to .archon/prompts/phase-3-2026-05-12.md
+   Copy to clipboard: pbcopy < .archon/prompts/phase-3-2026-05-12.md
+
+$ archon prompt --phase 3 --context full --copy
+✅ Prompt written to .archon/prompts/phase-3-2026-05-12.md
+✅ Copied to clipboard
+```
+
+### `archon run --agent opencode --phase 3 [--dry-run]`
+
+Executes opencode via adapter. `--dry-run` shows command without executing.
+
+```
+$ archon run --agent opencode --phase 3 --dry-run
+🔍 Generating context...
+🔍 Generating prompt...
+📋 Command that would be executed:
+
+opencode run \
+  --file .archon/prompts/phase-3-2026-05-12.md \
+  --file .archon/context/project-context.md \
+  --title "Archon phase 3" \
+  --dir . \
+  "Execute the Archon task described in the attached files."
+
+$ archon run --agent opencode --phase 3
+🔍 Generating context...
+🔍 Generating prompt...
+🚀 Executing opencode...
+[opencode runs, outputs to project/01-templates/03-design/]
+✅ Run complete (45s) — run ID: 2026-05-12T15-40-00Z-opencode
+```
+
+### `archon run --confirm`
+
+Shows full command + files before executing.
+
+```
+$ archon run --agent opencode --phase 3 --confirm
+⚠️  Review before execution:
+
 Agent: opencode
+Transport: file-attachment
+Phase: 3 (Design)
 
-## Context
-- Previous phases: 0-2 COMPLETE
-- Glossary: 42 terms (see glossary.md)
-- MVP scope: core game loop + deck builder
-- Bounded contexts to define: Game Session, Player Registry, Deck Builder
+Prompt file: .archon/prompts/phase-3-2026-05-12.md
+Context files: .archon/context/project-context.md
 
-## Goal
-Generate Phase 3 (Design) documentation:
-1. `strategic-design.md` — bounded contexts, subdomain classification
-2. `system-flows.md` — 5+ flows with Mermaid diagrams
+Command:
+  opencode run \
+    --file .archon/prompts/phase-3-2026-05-12.md \
+    --file .archon/context/project-context.md \
+    --title "Archon phase 3" \
+    --dir . \
+    "Execute the Archon task described in the attached files."
 
-## Critical Constraints
-- PHASE 3 is technology-agnostic. DO NOT mention databases, frameworks, languages, protocols.
-- Every flow must trace to at least one FR from Phase 2
-- Every bounded context must map to a domain concept from Phase 2 glossary
+Execute? (yes/no) › yes
+```
 
-## Validation Checklist
-- [ ] No technology names in output
-- [ ] Context map (Mermaid) present and readable
-- [ ] All flows traced to FRs
-- [ ] Bounded contexts classified (Core/Supporting/Generic)
+### `archon run --agent opencode --phase 3 --attach http://localhost:4096`
 
-## Template Location
-Use: `../../template/01-templates/03-design/`
+Uses persistent server mode (avoids cold boot of MCPs/plugins).
 
----
-Copy this prompt into your opencode session.
+### `archon agent doctor [--agent opencode]`
+
+Detects opencode capabilities and recommends transport.
+
+```
+$ archon agent doctor opencode
+
+Agent: opencode
+Status: available
+Version: 2.x.x
+
+Capabilities:
+  ✅ supports run: yes
+  ✅ supports file attachments: yes
+  ✅ supports attach (persistent server): yes
+  ⚠️  supports stdin prompt: unknown (not tested)
+
+Recommended transport: file-attachment
+
+To test stdin support:
+  $ echo "test" | opencode run "test"
+
+For persistent server:
+  $ opencode serve
+  $ archon run --agent opencode --phase 3 --attach http://localhost:4096
 ```
 
 ---
 
 ## Prompts Management Commands
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `archon prompts ls` | List all prompts with phase, date, size, first line | Shows table: ID, Phase, Date, Size, Description |
-| `archon prompts rank` | Rank prompts by usage (frequency) or last accessed | Shows top 10 most-used prompts |
-| `archon prompts compress <id>` | Remove intermediate steps; keep first + last | For prompts with many sub-steps |
-| `archon prompts merge <id1> <id2>` | Combine two prompts into one sequential flow | For combining related phases |
-| `archon prompts expand <id>` | Re-expand compressed prompt back to original steps | Uses stored metadata |
-| `archon prompts export <id> [--to <file>]` | Export single prompt as standalone file | `archon prompts export abc123 --to prompt.md` |
-| `archon prompts clean [--older-than 30]` | Archive prompts older than N days | Removes old prompts, keeps archive |
+| Command | Description |
+|---------|-------------|
+| `archon prompts ls` | List all prompts (ID, Phase, Date, Size, Description) |
+| `archon prompts rank` | Rank by usage or last accessed |
+| `archon prompts compress <id>` | Remove intermediate steps; keep first + last |
+| `archon prompts merge <id1> <id2>` | Combine two prompts into one |
+| `archon prompts expand <id>` | Re-expand compressed prompt |
+| `archon prompts export <id> [--to <file>]` | Export standalone file |
+| `archon prompts clean [--older-than 30]` | Archive old prompts |
 
 ---
 
-## Prompt Metadata (stored alongside each prompt)
+## Run Tracking
+
+Each execution generates `.archon/runs/<timestamp>-<agent>/run.json`:
 
 ```json
 {
-  "id": "phase-3-2026-05-12-103000",
-  "phase": 3,
-  "createdAt": "2026-05-12T10:30:00Z",
-  "projectName": "tcg-trading-cards",
+  "id": "2026-05-12T15-40-00Z-opencode",
   "agent": "opencode",
-  "contextLevel": "full",
-  "size": 3240,
-  "firstLine": "Generate Phase 3 (Design) documentation",
-  "usageCount": 2,
-  "lastUsedAt": "2026-05-12T11:00:00Z",
-  "compressed": false,
-  "parentIds": []
+  "transport": "file-attachment",
+  "cwd": ".",
+  "promptFile": ".archon/prompts/phase-3-2026-05-12.md",
+  "contextFiles": [".archon/context/project-context.md"],
+  "command": [
+    "opencode", "run",
+    "--file", ".archon/prompts/phase-3-2026-05-12.md",
+    "--file", ".archon/context/project-context.md",
+    "--title", "Archon phase 3",
+    "--dir", ".",
+    "Execute the Archon task described in the attached files."
+  ],
+  "startedAt": "2026-05-12T15:40:00Z",
+  "finishedAt": "2026-05-12T15:40:45Z",
+  "duration": 45,
+  "exitCode": 0,
+  "git": {
+    "branch": "main",
+    "commitBefore": "abc1234",
+    "dirtyBefore": false
+  }
 }
 ```
-
----
-
-## First-Interactive Behavior
-
-```
-$ archon prompt --phase 3
-⚠️  Missing required parameter: --context (full|summary|none)
-   Entering interactive mode...
-
-? Select context depth: (full/summary/none) › full
-? Include validation checklist: (yes/no) › yes
-? Include previous phase summary: (yes/no) › yes
-→ Generating .archon/prompts/phase-3-2026-05-12-103000.md
-✅ Prompt written to .archon/prompts/phase-3-2026-05-12-103000.md
-```
-
----
-
-## Agent-Specific Formatting
-
-| Agent | Format |
-|-------|--------|
-| **opencode** | Markdown prompt file, copy-paste ready, includes `@project` context note |
-| Claude Code | Uses `/` slash commands and context injection format |
-| Manual | Prints prompt to stdout, no file generation |
 
 ---
 
 ## Done Criteria
 
 - [ ] `archon prompt --phase 3 --context full` generates valid, context-rich prompt file
-- [ ] Prompt includes: project name, previous phases, glossary summary, goal, constraints, validation checklist, template location
-- [ ] First-interactive triggers when `--context` is missing (not error)
-- [ ] `archon prompts ls` shows table with ID, Phase, Date, Size, Description
-- [ ] `archon prompts rank --by usage` sorts by usageCount descending
-- [ ] `archon prompts compress <id>` removes intermediate steps, keeps metadata
-- [ ] `archon prompts merge <id1> <id2>` creates combined prompt with both contexts
-- [ ] `archon prompts expand <id>` restores original from compressed using parentIds
-- [ ] `archon prompts export <id>` creates standalone `.md` file
-- [ ] `archon prompts clean --older-than 30` archives prompts older than 30 days
-- [ ] All prompts stored in `.archon/prompts/` with metadata JSON sidecar
+- [ ] `archon prompt --phase 3 --context full --copy` copies prompt to clipboard
+- [ ] First-interactive triggers when `--context` is missing
+- [ ] `archon context scan` generates `project-context.md` and `project-map.json`
+- [ ] `archon agent doctor opencode` detects opencode and recommends transport
+- [ ] `archon run --agent opencode --phase 3 --dry-run` shows command without executing
+- [ ] `archon run --agent opencode --phase 3` executes opencode via file-attachment
+- [ ] `archon run --agent opencode --phase 3 --confirm` shows preview before executing
+- [ ] `archon run --agent opencode --phase 3 --attach http://localhost:4096` uses server mode
+- [ ] All prompts stored in `.archon/prompts/` with metadata sidecar
+- [ ] All runs logged in `.archon/runs/<timestamp>/` with full metadata
+- [ ] `archon prompts ls|rank|compress|merge|expand|export|clean` all work
+- [ ] AgentAdapter interface allows future agents (claude, codex, cursor)
 - [ ] TRACEABILITY.md updated
+
+---
+
+## New Commands Summary
+
+| Command | Mode | Description |
+|---------|------|-------------|
+| `archon prompt` | A (foundation) | Generate prompt file |
+| `archon context scan` | A (foundation) | Generate project context |
+| `archon run` | B (adapter) | Execute agent via adapter |
+| `archon agent doctor` | Diagnostic | Detect agent capabilities |
+| `archon prompts` | Library | Manage accumulated prompts |
 
 ---
 
