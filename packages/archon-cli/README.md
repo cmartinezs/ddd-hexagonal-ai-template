@@ -143,15 +143,40 @@ archon templates remove ddd-hexagonal-ai-template@0.1.0
 
 ## Development
 
+The package name is `@archon/cli` (scoped) — the `archon` name on npm is taken by battlecode.org.
+
 ```bash
 cd packages/archon-cli
 
 # Install dependencies
 npm install
 
-# Run in development mode
-npm run dev
+# Link globally for development (uses your local code, no publish needed)
+npm link
 
+# After linking, the `archon` command points to your local source
+archon --help
+
+# Any code changes are reflected immediately — no reinstall needed
+
+# To unlink when done
+npm unlink
+```
+
+**To publish to npm** (when ready):
+
+```bash
+cd packages/archon-cli
+npm version patch  # or minor / major
+npm publish --access public
+```
+
+Then users can install with:
+```bash
+npm install -g @archon/cli
+```
+
+```bash
 # Build for production
 npm run build
 

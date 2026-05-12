@@ -7,10 +7,14 @@ This guide gets you from zero to a generated Phase 0 document in 5 minutes.
 - Node.js 18+
 - An AI agent installed (opencode recommended)
 
-## Step 1: Install Archon (or use npx)
+## Step 1: Install Archon
 
 ```bash
+# Once published to npm
 npm install -g @archon/cli
+
+# For local development
+cd packages/archon-cli && npm link
 ```
 
 Verify it works:

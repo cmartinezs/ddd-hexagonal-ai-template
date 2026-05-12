@@ -6,15 +6,39 @@ Common issues and their solutions.
 
 ### "archon: command not found"
 
+The package is `@archon/cli` (scoped). Install it:
+
 ```bash
-# Reinstall globally
+# From npm (once published)
 npm install -g @archon/cli
+
+# Or from local source (for development)
+cd packages/archon-cli
+npm link
 
 # Verify installation
 npm list -g @archon/cli
+```
 
-# Check PATH
-npm bin -g
+### "Permission denied" during install
+
+```bash
+# Fix npm permissions
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+
+# Or use sudo
+sudo npm install -g @archon/cli
+```
+
+### "Wrong archon package" (battlecode.org)
+
+If `archon` points to the wrong package (battlecode):
+
+```bash
+npm uninstall -g archon
+npm install -g @archon/cli
 ```
 
 ### "Permission denied" during install
