@@ -13,6 +13,7 @@ Plannings that have reached the **COMPLETED** state. These are archived and read
 | [003](003-tutorial-full-cycle/README.md) | Tutorial: Full Cycle (URL Shortener) | 2026-05-11 | `TUTORIAL-FULL-CYCLE.md`, 13 data-output files (url-shortener phases 0–11), 52 traceability terms |
 | [004](004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion | 2026-05-11 | `EXAMPLE-IMPLEMENTATION.md` (all 12 phases, Mermaid diagrams, real Markdown), 25 traceability terms |
 | [005](005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | 2026-05-12 | `tutorial/` (12 step files, README, validation checklist, AI prompts appendix), updated guides index, 4 new traceability terms |
+| [006](006-archon-cli/README.md) | Archon CLI | 2026-05-12 | `packages/archon-cli/` (17 commands, 9 scopes), global template cache, AI agent adapters, interactive engine, upgrade/migration, 41 PDRs |
 
 ---
 
