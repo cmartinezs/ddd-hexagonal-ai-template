@@ -45,8 +45,7 @@ cd url-shortener
 
 You'll see:
 - A `docs/` folder with the 12-phase structure created
-- A `.archon/` folder with state and configuration
-- A `template.lock.json` pinning the template version
+- A `.archon/` folder with state, configuration, and `template.lock.json` (pinned template version)
 
 ## Step 3: Check Your Status
 
