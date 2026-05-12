@@ -99,23 +99,29 @@ export class TemplatesCommand {
 
     try {
       console.log(chalk.dim('  Cloning from ' + gitUrl + '...'));
-      execSync('git clone --depth 1 --branch v' + version + ' ' + gitUrl + ' ' + tmpDir, { stdio: 'pipe' });
+      execSync('git clone --depth 1 ' + gitUrl + ' ' + tmpDir, { stdio: 'inherit' });
+
+      const commitSha = execSync('git -C ' + tmpDir + ' rev-parse HEAD', { encoding: 'utf-8' }).trim();
+
       cpSync(tmpDir, cachePath, { recursive: true, force: true });
       execSync('rm -rf ' + tmpDir, { stdio: 'ignore' });
 
       globalCache.registerTemplate(target, version, {
         ref: 'v' + version,
         source: gitUrl,
+        commitSha,
       });
 
-      console.log(chalk.green('\n  Template ' + target + '@' + version + ' installed successfully.\n'));
+      console.log(chalk.green('\n  Template ' + target + '@' + version + ' installed successfully.'));
+      console.log(chalk.dim('  Commit: ' + commitSha.slice(0, 7) + '\n'));
     } catch (err) {
       try { execSync('rm -rf ' + tmpDir, { stdio: 'ignore' }); } catch { /* ok */ }
       try { execSync('rm -rf ' + cachePath, { stdio: 'ignore' }); } catch { /* ok */ }
 
+      const errorMsg = err instanceof Error ? (err as unknown as { stderr?: string }).stderr ?? err.message : String(err);
       console.log(chalk.red('\n  Failed to pull template from GitHub.'));
-      console.log(chalk.yellow('  Make sure git is installed and you have access to the repository.'));
-      console.log(chalk.dim('  URL: ' + gitUrl + '\n'));
+      console.log(chalk.dim('  ' + errorMsg.trim()));
+      console.log(chalk.yellow('  Source: ' + sourceUrl + '\n'));
     }
   }
 
