@@ -33,6 +33,10 @@
 | Agent Adapter | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Agent-agnostic execution layer |
 | Context Scanner | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Project analysis + context generation |
 | Run Tracker | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Execution metadata + logs |
+| AI Prompt Builder | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Rich per-phase prompts from template |
+| Transport Priority | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | file-attachment > attach > stdin |
+| Prompts Manager | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ls/rank/compress/merge/expand/export/clean |
+| Agent Adapter Factory | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Extensible agent registry (opencode/claude) |
 
 ---
 

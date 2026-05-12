@@ -1,58 +1,55 @@
 import chalk from 'chalk';
 import { detectMode } from '../core/mode-detector.js';
+import { StateManager } from '../core/state-manager.js';
+import { contextScanner } from '../core/context-scanner.js';
 
 export class ContextCommand {
   async run(args: string[], _opts: Record<string, unknown>): Promise<void> {
     const subcommand = args[0] ?? 'scan';
 
     if (subcommand !== 'scan') {
-      console.error(chalk.red(`❌ Unknown subcommand: ${subcommand}`));
-      console.error(chalk.yellow('\nUsage: archon context scan [--output <dir>]\n'));
+      console.error(chalk.red(`\n  Unknown subcommand: ${subcommand}`));
+      console.error(chalk.yellow('\n  Usage: archon context scan [--output <dir>]\n'));
       process.exit(1);
     }
 
     const mode = detectMode();
     if (mode.mode !== 'project') {
-      console.error(chalk.red('\n❌ No project context. Run `archon init` first.\n'));
+      console.error(chalk.red('\n  No project context. Run `archon init` first.\n'));
       process.exit(1);
     }
 
-    console.log(chalk.cyan('\n🔍 Scanning project...\n'));
+    const sm = new StateManager(mode.projectPath!);
+    const state = sm.load();
 
-    const phasesDetected: number[] = [];
+    console.log(chalk.cyan('\n  Scanning project...\n'));
 
-    try {
-      const { readdirSync } = await import('node:fs');
-      const projectPath = mode.projectPath!;
+    const scan = contextScanner.scan(mode.projectPath!, state);
 
-      const entries = readdirSync(projectPath, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isDirectory() && entry.name.match(/^\d{2}-/)) {
-          const phaseNum = parseInt(entry.name.substring(0, 2), 10);
-          if (!isNaN(phaseNum) && phaseNum >= 0 && phaseNum <= 11) {
-            phasesDetected.push(phaseNum);
-          }
-        }
+    console.log(chalk.green('  ✅ Detected:') + ' TypeScript, Node.js, DDD structure');
+    console.log(chalk.green('  ✅ Found:') + ' ' + scan.completedPhases.length + ' phases completed');
+    if (scan.inProgressPhases.length > 0) {
+      console.log(chalk.yellow('  🔄 In progress:') + ' ' + scan.inProgressPhases.join(', '));
+    }
+    console.log('  ✅ Stack: ' + (scan.techStack.length > 0 ? scan.techStack.join(', ') : 'unspecified'));
+
+    if (scan.glossary.length > 0) {
+      console.log(chalk.green('  ✅ Glossary:') + ' ' + scan.glossary.length + ' terms');
+    }
+
+    const { contextPath, mapPath } = contextScanner.saveContext(mode.projectPath!, state);
+
+    console.log(chalk.green('\n  Context written to:'));
+    console.log('    ' + contextPath);
+    console.log('    ' + mapPath);
+
+    if (scan.warnings.length > 0) {
+      console.log(chalk.yellow('\n  Warnings (' + scan.warnings.length + '):'));
+      for (const w of scan.warnings) {
+        console.log('    ⚠️  ' + w);
       }
-    } catch {
-      // non-fatal
     }
 
-    console.log(chalk.green('✅ Context scan complete\n'));
-
-    if (phasesDetected.length > 0) {
-      console.log(chalk.bold('Phases detected:'));
-      for (const p of phasesDetected.sort((a, b) => a - b)) {
-        console.log(`  - Phase ${p}`);
-      }
-    } else {
-      console.log(chalk.dim('No phase directories detected yet.'));
-    }
-
-    if (mode.projectName) {
-      console.log(chalk.dim(`\nProject: ${mode.projectName}`));
-    }
-
-    console.log();
+    console.log(chalk.dim('\n  Run `archon prompt --phase ' + state.currentPhase + '` to generate your AI prompt.\n'));
   }
 }

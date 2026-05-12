@@ -1,21 +1,12 @@
 import chalk from 'chalk';
-import { StateManager } from '../core/state-manager.js';
-import { detectMode } from '../core/mode-detector.js';
+import { join } from 'node:path';
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 
-const PHASES = [
-  { name: 'Documentation Planning', description: 'Define documentation scope, goals, and structure for the project.' },
-  { name: 'Discovery', description: 'Understand the problem domain, context, and stakeholder needs.' },
-  { name: 'Requirements', description: 'Define functional and non-functional requirements.' },
-  { name: 'Design', description: 'Define strategic design, bounded contexts, and UI approach.' },
-  { name: 'Data Model', description: 'Define entities, relationships, and ERD.' },
-  { name: 'Planning', description: 'Create roadmap, epics, and sprint planning.' },
-  { name: 'Development', description: 'Implement code following DDD + Hexagonal Architecture.' },
-  { name: 'Testing', description: 'Define test strategy and test cases.' },
-  { name: 'Deployment', description: 'Define CI/CD, environments, and release process.' },
-  { name: 'Operations', description: 'Define runbooks and incident response procedures.' },
-  { name: 'Monitoring', description: 'Define metrics, alerts, and dashboards.' },
-  { name: 'Feedback', description: 'Define retrospective and user feedback collection.' },
-];
+import { StateManager } from '../core/state-manager.js';
+import { ConfigManager } from '../core/config-manager.js';
+import { detectMode } from '../core/mode-detector.js';
+import { aiPromptBuilder } from '../core/ai-prompt-builder.js';
 
 export class PromptCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
@@ -33,54 +24,75 @@ export class PromptCommand {
     const state = sm.load();
     const phase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase;
 
+    if (isNaN(phase) || phase < 0 || phase > 11) {
+      console.error(chalk.red('\n  Invalid phase: ' + phaseArg + '. Must be 0-11.\n'));
+      process.exit(1);
+    }
+
+    const cm = new ConfigManager(mode.projectPath!);
+    const agent = cm.getAgent();
+    const transport = cm.getTransport();
+
     const contextLevel = (contextOpt ?? 'full') as 'full' | 'summary' | 'none';
 
-    console.log(chalk.cyan('\n  Generating prompt for Phase ' + phase + ' (' + contextLevel + ')...'));
+    console.log(chalk.cyan('\n  Generating prompt for Phase ' + phase + ' (' + contextLevel + ')...\n'));
 
-    const lines: string[] = [];
-    lines.push('# AI Prompt - Phase ' + phase + ': ' + PHASES[phase]!.name);
-    lines.push('');
+    const result = aiPromptBuilder.build({
+      phase,
+      context: contextLevel,
+      projectPath: mode.projectPath!,
+      state,
+      agent,
+      transport,
+    });
 
-    if (contextLevel === 'full') {
-      lines.push('**Project:** ' + state.projectName);
-      lines.push('**Template:** DDD + Hexagonal Architecture');
-      lines.push('**Phase:** ' + phase + ' - ' + PHASES[phase]!.name);
-      lines.push('');
-      lines.push('## Project Structure');
-      lines.push('Reference the template at `../ddd-hexagonal-ai-template/` for structure and conventions.');
-      lines.push('');
-    } else if (contextLevel === 'summary') {
-      lines.push('**Project:** ' + state.projectName + ' | **Phase:** ' + phase + ': ' + PHASES[phase]!.name);
-      lines.push('');
-    }
+    mkdirSync(join(mode.projectPath!, '.archon', 'prompts'), { recursive: true });
+    writeFileSync(result.filePath, result.content, 'utf-8');
 
-    lines.push('## Task');
-    lines.push('');
-    lines.push(PHASES[phase]!.description);
-    lines.push('');
-    lines.push('## Instructions');
-    lines.push('');
-    if (contextLevel === 'none') {
-      lines.push('Execute this phase independently.');
-    } else {
-      lines.push('Use the template at `../ddd-hexagonal-ai-template/` as your guide.');
-    }
-    lines.push('Output the required documentation in the appropriate folder.');
-    lines.push('Follow the template structure and conventions.');
+    const metaPath = result.filePath.replace('.md', '.json');
+    writeFileSync(metaPath, JSON.stringify(result.metadata, null, 2), 'utf-8');
 
-    const promptText = lines.join('\n');
-
-    console.log(chalk.green('\n  Prompt generated:\n'));
-    console.log(promptText);
+    console.log(chalk.green('  ✅ Prompt written to:'));
+    console.log('     ' + result.filePath);
+    console.log(chalk.dim('     ' + this.formatBytes(result.metadata.fileSize)));
     console.log();
 
     if (copy) {
-      console.log(chalk.dim('  Copy the above prompt and paste it into your AI agent.'));
+      try {
+        const raw = require('node:fs').readFileSync(result.filePath, 'utf-8');
+        if (process.platform === 'darwin') {
+          execSync('pbcopy', { input: raw });
+        } else if (process.platform === 'linux') {
+          execSync('xclip -selection clipboard', { input: raw });
+        } else if (process.platform === 'win32') {
+          execSync('clip', { input: raw });
+        } else {
+          console.log(chalk.dim('  Copy not supported on this platform. Pipe manually:'));
+          console.log(chalk.dim('  cat ' + result.filePath + ' | xclip -selection clipboard'));
+          return;
+        }
+        console.log(chalk.green('  ✅ Copied to clipboard'));
+      } catch {
+        console.log(chalk.dim('  Could not copy to clipboard. Pipe manually:'));
+        console.log(chalk.dim('  cat ' + result.filePath + ' | xclip -selection clipboard'));
+      }
+    } else {
+      console.log(chalk.dim('  Copy to clipboard:') + ' archon prompt --phase ' + phase + ' --copy');
     }
+
+    console.log();
   }
 
   private getArg(args: string[], key: string): string | undefined {
     const idx = args.findIndex((a) => a === '--' + key);
     return idx >= 0 ? args[idx + 1] : undefined;
+  }
+
+  private formatBytes(bytes: number): string {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i]!;
   }
 }

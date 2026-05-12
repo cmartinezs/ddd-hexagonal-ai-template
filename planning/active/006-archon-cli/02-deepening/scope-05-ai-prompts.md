@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 05 — AI Integration (Prompt Generation + Agent Execution)
 
-> **Status:** PENDING (arch pivot: new architecture)
+> **Status:** DONE (2026-05-12)
 > **Note:** With global cache architecture, AI integration uses `template.lock.json` for template source, `docs/` for project outputs.
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
@@ -16,17 +16,17 @@ Implement the full AI integration layer: prompt generation (scope 05-a), context
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Create `src/core/ai-prompt-builder.ts` — prompt generator per phase | GENERATE-DOCUMENT | PENDING | `ai-prompt-builder.ts` |
-| 2 | Create `src/core/context-scanner.ts` — project analysis + context files | GENERATE-DOCUMENT | PENDING | `context-scanner.ts` |
-| 3 | Create `src/core/agent-adapter.ts` — AgentAdapter interface + factory | GENERATE-DOCUMENT | PENDING | `agent-adapter.ts` |
-| 4 | Create `src/core/opencode-adapter.ts` — opencode-specific adapter | GENERATE-DOCUMENT | PENDING | `opencode-adapter.ts` |
-| 5 | Create `src/core/run-tracker.ts` — execution metadata + logs | GENERATE-DOCUMENT | PENDING | `run-tracker.ts` |
-| 6 | Implement `archon prompt --phase <N> [--context full|summary|none] [--copy]` | GENERATE-DOCUMENT | PENDING | `prompt.ts` command |
-| 7 | Implement `archon context scan [--output <dir>]` | GENERATE-DOCUMENT | PENDING | `context.ts` command |
-| 8 | Implement `archon run --agent <agent> --phase <N> [--dry-run]` | GENERATE-DOCUMENT | PENDING | `run.ts` command |
-| 9 | Implement `archon agent doctor [--agent <agent>]` | GENERATE-DOCUMENT | PENDING | `doctor.ts` command |
-| 10 | Create `prompts/` folder with base templates per phase | GENERATE-DOCUMENT | PENDING | `prompts/` base templates |
-| 11 | Implement `archon prompts ls|compress|rank|merge|expand|export|clean` | GENERATE-DOCUMENT | PENDING | `prompts.ts` command |
+| 1 | Create `src/core/ai-prompt-builder.ts` — prompt generator per phase | DONE | `ai-prompt-builder.ts` |
+| 2 | Create `src/core/context-scanner.ts` — project analysis + context files | DONE | `context-scanner.ts` |
+| 3 | Create `src/core/agent-adapter.ts` — AgentAdapter interface + factory | DONE | `agent-adapter.ts` |
+| 4 | Create `src/core/opencode-adapter.ts` — opencode-specific adapter | DONE | `opencode-adapter.ts` (merged into agent-adapter.ts) |
+| 5 | Create `src/core/run-tracker.ts` — execution metadata + logs | DONE | `run-tracker.ts` |
+| 6 | Implement `archon prompt --phase <N> [--context full|summary|none] [--copy]` | DONE | `prompt.ts` command |
+| 7 | Implement `archon context scan [--output <dir>]` | DONE | `context.ts` command |
+| 8 | Implement `archon run --agent <agent> --phase <N> [--dry-run]` | DONE | `run.ts` command |
+| 9 | Implement `archon agent doctor [--agent <agent>]` | DONE | `agent.ts` command |
+| 10 | Create `prompts/` folder with base templates per phase | DONE | `ai-prompt-builder.ts` (inline templates) |
+| 11 | Implement `archon prompts ls|compress|rank|merge|expand|export|clean` | DONE | `prompts.ts` + `prompts-manager.ts` |
 
 ---
 
