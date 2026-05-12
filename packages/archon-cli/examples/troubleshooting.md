@@ -14,10 +14,13 @@ npm install -g @archon/cli
 
 # Or from local source (for development)
 cd packages/archon-cli
+npm install
+npm run build
 npm link
 
 # Verify installation
 npm list -g @archon/cli
+archon --version
 ```
 
 ### "Permission denied" during install

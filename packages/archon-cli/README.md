@@ -151,16 +151,23 @@ cd packages/archon-cli
 # Install dependencies
 npm install
 
-# Link globally for development (uses your local code, no publish needed)
+# Build the TypeScript (compiles src/ + bin/ to dist/)
+npm run build
+
+# Link globally — the `archon` command now points to your local dist/
 npm link
 
-# After linking, the `archon` command points to your local source
-archon --help
+# After linking, the `archon` command works
+archon --version
 
-# Any code changes are reflected immediately — no reinstall needed
+# Any code changes: modify → rebuild → test
+npm run build && archon --help
+
+# Type check without building
+npm run typecheck
 
 # To unlink when done
-npm unlink
+npm uninstall -g @archon/cli
 ```
 
 **To publish to npm** (when ready):
@@ -174,14 +181,6 @@ npm publish --access public
 Then users can install with:
 ```bash
 npm install -g @archon/cli
-```
-
-```bash
-# Build for production
-npm run build
-
-# Type check
-npm run typecheck
 ```
 
 ## Architecture

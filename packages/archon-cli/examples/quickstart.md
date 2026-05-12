@@ -14,7 +14,8 @@ This guide gets you from zero to a generated Phase 0 document in 5 minutes.
 npm install -g @archon/cli
 
 # For local development
-cd packages/archon-cli && npm link
+cd packages/archon-cli
+npm install && npm run build && npm link
 ```
 
 Verify it works:
