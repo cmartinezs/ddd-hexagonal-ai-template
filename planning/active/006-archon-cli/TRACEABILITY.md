@@ -39,6 +39,9 @@
 | Agent Adapter Factory | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Extensible agent registry (opencode/claude) |
 | First-Interactive Engine | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Missing params → interactive prompts (always/missing/never modes) |
 | Config System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | set/get/ls/delete defaults, per-project config.json |
+| Guide System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Phase help, pitfalls, prerequisites, next actions |
+| Tutorial System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Step-by-step navigation, progress tracking, project/template modes |
+| Doctor Health Checks | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Template integrity, phase chain, glossary, navigation, --fix auto-repair |
 
 ---
 
@@ -67,6 +70,9 @@
 | PDR-021 | Rollback support: `archon upgrade --rollback <version>` | Safety during migrations | G (archon/) | 2026-05-12 |
 | PDR-030 | First-interactive engine: missing params → interactive prompts | Commands always functional, user-friendly | G (archon/) | 2026-05-12 |
 | PDR-031 | Interactive mode: always/missing/never (configurable per project) | User preference respected | G (archon/) | 2026-05-12 |
+| PDR-032 | Guide command: phase help with pitfalls, prerequisites, next action | Guided learning, self-service help | G (archon/) | 2026-05-12 |
+| PDR-033 | Tutorial: step-by-step navigation with project/template modes | Progressive onboarding | G (archon/) | 2026-05-12 |
+| PDR-034 | Doctor: health checks for template integrity, glossary, links, --fix | Proactive validation | G (archon/) | 2026-05-12 |
 
 ---
 

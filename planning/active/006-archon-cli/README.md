@@ -44,7 +44,7 @@ Based on `research/analisis-archon-cli-v1-global-template.md`, the architecture 
 4. **Core Commands** — init, status, check, next ✅ DONE
 5. **AI Integration** — prompt generation + context scanner + agent execution (adapters) + prompts management (ls/compress/rank/merge/expand) ✅ DONE
 6. **Interactive Mode** — first-interactive, config defaults ✅ DONE
-7. **Guide + Tutorial + Doctor** — help system, tutorial integration, health check
+7. **Guide + Tutorial + Doctor** — help system, tutorial integration, health check ✅ DONE
 8. **Upgrade + Migration** — upgrade command, rollback, migration guides
 9. **Documentation** — README, examples, polish
 

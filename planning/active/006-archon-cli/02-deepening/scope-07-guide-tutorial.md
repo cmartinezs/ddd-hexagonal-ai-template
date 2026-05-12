@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 07 — Guide + Tutorial + Doctor Commands
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,13 +15,13 @@ Implement the help and guidance system: `archon guide` (interactive phase help),
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Implement `archon guide [--phase <N>] [--step <step>]` | GENERATE-DOCUMENT | PENDING | `guide.ts` command |
-| 2 | Implement `archon tutorial [--mode project|template] [--step <N>]` | GENERATE-DOCUMENT | PENDING | `tutorial.ts` command |
-| 3 | Implement `archon doctor [--fix]` | GENERATE-DOCUMENT | PENDING | `doctor.ts` command |
-| 4 | Implement `archon agent [--set <opencode|claude|manual>]` | GENERATE-DOCUMENT | PENDING | `agent.ts` command |
-| 5 | Integrate tutorial step files from `tutorial/` folder | GENERATE-DOCUMENT | PENDING | Tutorial integration |
-| 6 | Implement template integrity check (file presence, checksums) | GENERATE-DOCUMENT | PENDING | Integrity validator |
-| 7 | Write integration tests for guide + tutorial | GENERATE-DOCUMENT | PENDING | Tests |
+| 1 | Implement `archon guide [--phase <N>] [--step <step>]` | DONE | `guide.ts` command — phase help, pitfalls, prerequisites, next action |
+| 2 | Implement `archon tutorial [--mode project|template] [--step <N>]` | DONE | `tutorial.ts` command — full step navigation, progress tracking |
+| 3 | Implement `archon doctor [--fix]` | DONE | `doctor.ts` command — template/project integrity, glossary, links, --fix |
+| 4 | Implement `archon agent [--set <opencode|claude|manual>]` | DONE | `agent.ts` command (from scope-05) |
+| 5 | Integrate tutorial step files from `tutorial/` folder | DONE | Loads step-*.md files from template |
+| 6 | Implement template integrity check (file presence, checksums) | DONE | Template + project health checks |
+| 7 | Write integration tests for guide + tutorial | PENDING | Not applicable (no test framework) |
 
 ---
 

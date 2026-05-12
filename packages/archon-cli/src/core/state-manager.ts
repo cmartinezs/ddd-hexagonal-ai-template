@@ -161,6 +161,35 @@ export class StateManager {
     return this.load().currentPhase;
   }
 
+  validate(): boolean {
+    const statePath = getStateFilePath(this.projectPath);
+    const checksumPath = getChecksumFilePath(this.projectPath);
+
+    if (!existsSync(statePath) || !existsSync(checksumPath)) {
+      return false;
+    }
+
+    try {
+      const rawState = readFileSync(statePath, 'utf-8');
+      const storedChecksum = readFileSync(checksumPath, 'utf-8').trim();
+      const computedChecksum = this.computeChecksum(rawState);
+      return storedChecksum === computedChecksum;
+    } catch {
+      return false;
+    }
+  }
+
+  recalculateChecksum(): void {
+    const statePath = getStateFilePath(this.projectPath);
+    const checksumPath = getChecksumFilePath(this.projectPath);
+
+    const rawState = readFileSync(statePath, 'utf-8');
+    const checksum = this.computeChecksum(rawState);
+
+    writeFileSync(checksumPath, checksum, 'utf-8');
+    chmodSync(checksumPath, 0o644);
+  }
+
   private computeChecksum(content: string): string {
     return createHash('sha256').update(content).digest('hex');
   }
