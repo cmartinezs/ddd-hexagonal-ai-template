@@ -3,7 +3,6 @@ import {
   writeFileSync,
   existsSync,
   mkdirSync,
-  chmodSync,
 } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
@@ -37,7 +36,7 @@ export class StateManager {
       throw new Error('State file not found at ' + statePath + '. Run `archon init` first.');
     }
 
-    const rawState = readFileSync(statePath, 'utf-8');
+    const rawState = readFileSync(statePath, 'utf-8').trim();
     const parsed = JSON.parse(rawState) as ArchonState;
     this.state = parsed;
 
@@ -106,11 +105,13 @@ export class StateManager {
     const checksum = this.computeChecksum(rawState);
 
     const stateToSave: ArchonState = { ...this.state, checksum };
-    writeFileSync(statePath, JSON.stringify(stateToSave, null, 2), 'utf-8');
-    chmodSync(statePath, 0o644);
+    const stateContent = JSON.stringify(stateToSave, null, 2);
+    const stateFileChecksum = this.computeChecksum(stateContent);
 
-    writeFileSync(checksumPath, checksum, 'utf-8');
-    chmodSync(checksumPath, 0o644);
+    const checksumFileContent = stateFileChecksum + '\n';
+    const stateFileContent = stateContent + '\n';
+    writeFileSync(statePath, stateFileContent, 'utf-8');
+    writeFileSync(checksumPath, checksumFileContent, 'utf-8');
   }
 
   updatePhase(phaseIndex: number, status: PhaseStatusEntry): void {
@@ -187,7 +188,6 @@ export class StateManager {
     const checksum = this.computeChecksum(rawState);
 
     writeFileSync(checksumPath, checksum, 'utf-8');
-    chmodSync(checksumPath, 0o644);
   }
 
   private computeChecksum(content: string): string {
