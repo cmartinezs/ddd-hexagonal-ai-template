@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "archon": "./bin/archon.js"
+    "archon": "./dist/bin/archon.js"
   },
   "scripts": {
     "dev": "tsx bin/archon.ts",

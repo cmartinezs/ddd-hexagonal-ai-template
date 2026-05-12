@@ -74,7 +74,22 @@ Run ${chalk.cyan('archon <command> --help')} for detailed help on a specific com
 }
 
 async function printVersion(): Promise<void> {
-  console.log('Archon v0.1.0');
+  const { readFileSync } = await import('node:fs');
+  const { join, dirname } = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+
+  let version = '0.1.0';
+  try {
+    const selfUrl = import.meta.url;
+    const selfDir = dirname(fileURLToPath(selfUrl));
+    const pkgPath = join(selfDir, '..', '..', '..', 'package.json');
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+    version = pkg.version ?? '0.1.0';
+  } catch {
+    // use default
+  }
+
+  console.log('Archon v' + version);
   console.log(chalk.dim('DDD Template CLI — Systematizing Domain-Driven Design workflows'));
 }
 
