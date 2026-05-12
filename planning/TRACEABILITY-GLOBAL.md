@@ -76,6 +76,10 @@ Cell values:
 | CI/CD Pipeline | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | ✅ | ✅ | N/A | N/A | N/A | ✅ | N/A |
 | GitHub Flow | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
 | Release Tag | [003](active/003-tutorial-full-cycle/TRACEABILITY.md) | N/A | N/A | N/A | N/A | ✅ | N/A | N/A | ✅ | N/A | N/A | N/A | ✅ | N/A |
+| Interactive Tutorial | [005](finished/005-tutorial-interactive/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Step File | [005](finished/005-tutorial-interactive/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| Done Check | [005](finished/005-tutorial-interactive/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
+| AI Prompt (consolidated) | [005](finished/005-tutorial-interactive/TRACEABILITY.md) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A |
 
 ---
 
@@ -105,6 +109,7 @@ Cell values:
 | 2026-05-11 | 004-tutorial-taskflow-completion (scope-03) | Phases 6-8 rewrite: Epic, Milestone, Hexagonal Architecture, Port, Adapter, ADR, Test Pyramid, CI/CD Pipeline |
 | 2026-05-11 | 004-tutorial-taskflow-completion (scope-04) | Phases 9-11 rewrite: SLA, Runbook, Incident Severity, Metric, Retrospective, Backlog Item |
 | 2026-05-11 | 004-tutorial-taskflow-completion (scope-05) | Unified EXAMPLE-IMPLEMENTATION.md: Phase 0 added, TOC, navigation, template cross-references |
+| 2026-05-12 | 005-tutorial-interactive (all scopes) | Added 4 new terms: Interactive Tutorial, Step File, Done Check, AI Prompt (consolidated). Tutorial folder created with 12 step files, validation checklist, AI prompts appendix. Guides index updated. |
 
 ---
 

@@ -34,6 +34,12 @@ These three guides form the core operational set. Read them in order if you are 
    - Recommended generation workflow per phase
    - Best practices for AI-human collaboration
 
+4. **[tutorial/README.md](./tutorial/README.md)** ⭐ **Interactive step-by-step tutorial**
+   - 12 step files (one per phase) with exercises, AI prompts, and done-checks
+   - Guided practice applying the framework to your own project
+   - Master validation checklist and consolidated AI prompts appendix
+   - Start here for hands-on learning or team training workshops
+
 ### Reference
 
 These guides provide supporting knowledge, extended context, and execution modes for specific scenarios. Use them when the core guides don't cover your current situation.
@@ -159,6 +165,7 @@ Use this table to find the right guide without reading all of them. The "When to
 | 1 | [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) | At the start of each phase; to understand your role and boundaries |
 | 2 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | When generating any phase document; your prompt reference |
 | 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) | When operating without a human in the loop |
+| 3b | [`tutorial/README.md`](./tutorial/README.md) | When you want guided, hands-on practice through all 12 phases |
 | 4 | [`TUTORIAL-FULL-CYCLE.md`](./TUTORIAL-FULL-CYCLE.md) | When you need a complete, filled-out reference for all 12 phases |
 | 5 | [`EXAMPLE-IMPLEMENTATION.md`](./EXAMPLE-IMPLEMENTATION.md) | When you need a compact cross-phase reference (TaskFlow — all 12 phases) |
 | 6 | [`SKILLS-AND-PLUGINS-GUIDE.md`](./SKILLS-AND-PLUGINS-GUIDE.md) | When validating phase output with Claude Code skills |

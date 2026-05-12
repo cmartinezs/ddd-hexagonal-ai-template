@@ -1,6 +1,6 @@
 # 🚀 EXPANSION: Tutorial — Interactive Step-by-Step
 
-> **Status:** EXPANSION
+> **Status:** Completed
 > [← planning/README.md](../../README.md)
 
 ---

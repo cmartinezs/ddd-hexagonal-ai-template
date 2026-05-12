@@ -39,9 +39,7 @@ When a prompt contains one of these parameters (at the start or end):
 
 ### 🚧 In Progress → see [`active/README.md`](active/README.md)
 
-| ID | Name | Phase |
-|----|------|-------|
-| [005](active/005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | DEEPENING |
+*No active plannings.*
 
 ### ✅ Completed → see [`finished/README.md`](finished/README.md)
 

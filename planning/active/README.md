@@ -6,9 +6,7 @@ Plannings currently in **EXPANSION** or **DEEPENING** phase. These are actively 
 
 ---
 
-| ID | Name | Phase | Current Scope | Updated |
-|----|------|-------|--------------|---------|
-| [005](005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | DEEPENING | scope-01 (scaffold) | 2026-05-11 |
+*No active plannings — all are either complete or in INITIAL state.*
 
 ---
 
