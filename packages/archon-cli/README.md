@@ -159,6 +159,8 @@ npm link
 
 # After linking, the `archon` command works
 archon --version
+Archon v0.1.0
+DDD Template CLI — Systematizing Domain-Driven Design workflows
 
 # Any code changes: modify → rebuild → test
 npm run build && archon --help

@@ -10,12 +10,24 @@ This guide gets you from zero to a generated Phase 0 document in 5 minutes.
 ## Step 1: Install Archon
 
 ```bash
-# Once published to npm
-npm install -g @archon/cli
-
 # For local development
 cd packages/archon-cli
 npm install && npm run build && npm link
+```
+
+Expected output:
+```
+up to date, audited 67 packages
+found 0 vulnerabilities
+
+> @archon/cli@0.1.0 build
+> tsc
+
+found 0 vulnerabilities
+
+❯ archon --version
+Archon v0.1.0
+DDD Template CLI — Systematizing Domain-Driven Design workflows
 ```
 
 Verify it works:
