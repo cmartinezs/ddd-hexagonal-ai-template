@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import { globalCache, templateResolver } from '../core/global-cache/index.js';
-import { existsSync } from 'node:fs';
+import { existsSync, cpSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { execSync } from 'node:child_process';
 
 export class TemplatesCommand {
   async run(args: string[], _opts: Record<string, unknown>): Promise<void> {
@@ -69,28 +70,53 @@ export class TemplatesCommand {
     const target = args[0] ?? 'ddd-hexagonal-ai-template';
     const version = args[1] ?? '0.1.0';
 
-    const resolved = templateResolver.resolve(target, version);
-
-    if (resolved.isDev) {
-      console.log(chalk.cyan('\n  Dev mode: using local template at ' + resolved.path));
-      globalCache.registerTemplate(target, resolved.version, {
-        ref: 'dev',
-        source: 'local:' + resolved.path,
-      });
-      console.log(chalk.green('\n  Dev template registered in cache.\n'));
-      return;
-    }
-
     if (globalCache.isInstalled(target, version)) {
       console.log(chalk.green('\n  Template ' + target + '@' + version + ' is already installed.\n'));
       return;
     }
 
-    console.log(chalk.red('\n  Template not found in cache.'));
-    console.log(chalk.yellow('  Currently, `archon templates pull` requires:'));
-    console.log('    1. ARCHON_DEV_TEMPLATE_PATH pointing to a local template, OR');
-    console.log('    2. Set up a template registry/source\n');
-    console.log('  For now, use: ARCHON_DEV_TEMPLATE_PATH=./ddd-hexagonal-ai-template archon init ...\n');
+    const devPath = templateResolver.getDevTemplatePath();
+    if (devPath) {
+      console.log(chalk.cyan('\n  Dev mode: using local template at ' + devPath));
+      templateResolver.installToCache(target, devPath, version);
+      console.log(chalk.green('\n  Dev template installed to cache: ' + target + '@' + version + '.\n'));
+      return;
+    }
+
+    const registry = globalCache.getRegistry();
+    const info = registry[target];
+    const sourceUrl = info?.source ?? 'github:cmartinezs/' + target;
+
+    console.log(chalk.cyan('\n  Pulling template ' + target + '@' + version + '...\n'));
+    console.log(chalk.dim('  Source: ' + sourceUrl));
+
+    const cachePath = globalCache.getTemplatePath(target, version);
+    mkdirSync(cachePath, { recursive: true });
+
+    const ghRepo = sourceUrl.replace(/^github:/, '');
+    const gitUrl = 'https://github.com/' + ghRepo + '.git';
+    const tmpDir = join(cachePath, '..', '.tmp-' + target + '-' + version);
+
+    try {
+      console.log(chalk.dim('  Cloning from ' + gitUrl + '...'));
+      execSync('git clone --depth 1 --branch v' + version + ' ' + gitUrl + ' ' + tmpDir, { stdio: 'pipe' });
+      cpSync(tmpDir, cachePath, { recursive: true, force: true });
+      execSync('rm -rf ' + tmpDir, { stdio: 'ignore' });
+
+      globalCache.registerTemplate(target, version, {
+        ref: 'v' + version,
+        source: gitUrl,
+      });
+
+      console.log(chalk.green('\n  Template ' + target + '@' + version + ' installed successfully.\n'));
+    } catch (err) {
+      try { execSync('rm -rf ' + tmpDir, { stdio: 'ignore' }); } catch { /* ok */ }
+      try { execSync('rm -rf ' + cachePath, { stdio: 'ignore' }); } catch { /* ok */ }
+
+      console.log(chalk.red('\n  Failed to pull template from GitHub.'));
+      console.log(chalk.yellow('  Make sure git is installed and you have access to the repository.'));
+      console.log(chalk.dim('  URL: ' + gitUrl + '\n'));
+    }
   }
 
   private updateTemplates(): void {

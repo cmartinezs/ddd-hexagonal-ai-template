@@ -1,12 +1,29 @@
 import chalk from 'chalk';
 import { resolve, join } from 'node:path';
-import { existsSync, mkdirSync } from 'node:fs';
-
+import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import inquirer from 'inquirer';
 import { detectMode } from '../core/mode-detector.js';
 import { StateManager } from '../core/state-manager.js';
 import { ConfigManager } from '../core/config-manager.js';
 import { templateResolver } from '../core/global-cache/index.js';
+
+function findLocalTemplate(cwd: string): string | null {
+  const markers = ['01-templates', '.git', 'AGENTS.md', '00-guides-and-instructions'];
+  let dir = cwd;
+  for (let i = 0; i < 10; i++) {
+    const found = markers.filter((m) => existsSync(join(dir, m)));
+    if (found.length >= 2) {
+      const templatesDir = join(dir, '01-templates');
+      if (existsSync(templatesDir) && readdirSync(templatesDir, { withFileTypes: true }).some((e) => e.isDirectory())) {
+        return dir;
+      }
+    }
+    const parent = resolve(dir, '..');
+    if (parent === dir) break;
+    dir = parent;
+  }
+  return null;
+}
 
 function slugify(name: string): string {
   return name
@@ -52,14 +69,28 @@ export class InitCommand {
     let templateVersion = '0.1.0';
     let templatePath: string;
 
-    try {
-      const resolved = templateResolver.resolve(templateId, templateVersion);
-      templatePath = resolved.path;
-      templateVersion = resolved.version;
-    } catch {
-      console.error(chalk.red('\n  Template not found in cache.'));
-      console.error(chalk.yellow('  Run `archon templates pull` to download the template first.\n'));
-      process.exit(1);
+    const localPath = findLocalTemplate(process.cwd());
+    if (localPath) {
+      templatePath = localPath;
+      try {
+        const pkgPath = join(templatePath, 'package.json');
+        if (existsSync(pkgPath)) {
+          const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as { version?: string };
+          templateVersion = pkg.version ?? '0.1.0';
+        }
+      } catch {
+        // use default
+      }
+    } else {
+      try {
+        const resolved = templateResolver.resolve(templateId, templateVersion);
+        templatePath = resolved.path;
+        templateVersion = resolved.version;
+      } catch {
+        console.error(chalk.red('\n  Template not found in cache.'));
+        console.error(chalk.yellow('  Run `archon templates pull` to download the template first.\n'));
+        process.exit(1);
+      }
     }
 
     console.log(chalk.cyan('\n  Initializing Archon project...\n'));
