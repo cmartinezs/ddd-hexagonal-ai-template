@@ -44,6 +44,8 @@
 | Doctor Health Checks | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Template integrity, phase chain, glossary, navigation, --fix auto-repair |
 | Migration Manager | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Version detection, backup/restore, migration log |
 | Semantic Versioning | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | PATCH (auto), MINOR (confirm), MAJOR (manual guide) |
+| CLI Documentation | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | packages/archon-cli/README.md with full command reference |
+| Examples Suite | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Quickstart, full workflow, AI integration, troubleshooting guides |
 
 ---
 
@@ -79,6 +81,9 @@
 | PDR-036 | Upgrade: backup before every upgrade, restore from backup | Safe rollback capability | G (archon/) | 2026-05-12 |
 | PDR-037 | Upgrade: migration-log.md tracks all upgrades and rollbacks | Full audit trail | G (archon/) | 2026-05-12 |
 | PDR-038 | Upgrade: PATCH auto-applied, MINOR requires confirm, MAJOR needs manual guide | Risk-appropriate UX | G (archon/) | 2026-05-12 |
+| PDR-039 | CLI README: installation, quick start, all commands documented | Self-service onboarding | G (archon/) | 2026-05-12 |
+| PDR-040 | Examples suite: quickstart, full-workflow, AI integration, troubleshooting | Practical reference | G (archon/) | 2026-05-12 |
+| PDR-041 | VERSION file at template root (0.1.0) | Template versioning | G (archon/) | 2026-05-12 |
 
 ---
 

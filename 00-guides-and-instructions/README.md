@@ -16,6 +16,12 @@ This section lists every guide in this folder, organized by function. For each g
 
 These three guides form the core operational set. Read them in order if you are beginning a documentation project or resuming after context loss.
 
+0. **[Archon CLI](../packages/archon-cli/README.md)** ⭐ **— Command-line tool for systematizing the template**
+   - 17 commands: init, status, prompt, run, check, next, guide, tutorial, doctor, agent, config, upgrade, templates, dev
+   - AI agent integration (opencode, Claude Code, Cursor, Gemini)
+   - Phase enforcement, checksum validation, upgrade/migration
+   - Global install: `npm install -g archon`
+
 1. **[TEMPLATE-USAGE-GUIDE.md](./TEMPLATE-USAGE-GUIDE.md)** — Defines the required structure and content you must generate for each SDLC phase
    - Phase-by-phase file requirements
    - Format and section structure per document
@@ -162,6 +168,8 @@ Use this table to find the right guide without reading all of them. The "When to
 | Priority | Document | When to Use |
 |----------|----------|-------------|
 | 0 | [`planning/README.md`](../planning/README.md) | Before any task — check the Fundamental Rule and active plannings |
+| 0b | [`Archon CLI`](../packages/archon-cli/README.md) | When using the CLI tool — 17 commands for systematizing the template |
+| 0c | [`Archon Examples`](../packages/archon-cli/examples/) | Quick start, full workflow, AI integration, troubleshooting |
 | 1 | [`AI-WORKFLOW-GUIDE.md`](./AI-WORKFLOW-GUIDE.md) | At the start of each phase; to understand your role and boundaries |
 | 2 | [`INSTRUCTIONS-FOR-AI.md`](./INSTRUCTIONS-FOR-AI.md) | When generating any phase document; your prompt reference |
 | 3 | [`AI-AUTONOMOUS-WORKFLOW.md`](./AI-AUTONOMOUS-WORKFLOW.md) | When operating without a human in the loop |

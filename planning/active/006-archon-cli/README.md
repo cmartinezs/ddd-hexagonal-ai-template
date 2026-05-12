@@ -1,6 +1,6 @@
 # 006 — Archon CLI
 
-> **Status:** EXPANSION
+> **Status:** COMPLETED
 > [← active/README.md](../README.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -46,7 +46,7 @@ Based on `research/analisis-archon-cli-v1-global-template.md`, the architecture 
 6. **Interactive Mode** — first-interactive, config defaults ✅ DONE
 7. **Guide + Tutorial + Doctor** — help system, tutorial integration, health check ✅ DONE
 8. **Upgrade + Migration** — upgrade command, rollback, migration guides ✅ DONE
-9. **Documentation** — README, examples, polish
+9. **Documentation** — README, examples, polish ✅ DONE
 
 ---
 

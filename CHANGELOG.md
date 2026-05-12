@@ -8,6 +8,40 @@ All notable changes to this repository are documented here. Ordered from most re
 
 ---
 
+## [2026-05-12] — Archon CLI (Planning 006)
+
+### Added
+
+- **`packages/archon-cli/`** — Globally installable Node.js/TypeScript CLI for systematizing the template
+- **17 commands:** init, status, next, check, prompt, context, run, agent, prompts, guide, tutorial, doctor, config, upgrade, templates, dev, help
+- **Global template cache** at `~/.archon/templates/` — templates resolved at runtime, not copied per project
+- **4-mode detection:** user / project / dev / template-cache
+- **AI integration:** AgentAdapter interface for opencode, Claude Code, Cursor, Gemini
+- **Transport priority:** file-attachment (default) → attach → stdin
+- **`archon prompt`:** Rich per-phase prompt generation with template integration
+- **`archon context`:** Project analysis, tech stack detection, glossary extraction
+- **`archon run`:** Full agent execution pipeline with run tracking
+- **`archon guide`:** Phase help with pitfalls, prerequisites, next actions
+- **`archon tutorial`:** Step-by-step navigation, project/template modes
+- **`archon doctor`:** Template integrity, phase chain, glossary, navigation checks
+- **`archon upgrade`:** Semantic versioning (PATCH/MINOR/MAJOR), backup/restore, migration log
+- **`archon templates`:** Template cache management (ls/pull/update/remove/doctor)
+- **`archon dev`:** Development commands (link-template/unlink-template)
+- **`packages/archon-cli/README.md`:** Full CLI documentation
+- **`packages/archon-cli/examples/`:** Quick start, full workflow, AI integration, troubleshooting
+- **`VERSION`:** Template version file (0.1.0)
+
+### Architecture Decisions
+
+- PDR-022: CLI moved to `packages/archon-cli/` (monorepo with npm workspaces)
+- PDR-023: Template resolution via global cache at `~/.archon/templates/`
+- PDR-024: Project output in `docs/` per phase
+- PDR-025: 4-mode system (user/project/dev/template-cache)
+- PDR-026-029: templates/dev/init commands with child folder architecture
+- PDR-030-038: Interactive engine, guide/tutor/doctor, upgrade/migration
+
+---
+
 ## [2026-05-12] — Workflow Integration & Phase Guidance
 
 ### Added

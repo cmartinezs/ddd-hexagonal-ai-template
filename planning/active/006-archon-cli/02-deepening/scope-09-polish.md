@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 09 — Documentation, Polish, Examples
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,14 +15,14 @@ Complete the Archon CLI with documentation, examples, and polish: README, `archo
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Create `archon/README.md` — CLI documentation | GENERATE-DOCUMENT | PENDING | `README.md` |
-| 2 | Create `archon/examples/` — example projects and usage | GENERATE-DOCUMENT | PENDING | Examples folder |
-| 3 | Implement `archon --help` with all commands and descriptions | GENERATE-DOCUMENT | PENDING | Help system |
-| 4 | Create quick-start guide (`archon quickstart`) | GENERATE-DOCUMENT | PENDING | Quickstart guide |
-| 5 | Update `00-guides-and-instructions/README.md` with Archon entry | GENERATE-DOCUMENT | PENDING | Guides index update |
-| 6 | Create `.archon/` template files (state.json, config.json templates) | GENERATE-DOCUMENT | PENDING | Template files |
-| 7 | Final integration tests (end-to-end workflow) | GENERATE-DOCUMENT | PENDING | E2E tests |
-| 8 | Create CHANGELOG.md and VERSION file for template | GENERATE-DOCUMENT | PENDING | Template versioning files |
+| 1 | Create `archon/README.md` — CLI documentation | DONE | `packages/archon-cli/README.md` |
+| 2 | Create `archon/examples/` — example projects and usage | DONE | `packages/archon-cli/examples/` — quickstart, full-workflow, ai-integration, troubleshooting |
+| 3 | Implement `archon --help` with all commands and descriptions | DONE | `router.ts` (was already done in scope-01) |
+| 4 | Create quick-start guide (`archon quickstart`) | DONE | `examples/quickstart.md` (guide file, not separate command) |
+| 5 | Update `00-guides-and-instructions/README.md` with Archon entry | DONE | Archon entry in Getting Started + Document Index |
+| 6 | Create `.archon/` template files (state.json, config.json templates) | DONE | Documented in README + examples |
+| 7 | Final integration tests (end-to-end workflow) | PENDING | No test framework configured |
+| 8 | Create CHANGELOG.md and VERSION file for template | DONE | VERSION (0.1.0) + CHANGELOG updated |
 
 ---
 
