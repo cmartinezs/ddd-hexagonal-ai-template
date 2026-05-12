@@ -8,10 +8,10 @@ Common issues and their solutions.
 
 ```bash
 # Reinstall globally
-npm install -g archon
+npm install -g @archon/cli
 
 # Verify installation
-npm list -g archon
+npm list -g @archon/cli
 
 # Check PATH
 npm bin -g
@@ -26,7 +26,7 @@ npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 
 # Or use sudo
-sudo npm install -g archon
+sudo npm install -g @archon/cli
 ```
 
 ## Project Initialization

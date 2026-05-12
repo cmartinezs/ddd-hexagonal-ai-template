@@ -54,6 +54,7 @@
 | ID | Decision | Rationale | Affects | Date |
 |----|----------|-----------|---------|------|
 | PDR-022 | CLI moved to `packages/archon-cli/` | Monorepo with npm workspaces for global installability | G (archon/) | 2026-05-12 |
+| PDR-042 | Package name: `@archon/cli` (scoped) | Avoids conflict with battlecode.org's `archon` package on npm | G (archon/) | 2026-05-12 |
 | PDR-023 | Template resolution: global cache at `~/.archon/templates/` | No template copies per project; resolved at runtime | G (archon/) | 2026-05-12 |
 | PDR-024 | Project output: `docs/` per phase | Clean separation from template source | G (archon/) | 2026-05-12 |
 | PDR-025 | Mode detection: user/project/dev/template-cache | 4-mode system instead of template/project | G (archon/) | 2026-05-12 |

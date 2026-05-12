@@ -5,13 +5,13 @@ A globally installable CLI tool that systematizes the DDD + Hexagonal AI Templat
 ## Installation
 
 ```bash
-npm install -g archon
+npm install -g @archon/cli
 ```
 
 Or use directly with npx (no installation required):
 
 ```bash
-npx archon init --name my-project
+npx @archon/cli init --name my-project
 ```
 
 ## Requirements

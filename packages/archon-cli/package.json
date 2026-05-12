@@ -1,5 +1,5 @@
 {
-  "name": "archon",
+  "name": "@archon/cli",
   "version": "0.1.0",
   "description": "Archon — DDD Template CLI. Systematizes the DDD + Hexagonal AI Template through structured commands, phase enforcement, and AI agent integration.",
   "type": "module",

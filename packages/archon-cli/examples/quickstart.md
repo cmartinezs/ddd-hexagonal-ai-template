@@ -10,7 +10,7 @@ This guide gets you from zero to a generated Phase 0 document in 5 minutes.
 ## Step 1: Install Archon (or use npx)
 
 ```bash
-npm install -g archon
+npm install -g @archon/cli
 ```
 
 Verify it works:
