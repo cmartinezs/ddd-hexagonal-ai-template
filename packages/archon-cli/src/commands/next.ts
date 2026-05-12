@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { StateManager } from '../core/state-manager.js';
 import { detectMode } from '../core/mode-detector.js';
+import { FirstInteractive } from '../core/interactive-engine.js';
 
 const PHASES = [
   'Documentation Planning',
@@ -30,7 +31,22 @@ export class NextCommand {
 
     const sm = new StateManager(mode.projectPath!);
     const state = sm.load();
-    const targetPhase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase + 1;
+    const fi = new FirstInteractive(mode.projectPath!);
+
+    const answers = await fi.collect(
+      [
+        {
+          key: 'phase',
+          label: 'Target phase (0-11):',
+          type: 'number',
+          default: state.currentPhase + 1,
+          validate: (v: unknown) => (typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 11) || 'Must be 0-11',
+        },
+      ],
+      { phase: phaseArg !== undefined ? parseInt(phaseArg, 10) : undefined }
+    );
+
+    const targetPhase = answers['phase'] as number;
 
     if (targetPhase < 0 || targetPhase > 11) {
       console.error(chalk.red(`\n❌ Invalid phase: ${targetPhase}. Must be 0-11.\n`));

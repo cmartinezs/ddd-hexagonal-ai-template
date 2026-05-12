@@ -9,6 +9,7 @@ import { aiPromptBuilder } from '../core/ai-prompt-builder.js';
 import { contextScanner } from '../core/context-scanner.js';
 import { RunTracker } from '../core/run-tracker.js';
 import { AgentAdapterFactory, type AgentExecutionRequest } from '../core/agent-adapter.js';
+import { FirstInteractive } from '../core/interactive-engine.js';
 import type { AgentType, TransportMode } from '../core/types.js';
 import inquirer from 'inquirer';
 
@@ -27,19 +28,38 @@ export class RunCommand {
       process.exit(1);
     }
 
-    if (!agentOpt) {
-      console.error(chalk.red('\n  --agent is required (e.g., --agent opencode)\n'));
+    const sm = new StateManager(mode.projectPath!);
+    const state = sm.load();
+    const cm = new ConfigManager(mode.projectPath!);
+    const fi = new FirstInteractive(mode.projectPath!);
+
+    const answers = await fi.collect(
+      [
+        {
+          key: 'agent',
+          label: 'Select AI agent:',
+          type: 'select',
+          options: ['opencode', 'claude', 'cursor', 'gemini', 'manual'],
+          default: agentOpt ?? cm.getAgent(),
+        },
+        {
+          key: 'phase',
+          label: 'Phase number (0-11):',
+          type: 'number',
+          default: phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase,
+          validate: (v: unknown) => (typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 11) || 'Must be 0-11',
+        },
+      ],
+      { agent: agentOpt, phase: phaseArg }
+    );
+
+    const agent = answers['agent'] as AgentType;
+    const phase = answers['phase'] as number;
+
+    if (!['opencode', 'claude', 'cursor', 'gemini', 'manual'].includes(agent)) {
+      console.error(chalk.red('\n  Invalid agent: ' + agent + '\n'));
       process.exit(1);
     }
-
-    const validAgents: AgentType[] = ['opencode', 'claude', 'cursor', 'gemini', 'manual'];
-    if (!validAgents.includes(agentOpt as AgentType)) {
-      console.error(chalk.red('\n  Invalid agent: ' + agentOpt));
-      console.error(chalk.yellow('  Valid agents: ' + validAgents.join(', ') + '\n'));
-      process.exit(1);
-    }
-
-    const agent = agentOpt as AgentType;
 
     if (agent === 'manual') {
       console.error(chalk.yellow('\n  Agent "manual" does not support execution. Use `archon prompt` instead.\n'));
@@ -51,11 +71,6 @@ export class RunCommand {
       console.error(chalk.red('\n  No adapter found for agent: ' + agent + '\n'));
       process.exit(1);
     }
-
-    const sm = new StateManager(mode.projectPath!);
-    const state = sm.load();
-    const cm = new ConfigManager(mode.projectPath!);
-    const phase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase;
 
     const transport: TransportMode = (transportOpt as TransportMode) ?? cm.getTransport();
 

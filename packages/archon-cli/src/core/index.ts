@@ -20,3 +20,9 @@ export {
 } from './agent-adapter.js';
 export { RunTracker, type RunRecord } from './run-tracker.js';
 export { PromptsManager, type PromptRecord } from './prompts-manager.js';
+export {
+  FirstInteractive,
+  firstInteractive,
+  type Question,
+  type CollectedAnswers,
+} from './interactive-engine.js';

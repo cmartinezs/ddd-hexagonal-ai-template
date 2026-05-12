@@ -7,6 +7,7 @@ import { StateManager } from '../core/state-manager.js';
 import { ConfigManager } from '../core/config-manager.js';
 import { detectMode } from '../core/mode-detector.js';
 import { aiPromptBuilder } from '../core/ai-prompt-builder.js';
+import { FirstInteractive } from '../core/interactive-engine.js';
 
 export class PromptCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
@@ -22,18 +23,44 @@ export class PromptCommand {
 
     const sm = new StateManager(mode.projectPath!);
     const state = sm.load();
-    const phase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase;
+    const cm = new ConfigManager(mode.projectPath!);
+    const fi = new FirstInteractive(mode.projectPath!);
+
+    const defaultContext = (cm.getDefault('context.default') as string | undefined) ?? 'full';
+
+    const answers = await fi.collect(
+      [
+        {
+          key: 'phase',
+          label: 'Phase number (0-11):',
+          type: 'number',
+          default: state.currentPhase,
+          validate: (v: unknown) => (typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 11) || 'Must be 0-11',
+        },
+        {
+          key: 'context',
+          label: 'Context level:',
+          type: 'select',
+          options: ['full', 'summary', 'none'],
+          default: contextOpt ?? defaultContext,
+        },
+      ],
+      {
+        phase: phaseArg !== undefined ? parseInt(phaseArg, 10) : undefined,
+        context: contextOpt,
+      }
+    );
+
+    const phase = answers['phase'] as number;
+    const contextLevel = (answers['context'] as string) as 'full' | 'summary' | 'none';
 
     if (isNaN(phase) || phase < 0 || phase > 11) {
       console.error(chalk.red('\n  Invalid phase: ' + phaseArg + '. Must be 0-11.\n'));
       process.exit(1);
     }
 
-    const cm = new ConfigManager(mode.projectPath!);
     const agent = cm.getAgent();
     const transport = cm.getTransport();
-
-    const contextLevel = (contextOpt ?? 'full') as 'full' | 'summary' | 'none';
 
     console.log(chalk.cyan('\n  Generating prompt for Phase ' + phase + ' (' + contextLevel + ')...\n'));
 
@@ -67,14 +94,12 @@ export class PromptCommand {
         } else if (process.platform === 'win32') {
           execSync('clip', { input: raw });
         } else {
-          console.log(chalk.dim('  Copy not supported on this platform. Pipe manually:'));
-          console.log(chalk.dim('  cat ' + result.filePath + ' | xclip -selection clipboard'));
+          console.log(chalk.dim('  Copy not supported on this platform.'));
           return;
         }
         console.log(chalk.green('  ✅ Copied to clipboard'));
       } catch {
-        console.log(chalk.dim('  Could not copy to clipboard. Pipe manually:'));
-        console.log(chalk.dim('  cat ' + result.filePath + ' | xclip -selection clipboard'));
+        console.log(chalk.dim('  Could not copy to clipboard.'));
       }
     } else {
       console.log(chalk.dim('  Copy to clipboard:') + ' archon prompt --phase ' + phase + ' --copy');

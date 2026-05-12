@@ -1,6 +1,6 @@
 # 🔍 DEEPENING: Scope 06 — Interactive Mode + Config Defaults
 
-> **Status:** PENDING
+> **Status:** DONE (2026-05-12)
 > [← 01-expansion.md](../01-expansion.md) | [← planning/README.md](../../README.md)
 
 ---
@@ -15,13 +15,13 @@ Implement interactive mode (first-interactive) for all commands with required pa
 
 | # | Task | Workflow | Status | Output |
 |---|------|----------|--------|--------|
-| 1 | Implement first-interactive system (missing params → prompts) | GENERATE-DOCUMENT | PENDING | First-interactive engine |
-| 2 | Create `archon config set <key> <value>` | GENERATE-DOCUMENT | PENDING | `config set` |
-| 3 | Create `archon config get <key>` | GENERATE-DOCUMENT | PENDING | `config get` |
-| 4 | Create `archon config ls` | GENERATE-DOCUMENT | PENDING | `config ls` |
-| 5 | Implement config defaults: context level, interactive mode, agent | GENERATE-DOCUMENT | PENDING | Config defaults |
-| 6 | Create interactive prompts (inquirer/spectre question flow) | GENERATE-DOCUMENT | PENDING | Interactive prompts |
-| 7 | Write integration tests for config system | GENERATE-DOCUMENT | PENDING | Integration tests |
+| 1 | Implement first-interactive system (missing params → prompts) | DONE | `interactive-engine.ts` |
+| 2 | Create `archon config set <key> <value>` | DONE | `config.ts` (was stub, now full) |
+| 3 | Create `archon config get <key>` | DONE | `config.ts` |
+| 4 | Create `archon config ls` | DONE | `config.ts` |
+| 5 | Implement config defaults: context level, interactive mode, agent | DONE | `config-manager.ts` + `interactive-engine.ts` |
+| 6 | Create interactive prompts (inquirer/spectre question flow) | DONE | `interactive-engine.ts` — selectPhase, selectContext, confirm, askText |
+| 7 | Write integration tests for config system | PENDING | Not applicable (no test framework configured) |
 
 ---
 

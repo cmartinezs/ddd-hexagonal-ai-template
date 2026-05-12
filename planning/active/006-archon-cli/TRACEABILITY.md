@@ -37,6 +37,8 @@
 | Transport Priority | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | file-attachment > attach > stdin |
 | Prompts Manager | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | ls/rank/compress/merge/expand/export/clean |
 | Agent Adapter Factory | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Extensible agent registry (opencode/claude) |
+| First-Interactive Engine | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | Missing params → interactive prompts (always/missing/never modes) |
+| Config System | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | ✅ | N/A | set/get/ls/delete defaults, per-project config.json |
 
 ---
 
@@ -63,6 +65,8 @@
 | PDR-019 | Upgrade: auto-apply safe, warn on breaking | User-controlled migration | G (archon/) | 2026-05-12 |
 | PDR-020 | Migration files: `CHANGELOG.md` + `UPGRADE/` subfolder | Changelog + per-version guides | G (archon/) | 2026-05-12 |
 | PDR-021 | Rollback support: `archon upgrade --rollback <version>` | Safety during migrations | G (archon/) | 2026-05-12 |
+| PDR-030 | First-interactive engine: missing params → interactive prompts | Commands always functional, user-friendly | G (archon/) | 2026-05-12 |
+| PDR-031 | Interactive mode: always/missing/never (configurable per project) | User preference respected | G (archon/) | 2026-05-12 |
 
 ---
 
