@@ -24,16 +24,16 @@ found 0 vulnerabilities
 > tsc
 
 found 0 vulnerabilities
-
-❯ archon --version
-Archon v0.1.0
-DDD Template CLI — Systematizing Domain-Driven Design workflows
 ```
 
 Verify it works:
 
 ```bash
 archon --version
+
+# Expected output:
+Archon v0.1.0
+DDD Template CLI — Systematizing Domain-Driven Design workflows
 ```
 
 ## Step 2: Initialize a Project
