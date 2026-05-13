@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { join } from 'node:path';
-import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
 import { StateManager } from '../core/state-manager.js';
@@ -13,6 +13,7 @@ export class PromptCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
     const contextOpt = this.getArg(args, 'context') ?? (opts['context'] as string | undefined);
     const copy = opts['copy'] === true;
+    const regenerate = opts['regenerate'] === true;
     const phaseArg = this.getArg(args, 'phase') ?? (opts['phase'] as string | undefined);
 
     const mode = detectMode();
@@ -61,6 +62,22 @@ export class PromptCommand {
 
     const agent = cm.getAgent();
     const transport = cm.getTransport();
+
+    if (regenerate) {
+      const promptsDir = join(mode.projectPath!, '.archon', 'prompts');
+      const prefix = `phase-${String(phase).padStart(2, '0')}-`;
+      let removed = 0;
+      try {
+        const files = readdirSync(promptsDir);
+        for (const f of files) {
+          if (f.startsWith(prefix) && (f.endsWith('.md') || f.endsWith('.json'))) {
+            rmSync(join(promptsDir, f), { force: true });
+            removed++;
+          }
+        }
+      } catch { /* dir might not exist yet */ }
+      console.log(chalk.yellow('  Cleared ' + removed + ' previous prompt file(s) for Phase ' + phase + '.\n'));
+    }
 
     console.log(chalk.cyan('\n  Generating prompt for Phase ' + phase + ' (' + contextLevel + ')...\n'));
 

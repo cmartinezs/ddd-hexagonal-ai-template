@@ -26,16 +26,19 @@ while (i < rawArgs.length) {
   if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm') {
     opts[arg.slice(2)] = true;
     i++;
-  } else if (
-    (arg === '--phase' || arg === '--context' || arg === '--attach' || arg === '--output' ||
-      arg === '--agent' || arg === '--name' || arg === '--target' || arg === '--url' ||
-      arg === '--format' || arg === '--file' || arg === '--from' || arg === '--to' ||
-      arg === '--agent-name' || arg === '--id' || arg === '--version' || arg === '--doctor') &&
-    rawArgs[i + 1] !== undefined
-  ) {
-    opts[arg.slice(2)] = rawArgs[i + 1];
-    i += 2;
-  } else {
+    } else if (
+      (arg === '--phase' || arg === '--context' || arg === '--attach' || arg === '--output' ||
+        arg === '--agent' || arg === '--name' || arg === '--target' || arg === '--url' ||
+        arg === '--format' || arg === '--file' || arg === '--from' || arg === '--to' ||
+        arg === '--agent-name' || arg === '--id') &&
+      rawArgs[i + 1] !== undefined
+    ) {
+      opts[arg.slice(2)] = rawArgs[i + 1];
+      i += 2;
+    } else if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm' || arg === '--regenerate' || arg === '--doctor') {
+      opts[arg.slice(2)] = true;
+      i++;
+    } else {
     i++;
   }
 }
