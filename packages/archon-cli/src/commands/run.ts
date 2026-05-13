@@ -11,6 +11,7 @@ import { RunTracker } from '../core/run-tracker.js';
 import { AgentAdapterFactory, type AgentExecutionRequest } from '../core/agent-adapter.js';
 import { FirstInteractive } from '../core/interactive-engine.js';
 import { phaseEngine } from '../core/phase-engine.js';
+import { tokenTracker, DEFAULT_THRESHOLDS } from '../core/token-tracker.js';
 import type { AgentType, TransportMode } from '../core/types.js';
 import inquirer from 'inquirer';
 
@@ -148,6 +149,41 @@ export class RunCommand {
       console.log(chalk.dim('    Diagnostics:'));
       for (const d of doctorResult.diagnostics) {
         console.log(chalk.dim('      - ' + d));
+      }
+    }
+
+    if (agent === 'opencode') {
+      const stats = tokenTracker.getStats();
+      if (stats) {
+        const threshold = cm.getDefault('tokens.warn') as number ?? DEFAULT_THRESHOLDS.warn;
+        const critical = cm.getDefault('tokens.critical') as number ?? DEFAULT_THRESHOLDS.critical;
+        const check = tokenTracker.checkThresholds(stats, { warn: threshold, critical });
+
+        console.log();
+        console.log(chalk.cyan('  Session Tokens:'));
+        console.log('    Input:    ' + tokenTracker.fmtNumber(stats.inputTokens));
+        console.log('    Output:   ' + tokenTracker.fmtNumber(stats.outputTokens));
+        console.log('    Total:    ' + tokenTracker.fmtNumber(stats.totalTokens));
+        console.log('    Messages: ' + stats.messages);
+
+        if (check.severity === 'critical') {
+          console.log();
+          console.log('  ' + chalk.red('⚠ ' + check.message));
+          console.log(chalk.dim('    Attempting session compaction...\n'));
+          const result = await tokenTracker.compactSession();
+          if (!result.success) {
+            console.log(chalk.yellow('    Compaction failed: ' + result.message + '\n'));
+          } else {
+            const newStats = tokenTracker.getStats();
+            if (newStats) {
+              console.log('    After compact: ' + tokenTracker.fmtNumber(newStats.totalTokens) + '\n');
+            }
+          }
+        } else if (check.severity === 'warn') {
+          console.log();
+          console.log('  ' + chalk.yellow('⚠ ' + check.message));
+          console.log();
+        }
       }
     }
     console.log();
