@@ -15,8 +15,8 @@ import inquirer from 'inquirer';
 
 export class RunCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
-    const agentOpt = (opts['agent'] as string | undefined) ?? this.getArg(args, 'agent');
-    const phaseArg = this.getArg(args, 'phase');
+    const agentOpt = this.getArg(args, 'agent') ?? (opts['agent'] as string | undefined);
+    const phaseArg = this.getArg(args, 'phase') ?? (opts['phase'] as string | undefined);
     const dryRun = opts['dry-run'] === true || opts['dryRun'] === true;
     const confirm = opts['confirm'] === true;
     const attachUrl = (opts['attach'] as string | undefined) ?? this.getArg(args, 'attach');
