@@ -93,7 +93,7 @@ export class PromptCommand {
       }
       if (!copied && process.platform === 'linux') {
         for (const cmd of ['xclip -selection clipboard', 'xsel --clipboard', 'wl-copy']) {
-          try { execSync(cmd, { input: raw }); copied = true; break; } catch { /* try next */ }
+          try { execSync(cmd, { input: raw, stdio: 'ignore' }); copied = true; break; } catch { /* try next */ }
         }
       }
       if (!copied && process.platform === 'win32') {
@@ -103,7 +103,8 @@ export class PromptCommand {
       if (copied) {
         console.log(chalk.green('  ✅ Copied to clipboard'));
       } else {
-        console.log(chalk.dim('  Clipboard tools not found. Install xclip (apt), xsel (apt), or wl-copy (Wayland).'));
+        console.log(chalk.yellow('  ⚠  No clipboard tool found. Open the file directly:'));
+        console.log(chalk.cyan('     ' + result.filePath));
       }
     } else {
       console.log(chalk.dim('  Copy to clipboard:') + ' archon prompt --phase ' + phase + ' --copy');
