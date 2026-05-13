@@ -120,8 +120,36 @@ export class RunCommand {
 
     if (dryRun) {
       const cmd = adapter.buildCommand(request);
+      const normalizedCwd = request.cwd.replace(/\/$/, '');
+      const prefix = normalizedCwd + '/';
+      const rel = (p: string) => {
+        if (!p.startsWith(prefix)) return p;
+        let r = p.slice(prefix.length);
+        if (r.startsWith('./')) r = r.slice(2);
+        return r;
+      };
+
       console.log(chalk.cyan('  📋 Dry-run — command that would be executed:\n'));
-      console.log('  ' + cmd.join(' '));
+
+      const lines: string[] = [cmd[0]!];
+      let lastFlag = '';
+
+      for (let i = 1; i < cmd.length; i++) {
+        const arg = cmd[i]!;
+        if (arg.startsWith('--')) {
+          lines.push('    ' + arg);
+          lastFlag = arg;
+        } else {
+          const value = lastFlag === '--dir' ? '.' : rel(arg);
+          lines[lines.length - 1] += ' ' + value;
+          lastFlag = '';
+        }
+      }
+
+      console.log('  ' + lines[0] + ' \\');
+      for (let i = 1; i < lines.length; i++) {
+        console.log(lines[i] + (i < lines.length - 1 ? ' \\' : ''));
+      }
       console.log();
       return;
     }
