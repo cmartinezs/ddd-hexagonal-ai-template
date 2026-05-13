@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { resolve, join } from 'node:path';
+import { join } from 'node:path';
 import { phaseEngine } from './phase-engine.js';
 import type { PhaseStatusEntry } from './types.js';
 
@@ -59,8 +59,7 @@ export class Validator {
   }
 
   private checkPhaseFiles(phase: ReturnType<typeof phaseEngine.getPhase>, constraints: Constraint[]): void {
-    const templateRoot = resolve(this.basePath, '..');
-    const phasePath = join(templateRoot, phase.folder);
+    const phasePath = join(this.basePath, 'docs', phase.folder);
 
     if (!existsSync(phasePath)) {
       constraints.push({
@@ -131,8 +130,8 @@ export class Validator {
   private checkAgnosticBoundary(phaseIndex: number, constraints: Constraint[]): void {
     if (!phaseEngine.isAgnostic(phaseIndex)) return;
 
-    const templateRoot = resolve(this.basePath, '..');
-    const phasePath = join(templateRoot, phaseEngine.getPhase(phaseIndex).folder);
+    const phase = phaseEngine.getPhase(phaseIndex);
+    const phasePath = join(this.basePath, 'docs', phase.folder);
 
     if (!existsSync(phasePath)) return;
 
