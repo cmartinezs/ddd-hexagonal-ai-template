@@ -40,6 +40,10 @@ export class AiPromptBuilder {
     const id = `phase-${String(phase).padStart(2, '0')}-${timestamp}`;
     const fileName = `${id}.md`;
 
+    const templateRoot = templateResolver.getLockedTemplatePath(projectPath) ?? this.getFallbackTemplateRoot(projectPath);
+    const outputFiles = phaseEngine.resolveOutputFiles(phase, templateRoot);
+    const templatePrompt = this.loadPhaseTemplate(phase, templateRoot);
+
     const lines: string[] = [];
 
     lines.push(`# AI Prompt — Phase ${phase}: ${phaseDef.name}`);
@@ -121,7 +125,11 @@ export class AiPromptBuilder {
       lines.push('');
     }
 
-    const templatePrompt = this.loadPhaseTemplate(projectPath, phase);
+    lines.push('## Task');
+    lines.push('');
+    lines.push(phaseDef.description);
+    lines.push('');
+
     if (templatePrompt) {
       lines.push('## Phase Template Reference');
       lines.push('');
@@ -133,14 +141,9 @@ export class AiPromptBuilder {
       lines.push('');
     }
 
-    lines.push('## Task');
-    lines.push('');
-    lines.push(phaseDef.description);
-    lines.push('');
-
     lines.push('## Required Outputs');
     lines.push('');
-    for (const output of phaseDef.outputFiles) {
+    for (const output of outputFiles) {
       lines.push(`- \`${output}\``);
     }
     lines.push('');
@@ -277,9 +280,8 @@ export class AiPromptBuilder {
     return lines.join('\n');
   }
 
-  private loadPhaseTemplate(projectPath: string, phase: number): string | null {
+  private loadPhaseTemplate(phase: number, templateRoot: string): string | null {
     const phaseDef = phaseEngine.getPhase(phase);
-    const templateRoot = templateResolver.getLockedTemplatePath(projectPath) ?? this.getFallbackTemplateRoot();
     const templateReadme = join(templateRoot, '01-templates', phaseDef.folder, 'README.md');
 
     if (!existsSync(templateReadme)) {
@@ -293,15 +295,15 @@ export class AiPromptBuilder {
     return this.extractTemplateContent(templateReadme);
   }
 
-  private getFallbackTemplateRoot(): string {
-    const parts = process.cwd().split('/');
+  private getFallbackTemplateRoot(projectPath: string): string {
+    const parts = projectPath.split('/');
     for (let i = parts.length - 1; i >= 0; i--) {
       const candidate = parts.slice(0, i + 1).join('/');
       if (existsSync(join(candidate, '01-templates'))) {
         return candidate;
       }
     }
-    return process.cwd();
+    return projectPath;
   }
 
   private extractTemplateContent(filePath: string): string | null {

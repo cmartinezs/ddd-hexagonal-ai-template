@@ -1,3 +1,5 @@
+import { existsSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 import type { PhaseStatusEntry } from './types.js';
 
 export interface PhaseDefinition {
@@ -21,7 +23,14 @@ export const PHASES: PhaseDefinition[] = [
     description: 'Define documentation scope, goals, and structure for the project.',
     isAgnostic: true,
     requiredInputs: ['project name', 'problem statement'],
-    outputFiles: ['sdlc-framework.md', 'macro-plan.md'],
+    outputFiles: [
+      'README.md',
+      'HOW-TO-USE.md',
+      'PHASE-INPUT.md',
+      'macro-plan.md',
+      'navigation-conventions.md',
+      'sdlc-framework.md',
+    ],
     dependencies: [],
   },
   {
@@ -325,6 +334,19 @@ export class PhaseEngine {
       pending,
       percentage: Math.round((complete / 12) * 100),
     };
+  }
+
+  resolveOutputFiles(phaseIndex: number, templateRoot: string): string[] {
+    const phase = this.getPhase(phaseIndex);
+    const phaseDir = join(templateRoot, '01-templates', phase.folder);
+    if (!existsSync(phaseDir)) return phase.outputFiles;
+
+    const realFiles = readdirSync(phaseDir)
+      .filter((f) => f.endsWith('.md') || f.endsWith('.json'))
+      .sort();
+
+    if (realFiles.length === 0) return phase.outputFiles;
+    return realFiles;
   }
 }
 
