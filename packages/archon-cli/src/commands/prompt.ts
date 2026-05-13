@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { join } from 'node:path';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
 import { StateManager } from '../core/state-manager.js';
@@ -13,7 +13,7 @@ export class PromptCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
     const contextOpt = this.getArg(args, 'context') ?? (opts['context'] as string | undefined);
     const copy = opts['copy'] === true;
-    const phaseArg = this.getArg(args, 'phase');
+    const phaseArg = this.getArg(args, 'phase') ?? (opts['phase'] as string | undefined);
 
     const mode = detectMode();
     if (mode.mode !== 'project') {
@@ -47,7 +47,7 @@ export class PromptCommand {
       ],
       {
         phase: phaseArg !== undefined ? parseInt(phaseArg, 10) : undefined,
-        context: contextOpt,
+        context: contextOpt ?? defaultContext,
       }
     );
 
@@ -85,21 +85,25 @@ export class PromptCommand {
     console.log();
 
     if (copy) {
-      try {
-        const raw = require('node:fs').readFileSync(result.filePath, 'utf-8');
-        if (process.platform === 'darwin') {
-          execSync('pbcopy', { input: raw });
-        } else if (process.platform === 'linux') {
-          execSync('xclip -selection clipboard', { input: raw });
-        } else if (process.platform === 'win32') {
-          execSync('clip', { input: raw });
-        } else {
-          console.log(chalk.dim('  Copy not supported on this platform.'));
-          return;
+      const raw = readFileSync(result.filePath, 'utf-8');
+      let copied = false;
+
+      if (process.platform === 'darwin') {
+        try { execSync('pbcopy', { input: raw }); copied = true; } catch { /* try next */ }
+      }
+      if (!copied && process.platform === 'linux') {
+        for (const cmd of ['xclip -selection clipboard', 'xsel --clipboard', 'wl-copy']) {
+          try { execSync(cmd, { input: raw }); copied = true; break; } catch { /* try next */ }
         }
+      }
+      if (!copied && process.platform === 'win32') {
+        try { execSync('clip', { input: raw }); copied = true; } catch { /* try next */ }
+      }
+
+      if (copied) {
         console.log(chalk.green('  ✅ Copied to clipboard'));
-      } catch {
-        console.log(chalk.dim('  Could not copy to clipboard.'));
+      } else {
+        console.log(chalk.dim('  Clipboard tools not found. Install xclip (apt), xsel (apt), or wl-copy (Wayland).'));
       }
     } else {
       console.log(chalk.dim('  Copy to clipboard:') + ' archon prompt --phase ' + phase + ' --copy');
