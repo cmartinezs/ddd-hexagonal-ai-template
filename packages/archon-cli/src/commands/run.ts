@@ -133,7 +133,8 @@ export class RunCommand {
     console.log(chalk.cyan('  Agent:'));
     console.log('    Status:     ' + (doctorResult.status === 'available' ? chalk.green('available') : chalk.red(doctorResult.status)));
     if (doctorResult.version) console.log('    Version:    ' + doctorResult.version);
-    if (doctorResult.capabilities.supportsRun) console.log('    Transport:  ' + chalk.green(transport));
+    if (doctorResult.capabilities.supportsRun)     console.log('    Transport:  ' + chalk.green(transport));
+    if (doctorResult.model) console.log('    Model:      ' + doctorResult.model);
     console.log('    File-attach: ' + (doctorResult.capabilities.supportsFileAttachment ? chalk.green('yes') : chalk.dim('no')));
     console.log('    Attach:     ' + (doctorResult.capabilities.supportsAttach ? chalk.green('yes') : chalk.dim('no')));
 

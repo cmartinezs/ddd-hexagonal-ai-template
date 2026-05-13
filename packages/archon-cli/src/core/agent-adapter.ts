@@ -1,4 +1,6 @@
 import { execSync } from 'node:child_process';
+import { join } from 'node:path';
+import { homedir } from 'node:os';
 
 export interface AgentDetectionResult {
   available: boolean;
@@ -16,6 +18,7 @@ export interface AgentCapabilities {
 export interface AgentDoctorResult {
   status: 'available' | 'unavailable' | 'partial';
   version?: string;
+  model?: string;
   capabilities: AgentCapabilities;
   recommendedTransport: 'file-attachment' | 'attach' | 'stdin' | 'none';
   diagnostics: string[];
@@ -88,6 +91,7 @@ export class OpencodeAdapter implements AgentAdapter {
     }
 
     const diagnostics: string[] = [];
+    const model = await this.getModel();
 
     try {
       execSync('opencode run --help 2>/dev/null | head -1', { encoding: 'utf-8', timeout: 5000 });
@@ -106,6 +110,7 @@ export class OpencodeAdapter implements AgentAdapter {
     return {
       status: 'available',
       version: detection.version,
+      model: model ?? undefined,
       capabilities: {
         supportsRun: true,
         supportsFileAttachment: true,
@@ -115,6 +120,18 @@ export class OpencodeAdapter implements AgentAdapter {
       recommendedTransport: 'file-attachment',
       diagnostics,
     };
+  }
+
+  private async getModel(): Promise<string | null> {
+    try {
+      const { readFileSync } = await import('node:fs');
+      const modelPath = join(homedir(), '.local', 'state', 'opencode', 'model.json');
+      const raw = readFileSync(modelPath, 'utf-8');
+      const data = JSON.parse(raw) as { recent?: Array<{ providerID: string; modelID: string }> };
+      return data.recent?.[0]?.modelID ?? null;
+    } catch {
+      return null;
+    }
   }
 
   buildCommand(request: AgentExecutionRequest): string[] {
@@ -247,6 +264,7 @@ export class ClaudeAdapter implements AgentAdapter {
     return {
       status: 'available',
       version: detection.version,
+      model: await this.getModel() ?? undefined,
       capabilities: {
         supportsRun: true,
         supportsFileAttachment: true,
@@ -256,6 +274,18 @@ export class ClaudeAdapter implements AgentAdapter {
       recommendedTransport: 'file-attachment',
       diagnostics: ['claude detected — use file-attachment transport'],
     };
+  }
+
+  private async getModel(): Promise<string | null> {
+    try {
+      const { readFileSync } = await import('node:fs');
+      const configPath = join(homedir(), '.config', 'anthropic', 'config.json');
+      const raw = readFileSync(configPath, 'utf-8');
+      const data = JSON.parse(raw) as { model?: string };
+      return data.model ?? null;
+    } catch {
+      return null;
+    }
   }
 
   buildCommand(request: AgentExecutionRequest): string[] {
