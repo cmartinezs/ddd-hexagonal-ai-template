@@ -54,7 +54,7 @@ export class RunCommand {
       { agent: agentOpt, phase: phaseArg }
     );
 
-    const agent = answers['agent'] as AgentType;
+    const agent = (attachUrl && !agentOpt) ? 'opencode' : (answers['agent'] as AgentType);
     const phase = answers['phase'] as number;
 
     if (!['opencode', 'claude', 'cursor', 'gemini', 'manual'].includes(agent)) {
@@ -64,6 +64,11 @@ export class RunCommand {
 
     if (agent === 'manual') {
       console.error(chalk.yellow('\n  Agent "manual" does not support execution. Use `archon prompt` instead.\n'));
+      process.exit(1);
+    }
+
+    if (agent !== 'opencode' && attachUrl) {
+      console.error(chalk.red('\n  Only opencode supports --attach (persistent server).\n'));
       process.exit(1);
     }
 
