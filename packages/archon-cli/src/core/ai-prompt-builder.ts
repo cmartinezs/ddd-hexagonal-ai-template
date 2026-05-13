@@ -144,7 +144,7 @@ export class AiPromptBuilder {
     lines.push('## Required Outputs');
     lines.push('');
     for (const output of outputFiles) {
-      lines.push(`- \`${output}\``);
+      lines.push(`- \`docs/${phaseDef.folder}/${output}\``);
     }
     lines.push('');
 
