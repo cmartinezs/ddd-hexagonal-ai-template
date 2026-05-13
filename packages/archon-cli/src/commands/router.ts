@@ -231,6 +231,15 @@ async function getCommands(): Promise<Command[]> {
       },
     },
     {
+      name: 'models',
+      description: 'List or set AI agent models',
+      options: 'ls|set|current <agent> [model]',
+      handler: async (a, o) => {
+        const { ModelsCommand } = await import('./models.js');
+        await new ModelsCommand().run(a, o);
+      },
+    },
+    {
       name: 'dev',
       description: 'Development commands (link-template, unlink)',
       options: 'link-template|unlink-template|status',

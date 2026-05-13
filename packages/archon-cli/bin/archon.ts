@@ -17,37 +17,36 @@ if (rawArgs[0] === '--help' || rawArgs[0] === '-h') {
   argsOffset = 1;
 } else {
   command = rawArgs[0];
-  argsOffset = 0;
+  argsOffset = 1;
 }
 
 let i = argsOffset;
 while (i < rawArgs.length) {
   const arg = rawArgs[i]!;
-  if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm') {
+  if (arg === '--no-strict') {
+    opts['no-strict'] = true;
+    i++;
+  } else if (arg === '--omit' && rawArgs[i + 1] !== undefined) {
+    opts['omit'] = rawArgs[i + 1];
+    i += 2;
+  } else if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm' || arg === '--regenerate' || arg === '--doctor') {
     opts[arg.slice(2)] = true;
     i++;
-    } else if (
-      (arg === '--phase' || arg === '--context' || arg === '--attach' || arg === '--output' ||
-        arg === '--agent' || arg === '--name' || arg === '--target' || arg === '--url' ||
-        arg === '--format' || arg === '--file' || arg === '--from' || arg === '--to' ||
-        arg === '--agent-name' || arg === '--id') &&
-      rawArgs[i + 1] !== undefined
-    ) {
-      opts[arg.slice(2)] = rawArgs[i + 1];
-      i += 2;
-    } else if (arg === '--no-strict') {
-      opts['no-strict'] = true;
-      i++;
-    } else if (arg === '--omit' && rawArgs[i + 1] !== undefined) {
-      opts['omit'] = rawArgs[i + 1];
-      i += 2;
-    } else {
+  } else if (
+    (arg === '--phase' || arg === '--context' || arg === '--attach' || arg === '--output' ||
+      arg === '--agent' || arg === '--name' || arg === '--target' || arg === '--url' ||
+      arg === '--format' || arg === '--file' || arg === '--from' || arg === '--to' ||
+      arg === '--agent-name' || arg === '--id') &&
+    rawArgs[i + 1] !== undefined
+  ) {
+    opts[arg.slice(2)] = rawArgs[i + 1];
+    i += 2;
+  } else {
     i++;
   }
 }
 
-const rest = rawArgs.slice(argsOffset).filter((a) => !a.startsWith('--') && !a.startsWith('-'));
-
+const rest = rawArgs.slice(argsOffset);
 runCommand(command, rest, opts).catch((err: Error) => {
   console.error('\n  Error: ' + err.message);
   process.exit(1);
