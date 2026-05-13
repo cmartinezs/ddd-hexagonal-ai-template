@@ -1,6 +1,6 @@
 export type AgentType = 'opencode' | 'claude' | 'cursor' | 'gemini' | 'manual';
 export type Mode = 'user' | 'project' | 'dev' | 'template-cache';
-export type PhaseStatus = 'pending' | 'in_progress' | 'complete';
+export type PhaseStatus = 'pending' | 'in_progress' | 'complete' | 'skipped';
 export type InteractiveMode = 'always' | 'missing' | 'never';
 export type TransportMode = 'file-attachment' | 'attach' | 'stdin';
 export type TemplateVersion = string;

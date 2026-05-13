@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { resolve, join } from 'node:path';
-import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, copyFileSync } from 'node:fs';
 import inquirer from 'inquirer';
 import { detectMode } from '../core/mode-detector.js';
 import { StateManager } from '../core/state-manager.js';
@@ -120,6 +120,22 @@ export class InitCommand {
       mkdirSync(join(projectDocs, '00-documentation-planning'), { recursive: true });
     }
 
+    const guidesDir = join(projectPath, '.archon', 'guides');
+    mkdirSync(guidesDir, { recursive: true });
+
+    const templateGuides = join(templatePath, '00-guides-and-instructions');
+    if (existsSync(templateGuides)) {
+      this.copyDirRecursive(templateGuides, guidesDir);
+      console.log(chalk.dim('  Copied AI guides to .archon/guides/\n'));
+    }
+
+    const rootAgents = join(templatePath, 'AGENTS.md');
+    if (existsSync(rootAgents)) {
+      const destAgents = join(projectPath, '.archon', 'AGENTS.md');
+      copyFileSync(rootAgents, destAgents);
+      console.log(chalk.dim('  Copied AGENTS.md to .archon/\n'));
+    }
+
     mkdirSync(join(projectPath, '.archon', 'context'), { recursive: true });
     mkdirSync(join(projectPath, '.archon', 'prompts', 'metadata'), { recursive: true });
     mkdirSync(join(projectPath, '.archon', 'runs'), { recursive: true });
@@ -143,6 +159,21 @@ export class InitCommand {
   private getArg(args: string[], key: string): string | undefined {
     const idx = args.findIndex((a) => a === '--' + key);
     return idx >= 0 ? args[idx + 1] : undefined;
+  }
+
+  private copyDirRecursive(src: string, dest: string): void {
+    if (!existsSync(src)) return;
+    mkdirSync(dest, { recursive: true });
+    const entries = readdirSync(src, { withFileTypes: true });
+    for (const entry of entries) {
+      const srcPath = join(src, entry.name);
+      const destPath = join(dest, entry.name);
+      if (entry.isDirectory()) {
+        this.copyDirRecursive(srcPath, destPath);
+      } else {
+        copyFileSync(srcPath, destPath);
+      }
+    }
   }
 
   private async askProjectName(): Promise<string> {

@@ -302,7 +302,18 @@ export class PhaseEngine {
     return 11;
   }
 
-  getProgress(phases: Record<string, PhaseStatusEntry>): {
+  hasPhaseActivity(projectPath: string, phaseIndex: number): boolean {
+    const phase = this.getPhase(phaseIndex);
+    const phasePath = join(projectPath, 'docs', phase.folder);
+    if (!existsSync(phasePath)) return false;
+    const files = readdirSync(phasePath);
+    return files.length > 0;
+  }
+
+  getProgress(
+    phases: Record<string, PhaseStatusEntry>,
+    projectPath?: string
+  ): {
     total: number;
     complete: number;
     inProgress: number;
@@ -316,11 +327,12 @@ export class PhaseEngine {
     for (let i = 0; i <= 11; i++) {
       const key = 'phase-' + String(i).padStart(2, '0');
       const status = phases[key];
-      if (!status) {
-        pending++;
-      } else if (status.status === 'complete') {
+
+      if (status?.status === 'complete' || status?.status === 'skipped') {
         complete++;
-      } else if (status.status === 'in_progress') {
+      } else if (status?.status === 'in_progress') {
+        inProgress++;
+      } else if (projectPath && this.hasPhaseActivity(projectPath, i)) {
         inProgress++;
       } else {
         pending++;

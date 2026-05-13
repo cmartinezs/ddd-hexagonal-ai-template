@@ -90,6 +90,11 @@ export class RunCommand {
     console.log();
 
     contextScanner.saveContext(mode.projectPath!, state);
+
+    if (!attachUrl) {
+      await this.injectGuidesToContext(mode.projectPath!);
+    }
+
     const contextPath = join(mode.projectPath!, '.archon', 'context', 'project-context.md');
     const mapPath = join(mode.projectPath!, '.archon', 'context', 'project-map.json');
 
@@ -356,5 +361,44 @@ console.log(chalk.green('  ✅ Run complete (' + (result.duration ? (result.dura
     const sizes = ['B', 'KB', 'MB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i]!;
+  }
+
+  private async injectGuidesToContext(projectPath: string): Promise<void> {
+    const { existsSync, readFileSync, writeFileSync } = await import('node:fs');
+    const guidesDir = join(projectPath, '.archon', 'guides');
+    const agentsPath = join(projectPath, '.archon', 'AGENTS.md');
+    const contextPath = join(projectPath, '.archon', 'context', 'project-context.md');
+
+    if (!existsSync(guidesDir) && !existsSync(agentsPath)) return;
+
+    const lines: string[] = [];
+    lines.push('# AI Agent Guides Reference');
+    lines.push('');
+    lines.push('_This section provides AI agent guidance specific to this project._');
+    lines.push('');
+
+    if (existsSync(agentsPath)) {
+      lines.push('### AGENTS.md (Root Instructions)');
+      lines.push('');
+      lines.push(readFileSync(agentsPath, 'utf-8').slice(0, 2000));
+      lines.push('');
+    }
+
+    if (existsSync(guidesDir)) {
+      const keyGuides = ['INSTRUCTIONS-FOR-AI.md', 'AI-WORKFLOW-GUIDE.md', 'SKILLS-AND-PLUGINS-GUIDE.md'];
+      for (const guide of keyGuides) {
+        const guidePath = join(guidesDir, guide);
+        if (existsSync(guidePath)) {
+          lines.push(`### ${guide.replace('.md', '')}`);
+          lines.push('');
+          lines.push(readFileSync(guidePath, 'utf-8').slice(0, 1500));
+          lines.push('');
+        }
+      }
+    }
+
+    const guidesContent = lines.join('\n');
+    const existingContent = existsSync(contextPath) ? readFileSync(contextPath, 'utf-8') : '';
+    writeFileSync(contextPath, guidesContent + '\n\n---\n\n' + existingContent, 'utf-8');
   }
 }

@@ -116,10 +116,19 @@ async function getCommands(): Promise<Command[]> {
     {
       name: 'next',
       description: 'Advance to next phase',
-      options: '[--phase <N>] [--confirm]',
+      options: '[--phase <N>] [--force]',
       handler: async (a, o) => {
         const { NextCommand } = await import('./next.js');
         await new NextCommand().run(a, o);
+      },
+    },
+    {
+      name: 'complete',
+      description: 'Mark current or specified phase as complete',
+      options: '[--phase <N>] [--force]',
+      handler: async (a, o) => {
+        const { CompleteCommand } = await import('./complete.js');
+        await new CompleteCommand().run(a, o);
       },
     },
     {
@@ -143,7 +152,7 @@ async function getCommands(): Promise<Command[]> {
     {
       name: 'context',
       description: 'Scan project and generate context files',
-      options: 'scan [--output <dir>]',
+      options: 'scan|inject [--output <dir>]',
       handler: async (a, o) => {
         const { ContextCommand } = await import('./context.js');
         await new ContextCommand().run(a, o);

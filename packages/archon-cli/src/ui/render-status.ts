@@ -9,7 +9,8 @@ interface TemplateInfo {
 }
 
 export function renderStatus(state: ArchonState, templateInfo?: TemplateInfo): void {
-  const progress = phaseEngine.getProgress(state.phases);
+  const projectPath = process.cwd();
+  const progress = phaseEngine.getProgress(state.phases, projectPath);
 
   console.log(chalk.cyan('\n============================================================='));
   console.log(chalk.bold('  Archon Status  —  ' + state.projectName));
@@ -68,5 +69,6 @@ function renderProgressBar(percentage: number): string {
 function getStatusIcon(status?: string): string {
   if (status === 'complete') return chalk.green('\u2713');
   if (status === 'in_progress') return chalk.cyan('\u25CF');
+  if (status === 'skipped') return chalk.yellow('\u2014');
   return chalk.dim('\u25CB');
 }
