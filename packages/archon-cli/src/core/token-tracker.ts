@@ -1,4 +1,5 @@
 import { execSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
 
 export interface TokenStats {
   inputTokens: number;
@@ -30,7 +31,18 @@ export interface TokenSnapshot {
   cacheRead: number;
   cacheWrite: number;
   timestamp: string;
-  source: 'project-stats' | 'per-model-stats' | 'opencode-export' | 'sqlite';
+  source: 'project-stats' | 'per-model-stats' | 'opencode-export' | 'sqlite' | 'session-export';
+}
+
+export interface SessionTokenInfo {
+  totalTokens: number;
+  inputTokens: number;
+  outputTokens: number;
+  cacheRead: number;
+  cacheWrite: number;
+  contextWindow: number;
+  percentage: number;
+  source: string;
 }
 
 export interface TokenDelta {
@@ -298,6 +310,59 @@ export class TokenTracker {
       contextWindow,
       modelId: m.modelId,
     };
+  }
+
+  getCurrentSessionTokens(): SessionTokenInfo | null {
+    const sessionId = this.getCurrentSessionId();
+    if (!sessionId) return null;
+
+    try {
+      const exportFile = '/tmp/archon-session-' + Date.now() + '.json';
+      execSync('opencode export ' + sessionId + ' > ' + exportFile + ' 2>/dev/null', {
+        encoding: 'utf-8',
+        timeout: 15000,
+      });
+
+      const pythonLines = [
+        'import json, sys',
+        'raw = open(\'' + exportFile + '\').read()',
+        'idx = raw.index(\'[\'); end = raw.rindex(\']\')',
+        'data = json.loads(raw[idx:end+1])',
+        'totals = [(m.get(\'info\',{}).get(\'tokens\',{}).get(\'total\',0) or 0) for m in data]',
+        'valid = [t for t in totals if t > 0]',
+        'if not valid: print(\'NONE\'); sys.exit(0)',
+        'last_total = valid[-1]',
+        'li = totals.index(last_total)',
+        'tokens = data[li].get(\'info\',{}).get(\'tokens\',{})',
+        'print(json.dumps({\'total\': tokens.get(\'total\',0), \'input\': tokens.get(\'input\',0), \'output\': tokens.get(\'output\',0), \'cacheRead\': tokens.get(\'cache\',{}).get(\'read\',0), \'cacheWrite\': tokens.get(\'cache\',{}).get(\'write\',0)}))',
+      ];
+      const pythonScript = pythonLines.join('\n');
+
+      const tmpFile = '/tmp/archon-tokens-' + Date.now() + '.py';
+      writeFileSync(tmpFile, pythonScript, 'utf-8');
+      const result = execSync('python3 ' + tmpFile, { encoding: 'utf-8', timeout: 10000 }).trim();
+
+      try { execSync('rm -f ' + tmpFile + ' ' + exportFile, { stdio: 'ignore' }); } catch { /* ok */ }
+
+      if (result === 'NONE' || !result) return null;
+
+      const parsed = JSON.parse(result);
+      const contextWindow = this.getContextWindow('minimax-m2.5-free');
+      const percentage = Math.min(100, Math.round((parsed.total / contextWindow) * 100));
+
+      return {
+        totalTokens: parsed.total,
+        inputTokens: parsed.input,
+        outputTokens: parsed.output,
+        cacheRead: parsed.cacheRead,
+        cacheWrite: parsed.cacheWrite,
+        contextWindow,
+        percentage,
+        source: 'session-export',
+      };
+    } catch {
+      return null;
+    }
   }
 
   private parseTokenValue(s: string): number {

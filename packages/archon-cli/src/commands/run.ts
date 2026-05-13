@@ -156,38 +156,36 @@ export class RunCommand {
       }
     }
 
-    if (agent === 'opencode') {
+if (agent === 'opencode') {
+      const sessionTokens = tokenTracker.getCurrentSessionTokens();
       const perModel = tokenTracker.getPerModelStats();
-      const stats = tokenTracker.getStats();
+      const m = perModel[0];
+      const contextWindow = tokenTracker.getContextWindow(m?.modelId ?? 'minimax-m2.5-free');
 
-      if (perModel.length > 0) {
-        const m = perModel[0]!;
-        const context = tokenTracker.getContextWindow(m.modelId);
-        const pct = Math.min(100, Math.round((m.totalTokens / context) * 100));
+      if (sessionTokens) {
+        console.log();
+        console.log(chalk.cyan('  Session Tokens:'));
+        console.log('    Model:     ' + 'minimax-m2.5-free' + ' (' + tokenTracker.fmtTokens(contextWindow) + ' context window)');
+        console.log('    Context:   [' + tokenTracker.buildTokenBar(sessionTokens.percentage) + '] ' + sessionTokens.percentage + '% — ' + tokenTracker.fmtTokens(sessionTokens.totalTokens) + ' / ' + tokenTracker.fmtTokens(contextWindow) + ' (current session)');
+        console.log('    Input:     ' + tokenTracker.fmtTokens(sessionTokens.inputTokens));
+        console.log('    Output:    ' + tokenTracker.fmtTokens(sessionTokens.outputTokens));
+        console.log('    Cache R:   ' + tokenTracker.fmtTokens(sessionTokens.cacheRead));
+        console.log('    Cache W:   ' + tokenTracker.fmtTokens(sessionTokens.cacheWrite));
+
         const threshold = cm.getDefault('tokens.warn') as number ?? DEFAULT_THRESHOLDS.warn;
         const critical = cm.getDefault('tokens.critical') as number ?? DEFAULT_THRESHOLDS.critical;
         const check = tokenTracker.checkThresholds({
-          percentage: pct,
-          totalTokens: m.totalTokens,
-          modelContextWindow: context,
-          inputTokens: m.inputTokens,
-          outputTokens: m.outputTokens,
-          cacheRead: m.cacheRead,
-          cacheWrite: m.cacheWrite,
-          messages: m.messages,
+          percentage: sessionTokens.percentage,
+          totalTokens: sessionTokens.totalTokens,
+          modelContextWindow: sessionTokens.contextWindow,
+          inputTokens: sessionTokens.inputTokens,
+          outputTokens: sessionTokens.outputTokens,
+          cacheRead: sessionTokens.cacheRead,
+          cacheWrite: sessionTokens.cacheWrite,
+          messages: 0,
           sessions: 0,
-          modelId: m.modelId,
+          modelId: 'minimax-m2.5-free',
         }, { warn: threshold, critical });
-
-        console.log();
-        console.log(chalk.cyan('  Session Tokens:'));
-        console.log('    Model:     ' + m.modelId + ' (' + tokenTracker.fmtTokens(context) + ' context window)');
-        console.log('    Project:   [' + tokenTracker.buildTokenBar(pct) + '] ' + pct + '% — ' + tokenTracker.fmtTokens(m.totalTokens) + ' / ' + tokenTracker.fmtTokens(context));
-        console.log('    Input:     ' + tokenTracker.fmtNumber(m.inputTokens));
-        console.log('    Output:    ' + tokenTracker.fmtNumber(m.outputTokens));
-        console.log('    Cache R:   ' + tokenTracker.fmtNumber(m.cacheRead));
-        console.log('    Cache W:   ' + tokenTracker.fmtNumber(m.cacheWrite));
-        if (stats) console.log('    Msg:       ' + stats.messages);
 
         if (check.severity === 'critical') {
           console.log();
@@ -197,11 +195,9 @@ export class RunCommand {
           if (!result.success) {
             console.log(chalk.yellow('    Compaction failed: ' + result.message + '\n'));
           } else {
-            const newStats = tokenTracker.getPerModelStats();
-            if (newStats[0]) {
-              const nc = tokenTracker.getContextWindow(newStats[0]!.modelId);
-              const np = Math.min(100, Math.round((newStats[0]!.totalTokens / nc) * 100));
-              console.log('    After compact: [' + tokenTracker.buildTokenBar(np) + '] ' + np + '%\n');
+            const newTokens = tokenTracker.getCurrentSessionTokens();
+            if (newTokens) {
+              console.log('    After compact: [' + tokenTracker.buildTokenBar(newTokens.percentage) + '] ' + newTokens.percentage + '%\n');
             }
           }
         } else if (check.severity === 'warn') {
@@ -209,12 +205,14 @@ export class RunCommand {
           console.log('  ' + chalk.yellow('⚠ ' + check.message));
           console.log();
         }
-      } else if (stats) {
+      } else if (m) {
         console.log();
         console.log(chalk.cyan('  Session Tokens:'));
-        console.log('    Model:     ' + stats.modelId + ' (' + tokenTracker.fmtTokens(stats.modelContextWindow) + ' context window)');
-        console.log('    Total:     ' + tokenTracker.fmtNumber(stats.totalTokens));
-        console.log('    Messages:  ' + stats.messages);
+        console.log('    Model:     ' + m.modelId + ' (' + tokenTracker.fmtTokens(contextWindow) + ' context window)');
+        const pct = Math.min(100, Math.round((m.totalTokens / contextWindow) * 100));
+        console.log('    Project:   [' + tokenTracker.buildTokenBar(pct) + '] ' + pct + '% — ' + tokenTracker.fmtTokens(m.totalTokens) + ' / ' + tokenTracker.fmtTokens(contextWindow) + ' (project accumulated)');
+        console.log('    Input:     ' + tokenTracker.fmtTokens(m.inputTokens));
+        console.log('    Output:    ' + tokenTracker.fmtTokens(m.outputTokens));
       }
     }
     console.log();
@@ -318,22 +316,30 @@ export class RunCommand {
     console.log();
 
     if (result.success) {
-      console.log(chalk.green('  ✅ Run complete (' + (result.duration ? (result.duration / 1000).toFixed(1) + 's' : 'no timing') + ')'));
+console.log(chalk.green('  ✅ Run complete (' + (result.duration ? (result.duration / 1000).toFixed(1) + 's' : 'no timing') + ')'));
       console.log(chalk.dim('     Run ID:   ' + completed.id));
       if (tokenUsage) {
-        console.log(chalk.dim('     Session: ' + archonSessionId));
-        console.log(chalk.cyan('     Tokens:  [' + tokenTracker.buildTokenBar(tokenUsage.percentage) + '] ') +
-          tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' / ' + tokenTracker.fmtTokens(tokenUsage.contextWindow) +
-          ' — ' + tokenUsage.percentage + '% (source: ' + tokenUsage.source + ')');
+        const afterTokens = tokenTracker.getCurrentSessionTokens();
+        if (afterTokens) {
+          console.log(chalk.cyan('     Session: [' + tokenTracker.buildTokenBar(afterTokens.percentage) + '] ') +
+            tokenTracker.fmtTokens(afterTokens.totalTokens) + ' / ' + tokenTracker.fmtTokens(afterTokens.contextWindow) +
+            ' — ' + afterTokens.percentage + '% (current context)');
+          console.log(chalk.dim('     Delta:   +' + tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' tokens this run'));
+        } else {
+          console.log(chalk.cyan('     Delta:   +' + tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' tokens (source: ' + tokenUsage.source + ')'));
+        }
       }
     } else {
       console.error(chalk.red('  ❌ Run failed' + (result.error ? ': ' + result.error : '')));
       console.error(chalk.dim('     Run ID:   ' + completed.id));
       if (tokenUsage) {
-        console.error(chalk.dim('     Session: ' + archonSessionId));
-        console.error(chalk.cyan('     Tokens:  [' + tokenTracker.buildTokenBar(tokenUsage.percentage) + '] ') +
-          tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' / ' + tokenTracker.fmtTokens(tokenUsage.contextWindow) +
-          ' — ' + tokenUsage.percentage + '%');
+        const afterTokens = tokenTracker.getCurrentSessionTokens();
+        if (afterTokens) {
+          console.error(chalk.cyan('     Session: [' + tokenTracker.buildTokenBar(afterTokens.percentage) + '] ') +
+            tokenTracker.fmtTokens(afterTokens.totalTokens) + ' / ' + tokenTracker.fmtTokens(afterTokens.contextWindow) +
+            ' — ' + afterTokens.percentage + '% (current context)');
+        }
+        console.error(chalk.dim('     Delta:   +' + tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' tokens this run'));
       }
     }
     console.log();
