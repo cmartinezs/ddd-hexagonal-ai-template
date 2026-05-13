@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { StateManager } from '../core/state-manager.js';
@@ -102,10 +102,6 @@ export class RunCommand {
     const metaPath = promptResult.filePath.replace('.md', '.json');
     writeFileSync(metaPath, JSON.stringify(promptResult.metadata, null, 2), 'utf-8');
 
-    console.log(chalk.green('  ✅ Context saved'));
-    console.log(chalk.green('  ✅ Prompt generated'));
-    console.log();
-
     const request: AgentExecutionRequest = {
       cwd: mode.projectPath!,
       promptFile: promptResult.filePath,
@@ -115,6 +111,40 @@ export class RunCommand {
       attachUrl: attachUrl ?? undefined,
       dryRun,
     };
+
+    console.log(chalk.green('  ✅ Context saved'));
+    console.log(chalk.green('  ✅ Prompt generated'));
+    console.log();
+
+    const doctorResult = await adapter.doctor();
+
+    console.log(chalk.cyan('  Files:'));
+    for (const f of request.contextFiles) {
+      let size = 0;
+      try { size = statSync(f).size; } catch { /* ok */ }
+      const rel = f.replace(mode.projectPath! + '/', './');
+      console.log('    ' + rel + ' ' + chalk.dim('(' + this.formatBytes(size) + ')'));
+    }
+    let promptSize = 0;
+    try { promptSize = statSync(promptResult.filePath).size; } catch { /* ok */ }
+    console.log('    ' + promptResult.filePath.replace(mode.projectPath! + '/', './') + ' ' + chalk.dim('(' + this.formatBytes(promptSize) + ')'));
+
+    console.log();
+    console.log(chalk.cyan('  Agent:'));
+    console.log('    Status:     ' + (doctorResult.status === 'available' ? chalk.green('available') : chalk.red(doctorResult.status)));
+    if (doctorResult.version) console.log('    Version:    ' + doctorResult.version);
+    if (doctorResult.capabilities.supportsRun) console.log('    Transport:  ' + chalk.green(transport));
+    console.log('    File-attach: ' + (doctorResult.capabilities.supportsFileAttachment ? chalk.green('yes') : chalk.dim('no')));
+    console.log('    Attach:     ' + (doctorResult.capabilities.supportsAttach ? chalk.green('yes') : chalk.dim('no')));
+
+    if (doctorResult.diagnostics.length > 0) {
+      console.log();
+      console.log(chalk.dim('    Diagnostics:'));
+      for (const d of doctorResult.diagnostics) {
+        console.log(chalk.dim('      - ' + d));
+      }
+    }
+    console.log();
 
     const runTracker = new RunTracker(mode.projectPath!);
 
@@ -199,5 +229,13 @@ export class RunCommand {
   private getArg(args: string[], key: string): string | undefined {
     const idx = args.findIndex((a) => a === '--' + key);
     return idx >= 0 ? args[idx + 1] : undefined;
+  }
+
+  private formatBytes(bytes: number): string {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i]!;
   }
 }
