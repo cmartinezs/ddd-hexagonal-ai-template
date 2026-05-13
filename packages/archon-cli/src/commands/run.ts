@@ -10,6 +10,7 @@ import { contextScanner } from '../core/context-scanner.js';
 import { RunTracker } from '../core/run-tracker.js';
 import { AgentAdapterFactory, type AgentExecutionRequest } from '../core/agent-adapter.js';
 import { FirstInteractive } from '../core/interactive-engine.js';
+import { phaseEngine } from '../core/phase-engine.js';
 import type { AgentType, TransportMode } from '../core/types.js';
 import inquirer from 'inquirer';
 
@@ -76,7 +77,7 @@ export class RunCommand {
 
     console.log(chalk.cyan('\n  Configuration:'));
     console.log('    Agent:     ' + agent);
-    console.log('    Phase:     ' + phase);
+    console.log('    Phase:     ' + phase + ' — ' + phaseEngine.getPhase(phase).name);
     console.log('    Transport: ' + transport);
     console.log('    Project:   ' + state.projectName);
     console.log();
@@ -109,7 +110,7 @@ export class RunCommand {
       cwd: mode.projectPath!,
       promptFile: promptResult.filePath,
       contextFiles: [contextPath, mapPath].filter((f) => existsSync(f)),
-      title: 'Archon Phase ' + phase,
+      title: '[' + state.projectName + '] Phase ' + phase + ': ' + phaseEngine.getPhase(phase).name,
       transport,
       attachUrl: attachUrl ?? undefined,
       dryRun,
