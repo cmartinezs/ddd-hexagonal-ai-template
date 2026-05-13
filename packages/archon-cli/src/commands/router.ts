@@ -240,6 +240,15 @@ async function getCommands(): Promise<Command[]> {
       },
     },
     {
+      name: 'serve',
+      description: 'Manage opencode persistent server',
+      options: 'start|stop|status|url',
+      handler: async (a, o) => {
+        const { ServeCommand } = await import('./serve.js');
+        await new ServeCommand().run(a, o);
+      },
+    },
+    {
       name: 'dev',
       description: 'Development commands (link-template, unlink)',
       options: 'link-template|unlink-template|status',
