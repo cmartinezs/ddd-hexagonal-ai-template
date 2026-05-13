@@ -150,31 +150,43 @@ export class Validator {
 
       for (const file of files) {
         const content = readFileSync(join(phasePath, file), 'utf-8');
+        let found: string | null = null;
+
         for (const pattern of TECHNOLOGY_PATTERNS) {
           const match = content.match(pattern);
           if (match) {
-            const matched = match[0]!;
-            const isOmitted = this.omit.some((n) => content.includes(n));
-            const severity = isOmitted ? 'warn' : (this.strict ? 'error' : 'warn');
-            constraints.push({
-              id: 'agnostic-violation',
-              severity,
-              message:
-                'Technology name "' +
-                matched +
-                '" found in phase ' +
-                phaseIndex +
-                ' (' +
-                file +
-                '). Phases 0-5 must be technology-agnostic.',
-              phase: phaseIndex,
-            });
+            found = match[0]!;
             break;
           }
         }
+
+          if (!found) continue;
+        if (this.omit.some((n) => n.toLowerCase().includes(found!.toLowerCase()))) continue;
+
+        constraints.push({
+          id: 'agnostic-violation',
+          severity: 'error',
+          message:
+            'Technology name "' +
+            found +
+            '" found in phase ' +
+            phaseIndex +
+            ' (' +
+            file +
+            '). Phases 0-5 must be technology-agnostic.',
+          phase: phaseIndex,
+        });
       }
     } catch {
       // non-fatal
+    }
+
+    if (!this.strict) {
+      for (const c of constraints) {
+        if (c.id === 'agnostic-violation' && c.severity === 'error') {
+          c.severity = 'warn';
+        }
+      }
     }
   }
 

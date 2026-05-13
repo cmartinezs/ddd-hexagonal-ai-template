@@ -8,7 +8,7 @@ export class CheckCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
     const json = opts['json'] === true;
     const _fix = opts['fix'] === true;
-    const strict = opts['strict'] === true;
+    const noStrict = opts['no-strict'] === true;
     const omitRaw = opts['omit'] as string | undefined;
     const omit = omitRaw ? omitRaw.split(',').map((s) => s.trim()).filter(Boolean) : [];
     const phaseArg = this.getArg(args, 'phase');
@@ -35,7 +35,7 @@ export class CheckCommand {
     const state = sm.load();
     const phase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase;
 
-    const v = new Validator({ basePath: mode.projectPath, strict, omit });
+    const v = new Validator({ basePath: mode.projectPath, strict: !noStrict, omit });
     const results = v.validate(phase);
 
     if (json) {
@@ -55,8 +55,8 @@ export class CheckCommand {
       return;
     }
 
-    if (strict) {
-      console.log(chalk.dim('  Strict mode — all violations are errors.\n'));
+    if (noStrict) {
+      console.log(chalk.dim('  Non-strict mode — violations are warnings.\n'));
     }
     console.log(chalk.cyan('\n  Checking Phase ' + phase + '...\n'));
     renderWarnings(results.constraints);
