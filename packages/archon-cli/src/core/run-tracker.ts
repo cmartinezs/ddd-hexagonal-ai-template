@@ -27,6 +27,20 @@ export interface RunRecord {
   };
   outputFiles?: string[];
   metadata?: Record<string, unknown>;
+  tokenUsage?: {
+    inputTokens: number;
+    outputTokens: number;
+    totalTokens: number;
+    cacheRead: number;
+    cacheWrite: number;
+    deltaTokens: number;
+    projectTotalTokens: number;
+    contextWindow: number;
+    percentage: number;
+    source: string;
+    snapshotBefore?: string;
+    snapshotAfter?: string;
+  };
 }
 
 export class RunTracker {
@@ -110,7 +124,7 @@ export class RunTracker {
     return [agent, 'run'];
   }
 
-  completeRun(record: RunRecord, result: AgentExecutionResult): RunRecord {
+  completeRun(record: RunRecord, result: AgentExecutionResult, tokenUsage?: RunRecord['tokenUsage']): RunRecord {
     const gitAfter = this.getGitInfo();
     record.finishedAt = new Date().toISOString();
     record.duration = result.duration;
@@ -120,6 +134,7 @@ export class RunTracker {
     record.outputFiles = result.outputFiles;
     record.git!.commitAfter = gitAfter.commit;
     record.git!.dirtyAfter = gitAfter.dirty;
+    if (tokenUsage) record.tokenUsage = tokenUsage;
 
     this.saveRunRecord(record);
     this.saveLogs(record.id, result);

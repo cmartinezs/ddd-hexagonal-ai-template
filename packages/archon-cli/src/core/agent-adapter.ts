@@ -32,6 +32,7 @@ export interface AgentExecutionRequest {
   model?: string;
   remoteAgent?: string;
   session?: string;
+  archonSessionId?: string;
   continueSession?: boolean;
   attachUrl?: string;
   dryRun?: boolean;
@@ -138,6 +139,10 @@ export class OpencodeAdapter implements AgentAdapter {
     const cmd: string[] = ['opencode', 'run'];
 
     cmd.push('--title', request.title ?? 'Archon Task');
+
+    if (request.archonSessionId) {
+      cmd.push('--session', request.archonSessionId);
+    }
 
     if (request.transport === 'attach' && request.attachUrl) {
       cmd.push('--attach', request.attachUrl);

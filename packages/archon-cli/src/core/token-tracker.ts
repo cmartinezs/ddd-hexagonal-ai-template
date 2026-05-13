@@ -23,6 +23,26 @@ export interface ModelStats {
   messages: number;
 }
 
+export interface TokenSnapshot {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  cacheRead: number;
+  cacheWrite: number;
+  timestamp: string;
+  source: 'project-stats' | 'per-model-stats' | 'opencode-export' | 'sqlite';
+}
+
+export interface TokenDelta {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  cacheRead: number;
+  cacheWrite: number;
+  deltaTokens: number;
+  source: string;
+}
+
 export interface TokenThresholds {
   warn: number;
   critical: number;
@@ -223,6 +243,61 @@ export class TokenTracker {
     } catch {
       return null;
     }
+  }
+
+  snapshot(): TokenSnapshot | null {
+    const perModel = this.getPerModelStats();
+    if (perModel.length > 0) {
+      const m = perModel[0]!;
+      return {
+        inputTokens: m.inputTokens,
+        outputTokens: m.outputTokens,
+        totalTokens: m.totalTokens,
+        cacheRead: m.cacheRead,
+        cacheWrite: m.cacheWrite,
+        timestamp: new Date().toISOString(),
+        source: 'per-model-stats',
+      };
+    }
+    const stats = this.getStats();
+    if (stats) {
+      return {
+        inputTokens: stats.inputTokens,
+        outputTokens: stats.outputTokens,
+        totalTokens: stats.totalTokens,
+        cacheRead: stats.cacheRead,
+        cacheWrite: stats.cacheWrite,
+        timestamp: new Date().toISOString(),
+        source: 'project-stats',
+      };
+    }
+    return null;
+  }
+
+  computeDelta(start: TokenSnapshot, end: TokenSnapshot): TokenDelta {
+    return {
+      inputTokens: Math.max(0, end.inputTokens - start.inputTokens),
+      outputTokens: Math.max(0, end.outputTokens - start.outputTokens),
+      totalTokens: Math.max(0, end.totalTokens - start.totalTokens),
+      cacheRead: Math.max(0, end.cacheRead - start.cacheRead),
+      cacheWrite: Math.max(0, end.cacheWrite - start.cacheWrite),
+      deltaTokens: Math.max(0, end.totalTokens - start.totalTokens),
+      source: start.source + ' -> ' + end.source,
+    };
+  }
+
+  getProjectUsage(): { total: number; percentage: number; contextWindow: number; modelId: string } | null {
+    const perModel = this.getPerModelStats();
+    if (perModel.length === 0) return null;
+    const m = perModel[0]!;
+    const contextWindow = this.getContextWindow(m.modelId);
+    const percentage = Math.min(100, Math.round((m.totalTokens / contextWindow) * 100));
+    return {
+      total: m.totalTokens,
+      percentage,
+      contextWindow,
+      modelId: m.modelId,
+    };
   }
 
   private parseTokenValue(s: string): number {

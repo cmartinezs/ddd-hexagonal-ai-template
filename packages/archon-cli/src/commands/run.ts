@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { randomUUID } from 'node:crypto';
 
 import { StateManager } from '../core/state-manager.js';
 import { ConfigManager } from '../core/config-manager.js';
@@ -108,6 +109,8 @@ export class RunCommand {
     const metaPath = promptResult.filePath.replace('.md', '.json');
     writeFileSync(metaPath, JSON.stringify(promptResult.metadata, null, 2), 'utf-8');
 
+    const archonSessionId = 'archon-' + new Date().toISOString().replace(/[:.]/g, '-') + '-' + randomUUID().slice(0, 8);
+
     const request: AgentExecutionRequest = {
       cwd: mode.projectPath!,
       promptFile: promptResult.filePath,
@@ -116,6 +119,7 @@ export class RunCommand {
       transport,
       attachUrl: attachUrl ?? undefined,
       dryRun,
+      archonSessionId,
     };
 
     console.log(chalk.green('  ✅ Context saved'));
@@ -215,8 +219,6 @@ export class RunCommand {
     }
     console.log();
 
-    const runTracker = new RunTracker(mode.projectPath!);
-
     if (dryRun) {
       const cmd = adapter.buildCommand(request);
       const normalizedCwd = request.cwd.replace(/\/$/, '');
@@ -256,11 +258,12 @@ export class RunCommand {
     if (confirm) {
       const cmd = adapter.buildCommand(request);
       console.log(chalk.yellow('  ⚠️  Review before execution:\n'));
-      console.log(chalk.bold('  Agent:     ') + agent);
-      console.log(chalk.bold('  Transport: ') + transport);
-      console.log(chalk.bold('  Phase:     ') + phase);
-      console.log(chalk.bold('  Prompt:    ') + promptResult.filePath);
-      console.log(chalk.bold('  Context:   ') + request.contextFiles.join(', '));
+      console.log(chalk.bold('  Agent:          ') + agent);
+      console.log(chalk.bold('  Session ID:    ') + archonSessionId);
+      console.log(chalk.bold('  Transport:     ') + transport);
+      console.log(chalk.bold('  Phase:         ') + phase);
+      console.log(chalk.bold('  Prompt:        ') + promptResult.filePath);
+      console.log(chalk.bold('  Context:       ') + request.contextFiles.join(', '));
       console.log(chalk.bold('\n  Command:'));
       console.log('  ' + cmd.join(' \\\n    '));
 
@@ -276,21 +279,62 @@ export class RunCommand {
       }
     }
 
+    const runTracker = new RunTracker(mode.projectPath!);
+    const beforeSnapshot = agent === 'opencode' ? tokenTracker.snapshot() : null;
+
     const record = runTracker.createRunRecord(request, agent, transport);
 
-    console.log(chalk.cyan('  🚀 Executing ' + adapter.displayName + '...\n'));
+    console.log(chalk.cyan('  🚀 Executing ' + adapter.displayName + ' (session: ' + archonSessionId + ')\n'));
 
     const result = await adapter.execute(request);
-    const completed = runTracker.completeRun(record, result);
+
+    let tokenUsage: ReturnType<typeof runTracker.createRunRecord>['tokenUsage'] | undefined;
+    if (agent === 'opencode' && beforeSnapshot) {
+      const afterSnapshot = tokenTracker.snapshot();
+      if (afterSnapshot) {
+        const delta = tokenTracker.computeDelta(beforeSnapshot, afterSnapshot);
+        const perModel = tokenTracker.getPerModelStats();
+        const m = perModel[0];
+        const contextWindow = tokenTracker.getContextWindow(m?.modelId ?? 'minimax-m2.5-free');
+        tokenUsage = {
+          inputTokens: delta.inputTokens,
+          outputTokens: delta.outputTokens,
+          totalTokens: delta.totalTokens,
+          cacheRead: delta.cacheRead,
+          cacheWrite: delta.cacheWrite,
+          deltaTokens: delta.deltaTokens,
+          projectTotalTokens: m?.totalTokens ?? 0,
+          contextWindow,
+          percentage: Math.min(100, Math.round((delta.totalTokens / contextWindow) * 100)),
+          source: delta.source,
+          snapshotBefore: beforeSnapshot.timestamp,
+          snapshotAfter: afterSnapshot.timestamp,
+        };
+      }
+    }
+
+    const completed = runTracker.completeRun(record, result, tokenUsage);
 
     console.log();
 
     if (result.success) {
       console.log(chalk.green('  ✅ Run complete (' + (result.duration ? (result.duration / 1000).toFixed(1) + 's' : 'no timing') + ')'));
-      console.log(chalk.dim('     Run ID: ' + completed.id));
+      console.log(chalk.dim('     Run ID:   ' + completed.id));
+      if (tokenUsage) {
+        console.log(chalk.dim('     Session: ' + archonSessionId));
+        console.log(chalk.cyan('     Tokens:  [' + tokenTracker.buildTokenBar(tokenUsage.percentage) + '] ') +
+          tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' / ' + tokenTracker.fmtTokens(tokenUsage.contextWindow) +
+          ' — ' + tokenUsage.percentage + '% (source: ' + tokenUsage.source + ')');
+      }
     } else {
       console.error(chalk.red('  ❌ Run failed' + (result.error ? ': ' + result.error : '')));
-      console.error(chalk.dim('     Run ID: ' + completed.id));
+      console.error(chalk.dim('     Run ID:   ' + completed.id));
+      if (tokenUsage) {
+        console.error(chalk.dim('     Session: ' + archonSessionId));
+        console.error(chalk.cyan('     Tokens:  [' + tokenTracker.buildTokenBar(tokenUsage.percentage) + '] ') +
+          tokenTracker.fmtTokens(tokenUsage.totalTokens) + ' / ' + tokenTracker.fmtTokens(tokenUsage.contextWindow) +
+          ' — ' + tokenUsage.percentage + '%');
+      }
     }
     console.log();
   }
