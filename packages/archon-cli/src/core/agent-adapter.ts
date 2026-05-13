@@ -153,8 +153,6 @@ export class OpencodeAdapter implements AgentAdapter {
       cmd.push('--output', 'json');
     }
 
-    cmd.push('Execute the Archon task described in the attached files.');
-
     return cmd;
   }
 
@@ -279,8 +277,6 @@ export class ClaudeAdapter implements AgentAdapter {
       cmd.push('--file', file);
     }
     cmd.push('--file', request.promptFile);
-
-    cmd.push('Execute the Archon task described in the attached files.');
 
     return cmd;
   }
