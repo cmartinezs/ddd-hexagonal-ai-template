@@ -36,11 +36,21 @@ export interface ValidationResult {
   suggestions: string[];
 }
 
+export interface ValidatorOptions {
+  basePath?: string;
+  strict?: boolean;
+  omit?: string[];
+}
+
 export class Validator {
   private basePath: string;
+  private strict: boolean;
+  private omit: string[];
 
-  constructor(basePath?: string) {
-    this.basePath = basePath || process.cwd();
+  constructor(options: ValidatorOptions = {}) {
+    this.basePath = options.basePath || process.cwd();
+    this.strict = options.strict ?? false;
+    this.omit = options.omit ?? [];
   }
 
   validate(phaseIndex: number): ValidationResult {
@@ -143,12 +153,15 @@ export class Validator {
         for (const pattern of TECHNOLOGY_PATTERNS) {
           const match = content.match(pattern);
           if (match) {
+            const matched = match[0]!;
+            const isOmitted = this.omit.some((n) => content.includes(n));
+            const severity = isOmitted ? 'warn' : (this.strict ? 'error' : 'warn');
             constraints.push({
               id: 'agnostic-violation',
-              severity: 'error',
+              severity,
               message:
                 'Technology name "' +
-                match[0] +
+                matched +
                 '" found in phase ' +
                 phaseIndex +
                 ' (' +

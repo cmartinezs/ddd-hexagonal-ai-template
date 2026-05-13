@@ -35,9 +35,12 @@ while (i < rawArgs.length) {
     ) {
       opts[arg.slice(2)] = rawArgs[i + 1];
       i += 2;
-    } else if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm' || arg === '--regenerate' || arg === '--doctor') {
+    } else if (arg === '--copy' || arg === '--dry-run' || arg === '--confirm' || arg === '--regenerate' || arg === '--doctor' || arg === '--strict') {
       opts[arg.slice(2)] = true;
       i++;
+    } else if (arg === '--omit' && rawArgs[i + 1] !== undefined) {
+      opts['omit'] = rawArgs[i + 1];
+      i += 2;
     } else {
     i++;
   }

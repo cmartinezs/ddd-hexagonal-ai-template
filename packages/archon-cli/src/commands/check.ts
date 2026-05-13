@@ -1,13 +1,16 @@
 import chalk from 'chalk';
 import { StateManager } from '../core/state-manager.js';
 import { detectMode } from '../core/mode-detector.js';
-import { validator } from '../core/validator.js';
+import { Validator } from '../core/validator.js';
 import { renderWarnings } from '../ui/render-warnings.js';
 
 export class CheckCommand {
   async run(args: string[], opts: Record<string, unknown>): Promise<void> {
     const json = opts['json'] === true;
     const _fix = opts['fix'] === true;
+    const strict = opts['strict'] === true;
+    const omitRaw = opts['omit'] as string | undefined;
+    const omit = omitRaw ? omitRaw.split(',').map((s) => s.trim()).filter(Boolean) : [];
     const phaseArg = this.getArg(args, 'phase');
 
     if (_fix) {
@@ -32,7 +35,8 @@ export class CheckCommand {
     const state = sm.load();
     const phase = phaseArg !== undefined ? parseInt(phaseArg, 10) : state.currentPhase;
 
-    const results = validator.validate(phase);
+    const v = new Validator({ basePath: mode.projectPath, strict, omit });
+    const results = v.validate(phase);
 
     if (json) {
       console.log(
@@ -51,6 +55,9 @@ export class CheckCommand {
       return;
     }
 
+    if (strict) {
+      console.log(chalk.dim('  Strict mode — all violations are errors.\n'));
+    }
     console.log(chalk.cyan('\n  Checking Phase ' + phase + '...\n'));
     renderWarnings(results.constraints);
   }
