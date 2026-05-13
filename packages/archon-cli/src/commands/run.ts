@@ -121,7 +121,7 @@ export class RunCommand {
     if (dryRun) {
       const cmd = adapter.buildCommand(request);
       console.log(chalk.cyan('  📋 Dry-run — command that would be executed:\n'));
-      console.log(chalk.bold('  ' + cmd.join(' \\\n    ')));
+      console.log('  ' + cmd.join(' '));
       console.log();
       return;
     }
