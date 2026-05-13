@@ -48,22 +48,22 @@ archon run --agent opencode --phase 0
 
 | Command | Description |
 |---------|-------------|
-| `archon init` | Initialize a new project from the DDD template |
-| `archon status` | Show current phase and progress |
-| `archon next` | Advance to the next phase |
-| `archon check` | Validate current phase constraints |
-| `archon prompt` | Generate an AI prompt for a phase |
-| `archon context` | Scan project and generate context files |
-| `archon run` | Execute an AI agent via adapter |
-| `archon agent` | Configure or diagnose AI agents |
-| `archon prompts` | Manage the accumulated prompt library |
-| `archon guide` | Interactive help for any phase |
-| `archon tutorial` | Guided tutorial mode |
-| `archon doctor` | Health check and integrity validation |
-| `archon config` | Manage configuration defaults |
-| `archon upgrade` | Upgrade template to a newer version |
-| `archon templates` | Manage the global template cache |
-| `archon dev` | Development commands (link template) |
+| `archon init [--name <n>] [--agent <a>]` | Initialize a new project. [→ ref](docs/commands/init.md) |
+| `archon status [--json]` | Show current phase and progress. [→ ref](docs/commands/status.md) |
+| `archon next [--phase <N>] [--force]` | Advance phase (jump detection). [→ ref](docs/commands/next.md) |
+| `archon check [--phase <N>] [--force]` | Validate phase constraints. [→ ref](docs/commands/check.md) |
+| `archon prompt [--phase <N>] [--context <l>] [--copy]` | Generate AI prompt. [→ ref](docs/commands/prompt.md) |
+| `archon context <scan\|inject> [--output <p>]` | Context files. [→ ref](docs/commands/context.md) |
+| `archon run --agent <a> --phase <N>` | Execute AI agent. [→ ref](docs/commands/run.md) |
+| `archon agent [--set <a>] [--doctor]` | Configure agent. [→ ref](docs/commands/agent.md) |
+| `archon prompts <ls\|rank\|compress\|merge\|...>` | Prompt library. [→ ref](docs/commands/prompts.md) |
+| `archon guide [--phase <N>]` | Phase help. [→ ref](docs/commands/guide.md) |
+| `archon tutorial [--mode <m>] [--step <N>]` | Guided tutorial. [→ ref](docs/commands/tutorial.md) |
+| `archon doctor [--fix]` | Health check. [→ ref](docs/commands/doctor.md) |
+| `archon config <set\|get\|ls>` | Config defaults. [→ ref](docs/commands/config.md) |
+| `archon upgrade [--target <v>] [--rollback <v>]` | Upgrade template. [→ ref](docs/commands/upgrade.md) |
+| `archon templates <ls\|pull\|update\|remove\|doctor>` | Template cache. [→ ref](docs/commands/templates.md) |
+| `archon dev <link-template\|unlink-template\|status>` | Dev commands. [→ ref](docs/commands/dev.md) |
 
 ## AI Agent Integration
 
@@ -192,6 +192,14 @@ Archon follows a plugin-friendly architecture:
 - **`AgentAdapter`** interface — Add new agents by implementing `detect()`, `doctor()`, and `execute()`
 - **Transport abstraction** — File-attachment, attach, and stdin are all supported
 - **Global template cache** — Templates are cached at `~/.archon/` and resolved at runtime
+
+## Command Reference
+
+Full per-command documentation with options, examples, and cross-navigation between related commands: [`docs/commands/`](docs/commands/)
+
+## Guides
+
+- [Real-World Workflow](docs/guides/real-world-workflow.md) — complete walkthrough using Archon with the DDD Hexagonal Template
 
 ---
 

@@ -56,6 +56,13 @@ Key traits:
 │   ├── active/                 # Plannings in EXPANSION or DEEPENING
 │   └── finished/               # Archived completed plannings
 │
+├── packages/
+│   └── archon-cli/             # Archon CLI — globally installable companion tool
+│       ├── README.md           # Command reference + quick start
+│       ├── docs/commands/      # Per-command documentation (16 .md files)
+│       ├── docs/guides/        # Workflow guides
+│       └── src/                # TypeScript source
+│
 ├── research/                   # Research and investigation documents
 │
 ├── CONTRIBUTING.md
@@ -233,6 +240,28 @@ When modifying files in this repo:
 3. Update diagrams in `README.md`, `MACRO-PLAN.md`, and `sdlc-framework.md`.
 4. Update `.gitignore` or `.gitattributes` if needed.
 5. Update `AGENTS.md` directory structure section.
+
+---
+
+## Archon CLI
+
+The template ships with **Archon** (`packages/archon-cli/`), a globally installable CLI that systematizes the documentation workflow. When working in a project initialized with `archon init`, the following commands are relevant:
+
+| Command | When to use |
+|---------|-------------|
+| `archon status` | Check current phase and progress before any action |
+| `archon check [--force]` | Validate phase constraints; `--force` skips prompts (CI) |
+| `archon next [--phase <N>] [--force]` | Advance phase; jump detection fires if N > currentPhase+1 |
+| `archon context inject` | Load template guides into `.archon/context/context.md` |
+| `archon context scan` | Refresh project-specific context |
+| `archon prompt [--phase <N>]` | Generate the AI prompt for the current phase |
+| `archon run --agent <a> --phase <N>` | Execute the AI agent with the generated prompt |
+
+**State is in `.archon/state.json` — do not edit directly.** Use `archon doctor --fix` to repair.
+
+**Jump detection:** `archon next --phase N` when N > currentPhase+1 warns and marks intermediate phases as `skipped`. Use `--force` in automated contexts.
+
+Full reference: [`packages/archon-cli/docs/commands/`](packages/archon-cli/docs/commands/)
 
 ---
 

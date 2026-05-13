@@ -14,6 +14,7 @@ Plannings that have reached the **COMPLETED** state. These are archived and read
 | [004](004-tutorial-taskflow-completion/README.md) | Tutorial: TaskFlow Completion | 2026-05-11 | `EXAMPLE-IMPLEMENTATION.md` (all 12 phases, Mermaid diagrams, real Markdown), 25 traceability terms |
 | [005](005-tutorial-interactive/README.md) | Tutorial: Interactive Step-by-Step | 2026-05-12 | `tutorial/` (12 step files, README, validation checklist, AI prompts appendix), updated guides index, 4 new traceability terms |
 | [006](006-archon-cli/README.md) | Archon CLI | 2026-05-12 | `packages/archon-cli/` (17 commands, 9 scopes), global template cache, AI agent adapters, interactive engine, upgrade/migration, 41 PDRs |
+| [007](007-documentation-update/00-initial.md) | Documentation Update | 2026-05-13 | `docs/commands/` (16 files), `docs/guides/real-world-workflow.md`, `CHANGELOG.md`, root README + AGENTS.md + guides README updated |
 
 ---
 

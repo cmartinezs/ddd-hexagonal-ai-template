@@ -41,7 +41,7 @@ When a prompt contains one of these parameters (at the start or end):
 
 | ID | Name | Phase |
 |----|------|-------|
-| [006](active/006-archon-cli/README.md) | Archon CLI | EXPANSION |
+*No plannings in progress.*
 
 ### ✅ Completed → see [`finished/README.md`](finished/README.md)
 

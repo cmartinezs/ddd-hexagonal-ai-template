@@ -17,10 +17,11 @@ This section lists every guide in this folder, organized by function. For each g
 These three guides form the core operational set. Read them in order if you are beginning a documentation project or resuming after context loss.
 
 0. **[Archon CLI](../packages/archon-cli/README.md)** ⭐ **— Command-line tool for systematizing the template**
-   - 17 commands: init, status, prompt, run, check, next, guide, tutorial, doctor, agent, config, upgrade, templates, dev
+   - 16 commands: init, status, next, check, prompt, context, run, agent, prompts, guide, tutorial, doctor, config, upgrade, templates, dev
    - AI agent integration (opencode, Claude Code, Cursor, Gemini)
-   - Phase enforcement, checksum validation, upgrade/migration
-   - Global install: `npm install -g archon`
+   - Phase enforcement, jump detection, checksum validation, upgrade/migration
+   - Global install: `npm install -g @archon/cli`
+   - Full reference: [`packages/archon-cli/docs/commands/`](../packages/archon-cli/docs/commands/)
 
 1. **[TEMPLATE-USAGE-GUIDE.md](./TEMPLATE-USAGE-GUIDE.md)** — Defines the required structure and content you must generate for each SDLC phase
    - Phase-by-phase file requirements

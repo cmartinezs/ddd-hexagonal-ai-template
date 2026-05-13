@@ -32,6 +32,10 @@ This template provides a structured SDLC (Software Development Lifecycle) docume
 
 ### Template Framework (Read-Only Guides)
 ```
+packages/archon-cli/            # Archon CLI — globally installable companion tool
+├── README.md                   # Command reference
+└── docs/commands/              # Per-command documentation (16 files)
+
 00-guides-and-instructions/     # How to use this template
 ├── README.md
 ├── TEMPLATE-ARCHITECTURE.md     # Why each folder exists
@@ -72,12 +76,32 @@ This template provides a structured SDLC (Software Development Lifecycle) docume
 └── 11-feedback/                # Your retrospectives
 ```
 
-## Quick Start
+## ⚡ Quick Start with Archon CLI (Recommended)
+
+The fastest way to use this template is via **Archon**, the companion CLI:
+
+```bash
+npm install -g @archon/cli
+
+archon init --name "my-project" --agent opencode
+cd my-project
+
+archon guide        # understand the current phase
+archon context inject && archon context scan
+archon prompt       # generate the AI prompt
+archon run --agent opencode --phase 0
+archon check && archon next
+```
+
+See [`packages/archon-cli/README.md`](packages/archon-cli/README.md) for the full command reference and [`packages/archon-cli/docs/guides/real-world-workflow.md`](packages/archon-cli/docs/guides/real-world-workflow.md) for a complete walkthrough.
+
+## Quick Start (Manual)
 
 1. **Read first**: Open `START-HERE.txt` (this folder) for 5-minute overview
 2. **Understand**: Read `README.md` (this file)
 3. **Choose your path**:
-   - **With AI** (10-15 days): Follow `00-guides-and-instructions/AI-WORKFLOW-GUIDE.md`
+   - **With Archon CLI** (recommended): See section above
+   - **With AI directly** (10-15 days): Follow `00-guides-and-instructions/AI-WORKFLOW-GUIDE.md`
    - **Manual** (3-4 weeks): Follow `00-guides-and-instructions/TEMPLATE-USAGE-GUIDE.md`
 4. **Set up**: Follow `SETUP-CHECKLIST.md` to customize for your project
 5. **Begin documenting**: Start with `01-templates/01-discovery/`
