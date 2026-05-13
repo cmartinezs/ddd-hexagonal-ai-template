@@ -153,18 +153,37 @@ export class RunCommand {
     }
 
     if (agent === 'opencode') {
+      const perModel = tokenTracker.getPerModelStats();
       const stats = tokenTracker.getStats();
-      if (stats) {
+
+      if (perModel.length > 0) {
+        const m = perModel[0]!;
+        const context = tokenTracker.getContextWindow(m.modelId);
+        const pct = Math.min(100, Math.round((m.totalTokens / context) * 100));
         const threshold = cm.getDefault('tokens.warn') as number ?? DEFAULT_THRESHOLDS.warn;
         const critical = cm.getDefault('tokens.critical') as number ?? DEFAULT_THRESHOLDS.critical;
-        const check = tokenTracker.checkThresholds(stats, { warn: threshold, critical });
+        const check = tokenTracker.checkThresholds({
+          percentage: pct,
+          totalTokens: m.totalTokens,
+          modelContextWindow: context,
+          inputTokens: m.inputTokens,
+          outputTokens: m.outputTokens,
+          cacheRead: m.cacheRead,
+          cacheWrite: m.cacheWrite,
+          messages: m.messages,
+          sessions: 0,
+          modelId: m.modelId,
+        }, { warn: threshold, critical });
 
         console.log();
         console.log(chalk.cyan('  Session Tokens:'));
-        console.log('    Input:    ' + tokenTracker.fmtNumber(stats.inputTokens));
-        console.log('    Output:   ' + tokenTracker.fmtNumber(stats.outputTokens));
-        console.log('    Total:    ' + tokenTracker.fmtNumber(stats.totalTokens));
-        console.log('    Messages: ' + stats.messages);
+        console.log('    Model:     ' + m.modelId + ' (' + tokenTracker.fmtTokens(context) + ' context window)');
+        console.log('    Project:   [' + tokenTracker.buildTokenBar(pct) + '] ' + pct + '% — ' + tokenTracker.fmtTokens(m.totalTokens) + ' / ' + tokenTracker.fmtTokens(context));
+        console.log('    Input:     ' + tokenTracker.fmtNumber(m.inputTokens));
+        console.log('    Output:    ' + tokenTracker.fmtNumber(m.outputTokens));
+        console.log('    Cache R:   ' + tokenTracker.fmtNumber(m.cacheRead));
+        console.log('    Cache W:   ' + tokenTracker.fmtNumber(m.cacheWrite));
+        if (stats) console.log('    Msg:       ' + stats.messages);
 
         if (check.severity === 'critical') {
           console.log();
@@ -174,9 +193,11 @@ export class RunCommand {
           if (!result.success) {
             console.log(chalk.yellow('    Compaction failed: ' + result.message + '\n'));
           } else {
-            const newStats = tokenTracker.getStats();
-            if (newStats) {
-              console.log('    After compact: ' + tokenTracker.fmtNumber(newStats.totalTokens) + '\n');
+            const newStats = tokenTracker.getPerModelStats();
+            if (newStats[0]) {
+              const nc = tokenTracker.getContextWindow(newStats[0]!.modelId);
+              const np = Math.min(100, Math.round((newStats[0]!.totalTokens / nc) * 100));
+              console.log('    After compact: [' + tokenTracker.buildTokenBar(np) + '] ' + np + '%\n');
             }
           }
         } else if (check.severity === 'warn') {
@@ -184,6 +205,12 @@ export class RunCommand {
           console.log('  ' + chalk.yellow('⚠ ' + check.message));
           console.log();
         }
+      } else if (stats) {
+        console.log();
+        console.log(chalk.cyan('  Session Tokens:'));
+        console.log('    Model:     ' + stats.modelId + ' (' + tokenTracker.fmtTokens(stats.modelContextWindow) + ' context window)');
+        console.log('    Total:     ' + tokenTracker.fmtNumber(stats.totalTokens));
+        console.log('    Messages:  ' + stats.messages);
       }
     }
     console.log();
