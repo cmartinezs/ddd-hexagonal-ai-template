@@ -48,6 +48,12 @@ archon run --agent opencode --phase 0
 
 | Command | Description |
 |---------|-------------|
+| `archon generate phase <N> [--force]` | Scaffold phase docs from template. [→ ref](docs/commands/generate.md) |
+| `archon review [--phase <N>] [--json]` | Review documentation quality for a phase. [→ ref](docs/commands/review.md) |
+| `archon trace [--phase <N>] [--json]` | Cross-phase traceability matrix. [→ ref](docs/commands/trace.md) |
+| `archon diff --from <v> --to <v>` | Diff template versions. [→ ref](docs/commands/diff.md) |
+| `archon quality [--phase <N>] [--json]` | Project health score and breakdown. [→ ref](docs/commands/quality.md) |
+| `archon doctor [--fix] [--ci] [--json]` | Health check (CI mode exits 0/1). [→ ref](docs/commands/doctor.md) |
 | `archon init [--name <n>] [--agent <a>]` | Initialize a new project. [→ ref](docs/commands/init.md) |
 | `archon status [--json]` | Show current phase and progress. [→ ref](docs/commands/status.md) |
 | `archon next [--phase <N>] [--force]` | Advance phase (jump detection). [→ ref](docs/commands/next.md) |

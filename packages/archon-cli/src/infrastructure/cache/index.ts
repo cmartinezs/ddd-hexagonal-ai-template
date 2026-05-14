@@ -1,0 +1,2 @@
+export { GlobalCache, globalCache, type TemplateInfo, type TemplateVersionInfo, ARCHON_CACHE_DIR, TEMPLATES_DIR, REGISTRY_FILE } from './global-cache.js';
+export { TemplateResolver, templateResolver } from './template-resolver.js';

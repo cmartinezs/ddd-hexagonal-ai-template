@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(xargs cat *)",
-      "Bash(git -C /c/Users/cmartinezs/IdeaProjects/ddd-hexagonal-ai-template log --oneline)"
+      "Bash(git -C /c/Users/cmartinezs/IdeaProjects/ddd-hexagonal-ai-template log --oneline)",
+      "Bash(git add *)"
     ]
   }
 }
