@@ -3,7 +3,10 @@
     "allow": [
       "Bash(xargs cat *)",
       "Bash(git -C /c/Users/cmartinezs/IdeaProjects/ddd-hexagonal-ai-template log --oneline)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(node dist/bin/archon.js --help)"
     ]
   }
 }
