@@ -24,16 +24,6 @@ export function detectMode(): ModeDetectionResult {
     return { mode: 'template-cache' };
   }
 
-  if (process.env['ARCHON_DEV_TEMPLATE_PATH']) {
-    const devPath = process.env['ARCHON_DEV_TEMPLATE_PATH'];
-    return {
-      mode: 'dev',
-      templatePath: devPath,
-      templateId: 'ddd-hexagonal-ai-template',
-      templateVersion: 'dev',
-    };
-  }
-
   const project = findProjectFromState();
   if (project) {
     return {
@@ -43,6 +33,16 @@ export function detectMode(): ModeDetectionResult {
       templatePath: project.templatePath,
       templateId: project.templateId,
       templateVersion: project.templateVersion,
+    };
+  }
+
+  if (process.env['ARCHON_DEV_TEMPLATE_PATH']) {
+    const devPath = process.env['ARCHON_DEV_TEMPLATE_PATH'];
+    return {
+      mode: 'dev',
+      templatePath: devPath,
+      templateId: 'ddd-hexagonal-ai-template',
+      templateVersion: 'dev',
     };
   }
 

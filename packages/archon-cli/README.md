@@ -44,6 +44,32 @@ archon next
 archon run --agent opencode --phase 0
 ```
 
+## Command Stability
+
+Commands are categorized by stability level:
+
+### Stable (Production Ready)
+- `init`, `status`, `check`, `next`, `run`, `generate`
+- `prompt`, `context`, `config`, `upgrade`, `doctor`
+- `templates ls`, `templates pull`, `templates remove`, `templates doctor`
+- `agent`, `guide`, `tutorial`
+
+### Experimental (Functional, May Change)
+- `review`, `trace`, `diff`, `quality`
+- `prompts`, `models`
+
+### Planned (Not Yet Implemented)
+- `templates update` — Use `templates pull` instead
+
+### Supported AI Agents
+| Agent | Status | Notes |
+|-------|--------|-------|
+| `opencode` | ✅ supported | Primary agent |
+| `claude` | ✅ supported | Full integration |
+| `manual` | 📝 prompt-only | Generates prompts only |
+| `cursor` | ⏳ planned | Not yet executable |
+| `gemini` | ⏳ planned | Not yet executable |
+
 ## Commands
 
 | Command | Description |

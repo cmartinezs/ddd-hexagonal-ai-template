@@ -6,6 +6,23 @@ All notable changes to this repository are documented here. Ordered from most re
 
 ## [Unreleased]
 
+### Added (Planning 019 - Archon-CLI Improvements)
+
+- **Testing infrastructure:** Vitest configured with 70 tests covering StateManager, TemplateResolver, Validator, GeneratePhaseUseCase, RunAgentUseCase, ModeDetector
+- **Mode detection fix:** Project detection now happens before ARCHON_DEV_TEMPLATE_PATH, fixing dev mode false positives
+- **Commander full integration:** Real `.option()` definitions for each command, removed three-sources-of-truth (parseOpts + getArg)
+- **Templates command:** `templates remove` fully implemented, `templates update` shows useful status
+- **Template lock enhancement:** createTemplateLock() now uses real registry info (source, ref, commitSha)
+- **Init agent validation:** Shows agent tiers (✅ supported, 📝 prompt-only, ⏳ planned) and blocks planned agents
+
+### Fixed (Planning 019)
+
+- Commander 14 subcommand argument parsing for templates/dev (enablePositionalOptions() + nested commands)
+
+---
+
+## [2026-05-12] — Archon CLI (Planning 006)
+
 ---
 
 ## [2026-05-12] — Archon CLI (Planning 006)

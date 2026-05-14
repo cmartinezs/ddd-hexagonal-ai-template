@@ -86,16 +86,30 @@ export class TemplateResolver {
     });
   }
 
-  createTemplateLock(projectPath: string, id: string, version: string, cachePath: string): TemplateLock {
+  createTemplateLock(
+    projectPath: string,
+    id: string,
+    version: string,
+    cachePath: string,
+    registryInfo?: { source?: string; ref?: string; commitSha?: string }
+  ): TemplateLock {
+    const registry = globalCache.getRegistry();
+    const info = registry[id];
+
+    const source = registryInfo?.source ?? info?.source ?? 'ddd-hexagonal-ai-template';
+    const ref = registryInfo?.ref ?? 'v' + version;
+    const commitSha = registryInfo?.commitSha ?? info?.versions[version]?.commitSha ?? undefined;
+
     const lock: TemplateLock = {
       template: {
         id,
         version,
-        source: 'ddd-hexagonal-ai-template',
-        ref: 'v' + version,
+        source,
+        ref,
         cachePath,
         embeddedSnapshot: false,
         resolvedAt: new Date().toISOString(),
+        commitSha: commitSha ?? undefined,
       },
     };
 

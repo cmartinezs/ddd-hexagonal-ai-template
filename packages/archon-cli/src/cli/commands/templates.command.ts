@@ -149,16 +149,97 @@ export class TemplatesCommand {
   }
 
   private updateTemplates(): void {
-    console.log(chalk.cyan('\n  Updating templates...\n'));
+    console.log(chalk.cyan('\n  Template Cache Status\n'));
     const registry = globalCache.getRegistry();
-    const count = Object.values(registry).reduce((acc, info) => acc + Object.keys(info.versions).length, 0);
-    console.log(chalk.green('  ' + count + ' template version(s) in cache.\n'));
-    console.log(chalk.dim('  Use `archon templates pull <id>@<version>` to add specific versions.\n'));
+    const templateIds = Object.keys(registry);
+
+    if (templateIds.length === 0) {
+      console.log(chalk.yellow('  No templates installed.\n'));
+      return;
+    }
+
+    console.log('  Installed templates: ' + templateIds.length);
+    console.log();
+
+    for (const id of templateIds) {
+      const info = registry[id]!;
+      const versions = Object.keys(info.versions);
+      console.log(chalk.bold('  ' + info.id));
+      console.log(chalk.dim('    Source: ' + info.source));
+      console.log('    Installed: ' + versions.length + ' version(s)');
+      console.log('    Versions: ' + versions.join(', '));
+      console.log();
+    }
+
+    console.log(chalk.dim('  Commands:'));
+    console.log(chalk.dim('    archon templates pull <id>@<version>  # install specific version'));
+    console.log(chalk.dim('    archon templates remove <id>[@<version>] # remove from cache'));
+    console.log(chalk.dim('    archon templates doctor               # check cache health\n'));
   }
 
-  private removeTemplate(_args: string[]): void {
-    console.log(chalk.yellow('\n  [planned] `archon templates remove` is not yet implemented.'));
-    console.log(chalk.dim('  To remove a cached template manually, delete the version folder from the global cache.\n'));
+private removeTemplate(args: string[]): void {
+    let target = args[0];
+
+    if (!target) {
+      console.error(chalk.red('\n  Usage: archon templates remove <id>[@<version>]\n'));
+      console.log(chalk.dim('  Examples:'));
+      console.log(chalk.dim('    archon templates remove ddd-hexagonal-ai-template    # remove all versions'));
+      console.log(chalk.dim('    archon templates remove ddd-hexagonal-ai-template@0.1.0  # remove specific version\n'));
+      process.exit(1);
+    }
+
+    if (args[1] && !target.includes('@')) {
+      target = target + '@' + args[1];
+    }
+
+    let id: string;
+    let version: string | undefined;
+
+    if (target.includes('@')) {
+      const atIdx = target.lastIndexOf('@');
+      id = target.slice(0, atIdx);
+      version = target.slice(atIdx + 1);
+    } else {
+      id = target;
+      version = undefined;
+    }
+
+    const registry = globalCache.getRegistry();
+    const info = registry[id];
+
+    if (!info) {
+      console.error(chalk.red('\n  Template ' + id + ' not found in cache.\n'));
+      console.log(chalk.dim('  Run ' + chalk.cyan('archon templates ls') + ' to see installed templates.\n'));
+      process.exit(1);
+    }
+
+    if (version) {
+      const vinfo = info.versions[version];
+      if (!vinfo) {
+        console.error(chalk.red('\n  Version ' + version + ' not found for ' + id + '.\n'));
+        console.log(chalk.dim('  Available versions: ' + Object.keys(info.versions).join(', ') + '\n'));
+        process.exit(1);
+      }
+
+      if (existsSync(vinfo.path)) {
+        rmSync(vinfo.path, { recursive: true, force: true });
+      }
+      delete info.versions[version];
+
+      console.log(chalk.green('\n  Removed ' + id + '@' + version + ' from cache.\n'));
+    } else {
+      for (const [v] of Object.entries(info.versions)) {
+        const vinfo = info.versions[v]!;
+        if (existsSync(vinfo.path)) {
+          rmSync(vinfo.path, { recursive: true, force: true });
+        }
+      }
+      delete registry[id];
+
+      console.log(chalk.green('\n  Removed all versions of ' + id + ' from cache.\n'));
+    }
+
+    globalCache.saveRegistry(registry);
   }
 
   private doctorTemplates(): void {

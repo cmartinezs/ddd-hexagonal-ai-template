@@ -23,6 +23,7 @@ Plannings that have reached the **COMPLETED** state. These are archived and read
 | [014](014-archon-code-cleanup/00-initial.md) | Archon Code Cleanup | 2026-05-14 | `promptForMissing()` removed from `state-manager.ts`; local `PHASES` array in `next.ts` replaced with `phaseEngine`; `promptForMissing` export removed from `core/index.ts` |
 | [015](015-archon-architectural-refactoring/README.md) | Archon Architectural Refactoring | 2026-05-14 | `src/` restructured to DDD/hexagonal layers: `domain/`, `infrastructure/`, `application/`, `cli/`, `ui/`; `src/commands/` deleted; 6 use cases extracted; `npm run build` passes; residual: `core/` shim remains |
 | [016](016-archon-new-commands/README.md) | Archon New Commands | 2026-05-14 | 6 new commands: `generate`, `review`, `trace`, `diff`, `quality`, `doctor --ci`; all use cases + commands + docs/commands reference files; build passes, typecheck clean |
+| [019](019-archon-cli-improvement/README.md) | Archon-CLI Improvement Implementation | 2026-05-14 | 70 tests with Vitest, mode detection fix (project before dev path), Commander integration with real options, templates remove/update implemented, template lock uses real registry info, init agent validation with tiers |
 | [008](008-archon-improvement-master/README.md) | Archon Improvement Master Plan | 2026-05-14 | 8 sub-plannings executed (009–016): bugs fixed, versioning aligned, architecture refactored, 6 new commands added; all tracked and archived |
 
 ---

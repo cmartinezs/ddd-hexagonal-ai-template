@@ -21,77 +21,90 @@ export function createProgram(): Command {
     .version(version, '-v, --version')
     .enablePositionalOptions();
 
-  const commandNames = [
-    ['generate', 'Scaffold phase documentation files from template'],
-    ['init', 'Initialize new project from template'],
-    ['status', 'Show current phase and progress'],
-    ['next', 'Advance to next phase'],
-    ['complete', 'Mark current or specified phase as complete'],
-    ['check', 'Validate current phase constraints'],
-    ['prompt', 'Generate AI prompt for current or specified phase'],
-    ['context', 'Scan project and generate context files'],
-    ['run', 'Execute AI agent via adapter'],
-    ['agent', 'Manage AI agent configuration'],
-    ['config', 'Manage configuration defaults'],
-    ['guide', 'Interactive help for current or specified phase'],
-    ['tutorial', 'Guided tutorial mode'],
-    ['doctor', 'Health check and integrity validation'],
-    ['upgrade', 'Upgrade template to newer version'],
-    ['prompts', 'Manage accumulated prompt library'],
-    ['templates', 'Manage global template cache'],
-    ['models', 'List or set AI agent models'],
-    ['serve', 'Manage opencode persistent server'],
-    ['review', 'Review documentation quality for a phase'],
-    ['trace', 'Show traceability matrix across phases'],
-    ['diff', 'Diff template versions'],
-    ['quality', 'Overall documentation quality score'],
-    ['dev', 'Development commands (link-template, unlink)'],
-  ] as const;
+  const templates = program
+    .command('templates')
+    .description('Manage global template cache')
+    .enablePositionalOptions();
 
-  for (const [name, description] of commandNames) {
-    program
-      .command(name)
-      .description(description)
-      .allowUnknownOption()
-      .passThroughOptions()
-      .action(async (_opts: Record<string, unknown>, cmd: Command) => {
-        const rawArgs: string[] = cmd.args;
-        const opts = parseOpts(rawArgs);
-        const { runCommand } = await import('./router.js');
-        await runCommand(name, rawArgs, opts);
-      });
+  templates
+    .command('ls', { isDefault: true })
+    .description('List installed templates')
+    .allowUnknownOption(true)
+    .allowExcessArguments(true)
+    .passThroughOptions()
+    .argument('[args...]')
+    .action(async function(this: Command, _opts: Record<string, unknown>) {
+      const rawArgs: string[] = this.args;
+      const { runCommand } = await import('./router.js');
+      await runCommand('templates', rawArgs, _opts);
+    });
+
+  templates
+    .command('dev')
+    .description('Development commands')
+    .allowUnknownOption(true)
+    .allowExcessArguments(true)
+    .passThroughOptions()
+    .argument('[args...]')
+    .action(async function(this: Command, _opts: Record<string, unknown>) {
+      const rawArgs: string[] = this.args;
+      const { runCommand } = await import('./router.js');
+      await runCommand('dev', rawArgs, _opts);
+    });
+
+  program
+    .command('dev')
+    .description('Development commands (link-template, unlink)')
+    .allowUnknownOption(true)
+    .allowExcessArguments(true)
+    .passThroughOptions()
+    .argument('[args...]')
+    .action(async function(this: Command, _opts: Record<string, unknown>) {
+      const rawArgs: string[] = this.args;
+      const { runCommand } = await import('./router.js');
+      await runCommand('dev', rawArgs, _opts);
+    });
+
+  const commandDefs: [name: string, description: string, options?: string[]][] = [
+    ['init', 'Initialize new project from template', ['--name <name>', '--agent <agent>']],
+    ['generate', 'Scaffold phase documentation files from template', ['--phase <phase>', '--force']],
+    ['status', 'Show current phase and progress', ['--json', '--verbose']],
+    ['next', 'Advance to next phase', ['--phase <phase>']],
+    ['complete', 'Mark current or specified phase as complete', ['--phase <phase>']],
+    ['check', 'Validate current phase constraints', ['--phase <phase>', '--force', '--json']],
+    ['prompt', 'Generate AI prompt for current or specified phase', ['--phase <phase>', '--context <context>', '--output <output>']],
+    ['context', 'Scan project and generate context files', ['--force']],
+    ['run', 'Execute AI agent via adapter', ['--agent <agent>', '--phase <phase>', '--attach <attach>', '--transport <transport>', '--dry-run']],
+    ['agent', 'Manage AI agent configuration', ['--agent <agent>']],
+    ['config', 'Manage configuration defaults', ['--key <key>', '--value <value>']],
+    ['guide', 'Interactive help for current or specified phase', ['--phase <phase>']],
+    ['tutorial', 'Guided tutorial mode', ['--step <step>']],
+    ['doctor', 'Health check and integrity validation', ['--fix']],
+    ['upgrade', 'Upgrade template to newer version', ['--target <target>', '--rollback <rollback>', '--guide']],
+    ['prompts', 'Manage accumulated prompt library', ['--file <file>', '--from <from>', '--to <to>']],
+    ['models', 'List or set AI agent models', ['--set <set>']],
+    ['serve', 'Manage opencode persistent server'],
+    ['review', 'Review documentation quality for a phase', ['--phase <phase>', '--format <format>']],
+    ['trace', 'Show traceability matrix across phases', ['--term <term>']],
+    ['diff', 'Diff template versions', ['--from <from>', '--to <to>']],
+    ['quality', 'Overall documentation quality score', ['--phase <phase>', '--format <format>']],
+  ];
+
+  for (const [name, description, options = []] of commandDefs) {
+    if (name === 'dev') continue;
+
+    const cmd = program.command(name).description(description);
+
+    for (const opt of options) {
+      cmd.option(opt);
+    }
+
+    cmd.action(async (opts: Record<string, unknown>, cmd: Command) => {
+      const rawArgs: string[] = cmd.args;
+      const { runCommand } = await import('./router.js');
+      await runCommand(name, rawArgs, opts);
+    });
   }
 
   return program;
-}
-
-function parseOpts(args: string[]): Record<string, unknown> {
-  const opts: Record<string, unknown> = {};
-  const boolFlags = new Set([
-    'help', 'h', 'copy', 'dry-run', 'dryRun', 'confirm', 'regenerate',
-    'doctor', 'force', 'no-strict', 'json', 'fix', 'info', 'ci',
-  ]);
-  const valueFlags = new Set([
-    'phase', 'context', 'attach', 'output', 'agent', 'name', 'target',
-    'url', 'format', 'file', 'from', 'to', 'agent-name', 'id',
-    'set', 'transport', 'model', 'session', 'omit', 'key', 'value',
-    'rollback', 'guide',
-  ]);
-
-  let i = 0;
-  while (i < args.length) {
-    const arg = args[i]!;
-    if (!arg.startsWith('--') && !arg.startsWith('-')) { i++; continue; }
-    const key = arg.replace(/^--?/, '');
-    if (boolFlags.has(key)) {
-      opts[key] = true;
-      i++;
-    } else if (valueFlags.has(key) && args[i + 1] !== undefined && !args[i + 1]!.startsWith('-')) {
-      opts[key] = args[i + 1];
-      i += 2;
-    } else {
-      i++;
-    }
-  }
-  return opts;
 }
