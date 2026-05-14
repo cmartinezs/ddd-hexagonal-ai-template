@@ -2,6 +2,9 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { phaseEngine } from './phase-engine.js';
 import type { PhaseStatusEntry } from './types.js';
+import type { Constraint, ValidationResult } from '../domain/validation/validation.types.js';
+
+export type { Severity, Constraint, ValidationResult } from '../domain/validation/validation.types.js';
 
 const TECHNOLOGY_PATTERNS = [
   /\b(PostgreSQL|MySQL|MongoDB|Redis|Elasticsearch|DynamoDB|Cassandra|SQLite|Oracle)\b/i,
@@ -18,23 +21,6 @@ const TECHNOLOGY_PATTERNS = [
   /\b(HTML5|CSS3|SASS|Less|Stylus)\b/i,
   /\b(Express\.js|NestJS)\b/i,
 ];
-
-export type Severity = 'error' | 'warn' | 'info';
-
-export interface Constraint {
-  id: string;
-  severity: Severity;
-  message: string;
-  phase?: number;
-}
-
-export interface ValidationResult {
-  phase: number;
-  constraints: Constraint[];
-  errors: string[];
-  warnings: string[];
-  suggestions: string[];
-}
 
 export interface ValidatorOptions {
   basePath?: string;
@@ -116,21 +102,13 @@ export class Validator {
 
     const deps = phaseEngine.getDependencies(phaseIndex);
     for (const dep of deps) {
-      const phasePath = join(this.basePath, dep.folder);
-      const statusFile = join(phasePath, '.status');
+      const phasePath = join(this.basePath, 'docs', dep.folder);
 
       if (!existsSync(phasePath)) {
         constraints.push({
           id: 'missing-dependency-folder',
-          severity: 'error',
-          message: 'Missing dependency folder: ' + dep.folder,
-          phase: phaseIndex,
-        });
-      } else if (!existsSync(statusFile)) {
-        constraints.push({
-          id: 'incomplete-dependency',
           severity: 'warn',
-          message: 'Dependency phase ' + dep.index + ' (' + dep.name + ') may not be complete',
+          message: 'Dependency phase ' + dep.index + ' (' + dep.name + ') has no output folder yet: docs/' + dep.folder,
           phase: phaseIndex,
         });
       }
