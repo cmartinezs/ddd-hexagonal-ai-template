@@ -11,7 +11,9 @@
     "dev": "tsx bin/archon.ts",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests configured yet\" && exit 0"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "files": [
     "bin/",
@@ -42,10 +44,12 @@
   "devDependencies": {
     "@types/node": "^25.7.0",
     "@types/semver": "^7.7.1",
+    "@vitest/coverage-v8": "^3.1.4",
     "diff": "^9.0.0",
     "node-fetch": "^3.3.2",
     "ora": "^9.4.0",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^3.1.4"
   }
 }

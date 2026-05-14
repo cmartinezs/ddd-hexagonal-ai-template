@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { detectMode } from '../../core/mode-detector.js';
 import { InitProjectUseCase } from '../../application/init-project.usecase.js';
 import type { AgentType } from '../../core/types.js';
+import { AGENT_TIERS } from '../../infrastructure/agents/index.js';
 
 export class InitCommand {
   async run(args: string[], _opts: Record<string, unknown>): Promise<void> {
@@ -70,18 +71,45 @@ export class InitCommand {
 
   private async askAgent(): Promise<string> {
     const inquirer = (await import('inquirer')).default;
+
+    const agentTierIcon = (tier: string): string => {
+      switch (tier) {
+        case 'supported': return chalk.green('✅');
+        case 'prompt-only': return chalk.yellow('📝');
+        case 'planned': return chalk.gray('⏳');
+        default: return chalk.gray('❓');
+      }
+    };
+
+    const agentTierLabel = (tier: string): string => {
+      switch (tier) {
+        case 'supported': return 'supported';
+        case 'prompt-only': return 'prompt-only';
+        case 'planned': return 'planned (not executable yet)';
+        default: return tier;
+      }
+    };
+
+    const choices = Object.entries(AGENT_TIERS).map(([id, tier]) => ({
+      name: `${agentTierIcon(tier)} ${id} — ${agentTierLabel(tier)}`,
+      value: id,
+    }));
+
     const { agent } = await inquirer.prompt([{
       type: 'list',
       name: 'agent',
       message: 'Which AI agent are you using?',
-      choices: [
-        { name: 'opencode (primary)', value: 'opencode' },
-        { name: 'Claude Code', value: 'claude' },
-        { name: 'Cursor', value: 'cursor' },
-        { name: 'Manual (prompts only)', value: 'manual' },
-      ],
+      choices,
       default: 'opencode',
     }]);
+
+    const selectedTier = AGENT_TIERS[agent] ?? 'planned';
+    if (selectedTier === 'planned') {
+      console.log(chalk.yellow('\n  ⚠️  ' + agent + ' is planned but not yet executable.'));
+      console.log(chalk.dim('  Only opencode, claude, and manual are currently supported.\n'));
+      process.exit(1);
+    }
+
     return agent;
   }
 }
