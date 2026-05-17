@@ -8,7 +8,7 @@ Plannings currently in **EXPANSION** or **DEEPENING** phase. These are actively 
 
 | ID | Name | Phase |
 |----|------|-------|
-| [017](017-planning-api/01-expansion.md) | Planning API & Metalanguage | EXPANSION |
+| [017](017-planning-api/01-expansion.md) | Local Planning API & Automation Contract | DEEPENING |
 ---
 
 > [← planning/README.md](../README.md)
